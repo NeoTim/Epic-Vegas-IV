@@ -1,0 +1,452 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		530BECF419904C7700C5FDAB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 530BECF319904C7700C5FDAB /* Foundation.framework */; };
+		530BECF619904C7700C5FDAB /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 530BECF519904C7700C5FDAB /* CoreGraphics.framework */; };
+		530BECF819904C7700C5FDAB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 530BECF719904C7700C5FDAB /* UIKit.framework */; };
+		530BECFE19904C7700C5FDAB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 530BECFC19904C7700C5FDAB /* InfoPlist.strings */; };
+		530BED0019904C7700C5FDAB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 530BECFF19904C7700C5FDAB /* main.m */; };
+		530BED0419904C7700C5FDAB /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 530BED0319904C7700C5FDAB /* AppDelegate.m */; };
+		530BED0619904C7700C5FDAB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 530BED0519904C7700C5FDAB /* Images.xcassets */; };
+		530BED0D19904C7700C5FDAB /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 530BED0C19904C7700C5FDAB /* XCTest.framework */; };
+		530BED0E19904C7700C5FDAB /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 530BECF319904C7700C5FDAB /* Foundation.framework */; };
+		530BED0F19904C7700C5FDAB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 530BECF719904C7700C5FDAB /* UIKit.framework */; };
+		530BED1719904C7700C5FDAB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 530BED1519904C7700C5FDAB /* InfoPlist.strings */; };
+		530BED1919904C7700C5FDAB /* Epic_Vegas_IVTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 530BED1819904C7700C5FDAB /* Epic_Vegas_IVTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		530BED1019904C7700C5FDAB /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 530BECE819904C7700C5FDAB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 530BECEF19904C7700C5FDAB;
+			remoteInfo = "Epic Vegas IV";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		530BECF019904C7700C5FDAB /* Epic Vegas IV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Epic Vegas IV.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		530BECF319904C7700C5FDAB /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		530BECF519904C7700C5FDAB /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		530BECF719904C7700C5FDAB /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		530BECFB19904C7700C5FDAB /* Epic Vegas IV-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Epic Vegas IV-Info.plist"; sourceTree = "<group>"; };
+		530BECFD19904C7700C5FDAB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		530BECFF19904C7700C5FDAB /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		530BED0119904C7700C5FDAB /* Epic Vegas IV-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Epic Vegas IV-Prefix.pch"; sourceTree = "<group>"; };
+		530BED0219904C7700C5FDAB /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		530BED0319904C7700C5FDAB /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		530BED0519904C7700C5FDAB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		530BED0B19904C7700C5FDAB /* Epic Vegas IVTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Epic Vegas IVTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		530BED0C19904C7700C5FDAB /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		530BED1419904C7700C5FDAB /* Epic Vegas IVTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Epic Vegas IVTests-Info.plist"; sourceTree = "<group>"; };
+		530BED1619904C7700C5FDAB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		530BED1819904C7700C5FDAB /* Epic_Vegas_IVTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Epic_Vegas_IVTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		530BECED19904C7700C5FDAB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				530BECF619904C7700C5FDAB /* CoreGraphics.framework in Frameworks */,
+				530BECF819904C7700C5FDAB /* UIKit.framework in Frameworks */,
+				530BECF419904C7700C5FDAB /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		530BED0819904C7700C5FDAB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				530BED0D19904C7700C5FDAB /* XCTest.framework in Frameworks */,
+				530BED0F19904C7700C5FDAB /* UIKit.framework in Frameworks */,
+				530BED0E19904C7700C5FDAB /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		530BECE719904C7700C5FDAB = {
+			isa = PBXGroup;
+			children = (
+				530BECF919904C7700C5FDAB /* Epic Vegas IV */,
+				530BED1219904C7700C5FDAB /* Epic Vegas IVTests */,
+				530BECF219904C7700C5FDAB /* Frameworks */,
+				530BECF119904C7700C5FDAB /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		530BECF119904C7700C5FDAB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				530BECF019904C7700C5FDAB /* Epic Vegas IV.app */,
+				530BED0B19904C7700C5FDAB /* Epic Vegas IVTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		530BECF219904C7700C5FDAB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				530BECF319904C7700C5FDAB /* Foundation.framework */,
+				530BECF519904C7700C5FDAB /* CoreGraphics.framework */,
+				530BECF719904C7700C5FDAB /* UIKit.framework */,
+				530BED0C19904C7700C5FDAB /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		530BECF919904C7700C5FDAB /* Epic Vegas IV */ = {
+			isa = PBXGroup;
+			children = (
+				530BED0219904C7700C5FDAB /* AppDelegate.h */,
+				530BED0319904C7700C5FDAB /* AppDelegate.m */,
+				530BED0519904C7700C5FDAB /* Images.xcassets */,
+				530BECFA19904C7700C5FDAB /* Supporting Files */,
+			);
+			path = "Epic Vegas IV";
+			sourceTree = "<group>";
+		};
+		530BECFA19904C7700C5FDAB /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				530BECFB19904C7700C5FDAB /* Epic Vegas IV-Info.plist */,
+				530BECFC19904C7700C5FDAB /* InfoPlist.strings */,
+				530BECFF19904C7700C5FDAB /* main.m */,
+				530BED0119904C7700C5FDAB /* Epic Vegas IV-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		530BED1219904C7700C5FDAB /* Epic Vegas IVTests */ = {
+			isa = PBXGroup;
+			children = (
+				530BED1819904C7700C5FDAB /* Epic_Vegas_IVTests.m */,
+				530BED1319904C7700C5FDAB /* Supporting Files */,
+			);
+			path = "Epic Vegas IVTests";
+			sourceTree = "<group>";
+		};
+		530BED1319904C7700C5FDAB /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				530BED1419904C7700C5FDAB /* Epic Vegas IVTests-Info.plist */,
+				530BED1519904C7700C5FDAB /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		530BECEF19904C7700C5FDAB /* Epic Vegas IV */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 530BED1C19904C7700C5FDAB /* Build configuration list for PBXNativeTarget "Epic Vegas IV" */;
+			buildPhases = (
+				530BECEC19904C7700C5FDAB /* Sources */,
+				530BECED19904C7700C5FDAB /* Frameworks */,
+				530BECEE19904C7700C5FDAB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Epic Vegas IV";
+			productName = "Epic Vegas IV";
+			productReference = 530BECF019904C7700C5FDAB /* Epic Vegas IV.app */;
+			productType = "com.apple.product-type.application";
+		};
+		530BED0A19904C7700C5FDAB /* Epic Vegas IVTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 530BED1F19904C7700C5FDAB /* Build configuration list for PBXNativeTarget "Epic Vegas IVTests" */;
+			buildPhases = (
+				530BED0719904C7700C5FDAB /* Sources */,
+				530BED0819904C7700C5FDAB /* Frameworks */,
+				530BED0919904C7700C5FDAB /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				530BED1119904C7700C5FDAB /* PBXTargetDependency */,
+			);
+			name = "Epic Vegas IVTests";
+			productName = "Epic Vegas IVTests";
+			productReference = 530BED0B19904C7700C5FDAB /* Epic Vegas IVTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		530BECE819904C7700C5FDAB /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = "Zach Kohl";
+				TargetAttributes = {
+					530BED0A19904C7700C5FDAB = {
+						TestTargetID = 530BECEF19904C7700C5FDAB;
+					};
+				};
+			};
+			buildConfigurationList = 530BECEB19904C7700C5FDAB /* Build configuration list for PBXProject "Epic Vegas IV" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 530BECE719904C7700C5FDAB;
+			productRefGroup = 530BECF119904C7700C5FDAB /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				530BECEF19904C7700C5FDAB /* Epic Vegas IV */,
+				530BED0A19904C7700C5FDAB /* Epic Vegas IVTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		530BECEE19904C7700C5FDAB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				530BECFE19904C7700C5FDAB /* InfoPlist.strings in Resources */,
+				530BED0619904C7700C5FDAB /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		530BED0919904C7700C5FDAB /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				530BED1719904C7700C5FDAB /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		530BECEC19904C7700C5FDAB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				530BED0419904C7700C5FDAB /* AppDelegate.m in Sources */,
+				530BED0019904C7700C5FDAB /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		530BED0719904C7700C5FDAB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				530BED1919904C7700C5FDAB /* Epic_Vegas_IVTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		530BED1119904C7700C5FDAB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 530BECEF19904C7700C5FDAB /* Epic Vegas IV */;
+			targetProxy = 530BED1019904C7700C5FDAB /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		530BECFC19904C7700C5FDAB /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				530BECFD19904C7700C5FDAB /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		530BED1519904C7700C5FDAB /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				530BED1619904C7700C5FDAB /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		530BED1A19904C7700C5FDAB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		530BED1B19904C7700C5FDAB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		530BED1D19904C7700C5FDAB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Epic Vegas IV/Epic Vegas IV-Prefix.pch";
+				INFOPLIST_FILE = "Epic Vegas IV/Epic Vegas IV-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		530BED1E19904C7700C5FDAB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Epic Vegas IV/Epic Vegas IV-Prefix.pch";
+				INFOPLIST_FILE = "Epic Vegas IV/Epic Vegas IV-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		530BED2019904C7700C5FDAB /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Epic Vegas IV.app/Epic Vegas IV";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Epic Vegas IV/Epic Vegas IV-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Epic Vegas IVTests/Epic Vegas IVTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		530BED2119904C7700C5FDAB /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/Epic Vegas IV.app/Epic Vegas IV";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Epic Vegas IV/Epic Vegas IV-Prefix.pch";
+				INFOPLIST_FILE = "Epic Vegas IVTests/Epic Vegas IVTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		530BECEB19904C7700C5FDAB /* Build configuration list for PBXProject "Epic Vegas IV" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				530BED1A19904C7700C5FDAB /* Debug */,
+				530BED1B19904C7700C5FDAB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		530BED1C19904C7700C5FDAB /* Build configuration list for PBXNativeTarget "Epic Vegas IV" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				530BED1D19904C7700C5FDAB /* Debug */,
+				530BED1E19904C7700C5FDAB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		530BED1F19904C7700C5FDAB /* Build configuration list for PBXNativeTarget "Epic Vegas IVTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				530BED2019904C7700C5FDAB /* Debug */,
+				530BED2119904C7700C5FDAB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 530BECE819904C7700C5FDAB /* Project object */;
+}
