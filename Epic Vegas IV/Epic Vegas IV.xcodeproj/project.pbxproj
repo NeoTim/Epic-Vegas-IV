@@ -19,6 +19,20 @@
 		530BED0F19904C7700C5FDAB /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 530BECF719904C7700C5FDAB /* UIKit.framework */; };
 		530BED1719904C7700C5FDAB /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 530BED1519904C7700C5FDAB /* InfoPlist.strings */; };
 		530BED1919904C7700C5FDAB /* Epic_Vegas_IVTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 530BED1819904C7700C5FDAB /* Epic_Vegas_IVTests.m */; };
+		530BED2619904DA800C5FDAB /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 530BED2519904DA800C5FDAB /* Parse.framework */; };
+		530BED2819904DBC00C5FDAB /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 530BED2719904DBC00C5FDAB /* FacebookSDK.framework */; };
+		530BED2B19904EA700C5FDAB /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 530BED2A19904EA700C5FDAB /* SystemConfiguration.framework */; };
+		530BED2D19904EAE00C5FDAB /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 530BED2C19904EAE00C5FDAB /* StoreKit.framework */; };
+		530BED2F19904EB300C5FDAB /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 530BED2E19904EB300C5FDAB /* Social.framework */; };
+		530BED3119904EB800C5FDAB /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 530BED3019904EB800C5FDAB /* Security.framework */; };
+		530BED3319904EBD00C5FDAB /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 530BED3219904EBD00C5FDAB /* QuartzCore.framework */; };
+		530BED3519904EC400C5FDAB /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 530BED3419904EC400C5FDAB /* MobileCoreServices.framework */; };
+		530BED3719904EC800C5FDAB /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 530BED3619904EC800C5FDAB /* libz.dylib */; };
+		530BED3919904ECC00C5FDAB /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 530BED3819904ECC00C5FDAB /* CoreLocation.framework */; };
+		530BED3B19904ED800C5FDAB /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 530BED3A19904ED800C5FDAB /* CFNetwork.framework */; };
+		530BED3D19904EDD00C5FDAB /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 530BED3C19904EDD00C5FDAB /* AudioToolbox.framework */; };
+		530BED3F19904EE100C5FDAB /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 530BED3E19904EE100C5FDAB /* Accounts.framework */; };
+		530BED4119904FA500C5FDAB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 530BED4019904FA500C5FDAB /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +62,21 @@
 		530BED1419904C7700C5FDAB /* Epic Vegas IVTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Epic Vegas IVTests-Info.plist"; sourceTree = "<group>"; };
 		530BED1619904C7700C5FDAB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		530BED1819904C7700C5FDAB /* Epic_Vegas_IVTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Epic_Vegas_IVTests.m; sourceTree = "<group>"; };
+		530BED2519904DA800C5FDAB /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		530BED2719904DBC00C5FDAB /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
+		530BED2919904DCB00C5FDAB /* bold_dot_digital-7.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "bold_dot_digital-7.ttf"; sourceTree = "<group>"; };
+		530BED2A19904EA700C5FDAB /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		530BED2C19904EAE00C5FDAB /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
+		530BED2E19904EB300C5FDAB /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		530BED3019904EB800C5FDAB /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		530BED3219904EBD00C5FDAB /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		530BED3419904EC400C5FDAB /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		530BED3619904EC800C5FDAB /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
+		530BED3819904ECC00C5FDAB /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		530BED3A19904ED800C5FDAB /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		530BED3C19904EDD00C5FDAB /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		530BED3E19904EE100C5FDAB /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		530BED4019904FA500C5FDAB /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,8 +84,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				530BED3F19904EE100C5FDAB /* Accounts.framework in Frameworks */,
+				530BED3D19904EDD00C5FDAB /* AudioToolbox.framework in Frameworks */,
+				530BED3B19904ED800C5FDAB /* CFNetwork.framework in Frameworks */,
+				530BED3919904ECC00C5FDAB /* CoreLocation.framework in Frameworks */,
+				530BED3719904EC800C5FDAB /* libz.dylib in Frameworks */,
+				530BED3519904EC400C5FDAB /* MobileCoreServices.framework in Frameworks */,
+				530BED3319904EBD00C5FDAB /* QuartzCore.framework in Frameworks */,
+				530BED3119904EB800C5FDAB /* Security.framework in Frameworks */,
+				530BED2F19904EB300C5FDAB /* Social.framework in Frameworks */,
+				530BED2D19904EAE00C5FDAB /* StoreKit.framework in Frameworks */,
+				530BED2B19904EA700C5FDAB /* SystemConfiguration.framework in Frameworks */,
 				530BECF619904C7700C5FDAB /* CoreGraphics.framework in Frameworks */,
+				530BED2819904DBC00C5FDAB /* FacebookSDK.framework in Frameworks */,
 				530BECF819904C7700C5FDAB /* UIKit.framework in Frameworks */,
+				530BED2619904DA800C5FDAB /* Parse.framework in Frameworks */,
 				530BECF419904C7700C5FDAB /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -77,6 +119,8 @@
 		530BECE719904C7700C5FDAB = {
 			isa = PBXGroup;
 			children = (
+				530BED2719904DBC00C5FDAB /* FacebookSDK.framework */,
+				530BED2519904DA800C5FDAB /* Parse.framework */,
 				530BECF919904C7700C5FDAB /* Epic Vegas IV */,
 				530BED1219904C7700C5FDAB /* Epic Vegas IVTests */,
 				530BECF219904C7700C5FDAB /* Frameworks */,
@@ -96,6 +140,17 @@
 		530BECF219904C7700C5FDAB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				530BED3E19904EE100C5FDAB /* Accounts.framework */,
+				530BED3C19904EDD00C5FDAB /* AudioToolbox.framework */,
+				530BED3A19904ED800C5FDAB /* CFNetwork.framework */,
+				530BED3819904ECC00C5FDAB /* CoreLocation.framework */,
+				530BED3619904EC800C5FDAB /* libz.dylib */,
+				530BED3419904EC400C5FDAB /* MobileCoreServices.framework */,
+				530BED3219904EBD00C5FDAB /* QuartzCore.framework */,
+				530BED3019904EB800C5FDAB /* Security.framework */,
+				530BED2E19904EB300C5FDAB /* Social.framework */,
+				530BED2C19904EAE00C5FDAB /* StoreKit.framework */,
+				530BED2A19904EA700C5FDAB /* SystemConfiguration.framework */,
 				530BECF319904C7700C5FDAB /* Foundation.framework */,
 				530BECF519904C7700C5FDAB /* CoreGraphics.framework */,
 				530BECF719904C7700C5FDAB /* UIKit.framework */,
@@ -107,8 +162,10 @@
 		530BECF919904C7700C5FDAB /* Epic Vegas IV */ = {
 			isa = PBXGroup;
 			children = (
+				530BED2219904CD700C5FDAB /* Resources */,
 				530BED0219904C7700C5FDAB /* AppDelegate.h */,
 				530BED0319904C7700C5FDAB /* AppDelegate.m */,
+				530BED4019904FA500C5FDAB /* Main.storyboard */,
 				530BED0519904C7700C5FDAB /* Images.xcassets */,
 				530BECFA19904C7700C5FDAB /* Supporting Files */,
 			);
@@ -142,6 +199,30 @@
 				530BED1519904C7700C5FDAB /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		530BED2219904CD700C5FDAB /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				530BED2419904CE600C5FDAB /* Fonts */,
+				530BED2319904CDE00C5FDAB /* Images */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		530BED2319904CDE00C5FDAB /* Images */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+		530BED2419904CE600C5FDAB /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				530BED2919904DCB00C5FDAB /* bold_dot_digital-7.ttf */,
+			);
+			name = Fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -219,6 +300,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				530BED4119904FA500C5FDAB /* Main.storyboard in Resources */,
 				530BECFE19904C7700C5FDAB /* InfoPlist.strings in Resources */,
 				530BED0619904C7700C5FDAB /* Images.xcassets in Resources */,
 			);
@@ -357,9 +439,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Epic Vegas IV/Epic Vegas IV-Prefix.pch";
 				INFOPLIST_FILE = "Epic Vegas IV/Epic Vegas IV-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -370,9 +458,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Epic Vegas IV/Epic Vegas IV-Prefix.pch";
 				INFOPLIST_FILE = "Epic Vegas IV/Epic Vegas IV-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
