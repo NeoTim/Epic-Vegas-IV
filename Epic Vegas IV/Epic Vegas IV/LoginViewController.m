@@ -84,11 +84,14 @@
             }
         } else if (user.isNew) {
             NSLog(@"User with facebook signed up and logged in! Id=%@,  User=%@, Password=%@, Email=%@", user.objectId, user.username, user.password, user.email);
-            
+                        
+            [self performSegueWithIdentifier:@"loggedInSegue" sender:self];
             //[self.navigationController pushViewController:[[UserDetailsViewController alloc] initWithStyle:UITableViewStyleGrouped] animated:YES];
         } else {
             NSLog(@"User with facebook logged in!  Id=%@,  User=%@, Password=%@, Email=%@", user.objectId, user.username, user.password, user.email);
-            
+
+            [self performSegueWithIdentifier:@"loggedInSegue" sender:self];
+                        
             //[self.navigationController pushViewController:[[UserDetailsViewController alloc] initWithStyle:UITableViewStyleGrouped] animated:YES];
         }
     }];
