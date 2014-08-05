@@ -48,6 +48,7 @@
             NSURL *pictureURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=large&return_ssl_resources=1", facebookID]];
             
             _fbProfilePicView.profileID = facebookID;
+            _userNameLabel.text = name;
         }
     }];
 }
