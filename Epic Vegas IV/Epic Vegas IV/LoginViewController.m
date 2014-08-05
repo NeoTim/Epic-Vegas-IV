@@ -67,7 +67,11 @@
 - (void)loginViewFetchedUserInfo:(FBLoginView *)loginView
                             user:(id<FBGraphUser>)user {
     
-    NSLog(@"User ID:%@", user.id);
+    NSLog(@"User ID:%@", user.objectID);
+    
+    // Create new Parse User?
+    
+    //_fbProfilePicView.profileID = user.objectID;
     //self.profilePictureView.profileID = user.id;
     //self.nameLabel.text = user.name;
 }
@@ -75,6 +79,9 @@
 // Logged-in user experience
 - (void)loginViewShowingLoggedInUser:(FBLoginView *)loginView {
     //self.statusLabel.text = @"You're logged in as";
+    
+    
+    [self performSegueWithIdentifier:@"loggedInSegue" sender:self];
 }
 
 // Logged-out user experience

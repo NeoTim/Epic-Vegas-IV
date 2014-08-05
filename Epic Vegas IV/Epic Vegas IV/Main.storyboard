@@ -53,16 +53,17 @@
                         <outlet property="fbLoginView" destination="FKD-Iz-Om6" id="Fj8-oi-JXa"/>
                         <outlet property="ivLabel" destination="gp7-3h-hjZ" id="w4d-RX-awn"/>
                         <outlet property="vegasLabel" destination="tvx-HN-1Iq" id="hRz-TU-607"/>
+                        <segue destination="sis-gg-Ny1" kind="modal" identifier="loggedInSegue" id="7ih-RS-Y6U"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aND-N9-fWh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="576" y="244"/>
         </scene>
-        <!--View Controller - Item 1-->
+        <!--Profile View Controller-->
         <scene sceneID="U0s-bw-WXN">
             <objects>
-                <viewController id="qMQ-9p-OKN" sceneMemberID="viewController">
+                <viewController id="qMQ-9p-OKN" customClass="ProfileViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="enA-aD-XSh"/>
                         <viewControllerLayoutGuide type="bottom" id="9VS-bl-P8l"/>
@@ -70,9 +71,19 @@
                     <view key="view" contentMode="scaleToFill" id="qHK-UN-8th">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XHF-46-HNx" customClass="FBProfilePictureView">
+                                <rect key="frame" x="20" y="91" width="264" height="238"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item 1" id="oJp-J7-FmV"/>
+                    <tabBarItem key="tabBarItem" systemItem="contacts" id="oJp-J7-FmV"/>
+                    <connections>
+                        <outlet property="fbProfilePicView" destination="XHF-46-HNx" id="Ocb-I4-l3U"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EYT-YW-G4F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

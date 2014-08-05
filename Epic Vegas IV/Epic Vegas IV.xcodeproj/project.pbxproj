@@ -34,6 +34,7 @@
 		530BED3F19904EE100C5FDAB /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 530BED3E19904EE100C5FDAB /* Accounts.framework */; };
 		530BED4119904FA500C5FDAB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 530BED4019904FA500C5FDAB /* Main.storyboard */; };
 		530BED44199052FF00C5FDAB /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 530BED43199052FF00C5FDAB /* LoginViewController.m */; };
+		532B1646199059DE00C4851F /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 532B1645199059DE00C4851F /* ProfileViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +81,8 @@
 		530BED4019904FA500C5FDAB /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		530BED42199052FF00C5FDAB /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		530BED43199052FF00C5FDAB /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		532B1644199059DE00C4851F /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
+		532B1645199059DE00C4851F /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +173,8 @@
 				530BED0319904C7700C5FDAB /* AppDelegate.m */,
 				530BED42199052FF00C5FDAB /* LoginViewController.h */,
 				530BED43199052FF00C5FDAB /* LoginViewController.m */,
+				532B1644199059DE00C4851F /* ProfileViewController.h */,
+				532B1645199059DE00C4851F /* ProfileViewController.m */,
 				530BED4019904FA500C5FDAB /* Main.storyboard */,
 				530BED0519904C7700C5FDAB /* Images.xcassets */,
 				530BECFA19904C7700C5FDAB /* Supporting Files */,
@@ -328,6 +333,7 @@
 			files = (
 				530BED0419904C7700C5FDAB /* AppDelegate.m in Sources */,
 				530BED0019904C7700C5FDAB /* main.m in Sources */,
+				532B1646199059DE00C4851F /* ProfileViewController.m in Sources */,
 				530BED44199052FF00C5FDAB /* LoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -537,6 +543,7 @@
 				530BED1E19904C7700C5FDAB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		530BED1F19904C7700C5FDAB /* Build configuration list for PBXNativeTarget "Epic Vegas IVTests" */ = {
 			isa = XCConfigurationList;
@@ -545,6 +552,7 @@
 				530BED2119904C7700C5FDAB /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
