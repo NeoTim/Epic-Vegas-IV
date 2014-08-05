@@ -7,11 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <FacebookSDK/FacebookSDK.h>
 
-@interface LoginViewController : UIViewController
+@interface LoginViewController : UIViewController <FBLoginViewDelegate>
+
 @property (weak, nonatomic) IBOutlet UILabel *epicLabel;
 @property (weak, nonatomic) IBOutlet UILabel *vegasLabel;
 @property (weak, nonatomic) IBOutlet UILabel *ivLabel;
 
+@property (weak, nonatomic) IBOutlet FBLoginView *fbLoginView;
 
 @end
