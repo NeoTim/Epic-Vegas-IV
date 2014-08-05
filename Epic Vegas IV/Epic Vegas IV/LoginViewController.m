@@ -26,11 +26,55 @@
 - (void)setupTitleFont
 {
     // set font for epic vegas labels
-    NSString* fontName = @"BoldDotDigital-7";
-    int fontSize = 74;
+    //NSString* fontName = @"BoldDotDigital-7";
+    //NSString* fontName = @"AdvancedDotDigital-7";
+    //NSString* fontName = @"TripleDotDigital-7";
+    //NSString* fontName = @"ModernDotDigital-7"; // no
+    //NSString* fontName = @"EnhancedDotDigital-7";
+    //NSString* fontName = @"LEDCounter7";
+    
+    NSString* fontName = @"DS-Digital-BoldItalic";
+    //NSString* fontName = @"AtomicClockRadio";
+    //NSString* fontName = @"The-Vandor-Spot";
+    
+    
+    //int fontSize = 74;
+    //int fontSize = 50;
+    int fontSize = 100;
+    
     _epicLabel.font = [UIFont fontWithName:fontName size:fontSize];
     _vegasLabel.font = [UIFont fontWithName:fontName size:fontSize];
     _ivLabel.font = [UIFont fontWithName:fontName size:fontSize];
+    
+    _epicLabel.layer.shadowColor = [UIColor redColor].CGColor;
+    _epicLabel.layer.shadowOffset = CGSizeMake(0.0, 0.0);
+    
+    _epicLabel.layer.shadowRadius = 10.0;
+    _epicLabel.layer.shadowOpacity = 0.3;
+    _epicLabel.layer.masksToBounds = NO;
+    
+    _vegasLabel.layer.shadowColor = [UIColor blackColor].CGColor;
+    _vegasLabel.layer.shadowOffset = CGSizeMake(0.0, 0.0);
+    _vegasLabel.layer.shadowRadius = 10.0;
+    _vegasLabel.layer.shadowOpacity = 0.3;
+    _vegasLabel.layer.masksToBounds = NO;
+    
+    _ivLabel.layer.shadowColor = [UIColor blackColor].CGColor;
+    _ivLabel.layer.shadowOffset = CGSizeMake(0.0, 0.0);
+    _ivLabel.layer.shadowRadius = 10.0;
+    _ivLabel.layer.shadowOpacity = 0.3;
+    _ivLabel.layer.masksToBounds = NO;
+    
+    // Code to print fonts
+    for (NSString* family in [UIFont familyNames])
+    {
+        NSLog(@"%@", family);
+        
+        for (NSString* name in [UIFont fontNamesForFamilyName: family])
+        {
+            NSLog(@"  %@", name);
+        }
+    }
     
 }
 

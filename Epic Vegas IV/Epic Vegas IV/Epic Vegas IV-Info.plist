@@ -34,6 +34,15 @@
 	<string>Epic Vegas IV</string>
 	<key>UIAppFonts</key>
 	<array>
+		<string>advanced_dot_digital-7.ttf</string>
+		<string>ATOMICCLOCKRADIO.ttf</string>
+		<string>the_vandor_spot.ttf</string>
+		<string>The 2K12.ttf</string>
+		<string>DS-DIGIT.ttf</string>
+		<string>modern_dot_digital-7.ttf</string>
+		<string>led_counter-7.ttf</string>
+		<string>enhanced_dot_digital-7.ttf</string>
+		<string>triple_dot_digital-7.ttf</string>
 		<string>bold_dot_digital-7.ttf</string>
 	</array>
 	<key>CFBundleURLTypes</key>

@@ -41,6 +41,14 @@
 		53D2D19719917C72007197F6 /* line__0000s_0092_map.png in Resources */ = {isa = PBXBuildFile; fileRef = 53D2D19619917C72007197F6 /* line__0000s_0092_map.png */; };
 		53D2D19919918563007197F6 /* marquee-las-vegas.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 53D2D19819918563007197F6 /* marquee-las-vegas.jpg */; };
 		53D2D19A1991876C007197F6 /* bold_dot_digital-7.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 530BED2919904DCB00C5FDAB /* bold_dot_digital-7.ttf */; };
+		53D2D19F1991885C007197F6 /* triple_dot_digital-7.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 53D2D19B1991885C007197F6 /* triple_dot_digital-7.ttf */; };
+		53D2D1A01991885C007197F6 /* enhanced_dot_digital-7.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 53D2D19C1991885C007197F6 /* enhanced_dot_digital-7.ttf */; };
+		53D2D1A11991885C007197F6 /* led_counter-7.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 53D2D19D1991885C007197F6 /* led_counter-7.ttf */; };
+		53D2D1A21991885C007197F6 /* modern_dot_digital-7.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 53D2D19E1991885C007197F6 /* modern_dot_digital-7.ttf */; };
+		53D2D1A619918D75007197F6 /* DS-DIGIT.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 53D2D1A519918D75007197F6 /* DS-DIGIT.ttf */; };
+		53D2D1AC19918F71007197F6 /* ATOMICCLOCKRADIO.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 53D2D1A919918F71007197F6 /* ATOMICCLOCKRADIO.ttf */; };
+		53D2D1AD19918F71007197F6 /* the_vandor_spot.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 53D2D1AA19918F71007197F6 /* the_vandor_spot.ttf */; };
+		53D2D1B019919136007197F6 /* advanced_dot_digital-7.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 53D2D1AF19919136007197F6 /* advanced_dot_digital-7.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +102,14 @@
 		53D2D19419917C62007197F6 /* line__0000s_0104_user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = line__0000s_0104_user.png; sourceTree = "<group>"; };
 		53D2D19619917C72007197F6 /* line__0000s_0092_map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = line__0000s_0092_map.png; sourceTree = "<group>"; };
 		53D2D19819918563007197F6 /* marquee-las-vegas.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "marquee-las-vegas.jpg"; sourceTree = "<group>"; };
+		53D2D19B1991885C007197F6 /* triple_dot_digital-7.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "triple_dot_digital-7.ttf"; sourceTree = "<group>"; };
+		53D2D19C1991885C007197F6 /* enhanced_dot_digital-7.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "enhanced_dot_digital-7.ttf"; sourceTree = "<group>"; };
+		53D2D19D1991885C007197F6 /* led_counter-7.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "led_counter-7.ttf"; sourceTree = "<group>"; };
+		53D2D19E1991885C007197F6 /* modern_dot_digital-7.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "modern_dot_digital-7.ttf"; sourceTree = "<group>"; };
+		53D2D1A519918D75007197F6 /* DS-DIGIT.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DS-DIGIT.ttf"; sourceTree = "<group>"; };
+		53D2D1A919918F71007197F6 /* ATOMICCLOCKRADIO.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ATOMICCLOCKRADIO.ttf; sourceTree = "<group>"; };
+		53D2D1AA19918F71007197F6 /* the_vandor_spot.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = the_vandor_spot.ttf; sourceTree = "<group>"; };
+		53D2D1AF19919136007197F6 /* advanced_dot_digital-7.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "advanced_dot_digital-7.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -247,6 +263,14 @@
 		530BED2419904CE600C5FDAB /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				53D2D1AF19919136007197F6 /* advanced_dot_digital-7.ttf */,
+				53D2D1A919918F71007197F6 /* ATOMICCLOCKRADIO.ttf */,
+				53D2D1AA19918F71007197F6 /* the_vandor_spot.ttf */,
+				53D2D1A519918D75007197F6 /* DS-DIGIT.ttf */,
+				53D2D19B1991885C007197F6 /* triple_dot_digital-7.ttf */,
+				53D2D19C1991885C007197F6 /* enhanced_dot_digital-7.ttf */,
+				53D2D19D1991885C007197F6 /* led_counter-7.ttf */,
+				53D2D19E1991885C007197F6 /* modern_dot_digital-7.ttf */,
 				530BED2919904DCB00C5FDAB /* bold_dot_digital-7.ttf */,
 			);
 			name = Fonts;
@@ -328,12 +352,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				530BED4119904FA500C5FDAB /* Main.storyboard in Resources */,
+				53D2D1AC19918F71007197F6 /* ATOMICCLOCKRADIO.ttf in Resources */,
+				53D2D1A01991885C007197F6 /* enhanced_dot_digital-7.ttf in Resources */,
+				53D2D1B019919136007197F6 /* advanced_dot_digital-7.ttf in Resources */,
+				53D2D19F1991885C007197F6 /* triple_dot_digital-7.ttf in Resources */,
 				53D2D19519917C62007197F6 /* line__0000s_0104_user.png in Resources */,
 				53D2D19A1991876C007197F6 /* bold_dot_digital-7.ttf in Resources */,
 				530BECFE19904C7700C5FDAB /* InfoPlist.strings in Resources */,
 				53D2D19719917C72007197F6 /* line__0000s_0092_map.png in Resources */,
+				53D2D1A11991885C007197F6 /* led_counter-7.ttf in Resources */,
+				53D2D1A619918D75007197F6 /* DS-DIGIT.ttf in Resources */,
+				53D2D1A21991885C007197F6 /* modern_dot_digital-7.ttf in Resources */,
 				53D2D19119906597007197F6 /* FB-f-Logo__white_50.png in Resources */,
 				53D2D19919918563007197F6 /* marquee-las-vegas.jpg in Resources */,
+				53D2D1AD19918F71007197F6 /* the_vandor_spot.ttf in Resources */,
 				530BED0619904C7700C5FDAB /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
