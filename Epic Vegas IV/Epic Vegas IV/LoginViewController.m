@@ -83,8 +83,10 @@
                 NSLog(@"Uh oh. An error occurred: %@", error);
             }
         } else if (user.isNew) {
-            NSLog(@"User with facebook signed up and logged in! Id=%@,  User=%@, Password=%@, Email=%@", user.objectId, user.username, user.password, user.email);
-                        
+            NSLog(@"New user with facebook signed up and logged in! Id=%@,  User=%@, Password=%@, Email=%@", user.objectId, user.username, user.password, user.email);
+
+            // TODO - show them the access code page, store access code inside the database
+            
             [self performSegueWithIdentifier:@"loggedInSegue" sender:self];
             //[self.navigationController pushViewController:[[UserDetailsViewController alloc] initWithStyle:UITableViewStyleGrouped] animated:YES];
         } else {

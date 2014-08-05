@@ -37,6 +37,10 @@
 		532B1646199059DE00C4851F /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 532B1645199059DE00C4851F /* ProfileViewController.m */; };
 		53D2D19119906597007197F6 /* FB-f-Logo__white_50.png in Resources */ = {isa = PBXBuildFile; fileRef = 53D2D19019906597007197F6 /* FB-f-Logo__white_50.png */; };
 		53D2D1931990A2B1007197F6 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53D2D1921990A2B1007197F6 /* MapKit.framework */; };
+		53D2D19519917C62007197F6 /* line__0000s_0104_user.png in Resources */ = {isa = PBXBuildFile; fileRef = 53D2D19419917C62007197F6 /* line__0000s_0104_user.png */; };
+		53D2D19719917C72007197F6 /* line__0000s_0092_map.png in Resources */ = {isa = PBXBuildFile; fileRef = 53D2D19619917C72007197F6 /* line__0000s_0092_map.png */; };
+		53D2D19919918563007197F6 /* marquee-las-vegas.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 53D2D19819918563007197F6 /* marquee-las-vegas.jpg */; };
+		53D2D19A1991876C007197F6 /* bold_dot_digital-7.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 530BED2919904DCB00C5FDAB /* bold_dot_digital-7.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +91,9 @@
 		532B1645199059DE00C4851F /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		53D2D19019906597007197F6 /* FB-f-Logo__white_50.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FB-f-Logo__white_50.png"; sourceTree = "<group>"; };
 		53D2D1921990A2B1007197F6 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		53D2D19419917C62007197F6 /* line__0000s_0104_user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = line__0000s_0104_user.png; sourceTree = "<group>"; };
+		53D2D19619917C72007197F6 /* line__0000s_0092_map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = line__0000s_0092_map.png; sourceTree = "<group>"; };
+		53D2D19819918563007197F6 /* marquee-las-vegas.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "marquee-las-vegas.jpg"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -229,6 +236,9 @@
 		530BED2319904CDE00C5FDAB /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				53D2D19819918563007197F6 /* marquee-las-vegas.jpg */,
+				53D2D19619917C72007197F6 /* line__0000s_0092_map.png */,
+				53D2D19419917C62007197F6 /* line__0000s_0104_user.png */,
 				53D2D19019906597007197F6 /* FB-f-Logo__white_50.png */,
 			);
 			name = Images;
@@ -318,8 +328,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				530BED4119904FA500C5FDAB /* Main.storyboard in Resources */,
+				53D2D19519917C62007197F6 /* line__0000s_0104_user.png in Resources */,
+				53D2D19A1991876C007197F6 /* bold_dot_digital-7.ttf in Resources */,
 				530BECFE19904C7700C5FDAB /* InfoPlist.strings in Resources */,
+				53D2D19719917C72007197F6 /* line__0000s_0092_map.png in Resources */,
 				53D2D19119906597007197F6 /* FB-f-Logo__white_50.png in Resources */,
+				53D2D19919918563007197F6 /* marquee-las-vegas.jpg in Resources */,
 				530BED0619904C7700C5FDAB /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
