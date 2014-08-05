@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <FacebookSDK/FacebookSDK.h>
+#import <Parse/Parse.h>
 
 @interface LoginViewController : UIViewController <FBLoginViewDelegate>
 
@@ -15,6 +16,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *vegasLabel;
 @property (weak, nonatomic) IBOutlet UILabel *ivLabel;
 
-@property (weak, nonatomic) IBOutlet FBLoginView *fbLoginView;
-
+- (IBAction)fbLoginButtonClicked:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *fbLoginButton;
 @end

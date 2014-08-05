@@ -40,17 +40,27 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FKD-Iz-Om6" customClass="FBLoginView">
-                                <rect key="frame" x="40" y="440" width="240" height="45"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W7T-vM-vRw">
+                                <rect key="frame" x="33" y="401" width="255" height="44"/>
+                                <color key="backgroundColor" red="0.23137254900000001" green="0.34901960780000002" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
+                                <state key="normal" title="    Log in with Facebook">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="fbLoginButtonClicked:" destination="FMV-jn-Nsq" eventType="touchUpInside" id="wOt-jI-Mfg"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="FB-f-Logo__white_50.png" translatesAutoresizingMaskIntoConstraints="NO" id="ySc-mF-eC2">
+                                <rect key="frame" x="46" y="411" width="25" height="25"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
                         <outlet property="epicLabel" destination="h7R-t0-f5w" id="wgo-N6-w1F"/>
-                        <outlet property="fbLoginView" destination="FKD-Iz-Om6" id="Fj8-oi-JXa"/>
+                        <outlet property="fbLoginButton" destination="W7T-vM-vRw" id="2Bf-Rt-g7g"/>
                         <outlet property="ivLabel" destination="gp7-3h-hjZ" id="w4d-RX-awn"/>
                         <outlet property="vegasLabel" destination="tvx-HN-1Iq" id="hRz-TU-607"/>
                         <segue destination="sis-gg-Ny1" kind="modal" identifier="loggedInSegue" id="7ih-RS-Y6U"/>
@@ -128,6 +138,9 @@
             <point key="canvasLocation" x="1705" y="624"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="FB-f-Logo__white_50.png" width="50" height="50"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
