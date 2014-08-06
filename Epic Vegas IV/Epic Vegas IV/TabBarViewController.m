@@ -160,29 +160,18 @@ BOOL isAddButtonPressed = NO;
     
 }
 
-
+/*
+ Catch when user is selecting to another view controller.
+ If the add button is pressed, then depress it.
+ This does not get called when the add button is pressed.
+ */
 - (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
-    BOOL result = NO;
-    NSUInteger tabIndex = [tabBarController.viewControllers indexOfObject:viewController];
     
-    if (viewController == [tabBarController.viewControllers objectAtIndex:tabIndex] &&
-        tabIndex != tabBarController.selectedIndex) {
-        
-        // check if "+" tab item is being selected
-        if (viewController == addViewController)
-        {
-            NSLog(@"Add Button Was Selected");
-            result = NO;
-        }
-        else {
-            if(isAddButtonPressed)
-            {
-                [self handleAddCompleted];
-            }
-            result = YES;
-        }
+    if(isAddButtonPressed)
+    {
+        [self handleAddCompleted];
     }
-    return result;
+    return YES;
 }
 
 - (void)didReceiveMemoryWarning
@@ -191,18 +180,11 @@ BOOL isAddButtonPressed = NO;
     // Dispose of any resources that can be recreated.
 }
 
+/*
+ * can check tags here if needed, but probably not needed
+ */
 - (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item  {
     
-    NSLog(@"tab bar button selected");
-    if(item.tag == 728)
-    {
-        // Plus button
-        
-
-        //item.image = [UIImage imageNamed:@"full__0000s_0101_drawer"];
-        //[item setImage:[UIImage imageNamed:@"full__0000s_0101_drawer"]];
-        
-    }
 }
 
 
