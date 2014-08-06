@@ -192,6 +192,7 @@ BOOL isAddButtonPressed = NO;
 
 -(void)showAddActionButtons
 {
+    // Animate Position
     [UIView animateWithDuration:0.25 animations:^{
         float screenWidth = self.view.frame.size.width;
         float screenHeight = self.view.frame.size.height;
@@ -204,6 +205,19 @@ BOOL isAddButtonPressed = NO;
     } completion:^(BOOL finished) {
         //isAddButtonPressed = YES;
     }];
+    
+    // Animate Rotation
+    // rotate button now so that x becomes + again and change color back to normal
+    
+    CABasicAnimation* animation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
+    animation.fromValue = [NSNumber numberWithFloat:0.0f];
+    animation.toValue = [NSNumber numberWithFloat: 2*M_PI];
+    animation.duration = 10.0f;
+    animation.repeatCount = INFINITY;
+    
+    [[self.view viewWithTag:101].layer addAnimation:animation forKey:@"SpinAnimation"];
+    [[self.view viewWithTag:102].layer addAnimation:animation forKey:@"SpinAnimation"];
+    [[self.view viewWithTag:103].layer addAnimation:animation forKey:@"SpinAnimation"];
 }
 
 -(void)hideAddActionButtons
@@ -228,6 +242,10 @@ BOOL isAddButtonPressed = NO;
     button1.backgroundColor = [UIColor redColor];
     button2.backgroundColor = [UIColor blueColor];
     button3.backgroundColor = [UIColor yellowColor];
+    
+    [button1 setImage:[UIImage imageNamed:@"full__0000s_0092_map.png"] forState:UIControlStateNormal];
+    [button2 setImage:[UIImage imageNamed:@"full__0000s_0122_camera.png"] forState:UIControlStateNormal];
+    [button3 setImage:[UIImage imageNamed:@"quote.png"] forState:UIControlStateNormal];
     
     // Make the buttons 0 width and height so when we animate they seem to grow
     // Position them in the center of the button that expands them

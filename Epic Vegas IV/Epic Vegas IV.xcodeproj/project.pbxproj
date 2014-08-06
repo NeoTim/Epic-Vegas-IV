@@ -53,6 +53,21 @@
 		53966CC61992C1A900E822DE /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 53966CC51992C1A900E822DE /* UIImage+ImageEffects.m */; };
 		53966CCA1992D26700E822DE /* Add Full Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53966CC91992D26700E822DE /* Add Full Icon@2x.png */; };
 		53966CCC1992DF7300E822DE /* Add Red Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53966CCB1992DF7300E822DE /* Add Red Icon@2x.png */; };
+		53966CD11992F5C800E822DE /* 15-tags.png in Resources */ = {isa = PBXBuildFile; fileRef = 53966CCD1992F5C800E822DE /* 15-tags.png */; };
+		53966CD21992F5C800E822DE /* 28-star.png in Resources */ = {isa = PBXBuildFile; fileRef = 53966CCE1992F5C800E822DE /* 28-star.png */; };
+		53966CD31992F5C800E822DE /* 111-user.png in Resources */ = {isa = PBXBuildFile; fileRef = 53966CCF1992F5C800E822DE /* 111-user.png */; };
+		53966CD41992F5C800E822DE /* Subscriptions.png in Resources */ = {isa = PBXBuildFile; fileRef = 53966CD01992F5C800E822DE /* Subscriptions.png */; };
+		53966CD61992F5E600E822DE /* 29-heart@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53966CD51992F5E600E822DE /* 29-heart@2x.png */; };
+		53966CD91992F5F200E822DE /* 112-group.png in Resources */ = {isa = PBXBuildFile; fileRef = 53966CD71992F5F200E822DE /* 112-group.png */; };
+		53966CDA1992F5F200E822DE /* 112-group@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53966CD81992F5F200E822DE /* 112-group@2x.png */; };
+		53966CDC1992F60700E822DE /* action.png in Resources */ = {isa = PBXBuildFile; fileRef = 53966CDB1992F60700E822DE /* action.png */; };
+		53966CDE1992F60C00E822DE /* action@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53966CDD1992F60C00E822DE /* action@2x.png */; };
+		53966CE01992F67400E822DE /* message.png in Resources */ = {isa = PBXBuildFile; fileRef = 53966CDF1992F67400E822DE /* message.png */; };
+		53966CE31992F68900E822DE /* person.png in Resources */ = {isa = PBXBuildFile; fileRef = 53966CE11992F68900E822DE /* person.png */; };
+		53966CE41992F68900E822DE /* person@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53966CE21992F68900E822DE /* person@2x.png */; };
+		53966CE61992F6B900E822DE /* full__0000s_0122_camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53966CE51992F6B900E822DE /* full__0000s_0122_camera@2x.png */; };
+		53966CE81992F6C700E822DE /* full__0000s_0092_map.png in Resources */ = {isa = PBXBuildFile; fileRef = 53966CE71992F6C700E822DE /* full__0000s_0092_map.png */; };
+		53966CEA1992F6DE00E822DE /* quote.png in Resources */ = {isa = PBXBuildFile; fileRef = 53966CE91992F6DE00E822DE /* quote.png */; };
 		53D2D19119906597007197F6 /* FB-f-Logo__white_50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53D2D19019906597007197F6 /* FB-f-Logo__white_50@2x.png */; };
 		53D2D1931990A2B1007197F6 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53D2D1921990A2B1007197F6 /* MapKit.framework */; };
 		53D2D19519917C62007197F6 /* line__0000s_0104_user@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53D2D19419917C62007197F6 /* line__0000s_0104_user@2x.png */; };
@@ -138,6 +153,21 @@
 		53966CC51992C1A900E822DE /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
 		53966CC91992D26700E822DE /* Add Full Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Add Full Icon@2x.png"; sourceTree = "<group>"; };
 		53966CCB1992DF7300E822DE /* Add Red Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Add Red Icon@2x.png"; sourceTree = "<group>"; };
+		53966CCD1992F5C800E822DE /* 15-tags.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "15-tags.png"; sourceTree = "<group>"; };
+		53966CCE1992F5C800E822DE /* 28-star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "28-star.png"; sourceTree = "<group>"; };
+		53966CCF1992F5C800E822DE /* 111-user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "111-user.png"; sourceTree = "<group>"; };
+		53966CD01992F5C800E822DE /* Subscriptions.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Subscriptions.png; sourceTree = "<group>"; };
+		53966CD51992F5E600E822DE /* 29-heart@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "29-heart@2x.png"; sourceTree = "<group>"; };
+		53966CD71992F5F200E822DE /* 112-group.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "112-group.png"; sourceTree = "<group>"; };
+		53966CD81992F5F200E822DE /* 112-group@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "112-group@2x.png"; sourceTree = "<group>"; };
+		53966CDB1992F60700E822DE /* action.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = action.png; sourceTree = "<group>"; };
+		53966CDD1992F60C00E822DE /* action@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "action@2x.png"; sourceTree = "<group>"; };
+		53966CDF1992F67400E822DE /* message.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = message.png; sourceTree = "<group>"; };
+		53966CE11992F68900E822DE /* person.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = person.png; sourceTree = "<group>"; };
+		53966CE21992F68900E822DE /* person@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "person@2x.png"; sourceTree = "<group>"; };
+		53966CE51992F6B900E822DE /* full__0000s_0122_camera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "full__0000s_0122_camera@2x.png"; sourceTree = "<group>"; };
+		53966CE71992F6C700E822DE /* full__0000s_0092_map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = full__0000s_0092_map.png; sourceTree = "<group>"; };
+		53966CE91992F6DE00E822DE /* quote.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = quote.png; sourceTree = "<group>"; };
 		53D2D19019906597007197F6 /* FB-f-Logo__white_50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FB-f-Logo__white_50@2x.png"; sourceTree = "<group>"; };
 		53D2D1921990A2B1007197F6 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		53D2D19419917C62007197F6 /* line__0000s_0104_user@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "line__0000s_0104_user@2x.png"; sourceTree = "<group>"; };
@@ -303,6 +333,21 @@
 		530BED2319904CDE00C5FDAB /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				53966CE91992F6DE00E822DE /* quote.png */,
+				53966CE71992F6C700E822DE /* full__0000s_0092_map.png */,
+				53966CE51992F6B900E822DE /* full__0000s_0122_camera@2x.png */,
+				53966CE11992F68900E822DE /* person.png */,
+				53966CE21992F68900E822DE /* person@2x.png */,
+				53966CDF1992F67400E822DE /* message.png */,
+				53966CDD1992F60C00E822DE /* action@2x.png */,
+				53966CDB1992F60700E822DE /* action.png */,
+				53966CD71992F5F200E822DE /* 112-group.png */,
+				53966CD81992F5F200E822DE /* 112-group@2x.png */,
+				53966CD51992F5E600E822DE /* 29-heart@2x.png */,
+				53966CCD1992F5C800E822DE /* 15-tags.png */,
+				53966CCE1992F5C800E822DE /* 28-star.png */,
+				53966CCF1992F5C800E822DE /* 111-user.png */,
+				53966CD01992F5C800E822DE /* Subscriptions.png */,
 				53966CCB1992DF7300E822DE /* Add Red Icon@2x.png */,
 				53966CC91992D26700E822DE /* Add Full Icon@2x.png */,
 				53966CB81992972D00E822DE /* Close Icon@2x.png */,
@@ -417,9 +462,12 @@
 			files = (
 				530BED4119904FA500C5FDAB /* Main.storyboard in Resources */,
 				53D2D1AC19918F71007197F6 /* ATOMICCLOCKRADIO.ttf in Resources */,
+				53966CE41992F68900E822DE /* person@2x.png in Resources */,
 				53165F5B1991C9FB0014695B /* full__0000s_0104_user@2x.png in Resources */,
 				53D2D1A01991885C007197F6 /* enhanced_dot_digital-7.ttf in Resources */,
+				53966CE31992F68900E822DE /* person.png in Resources */,
 				53D2D1B019919136007197F6 /* advanced_dot_digital-7.ttf in Resources */,
+				53966CE81992F6C700E822DE /* full__0000s_0092_map.png in Resources */,
 				53D2D19F1991885C007197F6 /* triple_dot_digital-7.ttf in Resources */,
 				53D2D19519917C62007197F6 /* line__0000s_0104_user@2x.png in Resources */,
 				53966CCC1992DF7300E822DE /* Add Red Icon@2x.png in Resources */,
@@ -431,19 +479,31 @@
 				53165F5F1991CF730014695B /* Add Icon@2x.png in Resources */,
 				53165F6E1991E0920014695B /* Tab Bar Separators@2x.png in Resources */,
 				53966CB91992972D00E822DE /* Close Icon@2x.png in Resources */,
+				53966CE61992F6B900E822DE /* full__0000s_0122_camera@2x.png in Resources */,
 				53165F761991E25C0014695B /* full__0000s_0101_drawer@2x.png in Resources */,
 				53165F781991E2870014695B /* full__0000s_0092_map@2x.png in Resources */,
 				53165F721991E1810014695B /* full__0000s_0000_news-paper@2x.png in Resources */,
+				53966CD91992F5F200E822DE /* 112-group.png in Resources */,
+				53966CD41992F5C800E822DE /* Subscriptions.png in Resources */,
+				53966CDC1992F60700E822DE /* action.png in Resources */,
+				53966CEA1992F6DE00E822DE /* quote.png in Resources */,
 				53D2D1A11991885C007197F6 /* led_counter-7.ttf in Resources */,
 				53D2D1A619918D75007197F6 /* DS-DIGIT.ttf in Resources */,
 				53165F701991E15B0014695B /* full__0000s_0032_home@2x.png in Resources */,
 				53D2D1A21991885C007197F6 /* modern_dot_digital-7.ttf in Resources */,
+				53966CDE1992F60C00E822DE /* action@2x.png in Resources */,
 				53D2D19119906597007197F6 /* FB-f-Logo__white_50@2x.png in Resources */,
+				53966CD11992F5C800E822DE /* 15-tags.png in Resources */,
+				53966CE01992F67400E822DE /* message.png in Resources */,
 				53D2D19919918563007197F6 /* marquee-las-vegas@2x.jpg in Resources */,
 				53D2D1AD19918F71007197F6 /* the_vandor_spot.ttf in Resources */,
+				53966CD21992F5C800E822DE /* 28-star.png in Resources */,
 				530BED0619904C7700C5FDAB /* Images.xcassets in Resources */,
+				53966CD61992F5E600E822DE /* 29-heart@2x.png in Resources */,
 				53165F5D1991CCE30014695B /* News Feed Icon@2x.png in Resources */,
+				53966CD31992F5C800E822DE /* 111-user.png in Resources */,
 				53165F501991C1F20014695B /* Epic Vegas Nav Bar Title@2x.png in Resources */,
+				53966CDA1992F5F200E822DE /* 112-group@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
