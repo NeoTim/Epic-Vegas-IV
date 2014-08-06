@@ -7,6 +7,7 @@
 //
 
 #import "TabBarViewController.h"
+#import "AppDelegate.h"
 
 @interface TabBarViewController ()
 
@@ -32,29 +33,35 @@ UINavigationController* profileController;
 
 - (IBAction)centerButtonClicked:(id)sender {
     NSLog(@"custom center clicked");
-    
-    UIViewController* modalViewController=[[UIViewController alloc] init];
-    
-    modalViewController.view.backgroundColor = [UIColor blackColor];
-    modalViewController.view.alpha = .2f;
-    modalViewController.view.opaque = NO;
-    modalViewController.view.userInteractionEnabled = NO;
-
+  
     UIImageView* imageView = [[UIImageView alloc] initWithFrame:self.selectedViewController.view.frame];
     imageView.image = [self blurredSnapshot];
-    
+    imageView.alpha = 0;
     [self.selectedViewController.view addSubview:imageView];
     
+    UIImage* tintColorImage = [AppDelegate imageFromColor:[UIColor blackColor] forSize:self.selectedViewController.view.frame.size withCornerRadius:0];
+
+    UIImageView* tintView = [[UIImageView alloc] initWithFrame:self.selectedViewController.view.frame];
+    tintView.alpha = 0;
+    tintView.backgroundColor = [UIColor clearColor];
+    tintView.opaque = NO;
+    tintView.image = tintColorImage;
+    
+    [self.selectedViewController.view addSubview:tintView];
     
     self.modalPresentationStyle = UIModalPresentationCurrentContext;
     self.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     
-    [self presentViewController:modalViewController animated:YES completion:nil];
-
-   // [UIView animateWithDuration:5 delay:1 usingSpringWithDamping:.5f initialSpringVelocity:.2f options:UIViewAnimationOptionCurveEaseIn animations:^{blurView.blurRadius = 50;} completion:nil];
+    [UIView animateWithDuration:1 delay:0 usingSpringWithDamping:1.f initialSpringVelocity:1.f options:UIViewAnimationOptionCurveLinear animations:^{imageView.alpha = 1;} completion:nil];
     
+     [UIView animateWithDuration:1 delay:0 usingSpringWithDamping:1.f initialSpringVelocity:1.f options:UIViewAnimationOptionCurveEaseIn animations:^{tintView.alpha = .3f;} completion:nil];
+    
+    // rotate button now
 }
 
+/*
+ * http://damir.me/ios7-blurring-techniques
+ */
 -(UIImage *)blurredSnapshot
 {
     UIView* view = self.selectedViewController.view;
