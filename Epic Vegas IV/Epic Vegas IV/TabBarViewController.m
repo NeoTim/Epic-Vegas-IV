@@ -46,9 +46,7 @@ UINavigationController* profileController;
   
     newsFeedController = [mainStoryboard instantiateViewControllerWithIdentifier:@"News Feed Navigation Controller"];
     locationController = [mainStoryboard instantiateViewControllerWithIdentifier:@"Location Navigation Controller"];
-    //addViewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"Add View Controller"];
-    addViewController = [[UIViewController alloc] init];
-    addViewController.view = nil;
+    addViewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"Add View Controller"];
     
     notificationsController = [mainStoryboard instantiateViewControllerWithIdentifier:@"Notifications Navigation Controller"];
     profileController = [mainStoryboard instantiateViewControllerWithIdentifier:@"Profile Navigation Controller"];
@@ -62,33 +60,26 @@ UINavigationController* profileController;
    //  forControlEvents:UIControlEventTouchUpInside];
 }
 
-- (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController
-{
-    NSLog(@"Test");
-    return YES;
-}
 
-//- (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
-//    BOOL flag = NO;
-//    NSUInteger tabIndex = [tabBarController.viewControllers indexOfObject:viewController];
-//    
-//    NSLog(@"Test");
-//    if (viewController == [tabBarController.viewControllers objectAtIndex:tabIndex] &&
-//        tabIndex != tabBarController.selectedIndex) {
-//        
-//        NSLog(@"Test2");
-//      //  if ([viewController isMemberOfClass:addViewController]) {
-//       //     if (![addViewController.tabBarItem isShowing])
-//        //        [addViewController.tabBarItem show];
-//         //   else
-//         //       [addViewController.tabBarItem hide];
-//       // }
-//       // else {
-//       //     flag = YES;
-//       // }
-//    }
-//    return flag;
-//}
+- (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
+    BOOL result = NO;
+    NSUInteger tabIndex = [tabBarController.viewControllers indexOfObject:viewController];
+    
+    if (viewController == [tabBarController.viewControllers objectAtIndex:tabIndex] &&
+        tabIndex != tabBarController.selectedIndex) {
+        
+        // check if "+" tab item is being selected
+        if (viewController == addViewController)
+        {
+            NSLog(@"Add Button Was Selected");
+            result = NO;
+        }
+        else {
+            result = YES;
+        }
+    }
+    return result;
+}
 
 - (void)didReceiveMemoryWarning
 {
