@@ -19,6 +19,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+       
     }
     return self;
 }
@@ -27,14 +28,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
-    // Change tints
-    //[[UITabBar appearance] setTintColor:[UIColor redColor]];
-    //[[UITabBar appearance] setBarTintColor:[UIColor yellowColor]];
-    
-    UIImage* tabBarBackground = [UIImage imageNamed:@"Tab Bar Separators@2x.png"];
-    //[[UITabBar appearance] setShadowImage:tabBarBackground];
-    [[UITabBar appearance] setBackgroundImage:tabBarBackground];
+        
 }
 
 - (void)didReceiveMemoryWarning

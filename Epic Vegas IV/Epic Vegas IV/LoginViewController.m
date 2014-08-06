@@ -52,6 +52,10 @@
     
     _ivLabel.layer.masksToBounds = NO;
     
+}
+
+-(void)printFonts
+{
     // Code to print fonts
     for (NSString* family in [UIFont familyNames])
     {
@@ -62,7 +66,6 @@
             NSLog(@"  %@", name);
         }
     }
-    
 }
 
 - (void)viewDidLoad

@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <QuartzCore/QuartzCore.h>
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
+
++ (UIImage *)imageFromColor:(UIColor *)color forSize:(CGSize)size withCornerRadius:(CGFloat)radius;
 
 @property (strong, nonatomic) UIWindow *window;
 
