@@ -34,16 +34,52 @@ UINavigationController* profileController;
     NSLog(@"custom center clicked");
     
     UIViewController* modalViewController=[[UIViewController alloc] init];
+    
     modalViewController.view.backgroundColor = [UIColor blackColor];
-    modalViewController.view.alpha = .1f;
+    modalViewController.view.alpha = .2f;
     modalViewController.view.opaque = NO;
+    modalViewController.view.userInteractionEnabled = NO;
+
+    UIImageView* imageView = [[UIImageView alloc] initWithFrame:self.selectedViewController.view.frame];
+    imageView.image = [self blurredSnapshot];
+    
+    [self.selectedViewController.view addSubview:imageView];
+    
     
     self.modalPresentationStyle = UIModalPresentationCurrentContext;
-    self.modalTransitionStyle = [UIModalTransitionStyleCoverVertical];
+    self.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    
     [self presentViewController:modalViewController animated:YES completion:nil];
 
+   // [UIView animateWithDuration:5 delay:1 usingSpringWithDamping:.5f initialSpringVelocity:.2f options:UIViewAnimationOptionCurveEaseIn animations:^{blurView.blurRadius = 50;} completion:nil];
     
 }
+
+-(UIImage *)blurredSnapshot
+{
+    UIView* view = self.selectedViewController.view;
+    // Create the image context
+    UIGraphicsBeginImageContextWithOptions(view.bounds.size, NO, view.window.screen.scale);
+    
+    // There he is! The new API method
+    [view drawViewHierarchyInRect:self.view.frame afterScreenUpdates:NO];
+    
+    // Get the snapshot
+    UIImage *snapshotImage = UIGraphicsGetImageFromCurrentImageContext();
+    
+    // Now apply the blur effect using Apple's UIImageEffect category
+    UIImage *blurredSnapshotImage = [snapshotImage applyBlurWithRadius:2.5f tintColor:[UIColor clearColor] saturationDeltaFactor:1.f maskImage:snapshotImage];
+    
+    // Or apply any other effects available in "UIImage+ImageEffects.h"
+    // UIImage *blurredSnapshotImage = [snapshotImage applyDarkEffect];
+    // UIImage *blurredSnapshotImage = [snapshotImage applyExtraLightEffect];
+    
+    // Be nice and clean your mess up
+    UIGraphicsEndImageContext();
+    
+    return blurredSnapshotImage;
+}
+
 
 - (void)viewDidLoad
 {

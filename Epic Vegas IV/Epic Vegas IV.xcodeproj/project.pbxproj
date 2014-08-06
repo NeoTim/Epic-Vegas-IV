@@ -51,6 +51,7 @@
 		53966CB91992972D00E822DE /* Close Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53966CB81992972D00E822DE /* Close Icon@2x.png */; };
 		53966CBC199299F600E822DE /* AddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53966CBB199299F600E822DE /* AddViewController.m */; };
 		53966CC01992A0FB00E822DE /* Add Full Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53966CBF1992A0FB00E822DE /* Add Full Icon@2x.png */; };
+		53966CC61992C1A900E822DE /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 53966CC51992C1A900E822DE /* UIImage+ImageEffects.m */; };
 		53D2D19119906597007197F6 /* FB-f-Logo__white_50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53D2D19019906597007197F6 /* FB-f-Logo__white_50@2x.png */; };
 		53D2D1931990A2B1007197F6 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53D2D1921990A2B1007197F6 /* MapKit.framework */; };
 		53D2D19519917C62007197F6 /* line__0000s_0104_user@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53D2D19419917C62007197F6 /* line__0000s_0104_user@2x.png */; };
@@ -133,6 +134,8 @@
 		53966CBA199299F600E822DE /* AddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddViewController.h; sourceTree = "<group>"; };
 		53966CBB199299F600E822DE /* AddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddViewController.m; sourceTree = "<group>"; };
 		53966CBF1992A0FB00E822DE /* Add Full Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Add Full Icon@2x.png"; sourceTree = "<group>"; };
+		53966CC41992C1A900E822DE /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
+		53966CC51992C1A900E822DE /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
 		53D2D19019906597007197F6 /* FB-f-Logo__white_50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FB-f-Logo__white_50@2x.png"; sourceTree = "<group>"; };
 		53D2D1921990A2B1007197F6 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		53D2D19419917C62007197F6 /* line__0000s_0104_user@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "line__0000s_0104_user@2x.png"; sourceTree = "<group>"; };
@@ -233,6 +236,8 @@
 		530BECF919904C7700C5FDAB /* Epic Vegas IV */ = {
 			isa = PBXGroup;
 			children = (
+				53966CC41992C1A900E822DE /* UIImage+ImageEffects.h */,
+				53966CC51992C1A900E822DE /* UIImage+ImageEffects.m */,
 				530BED2219904CD700C5FDAB /* Resources */,
 				530BED0219904C7700C5FDAB /* AppDelegate.h */,
 				530BED0319904C7700C5FDAB /* AppDelegate.m */,
@@ -458,6 +463,7 @@
 				53165F621991D04E0014695B /* TabBarViewController.m in Sources */,
 				53165F531991C49A0014695B /* NotificationsTableViewController.m in Sources */,
 				532B1646199059DE00C4851F /* ProfileViewController.m in Sources */,
+				53966CC61992C1A900E822DE /* UIImage+ImageEffects.m in Sources */,
 				530BED44199052FF00C5FDAB /* LoginViewController.m in Sources */,
 				53966CBC199299F600E822DE /* AddViewController.m in Sources */,
 				53165F4E1991C0330014695B /* NewsFeedTableViewController.m in Sources */,
