@@ -57,6 +57,20 @@ UINavigationController* profileController;
      [UIView animateWithDuration:1 delay:0 usingSpringWithDamping:1.f initialSpringVelocity:1.f options:UIViewAnimationOptionCurveEaseIn animations:^{tintView.alpha = .3f;} completion:nil];
     
     // rotate button now
+    [UIView animateWithDuration:1.5 delay:0 usingSpringWithDamping:.8f initialSpringVelocity:1.f options:UIViewAnimationOptionCurveEaseInOut
+                     animations:^{
+                         CGAffineTransform scaleTrans =
+                         CGAffineTransformMakeScale(1, 1);
+
+                         CGAffineTransform rotateTrans =
+                         CGAffineTransformMakeRotation(45 * M_PI / 180);
+                         
+                         _centerButton.transform = CGAffineTransformConcat(scaleTrans,
+                                                                      rotateTrans);
+                     } completion:nil];
+    
+    // change tint
+    
 }
 
 /*
@@ -152,6 +166,8 @@ UINavigationController* profileController;
         
     }
 }
+
+
 
 // Create a custom UIButton and add it to the center of our tab bar
 -(UIButton*) addCenterButtonWithImage:(UIImage*)buttonImage highlightImage:(UIImage*)highlightImage
