@@ -27,12 +27,20 @@
 {
     [super viewDidLoad];
     
+    [self.navigationController.navigationBar setTitleVerticalPositionAdjustment:5.f forBarMetrics:UIBarMetricsDefault];
+    
+    UIColor* themeColor = [UIColor colorWithRed:26/255.0 green:163/255.0 blue:133/255.0 alpha:1];
+    
+    [self.navigationController.navigationBar setTitleTextAttributes:
+     [NSDictionary dictionaryWithObjectsAndKeys:themeColor,
+      NSForegroundColorAttributeName, [UIColor whiteColor],
+      NSForegroundColorAttributeName, [NSValue valueWithUIOffset:UIOffsetMake(0, -1)],
+      NSForegroundColorAttributeName, [UIFont fontWithName:@"DS-Digital-BoldItalic" size:28],
+      NSFontAttributeName, nil]];
+    
     //UIImage *image = [UIImage imageNamed:@"Epic Vegas Nav Bar Title.png"];
     //self.navigationItem.titleView = [[UIImageView alloc] initWithImage:image];
     
-    
-    [self.navigationController.navigationBar setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys:
-      [UIFont fontWithName:@"DS-Digital-BoldItalic" size:24], NSFontAttributeName, nil]];
     
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
