@@ -20,6 +20,8 @@ UINavigationController* locationController;
 UIViewController* addViewController;
 UINavigationController* notificationsController;
 UINavigationController* profileController;
+UIImageView* centerButtonImageView;
+UIImageView* centerButtonRedImageView;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -56,7 +58,7 @@ UINavigationController* profileController;
     
      [UIView animateWithDuration:1 delay:0 usingSpringWithDamping:1.f initialSpringVelocity:1.f options:UIViewAnimationOptionCurveEaseIn animations:^{tintView.alpha = .3f;} completion:nil];
     
-    // rotate button now
+    // rotate button now so that + becomes x and change color to red
     [UIView animateWithDuration:1.5 delay:0 usingSpringWithDamping:.8f initialSpringVelocity:1.f options:UIViewAnimationOptionCurveEaseInOut
                      animations:^{
                          CGAffineTransform scaleTrans =
@@ -65,13 +67,13 @@ UINavigationController* profileController;
                          CGAffineTransform rotateTrans =
                          CGAffineTransformMakeRotation(45 * M_PI / 180);
                          
-                         _centerButton.transform = CGAffineTransformConcat(scaleTrans,
-                                                                      rotateTrans);
+                         centerButtonImageView.transform = CGAffineTransformConcat(scaleTrans, rotateTrans);
+                         centerButtonRedImageView.transform = CGAffineTransformConcat(scaleTrans, rotateTrans);
+                         centerButtonImageView.alpha = 0.f;
+                         centerButtonRedImageView.alpha = 1.f;
                      } completion:nil];
     
-    // change tint
-    
-}
+    }
 
 /*
  * http://damir.me/ios7-blurring-techniques
@@ -90,10 +92,6 @@ UINavigationController* profileController;
     
     // Now apply the blur effect using Apple's UIImageEffect category
     UIImage *blurredSnapshotImage = [snapshotImage applyBlurWithRadius:2.5f tintColor:[UIColor clearColor] saturationDeltaFactor:1.f maskImage:snapshotImage];
-    
-    // Or apply any other effects available in "UIImage+ImageEffects.h"
-    // UIImage *blurredSnapshotImage = [snapshotImage applyDarkEffect];
-    // UIImage *blurredSnapshotImage = [snapshotImage applyExtraLightEffect];
     
     // Be nice and clean your mess up
     UIGraphicsEndImageContext();
@@ -122,7 +120,8 @@ UINavigationController* profileController;
     [self setViewControllers:[NSArray arrayWithObjects:newsFeedController, locationController, addViewController, notificationsController, profileController,nil]];
 
     
-    _centerButton = [self addCenterButtonWithImage:[UIImage imageNamed:@"Add Full Icon.png"] highlightImage:nil];
+    _centerButton = [self addCenterButton];
+    
     
 }
 
@@ -170,16 +169,16 @@ UINavigationController* profileController;
 
 
 // Create a custom UIButton and add it to the center of our tab bar
--(UIButton*) addCenterButtonWithImage:(UIImage*)buttonImage highlightImage:(UIImage*)highlightImage
+-(UIButton*) addCenterButton
 {
     UIButton* button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin
     | UIViewAutoresizingFlexibleBottomMargin | UIViewAutoresizingFlexibleTopMargin;
+    
+    UIImage* buttonImage = [UIImage imageNamed:@"Add Full Icon.png"];
     button.frame = CGRectMake(0.0, 0.0, buttonImage.size.width, buttonImage.size.height);
-    [button setBackgroundImage:buttonImage forState:UIControlStateNormal];
-    [button setBackgroundImage:highlightImage forState:UIControlStateHighlighted];
-    //[button addTarget:self action:@selector(buttonEvent) forControlEvents:UIControlEventTouchUpInside];
- 
+    
+    
     [button addTarget:self action:@selector(centerButtonClicked:) forControlEvents:UIControlEventTouchUpInside];  CGFloat heightDifference = buttonImage.size.height - self.tabBar.frame.size.height;
 
     
@@ -188,6 +187,17 @@ UINavigationController* profileController;
     button.center = center;
     
     [self.tabBar addSubview:button];
+    
+    centerButtonImageView = [[UIImageView alloc] initWithFrame:button.frame];
+    centerButtonImageView.image = buttonImage;
+    centerButtonImageView.userInteractionEnabled = NO;
+    [self.tabBar addSubview:centerButtonImageView];
+    
+    centerButtonRedImageView = [[UIImageView alloc] initWithFrame:button.frame];
+    centerButtonRedImageView.image =[UIImage imageNamed:@"Add Red Icon.png"];
+    centerButtonRedImageView.userInteractionEnabled = NO;
+    centerButtonRedImageView.alpha= 0;
+    [self.tabBar addSubview:centerButtonRedImageView];
     return button;
 }
 
