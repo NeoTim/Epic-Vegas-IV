@@ -41,8 +41,7 @@
 		53165F5D1991CCE30014695B /* News Feed Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53165F5C1991CCE30014695B /* News Feed Icon@2x.png */; };
 		53165F5F1991CF730014695B /* Add Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53165F5E1991CF730014695B /* Add Icon@2x.png */; };
 		53165F621991D04E0014695B /* TabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53165F611991D04E0014695B /* TabBarViewController.m */; };
-		53165F661991D4E40014695B /* Tab Bar Separators@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53165F651991D4E40014695B /* Tab Bar Separators@2x.png */; };
-		53165F681991D5B70014695B /* Tab Bar Separators.png in Resources */ = {isa = PBXBuildFile; fileRef = 53165F671991D5B70014695B /* Tab Bar Separators.png */; };
+		53165F6E1991E0920014695B /* Tab Bar Separators@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53165F6D1991E0920014695B /* Tab Bar Separators@2x.png */; };
 		532B1646199059DE00C4851F /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 532B1645199059DE00C4851F /* ProfileViewController.m */; };
 		53D2D19119906597007197F6 /* FB-f-Logo__white_50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53D2D19019906597007197F6 /* FB-f-Logo__white_50@2x.png */; };
 		53D2D1931990A2B1007197F6 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53D2D1921990A2B1007197F6 /* MapKit.framework */; };
@@ -114,8 +113,7 @@
 		53165F5E1991CF730014695B /* Add Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Add Icon@2x.png"; sourceTree = "<group>"; };
 		53165F601991D04E0014695B /* TabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TabBarViewController.h; sourceTree = "<group>"; };
 		53165F611991D04E0014695B /* TabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TabBarViewController.m; sourceTree = "<group>"; };
-		53165F651991D4E40014695B /* Tab Bar Separators@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tab Bar Separators@2x.png"; sourceTree = "<group>"; };
-		53165F671991D5B70014695B /* Tab Bar Separators.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tab Bar Separators.png"; sourceTree = "<group>"; };
+		53165F6D1991E0920014695B /* Tab Bar Separators@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Tab Bar Separators@2x.png"; sourceTree = "<group>"; };
 		532B1644199059DE00C4851F /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		532B1645199059DE00C4851F /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		53D2D19019906597007197F6 /* FB-f-Logo__white_50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FB-f-Logo__white_50@2x.png"; sourceTree = "<group>"; };
@@ -279,8 +277,7 @@
 		530BED2319904CDE00C5FDAB /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				53165F671991D5B70014695B /* Tab Bar Separators.png */,
-				53165F651991D4E40014695B /* Tab Bar Separators@2x.png */,
+				53165F6D1991E0920014695B /* Tab Bar Separators@2x.png */,
 				53165F5E1991CF730014695B /* Add Icon@2x.png */,
 				53165F5C1991CCE30014695B /* News Feed Icon@2x.png */,
 				53165F5A1991C9FB0014695B /* full__0000s_0104_user@2x.png */,
@@ -387,7 +384,6 @@
 				530BED4119904FA500C5FDAB /* Main.storyboard in Resources */,
 				53D2D1AC19918F71007197F6 /* ATOMICCLOCKRADIO.ttf in Resources */,
 				53165F5B1991C9FB0014695B /* full__0000s_0104_user@2x.png in Resources */,
-				53165F681991D5B70014695B /* Tab Bar Separators.png in Resources */,
 				53D2D1A01991885C007197F6 /* enhanced_dot_digital-7.ttf in Resources */,
 				53D2D1B019919136007197F6 /* advanced_dot_digital-7.ttf in Resources */,
 				53D2D19F1991885C007197F6 /* triple_dot_digital-7.ttf in Resources */,
@@ -396,7 +392,7 @@
 				530BECFE19904C7700C5FDAB /* InfoPlist.strings in Resources */,
 				53D2D19719917C72007197F6 /* line__0000s_0092_map@2x.png in Resources */,
 				53165F5F1991CF730014695B /* Add Icon@2x.png in Resources */,
-				53165F661991D4E40014695B /* Tab Bar Separators@2x.png in Resources */,
+				53165F6E1991E0920014695B /* Tab Bar Separators@2x.png in Resources */,
 				53D2D1A11991885C007197F6 /* led_counter-7.ttf in Resources */,
 				53D2D1A619918D75007197F6 /* DS-DIGIT.ttf in Resources */,
 				53D2D1A21991885C007197F6 /* modern_dot_digital-7.ttf in Resources */,
