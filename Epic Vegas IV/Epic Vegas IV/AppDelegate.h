@@ -15,4 +15,6 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
++ (UIColor*)getThemeColor;
+
 @end

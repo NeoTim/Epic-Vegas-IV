@@ -7,7 +7,7 @@
 //
 
 #import "NewsFeedTableViewController.h"
-
+#import "AppDelegate.h"
 @interface NewsFeedTableViewController ()
 
 @end
@@ -27,16 +27,14 @@
 {
     [super viewDidLoad];
     
-    [self.navigationController.navigationBar setTitleVerticalPositionAdjustment:5.f forBarMetrics:UIBarMetricsDefault];
-    
-    UIColor* themeColor = [UIColor colorWithRed:26/255.0 green:163/255.0 blue:133/255.0 alpha:1];
-    
-    [self.navigationController.navigationBar setTitleTextAttributes:
-     [NSDictionary dictionaryWithObjectsAndKeys:themeColor,
-      NSForegroundColorAttributeName, [UIColor whiteColor],
-      NSForegroundColorAttributeName, [NSValue valueWithUIOffset:UIOffsetMake(0, -1)],
-      NSForegroundColorAttributeName, [UIFont fontWithName:@"DS-Digital-BoldItalic" size:28],
-      NSFontAttributeName, nil]];
+//    [self.navigationController.navigationBar setTitleVerticalPositionAdjustment:5.f forBarMetrics:UIBarMetricsDefault];
+//    
+//    [self.navigationController.navigationBar setTitleTextAttributes:
+//     [NSDictionary dictionaryWithObjectsAndKeys:[AppDelegate getThemeColor],
+//      NSForegroundColorAttributeName, [UIColor whiteColor],
+//      NSForegroundColorAttributeName, [NSValue valueWithUIOffset:UIOffsetMake(0, -1)],
+//      NSForegroundColorAttributeName, [UIFont fontWithName:@"DS-Digital-BoldItalic" size:28],
+//      NSFontAttributeName, nil]];
     
     //UIImage *image = [UIImage imageNamed:@"Epic Vegas Nav Bar Title.png"];
     //self.navigationItem.titleView = [[UIImageView alloc] initWithImage:image];
