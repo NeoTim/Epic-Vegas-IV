@@ -27,7 +27,6 @@
 {
     [super viewDidLoad];
     
-    
     [self.navigationController.navigationBar setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys:
                                                                       [UIFont fontWithName:@"DS-Digital-BoldItalic" size:24], NSFontAttributeName, nil]];
     

@@ -14,6 +14,12 @@
 
 @implementation TabBarViewController
 
+UINavigationController* newsFeedController;
+UINavigationController* locationController;
+UIViewController* addViewController;
+UINavigationController* notificationsController;
+UINavigationController* profileController;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -24,13 +30,65 @@
     return self;
 }
 
+- (IBAction)centerButtonClicked:(id)sender {
+    NSLog(@"custom center clicked");
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+
     // Do any additional setup after loading the view.
-   
-    [self addCenterButtonWithImage:[UIImage imageNamed:@"Add Icon@2x.png"] highlightImage:nil];    
+    [self setDelegate:self];
+    
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main"
+                                                             bundle: nil];
+  
+    newsFeedController = [mainStoryboard instantiateViewControllerWithIdentifier:@"News Feed Navigation Controller"];
+    locationController = [mainStoryboard instantiateViewControllerWithIdentifier:@"Location Navigation Controller"];
+    //addViewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"Add View Controller"];
+    addViewController = [[UIViewController alloc] init];
+    addViewController.view = nil;
+    
+    notificationsController = [mainStoryboard instantiateViewControllerWithIdentifier:@"Notifications Navigation Controller"];
+    profileController = [mainStoryboard instantiateViewControllerWithIdentifier:@"Profile Navigation Controller"];
+    
+    [self setViewControllers:[NSArray arrayWithObjects:newsFeedController, locationController, addViewController, notificationsController, profileController,nil]];
+
+    
+    //_centerButton = [self addCenterButtonWithImage:[UIImage imageNamed:@"Add Full Icon.png"] highlightImage:nil];
+    //[_centerButton addTarget:self
+    //           action:@selector(centerButtonClicked:)
+   //  forControlEvents:UIControlEventTouchUpInside];
 }
+
+- (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController
+{
+    NSLog(@"Test");
+    return YES;
+}
+
+//- (BOOL)tabBarController:(UITabBarController *)tabBarController shouldSelectViewController:(UIViewController *)viewController {
+//    BOOL flag = NO;
+//    NSUInteger tabIndex = [tabBarController.viewControllers indexOfObject:viewController];
+//    
+//    NSLog(@"Test");
+//    if (viewController == [tabBarController.viewControllers objectAtIndex:tabIndex] &&
+//        tabIndex != tabBarController.selectedIndex) {
+//        
+//        NSLog(@"Test2");
+//      //  if ([viewController isMemberOfClass:addViewController]) {
+//       //     if (![addViewController.tabBarItem isShowing])
+//        //        [addViewController.tabBarItem show];
+//         //   else
+//         //       [addViewController.tabBarItem hide];
+//       // }
+//       // else {
+//       //     flag = YES;
+//       // }
+//    }
+//    return flag;
+//}
 
 - (void)didReceiveMemoryWarning
 {
@@ -39,16 +97,21 @@
 }
 
 - (void)tabBar:(UITabBar *)tabBar didSelectItem:(UITabBarItem *)item  {
-    NSLog(@"Tab bar button selected");
     
+    NSLog(@"tab bar button selected");
     if(item.tag == 728)
     {
         // Plus button
+        
+
+        //item.image = [UIImage imageNamed:@"full__0000s_0101_drawer"];
+        //[item setImage:[UIImage imageNamed:@"full__0000s_0101_drawer"]];
+        
     }
 }
 
 // Create a custom UIButton and add it to the center of our tab bar
--(void) addCenterButtonWithImage:(UIImage*)buttonImage highlightImage:(UIImage*)highlightImage
+-(UIButton*) addCenterButtonWithImage:(UIImage*)buttonImage highlightImage:(UIImage*)highlightImage
 {
     UIButton* button = [UIButton buttonWithType:UIButtonTypeCustom];
     button.autoresizingMask = UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleLeftMargin
@@ -63,6 +126,7 @@
     button.center = center;
     
     [self.tabBar addSubview:button];
+    return button;
 }
 
 - (void) buttonEvent{

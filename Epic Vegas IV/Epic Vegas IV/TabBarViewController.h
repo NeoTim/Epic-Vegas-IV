@@ -9,6 +9,8 @@
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
 
-@interface TabBarViewController : UITabBarController
+@interface TabBarViewController : UITabBarController <UITabBarControllerDelegate>
+
+@property (weak, nonatomic) IBOutlet UIButton *centerButton;
 
 @end
