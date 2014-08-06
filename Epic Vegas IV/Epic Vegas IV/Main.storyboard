@@ -16,27 +16,30 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" alpha="0.34999999999999964" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="marquee-las-vegas.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="3HX-cw-fvv">
+                            <imageView userInteractionEnabled="NO" alpha="0.59999999999999964" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="marquee-las-vegas.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="3HX-cw-fvv">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="EPIC" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h7R-t0-f5w">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.94999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="EPIC" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h7R-t0-f5w">
                                 <rect key="frame" x="-40" y="67" width="320" height="64"/>
                                 <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="64"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <size key="shadowOffset" width="1" height="-1"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="VEGAS" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tvx-HN-1Iq">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.94999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="VEGAS" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tvx-HN-1Iq">
                                 <rect key="frame" x="7" y="152" width="320" height="64"/>
                                 <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="64"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
+                                <color key="shadowColor" cocoaTouchSystemColor="darkTextColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="IV" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gp7-3h-hjZ">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" alpha="0.94999999999999996" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="IV" textAlignment="center" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gp7-3h-hjZ">
                                 <rect key="frame" x="85" y="233" width="320" height="64"/>
                                 <fontDescription key="fontDescription" name="Noteworthy-Bold" family="Noteworthy" pointSize="64"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
+                                <color key="shadowColor" cocoaTouchSystemColor="darkTextColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="*App functionality is exclusive for event attendees w/ passcode" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="601-Zr-jd1">
                                 <rect key="frame" x="12" y="527" width="311" height="21"/>
@@ -74,7 +77,77 @@
             </objects>
             <point key="canvasLocation" x="628" y="298"/>
         </scene>
-        <!--Profile View Controller-->
+        <!--News Feed Table View Controller - Epic Vegas IV-->
+        <scene sceneID="ZNU-z9-IGr">
+            <objects>
+                <tableViewController id="mpZ-rD-yTV" customClass="NewsFeedTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Xf1-8w-mt9">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="z3G-dC-0bk">
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="z3G-dC-0bk" id="jT1-rK-2M8">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="mpZ-rD-yTV" id="Jr0-DE-Gbs"/>
+                            <outlet property="delegate" destination="mpZ-rD-yTV" id="gY6-8O-MgX"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Epic Vegas IV" id="mSi-gU-EBu"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="b6y-1y-lwH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1753" y="-596"/>
+        </scene>
+        <!--Navigation Controller - Item-->
+        <scene sceneID="nOc-2k-WSO">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="xVW-UJ-Fze" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="msz-Zq-5Bf"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="r7p-99-g79">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="mpZ-rD-yTV" kind="relationship" relationship="rootViewController" id="51x-JS-p84"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="t5d-5q-RmA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1217" y="-408"/>
+        </scene>
+        <!--View Controller - Item-->
+        <scene sceneID="wR1-C1-lvg">
+            <objects>
+                <viewController id="5H1-Gt-4bD" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="W3w-eD-fTl"/>
+                        <viewControllerLayoutGuide type="bottom" id="fY7-0a-4IK"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="LKI-ND-4RO">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <stepper opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="qVG-uW-aFd">
+                                <rect key="frame" x="113" y="329" width="94" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            </stepper>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Item" id="v7Y-FF-SCY"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zyx-V9-pEA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1977" y="1123"/>
+        </scene>
+        <!--Profile View Controller - Map-->
         <scene sceneID="U0s-bw-WXN">
             <objects>
                 <viewController id="qMQ-9p-OKN" customClass="ProfileViewController" sceneMemberID="viewController">
@@ -119,7 +192,7 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" image="line__0000s_0092_map.png" id="oJp-J7-FmV"/>
+                    <tabBarItem key="tabBarItem" title="Map" image="line__0000s_0092_map.png" id="oJp-J7-FmV"/>
                     <connections>
                         <outlet property="fbProfilePicView" destination="XHF-46-HNx" id="Ocb-I4-l3U"/>
                         <outlet property="userNameLabel" destination="fq6-0s-YH8" id="Gte-hh-cU9"/>
@@ -127,7 +200,52 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EYT-YW-G4F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1705" y="-28"/>
+            <point key="canvasLocation" x="2583" y="1524"/>
+        </scene>
+        <!--Table View Controller - Notifications-->
+        <scene sceneID="NxD-wj-sSc">
+            <objects>
+                <tableViewController id="fVi-5N-CIT" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="fI8-ce-GAp">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="hZI-Lr-lDX">
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hZI-Lr-lDX" id="h2o-nH-Kup">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="fVi-5N-CIT" id="jP3-vb-NKb"/>
+                            <outlet property="delegate" destination="fVi-5N-CIT" id="4ch-cR-myj"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Notifications" id="h2O-M7-BSk"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zYW-Wd-INa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2457" y="119"/>
+        </scene>
+        <!--Navigation Controller - Item-->
+        <scene sceneID="k1m-fb-VgU">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="aoY-KU-Iwr" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="Kv1-Pn-k8K"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="xJK-eR-4cd">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="fVi-5N-CIT" kind="relationship" relationship="rootViewController" id="2fa-Fn-c9t"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vOC-8b-Yw2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1845" y="119"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="lLH-MC-Vek">
@@ -140,38 +258,20 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="qMQ-9p-OKN" kind="relationship" relationship="viewControllers" id="QRC-Vm-VAc"/>
-                        <segue destination="7Su-b3-v6h" kind="relationship" relationship="viewControllers" id="TEX-YL-Rpw"/>
+                        <segue destination="xVW-UJ-Fze" kind="relationship" relationship="viewControllers" id="zgn-u9-eY1"/>
+                        <segue destination="aoY-KU-Iwr" kind="relationship" relationship="viewControllers" id="I4R-PV-gcf"/>
+                        <segue destination="5H1-Gt-4bD" kind="relationship" relationship="viewControllers" id="VPU-Ur-Rli"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mc2-lU-Nxe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1171" y="298"/>
         </scene>
-        <!--View Controller - Item 2-->
-        <scene sceneID="Sx6-Rd-abx">
-            <objects>
-                <viewController id="7Su-b3-v6h" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Guh-Fy-FuA"/>
-                        <viewControllerLayoutGuide type="bottom" id="de8-y5-8a2"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="7Vb-6d-mSx">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Item 2" id="e6z-lk-Ybl"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="mL8-Yq-O9d" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1705" y="624"/>
-        </scene>
     </scenes>
     <resources>
-        <image name="FB-f-Logo__white_50.png" width="50" height="50"/>
-        <image name="line__0000s_0092_map.png" width="40" height="60"/>
-        <image name="marquee-las-vegas.jpg" width="639" height="1136"/>
+        <image name="FB-f-Logo__white_50.png" width="25" height="25"/>
+        <image name="line__0000s_0092_map.png" width="20" height="30"/>
+        <image name="marquee-las-vegas.jpg" width="319" height="568"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

@@ -45,24 +45,11 @@
     _epicLabel.font = [UIFont fontWithName:fontName size:fontSize];
     _vegasLabel.font = [UIFont fontWithName:fontName size:fontSize];
     _ivLabel.font = [UIFont fontWithName:fontName size:fontSize];
-    
-    _epicLabel.layer.shadowColor = [UIColor redColor].CGColor;
-    _epicLabel.layer.shadowOffset = CGSizeMake(0.0, 0.0);
-    
-    _epicLabel.layer.shadowRadius = 10.0;
-    _epicLabel.layer.shadowOpacity = 0.3;
+
     _epicLabel.layer.masksToBounds = NO;
     
-    _vegasLabel.layer.shadowColor = [UIColor blackColor].CGColor;
-    _vegasLabel.layer.shadowOffset = CGSizeMake(0.0, 0.0);
-    _vegasLabel.layer.shadowRadius = 10.0;
-    _vegasLabel.layer.shadowOpacity = 0.3;
     _vegasLabel.layer.masksToBounds = NO;
     
-    _ivLabel.layer.shadowColor = [UIColor blackColor].CGColor;
-    _ivLabel.layer.shadowOffset = CGSizeMake(0.0, 0.0);
-    _ivLabel.layer.shadowRadius = 10.0;
-    _ivLabel.layer.shadowOpacity = 0.3;
     _ivLabel.layer.masksToBounds = NO;
     
     // Code to print fonts
