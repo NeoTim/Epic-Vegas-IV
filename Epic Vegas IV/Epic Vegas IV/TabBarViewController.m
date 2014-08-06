@@ -23,6 +23,11 @@ UINavigationController* profileController;
 UIImageView* centerButtonImageView;
 UIImageView* centerButtonRedImageView;
 
+UIImageView* blurredImageView;
+UIImageView* tintView;
+
+BOOL isAddButtonPressed = NO;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -33,47 +38,77 @@ UIImageView* centerButtonRedImageView;
     return self;
 }
 
-- (IBAction)centerButtonClicked:(id)sender {
-    NSLog(@"custom center clicked");
-  
-    UIImageView* imageView = [[UIImageView alloc] initWithFrame:self.selectedViewController.view.frame];
-    imageView.image = [self blurredSnapshot];
-    imageView.alpha = 0;
-    [self.selectedViewController.view addSubview:imageView];
+-(void)handleAddCompleted
+{
+    // remove blurred image view, // remove tint view
+    [UIView animateWithDuration:1 delay:0 usingSpringWithDamping:1.f initialSpringVelocity:1.f options:UIViewAnimationOptionCurveLinear animations:^{blurredImageView.alpha = 0; tintView.alpha = 0;} completion:nil];
     
-    UIImage* tintColorImage = [AppDelegate imageFromColor:[UIColor blackColor] forSize:self.selectedViewController.view.frame.size withCornerRadius:0];
-
-    UIImageView* tintView = [[UIImageView alloc] initWithFrame:self.selectedViewController.view.frame];
-    tintView.alpha = 0;
-    tintView.backgroundColor = [UIColor clearColor];
-    tintView.opaque = NO;
-    tintView.image = tintColorImage;
-    
-    [self.selectedViewController.view addSubview:tintView];
-    
-    self.modalPresentationStyle = UIModalPresentationCurrentContext;
-    self.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-    
-    [UIView animateWithDuration:1 delay:0 usingSpringWithDamping:1.f initialSpringVelocity:1.f options:UIViewAnimationOptionCurveLinear animations:^{imageView.alpha = 1;} completion:nil];
-    
-     [UIView animateWithDuration:1 delay:0 usingSpringWithDamping:1.f initialSpringVelocity:1.f options:UIViewAnimationOptionCurveEaseIn animations:^{tintView.alpha = .3f;} completion:nil];
-    
-    // rotate button now so that + becomes x and change color to red
+    // rotate button now so that x becomes + again and change color back to normal
     [UIView animateWithDuration:1.5 delay:0 usingSpringWithDamping:.8f initialSpringVelocity:1.f options:UIViewAnimationOptionCurveEaseInOut
                      animations:^{
                          CGAffineTransform scaleTrans =
                          CGAffineTransformMakeScale(1, 1);
-
+                         
                          CGAffineTransform rotateTrans =
-                         CGAffineTransformMakeRotation(45 * M_PI / 180);
+                         CGAffineTransformMakeRotation(0 * M_PI / 180);
                          
                          centerButtonImageView.transform = CGAffineTransformConcat(scaleTrans, rotateTrans);
                          centerButtonRedImageView.transform = CGAffineTransformConcat(scaleTrans, rotateTrans);
-                         centerButtonImageView.alpha = 0.f;
-                         centerButtonRedImageView.alpha = 1.f;
+                         centerButtonImageView.alpha = 1.f;
+                         centerButtonRedImageView.alpha = 0.f;
                      } completion:nil];
+
     
+    isAddButtonPressed = NO;
+}
+
+- (IBAction)centerButtonClicked:(id)sender {
+
+    if(isAddButtonPressed) {
+        [self handleAddCompleted];
     }
+    else {
+        isAddButtonPressed = YES;
+        // initialize blurred image view
+        blurredImageView = [[UIImageView alloc] initWithFrame:self.selectedViewController.view.frame];
+        blurredImageView.image = [self blurredSnapshot];
+        blurredImageView.alpha = 0;
+        [self.selectedViewController.view addSubview:blurredImageView];
+        
+        UIImage* tintColorImage = [AppDelegate imageFromColor:[UIColor blackColor] forSize:self.selectedViewController.view.frame.size withCornerRadius:0];
+        
+        // initialize dark tint view
+        tintView = [[UIImageView alloc] initWithFrame:self.selectedViewController.view.frame];
+        tintView.alpha = 0;
+        tintView.backgroundColor = [UIColor clearColor];
+        tintView.opaque = NO;
+        tintView.image = tintColorImage;
+        
+        [self.selectedViewController.view addSubview:tintView];
+        
+        self.modalPresentationStyle = UIModalPresentationCurrentContext;
+        self.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+        
+        [UIView animateWithDuration:1 delay:0 usingSpringWithDamping:1.f initialSpringVelocity:1.f options:UIViewAnimationOptionCurveLinear animations:^{blurredImageView.alpha = 1; tintView.alpha = .3f;} completion:nil];
+        
+        
+        // rotate button now so that + becomes x and change color to red
+        [UIView animateWithDuration:1.5 delay:0 usingSpringWithDamping:.8f initialSpringVelocity:1.f options:UIViewAnimationOptionCurveEaseInOut
+                         animations:^{
+                             CGAffineTransform scaleTrans =
+                             CGAffineTransformMakeScale(1, 1);
+                             
+                             CGAffineTransform rotateTrans =
+                             CGAffineTransformMakeRotation(45 * M_PI / 180);
+                             
+                             centerButtonImageView.transform = CGAffineTransformConcat(scaleTrans, rotateTrans);
+                             centerButtonRedImageView.transform = CGAffineTransformConcat(scaleTrans, rotateTrans);
+                             centerButtonImageView.alpha = 0.f;
+                             centerButtonRedImageView.alpha = 1.f;
+                         } completion:nil];
+        
+    }
+}
 
 /*
  * http://damir.me/ios7-blurring-techniques
@@ -140,6 +175,10 @@ UIImageView* centerButtonRedImageView;
             result = NO;
         }
         else {
+            if(isAddButtonPressed)
+            {
+                [self handleAddCompleted];
+            }
             result = YES;
         }
     }
