@@ -32,6 +32,17 @@ UINavigationController* profileController;
 
 - (IBAction)centerButtonClicked:(id)sender {
     NSLog(@"custom center clicked");
+    
+    UIViewController* modalViewController=[[UIViewController alloc] init];
+    modalViewController.view.backgroundColor = [UIColor blackColor];
+    modalViewController.view.alpha = .1f;
+    modalViewController.view.opaque = NO;
+    
+    self.modalPresentationStyle = UIModalPresentationCurrentContext;
+    self.modalTransitionStyle = [UIModalTransitionStyleCoverVertical];
+    [self presentViewController:modalViewController animated:YES completion:nil];
+
+    
 }
 
 - (void)viewDidLoad
@@ -54,10 +65,8 @@ UINavigationController* profileController;
     [self setViewControllers:[NSArray arrayWithObjects:newsFeedController, locationController, addViewController, notificationsController, profileController,nil]];
 
     
-    //_centerButton = [self addCenterButtonWithImage:[UIImage imageNamed:@"Add Full Icon.png"] highlightImage:nil];
-    //[_centerButton addTarget:self
-    //           action:@selector(centerButtonClicked:)
-   //  forControlEvents:UIControlEventTouchUpInside];
+    _centerButton = [self addCenterButtonWithImage:[UIImage imageNamed:@"Add Full Icon.png"] highlightImage:nil];
+    
 }
 
 
@@ -110,18 +119,17 @@ UINavigationController* profileController;
     button.frame = CGRectMake(0.0, 0.0, buttonImage.size.width, buttonImage.size.height);
     [button setBackgroundImage:buttonImage forState:UIControlStateNormal];
     [button setBackgroundImage:highlightImage forState:UIControlStateHighlighted];
-    [button addTarget:self action:@selector(buttonEvent) forControlEvents:UIControlEventTouchUpInside];
-    CGFloat heightDifference = buttonImage.size.height - self.tabBar.frame.size.height;
+    //[button addTarget:self action:@selector(buttonEvent) forControlEvents:UIControlEventTouchUpInside];
+ 
+    [button addTarget:self action:@selector(centerButtonClicked:) forControlEvents:UIControlEventTouchUpInside];  CGFloat heightDifference = buttonImage.size.height - self.tabBar.frame.size.height;
+
+    
     CGPoint center = self.tabBar.center;
     center.y = center.y - self.tabBar.frame.origin.y - heightDifference/2.0;
     button.center = center;
     
     [self.tabBar addSubview:button];
     return button;
-}
-
-- (void) buttonEvent{
-    [self setSelectedIndex:2];
 }
 
 /*
