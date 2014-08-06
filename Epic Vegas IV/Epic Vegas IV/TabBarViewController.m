@@ -40,6 +40,8 @@ BOOL isAddButtonPressed = NO;
 
 -(void)handleAddCompleted
 {
+    [self hideAddActionButtons];
+    
     // remove blurred image view, // remove tint view
     [UIView animateWithDuration:1 delay:0 usingSpringWithDamping:1.f initialSpringVelocity:1.f options:UIViewAnimationOptionCurveLinear animations:^{blurredImageView.alpha = 0; tintView.alpha = 0;} completion:nil];
     
@@ -63,11 +65,12 @@ BOOL isAddButtonPressed = NO;
 }
 
 - (IBAction)centerButtonClicked:(id)sender {
-
+   
     if(isAddButtonPressed) {
         [self handleAddCompleted];
     }
     else {
+        [self showAddActionButtons];
         isAddButtonPressed = YES;
         // initialize blurred image view
         blurredImageView = [[UIImageView alloc] initWithFrame:self.selectedViewController.view.frame];
@@ -157,7 +160,7 @@ BOOL isAddButtonPressed = NO;
     
     _centerButton = [self addCenterButton];
     
-    
+    [self createAddActionButtons];
 }
 
 /*
@@ -187,7 +190,69 @@ BOOL isAddButtonPressed = NO;
     
 }
 
+-(void)showAddActionButtons
+{
+    [UIView animateWithDuration:0.25 animations:^{
+        float screenWidth = self.view.frame.size.width;
+        float screenHeight = self.view.frame.size.height;
+        float imageWidth = 72;
+        float imageHeight = 72;
+        
+        [[self.view viewWithTag:101] setFrame:CGRectMake((screenWidth/3 - (imageWidth / 2)) - 30, (screenHeight - 140), imageWidth, imageHeight)];
+        [[self.view viewWithTag:102] setFrame:CGRectMake((screenWidth/2 - (imageWidth / 2)), (screenHeight - 220), imageWidth, imageHeight)];
+        [[self.view viewWithTag:103] setFrame:CGRectMake((2*screenWidth/3 - (imageWidth / 2) + 30), (screenHeight - 140), imageWidth, imageHeight)];
+    } completion:^(BOOL finished) {
+        //isAddButtonPressed = YES;
+    }];
+}
 
+-(void)hideAddActionButtons
+{
+    
+    float screenHeight = self.view.frame.size.height;
+    [UIView animateWithDuration:0.25 animations:^{
+        [[self.view viewWithTag:101] setFrame:CGRectMake(_centerButton.center.x, screenHeight, 0.0, 0.0)];
+        [[self.view viewWithTag:102] setFrame:CGRectMake(_centerButton.center.x, screenHeight, 0.0, 0.0)];
+        [[self.view viewWithTag:103] setFrame:CGRectMake(_centerButton.center.x, screenHeight, 0.0, 0.0)];
+    } completion:^(BOOL finished) {
+        //self.buttonsExpanded = NO;
+    }];
+}
+
+-(void)createAddActionButtons
+{
+    UIButton *button1 = [UIButton buttonWithType:UIButtonTypeCustom];
+    UIButton *button2 = [UIButton buttonWithType:UIButtonTypeCustom];
+    UIButton *button3 = [UIButton buttonWithType:UIButtonTypeCustom];
+    
+    button1.backgroundColor = [UIColor redColor];
+    button2.backgroundColor = [UIColor blueColor];
+    button3.backgroundColor = [UIColor yellowColor];
+    
+    // Make the buttons 0 width and height so when we animate they seem to grow
+    // Position them in the center of the button that expands them
+    float screenHeight = self.view.frame.size.height;
+    button1.frame = CGRectMake(_centerButton.center.x, screenHeight, 0.0, 0.0);
+    button2.frame = CGRectMake(_centerButton.center.x, screenHeight, 0.0, 0.0);
+    button3.frame = CGRectMake(_centerButton.center.x, screenHeight, 0.0, 0.0);
+    
+    [button1 addTarget:self action:@selector(someButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [button2 addTarget:self action:@selector(someButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [button3 addTarget:self action:@selector(someButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    
+    button1.tag = 101;
+    button2.tag = 102;
+    button3.tag = 103;
+    
+    [self.view addSubview:button1];
+    [self.view addSubview:button2];
+    [self.view addSubview:button3];
+}
+
+- (IBAction)someButtonClicked:(id)sender {
+
+    
+}
 
 // Create a custom UIButton and add it to the center of our tab bar
 -(UIButton*) addCenterButton
