@@ -68,7 +68,7 @@
 		53966CE61992F6B900E822DE /* full__0000s_0122_camera@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53966CE51992F6B900E822DE /* full__0000s_0122_camera@2x.png */; };
 		53966CE81992F6C700E822DE /* full__0000s_0092_map.png in Resources */ = {isa = PBXBuildFile; fileRef = 53966CE71992F6C700E822DE /* full__0000s_0092_map.png */; };
 		53966CEA1992F6DE00E822DE /* quote.png in Resources */ = {isa = PBXBuildFile; fileRef = 53966CE91992F6DE00E822DE /* quote.png */; };
-		53966CEC199359D000E822DE /* Camera Image 70@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53966CEB199359D000E822DE /* Camera Image 70@2x.png */; };
+		53966CEE1993699000E822DE /* Camera Image 70@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53966CED1993699000E822DE /* Camera Image 70@2x.png */; };
 		53D2D19119906597007197F6 /* FB-f-Logo__white_50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53D2D19019906597007197F6 /* FB-f-Logo__white_50@2x.png */; };
 		53D2D1931990A2B1007197F6 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53D2D1921990A2B1007197F6 /* MapKit.framework */; };
 		53D2D19519917C62007197F6 /* line__0000s_0104_user@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53D2D19419917C62007197F6 /* line__0000s_0104_user@2x.png */; };
@@ -169,7 +169,7 @@
 		53966CE51992F6B900E822DE /* full__0000s_0122_camera@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "full__0000s_0122_camera@2x.png"; sourceTree = "<group>"; };
 		53966CE71992F6C700E822DE /* full__0000s_0092_map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = full__0000s_0092_map.png; sourceTree = "<group>"; };
 		53966CE91992F6DE00E822DE /* quote.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = quote.png; sourceTree = "<group>"; };
-		53966CEB199359D000E822DE /* Camera Image 70@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Camera Image 70@2x.png"; sourceTree = "<group>"; };
+		53966CED1993699000E822DE /* Camera Image 70@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Camera Image 70@2x.png"; sourceTree = "<group>"; };
 		53D2D19019906597007197F6 /* FB-f-Logo__white_50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FB-f-Logo__white_50@2x.png"; sourceTree = "<group>"; };
 		53D2D1921990A2B1007197F6 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		53D2D19419917C62007197F6 /* line__0000s_0104_user@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "line__0000s_0104_user@2x.png"; sourceTree = "<group>"; };
@@ -335,7 +335,7 @@
 		530BED2319904CDE00C5FDAB /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				53966CEB199359D000E822DE /* Camera Image 70@2x.png */,
+				53966CED1993699000E822DE /* Camera Image 70@2x.png */,
 				53966CE91992F6DE00E822DE /* quote.png */,
 				53966CE71992F6C700E822DE /* full__0000s_0092_map.png */,
 				53966CE51992F6B900E822DE /* full__0000s_0122_camera@2x.png */,
@@ -465,7 +465,7 @@
 			files = (
 				530BED4119904FA500C5FDAB /* Main.storyboard in Resources */,
 				53D2D1AC19918F71007197F6 /* ATOMICCLOCKRADIO.ttf in Resources */,
-				53966CEC199359D000E822DE /* Camera Image 70@2x.png in Resources */,
+				53966CEE1993699000E822DE /* Camera Image 70@2x.png in Resources */,
 				53966CE41992F68900E822DE /* person@2x.png in Resources */,
 				53165F5B1991C9FB0014695B /* full__0000s_0104_user@2x.png in Resources */,
 				53D2D1A01991885C007197F6 /* enhanced_dot_digital-7.ttf in Resources */,

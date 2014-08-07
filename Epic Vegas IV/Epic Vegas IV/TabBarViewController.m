@@ -28,12 +28,18 @@ UIImageView* tintView;
 
 BOOL isAddButtonPressed = NO;
 
-float circleButtonImageRadius = 45;
+float circleButtonImageRadius = 30;
 
 
 UIButton *button1;
 UIButton *button2;
 UIButton *button3;
+
+
+UIButton *buttonBorder1;
+UIButton *buttonBorder2;
+UIButton *buttonBorder3;
+float addButtonActionBorderWidth = 10;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -99,7 +105,7 @@ UIButton *button3;
         self.modalPresentationStyle = UIModalPresentationCurrentContext;
         self.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
         
-        [UIView animateWithDuration:1 delay:0 usingSpringWithDamping:1.f initialSpringVelocity:1.f options:UIViewAnimationOptionCurveLinear animations:^{blurredImageView.alpha = 1; tintView.alpha = .3f;} completion:nil];
+        [UIView animateWithDuration:1 delay:0 usingSpringWithDamping:1.f initialSpringVelocity:1.f options:UIViewAnimationOptionCurveLinear animations:^{blurredImageView.alpha = 1; tintView.alpha = .6f;} completion:nil];
         
         
         // rotate button now so that + becomes x and change color to red
@@ -206,9 +212,19 @@ UIButton *button3;
         float imageWidth = circleButtonImageRadius * 2;
         float imageHeight = circleButtonImageRadius * 2;
         
-        [button1 setFrame:CGRectMake((screenWidth/3 - (imageWidth / 2)) - 25, (screenHeight - 160), imageWidth, imageHeight)];
-        [button2 setFrame:CGRectMake((screenWidth/2 - (imageWidth / 2)), (screenHeight - 240), imageWidth, imageHeight)];
-        [button3 setFrame:CGRectMake((2*screenWidth/3 - (imageWidth / 2) + 25), (screenHeight - 160), imageWidth, imageHeight)];
+        float bottom = 150;
+        
+        [button1 setFrame:CGRectMake((screenWidth/3 - (imageWidth / 2)) - 30, (screenHeight - bottom), imageWidth, imageHeight)];
+        [button2 setFrame:CGRectMake((screenWidth/2 - (imageWidth / 2)), (screenHeight - bottom - 70), imageWidth, imageHeight)];
+        [button3 setFrame:CGRectMake((2*screenWidth/3 - (imageWidth / 2) + 30), (screenHeight - bottom), imageWidth, imageHeight)];
+        
+        float borderWidth = circleButtonImageRadius * 2 + addButtonActionBorderWidth * 2;
+        float borderHeight = circleButtonImageRadius * 2 + addButtonActionBorderWidth * 2;
+        
+        [buttonBorder1 setFrame:CGRectMake((screenWidth/3 - (imageWidth / 2)) - 30 - addButtonActionBorderWidth, (screenHeight - bottom) - addButtonActionBorderWidth, borderWidth, borderHeight)];
+        [buttonBorder2 setFrame:CGRectMake((screenWidth/2 - (imageWidth / 2)) - addButtonActionBorderWidth, (screenHeight - bottom - 70 - addButtonActionBorderWidth), borderWidth, borderHeight)];
+        [buttonBorder3 setFrame:CGRectMake((2*screenWidth/3 - (imageWidth / 2) + 30) - addButtonActionBorderWidth, (screenHeight - bottom - addButtonActionBorderWidth), borderWidth, borderHeight)];
+        
     } completion:^(BOOL finished) {
         //isAddButtonPressed = YES;
     }];
@@ -216,15 +232,15 @@ UIButton *button3;
     // Animate Rotation
     // rotate button now so that x becomes + again and change color back to normal
     
-    CABasicAnimation* animation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
-    animation.fromValue = [NSNumber numberWithFloat:0.0f];
-    animation.toValue = [NSNumber numberWithFloat: 2*M_PI];
-    animation.duration = 10.0f;
-    animation.repeatCount = INFINITY;
+//    CABasicAnimation* animation = [CABasicAnimation animationWithKeyPath:@"transform.rotation.z"];
+//    animation.fromValue = [NSNumber numberWithFloat:0.0f];
+//    animation.toValue = [NSNumber numberWithFloat: 2*M_PI];
+//    animation.duration = 10.0f;
+//    animation.repeatCount = INFINITY;
     
-    [button1.layer addAnimation:animation forKey:@"SpinAnimation"];
-    [button2.layer addAnimation:animation forKey:@"SpinAnimation"];
-    [button3.layer addAnimation:animation forKey:@"SpinAnimation"];
+    //[button1.layer addAnimation:animation forKey:@"SpinAnimation"];
+    //[button2.layer addAnimation:animation forKey:@"SpinAnimation"];
+    //[button3.layer addAnimation:animation forKey:@"SpinAnimation"];
 }
 
 -(void)hideAddActionButtons
@@ -235,6 +251,10 @@ UIButton *button3;
         [button1 setFrame:CGRectMake(_centerButton.center.x, screenHeight, 0.0, 0.0)];
         [button2 setFrame:CGRectMake(_centerButton.center.x, screenHeight, 0.0, 0.0)];
         [button3 setFrame:CGRectMake(_centerButton.center.x, screenHeight, 0.0, 0.0)];
+  
+        [buttonBorder1 setFrame:CGRectMake(_centerButton.center.x, screenHeight, 0.0, 0.0)];
+        [buttonBorder2 setFrame:CGRectMake(_centerButton.center.x, screenHeight, 0.0, 0.0)];
+        [buttonBorder3 setFrame:CGRectMake(_centerButton.center.x, screenHeight, 0.0, 0.0)];
     } completion:^(BOOL finished) {
         //self.buttonsExpanded = NO;
     }];
@@ -249,9 +269,9 @@ UIButton *button3;
     button2 = [UIButton buttonWithType:UIButtonTypeCustom];
     button3 = [UIButton buttonWithType:UIButtonTypeCustom];
     
-    button1.backgroundColor = [UIColor darkGrayColor];
-    button2.backgroundColor = [UIColor darkGrayColor];
-    button3.backgroundColor = [UIColor darkGrayColor];
+    button1.backgroundColor = [AppDelegate getThemeColor];
+    button2.backgroundColor = [AppDelegate getThemeColor];
+    button3.backgroundColor = [AppDelegate getThemeColor];
     
     button1.layer.cornerRadius = circleButtonImageRadius;
     button2.layer.cornerRadius = circleButtonImageRadius;
@@ -274,9 +294,43 @@ UIButton *button3;
     [button2 addTarget:self action:@selector(someButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     [button3 addTarget:self action:@selector(someButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     
+    
+    
+    buttonBorder1 = [UIButton buttonWithType:UIButtonTypeCustom];
+    buttonBorder2 = [UIButton buttonWithType:UIButtonTypeCustom];
+    buttonBorder3 = [UIButton buttonWithType:UIButtonTypeCustom];
+
+    float equalColorSplit = 220;
+    UIColor* borderColor = [UIColor colorWithRed:equalColorSplit/255.0 green:equalColorSplit/255.0 blue:equalColorSplit/255.0 alpha:1.0];
+    buttonBorder1.backgroundColor = borderColor;
+    buttonBorder2.backgroundColor = borderColor;
+    buttonBorder3.backgroundColor = borderColor;
+    
+    buttonBorder1.layer.cornerRadius = circleButtonImageRadius + addButtonActionBorderWidth;
+    buttonBorder2.layer.cornerRadius = circleButtonImageRadius + addButtonActionBorderWidth;
+    buttonBorder3.layer.cornerRadius = circleButtonImageRadius + addButtonActionBorderWidth;
+    
+    
+    buttonBorder1.layer.masksToBounds = NO;
+    buttonBorder2.layer.masksToBounds = NO;
+    buttonBorder3.layer.masksToBounds = NO;
+    
+    buttonBorder1.frame = rect;
+    buttonBorder2.frame = rect;
+    buttonBorder3.frame = rect;
+    
+    buttonBorder1.userInteractionEnabled = NO;
+    buttonBorder2.userInteractionEnabled = NO;
+    buttonBorder3.userInteractionEnabled = NO;
+    
+    [self.view addSubview:buttonBorder1];
+    [self.view addSubview:buttonBorder2];
+    [self.view addSubview:buttonBorder3];
+    
     [self.view addSubview:button1];
     [self.view addSubview:button2];
     [self.view addSubview:button3];
+    
 }
 
 - (IBAction)someButtonClicked:(id)sender {
