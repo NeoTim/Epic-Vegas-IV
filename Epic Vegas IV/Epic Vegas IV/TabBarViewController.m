@@ -28,6 +28,13 @@ UIImageView* tintView;
 
 BOOL isAddButtonPressed = NO;
 
+float circleButtonImageRadius = 45;
+
+
+UIButton *button1;
+UIButton *button2;
+UIButton *button3;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -196,12 +203,12 @@ BOOL isAddButtonPressed = NO;
     [UIView animateWithDuration:0.25 animations:^{
         float screenWidth = self.view.frame.size.width;
         float screenHeight = self.view.frame.size.height;
-        float imageWidth = 72;
-        float imageHeight = 72;
+        float imageWidth = circleButtonImageRadius * 2;
+        float imageHeight = circleButtonImageRadius * 2;
         
-        [[self.view viewWithTag:101] setFrame:CGRectMake((screenWidth/3 - (imageWidth / 2)) - 30, (screenHeight - 140), imageWidth, imageHeight)];
-        [[self.view viewWithTag:102] setFrame:CGRectMake((screenWidth/2 - (imageWidth / 2)), (screenHeight - 220), imageWidth, imageHeight)];
-        [[self.view viewWithTag:103] setFrame:CGRectMake((2*screenWidth/3 - (imageWidth / 2) + 30), (screenHeight - 140), imageWidth, imageHeight)];
+        [button1 setFrame:CGRectMake((screenWidth/3 - (imageWidth / 2)) - 25, (screenHeight - 160), imageWidth, imageHeight)];
+        [button2 setFrame:CGRectMake((screenWidth/2 - (imageWidth / 2)), (screenHeight - 240), imageWidth, imageHeight)];
+        [button3 setFrame:CGRectMake((2*screenWidth/3 - (imageWidth / 2) + 25), (screenHeight - 160), imageWidth, imageHeight)];
     } completion:^(BOOL finished) {
         //isAddButtonPressed = YES;
     }];
@@ -215,9 +222,9 @@ BOOL isAddButtonPressed = NO;
     animation.duration = 10.0f;
     animation.repeatCount = INFINITY;
     
-    [[self.view viewWithTag:101].layer addAnimation:animation forKey:@"SpinAnimation"];
-    [[self.view viewWithTag:102].layer addAnimation:animation forKey:@"SpinAnimation"];
-    [[self.view viewWithTag:103].layer addAnimation:animation forKey:@"SpinAnimation"];
+    [button1.layer addAnimation:animation forKey:@"SpinAnimation"];
+    [button2.layer addAnimation:animation forKey:@"SpinAnimation"];
+    [button3.layer addAnimation:animation forKey:@"SpinAnimation"];
 }
 
 -(void)hideAddActionButtons
@@ -225,9 +232,9 @@ BOOL isAddButtonPressed = NO;
     
     float screenHeight = self.view.frame.size.height;
     [UIView animateWithDuration:0.25 animations:^{
-        [[self.view viewWithTag:101] setFrame:CGRectMake(_centerButton.center.x, screenHeight, 0.0, 0.0)];
-        [[self.view viewWithTag:102] setFrame:CGRectMake(_centerButton.center.x, screenHeight, 0.0, 0.0)];
-        [[self.view viewWithTag:103] setFrame:CGRectMake(_centerButton.center.x, screenHeight, 0.0, 0.0)];
+        [button1 setFrame:CGRectMake(_centerButton.center.x, screenHeight, 0.0, 0.0)];
+        [button2 setFrame:CGRectMake(_centerButton.center.x, screenHeight, 0.0, 0.0)];
+        [button3 setFrame:CGRectMake(_centerButton.center.x, screenHeight, 0.0, 0.0)];
     } completion:^(BOOL finished) {
         //self.buttonsExpanded = NO;
     }];
@@ -235,32 +242,37 @@ BOOL isAddButtonPressed = NO;
 
 -(void)createAddActionButtons
 {
-    UIButton *button1 = [UIButton buttonWithType:UIButtonTypeCustom];
-    UIButton *button2 = [UIButton buttonWithType:UIButtonTypeCustom];
-    UIButton *button3 = [UIButton buttonWithType:UIButtonTypeCustom];
+    float screenHeight = self.view.frame.size.height;
+    CGRect rect = CGRectMake(_centerButton.center.x, screenHeight, 0.0, 0.0);
     
-    button1.backgroundColor = [UIColor redColor];
-    button2.backgroundColor = [UIColor blueColor];
-    button3.backgroundColor = [UIColor yellowColor];
+    button1 = [UIButton buttonWithType:UIButtonTypeCustom];
+    button2 = [UIButton buttonWithType:UIButtonTypeCustom];
+    button3 = [UIButton buttonWithType:UIButtonTypeCustom];
     
-    [button1 setImage:[UIImage imageNamed:@"full__0000s_0092_map.png"] forState:UIControlStateNormal];
+    button1.backgroundColor = [UIColor darkGrayColor];
+    button2.backgroundColor = [UIColor darkGrayColor];
+    button3.backgroundColor = [UIColor darkGrayColor];
+    
+    button1.layer.cornerRadius = circleButtonImageRadius;
+    button2.layer.cornerRadius = circleButtonImageRadius;
+    button3.layer.cornerRadius = circleButtonImageRadius;
+    
+    
+    button1.layer.masksToBounds = NO;
+    button2.layer.masksToBounds = NO;
+    button3.layer.masksToBounds = NO;
+        
+    [button1 setImage:[UIImage imageNamed:@"Camera Image 70.png"] forState:UIControlStateNormal];
     [button2 setImage:[UIImage imageNamed:@"full__0000s_0122_camera.png"] forState:UIControlStateNormal];
     [button3 setImage:[UIImage imageNamed:@"quote.png"] forState:UIControlStateNormal];
     
-    // Make the buttons 0 width and height so when we animate they seem to grow
-    // Position them in the center of the button that expands them
-    float screenHeight = self.view.frame.size.height;
-    button1.frame = CGRectMake(_centerButton.center.x, screenHeight, 0.0, 0.0);
-    button2.frame = CGRectMake(_centerButton.center.x, screenHeight, 0.0, 0.0);
-    button3.frame = CGRectMake(_centerButton.center.x, screenHeight, 0.0, 0.0);
+    button1.frame = rect;
+    button2.frame = rect;
+    button3.frame = rect;
     
     [button1 addTarget:self action:@selector(someButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     [button2 addTarget:self action:@selector(someButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     [button3 addTarget:self action:@selector(someButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
-    
-    button1.tag = 101;
-    button2.tag = 102;
-    button3.tag = 103;
     
     [self.view addSubview:button1];
     [self.view addSubview:button2];
