@@ -81,8 +81,16 @@ NSInteger characterLimit = 150;
 {
     UIToolbar* numberToolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, 320, 50)];
     //numberToolbar.barStyle = UIBarStyleBlackTranslucent;
-    numberToolbar.items = [NSArray arrayWithObjects:
-                           [[UIBarButtonItem alloc]initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(done:)],nil];
+    
+    UIBarButtonItem* cameraBarButton =[[UIBarButtonItem alloc]initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:@selector(done:)];
+    cameraBarButton.image = [UIImage imageNamed:@"full__0000s_0122_camera.png"];
+    cameraBarButton.tintColor = [UIColor darkGrayColor];
+    
+    UIBarButtonItem* locationButton =[[UIBarButtonItem alloc]initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:@selector(done:)];
+    locationButton.image = [UIImage imageNamed:@"full__0000s_0092_map.png"];
+    locationButton.tintColor = [UIColor darkGrayColor];
+    
+    numberToolbar.items = [NSArray arrayWithObjects:cameraBarButton,locationButton, nil];
     [numberToolbar sizeToFit];
     _messageTextView.inputAccessoryView = numberToolbar;
 }
