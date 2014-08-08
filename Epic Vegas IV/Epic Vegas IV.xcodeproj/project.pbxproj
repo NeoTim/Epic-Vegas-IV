@@ -72,6 +72,11 @@
 		53A19F7819943C68008DF739 /* Location 60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53A19F7719943C68008DF739 /* Location 60@2x.png */; };
 		53A19F7A19944BB6008DF739 /* Quotes 60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53A19F7919944BB6008DF739 /* Quotes 60@2x.png */; };
 		53A19F86199450D8008DF739 /* Write Text@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53A19F85199450D8008DF739 /* Write Text@2x.png */; };
+		53A19F8C199466C1008DF739 /* PostToFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53A19F8B199466C1008DF739 /* PostToFeedViewController.m */; };
+		53A19F9219948176008DF739 /* Settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53A19F9119948176008DF739 /* Settings@2x.png */; };
+		53A19F94199481E6008DF739 /* Favorites@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53A19F93199481E6008DF739 /* Favorites@2x.png */; };
+		53A19F9C1994846E008DF739 /* Location@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53A19F9B1994846E008DF739 /* Location@2x.png */; };
+		53A19F9E199484DD008DF739 /* Map@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53A19F9D199484DD008DF739 /* Map@2x.png */; };
 		53D2D19119906597007197F6 /* FB-f-Logo__white_50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53D2D19019906597007197F6 /* FB-f-Logo__white_50@2x.png */; };
 		53D2D1931990A2B1007197F6 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53D2D1921990A2B1007197F6 /* MapKit.framework */; };
 		53D2D19519917C62007197F6 /* line__0000s_0104_user@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53D2D19419917C62007197F6 /* line__0000s_0104_user@2x.png */; };
@@ -176,6 +181,12 @@
 		53A19F7719943C68008DF739 /* Location 60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Location 60@2x.png"; sourceTree = "<group>"; };
 		53A19F7919944BB6008DF739 /* Quotes 60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Quotes 60@2x.png"; sourceTree = "<group>"; };
 		53A19F85199450D8008DF739 /* Write Text@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Write Text@2x.png"; sourceTree = "<group>"; };
+		53A19F8A199466C1008DF739 /* PostToFeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostToFeedViewController.h; sourceTree = "<group>"; };
+		53A19F8B199466C1008DF739 /* PostToFeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostToFeedViewController.m; sourceTree = "<group>"; };
+		53A19F9119948176008DF739 /* Settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Settings@2x.png"; sourceTree = "<group>"; };
+		53A19F93199481E6008DF739 /* Favorites@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Favorites@2x.png"; sourceTree = "<group>"; };
+		53A19F9B1994846E008DF739 /* Location@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Location@2x.png"; sourceTree = "<group>"; };
+		53A19F9D199484DD008DF739 /* Map@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Map@2x.png"; sourceTree = "<group>"; };
 		53D2D19019906597007197F6 /* FB-f-Logo__white_50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FB-f-Logo__white_50@2x.png"; sourceTree = "<group>"; };
 		53D2D1921990A2B1007197F6 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		53D2D19419917C62007197F6 /* line__0000s_0104_user@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "line__0000s_0104_user@2x.png"; sourceTree = "<group>"; };
@@ -294,6 +305,8 @@
 				532B1644199059DE00C4851F /* ProfileViewController.h */,
 				532B1645199059DE00C4851F /* ProfileViewController.m */,
 				530BED4019904FA500C5FDAB /* Main.storyboard */,
+				53A19F8A199466C1008DF739 /* PostToFeedViewController.h */,
+				53A19F8B199466C1008DF739 /* PostToFeedViewController.m */,
 				530BED0519904C7700C5FDAB /* Images.xcassets */,
 				530BECFA19904C7700C5FDAB /* Supporting Files */,
 			);
@@ -341,6 +354,10 @@
 		530BED2319904CDE00C5FDAB /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				53A19F9D199484DD008DF739 /* Map@2x.png */,
+				53A19F9B1994846E008DF739 /* Location@2x.png */,
+				53A19F93199481E6008DF739 /* Favorites@2x.png */,
+				53A19F9119948176008DF739 /* Settings@2x.png */,
 				53A19F85199450D8008DF739 /* Write Text@2x.png */,
 				53A19F7919944BB6008DF739 /* Quotes 60@2x.png */,
 				53A19F7719943C68008DF739 /* Location 60@2x.png */,
@@ -485,7 +502,9 @@
 				53966CCC1992DF7300E822DE /* Add Red Icon@2x.png in Resources */,
 				53165F741991E1B70014695B /* full__0000s_0105_mail@2x.png in Resources */,
 				53D2D19A1991876C007197F6 /* bold_dot_digital-7.ttf in Resources */,
+				53A19F9C1994846E008DF739 /* Location@2x.png in Resources */,
 				53966CCA1992D26700E822DE /* Add Full Icon@2x.png in Resources */,
+				53A19F9219948176008DF739 /* Settings@2x.png in Resources */,
 				53A19F7A19944BB6008DF739 /* Quotes 60@2x.png in Resources */,
 				53A19F86199450D8008DF739 /* Write Text@2x.png in Resources */,
 				530BECFE19904C7700C5FDAB /* InfoPlist.strings in Resources */,
@@ -498,6 +517,7 @@
 				53165F781991E2870014695B /* full__0000s_0092_map@2x.png in Resources */,
 				53165F721991E1810014695B /* full__0000s_0000_news-paper@2x.png in Resources */,
 				53966CD91992F5F200E822DE /* 112-group.png in Resources */,
+				53A19F94199481E6008DF739 /* Favorites@2x.png in Resources */,
 				53966CD41992F5C800E822DE /* Subscriptions.png in Resources */,
 				53966CDC1992F60700E822DE /* action.png in Resources */,
 				53966CEA1992F6DE00E822DE /* quote.png in Resources */,
@@ -515,6 +535,7 @@
 				53D2D1AD19918F71007197F6 /* the_vandor_spot.ttf in Resources */,
 				53966CD21992F5C800E822DE /* 28-star.png in Resources */,
 				530BED0619904C7700C5FDAB /* Images.xcassets in Resources */,
+				53A19F9E199484DD008DF739 /* Map@2x.png in Resources */,
 				53966CD61992F5E600E822DE /* 29-heart@2x.png in Resources */,
 				53165F5D1991CCE30014695B /* News Feed Icon@2x.png in Resources */,
 				53966CD31992F5C800E822DE /* 111-user.png in Resources */,
@@ -541,6 +562,7 @@
 				530BED0419904C7700C5FDAB /* AppDelegate.m in Sources */,
 				530BED0019904C7700C5FDAB /* main.m in Sources */,
 				53165F621991D04E0014695B /* TabBarViewController.m in Sources */,
+				53A19F8C199466C1008DF739 /* PostToFeedViewController.m in Sources */,
 				53165F531991C49A0014695B /* NotificationsTableViewController.m in Sources */,
 				532B1646199059DE00C4851F /* ProfileViewController.m in Sources */,
 				53966CC61992C1A900E822DE /* UIImage+ImageEffects.m in Sources */,

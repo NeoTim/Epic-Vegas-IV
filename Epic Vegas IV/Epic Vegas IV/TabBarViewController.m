@@ -346,25 +346,44 @@ UIButton* selectExistingPhotoButton;
     photoPicker = [[UIImagePickerController alloc] init];
     photoPicker.delegate = self;
     photoPicker.allowsEditing = YES;
-    photoPicker.sourceType = UIImagePickerControllerSourceTypeCamera;
-    
-    float screenHeight = self.view.frame.size.height;
-    float screenWidth = self.view.frame.size.width;
-
-    // add button to select existing photo
-    selectExistingPhotoButton = [[UIButton alloc] initWithFrame:CGRectMake(75, 5,30,30)];
-    selectExistingPhotoButton.backgroundColor = [UIColor orangeColor];
-    [photoPicker.view addSubview:selectExistingPhotoButton];
-    [selectExistingPhotoButton addTarget:self action:@selector(selectExistingPhotoButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
-
     [self handleAddCompleted];
 
-    [self presentViewController:photoPicker animated:YES completion:NULL];
+    
+    
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil
+                                                             delegate:self
+                                                    cancelButtonTitle:@"Cancel"
+                                               destructiveButtonTitle:nil
+                                                    otherButtonTitles:@"Take photo", @"Choose Existing", nil];
+    actionSheet.tag = 7432;
+    [actionSheet showInView:self.view];
 }
 
-- (IBAction)addTextButtonClicked:(id)sender {
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    // action sheet for camera button press
+    if(actionSheet.tag == 7432)
+    {
+        if (buttonIndex == 0) {
+            photoPicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+            [self presentViewController:photoPicker animated:YES completion:NULL];
+        } else if (buttonIndex == 1) {
+            photoPicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+            [self presentViewController:photoPicker animated:YES completion:NULL];
+        }
+        else
+        {
+            
+        }
+    }
+}
+
+- (IBAction)writeTextButtonClicked:(id)sender {
     [self handleAddCompleted];
 
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main"
+                                                             bundle: nil];
+    
+    [self presentViewController:[mainStoryboard instantiateViewControllerWithIdentifier:@"Create Post Navigation Controller"] animated:YES completion:NULL];    
 }
 
 -(IBAction)selectExistingPhotoButtonClicked:(id)sender

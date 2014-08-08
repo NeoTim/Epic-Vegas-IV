@@ -149,8 +149,8 @@
         <scene sceneID="RyJ-Ue-WJl">
             <objects>
                 <navigationController storyboardIdentifier="Location Navigation Controller" definesPresentationContext="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="d6U-Z1-GZk" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="full__0000s_0092_map.png" id="umF-YT-9XJ">
-                        <inset key="imageInsets" minX="0.0" minY="7" maxX="0.0" maxY="-3"/>
+                    <tabBarItem key="tabBarItem" title="" image="Map.png" id="umF-YT-9XJ">
+                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
                     </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="ucS-DA-cf1">
                         <autoresizingMask key="autoresizingMask"/>
@@ -192,7 +192,7 @@
         <scene sceneID="rqj-ag-923">
             <objects>
                 <navigationController storyboardIdentifier="Profile Navigation Controller" definesPresentationContext="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="wx6-35-1tI" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="person.png" id="kyy-Ka-xw1">
+                    <tabBarItem key="tabBarItem" title="" image="Settings.png" id="kyy-Ka-xw1">
                         <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
                     </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="OSF-hL-sPW">
@@ -266,94 +266,73 @@
             </objects>
             <point key="canvasLocation" x="-55" y="2033"/>
         </scene>
-        <!--Profile View Controller - Me-->
-        <scene sceneID="U0s-bw-WXN">
+        <!--Post To Feed View Controller - Post To Feed-->
+        <scene sceneID="n2T-hz-SlS">
             <objects>
-                <viewController id="qMQ-9p-OKN" customClass="ProfileViewController" sceneMemberID="viewController">
+                <viewController id="MbH-Cg-Oi8" customClass="PostToFeedViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="enA-aD-XSh"/>
-                        <viewControllerLayoutGuide type="bottom" id="9VS-bl-P8l"/>
+                        <viewControllerLayoutGuide type="top" id="3A1-Zn-RsN"/>
+                        <viewControllerLayoutGuide type="bottom" id="AHn-nW-SLx"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="qHK-UN-8th">
+                    <view key="view" contentMode="scaleToFill" id="CEu-pb-TnB">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XHF-46-HNx" customClass="FBProfilePictureView">
-                                <rect key="frame" x="11" y="103" width="97" height="89"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                            </view>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Zach Kohl" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fq6-0s-YH8">
-                                <rect key="frame" x="42" y="103" width="320" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Elara #2208" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1iy-Q3-fPc">
-                                <rect key="frame" x="161" y="130" width="91" height="21"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="share something..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uCT-E2-GqL">
+                                <rect key="frame" x="58" y="91" width="182" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Updated 30 mins ago" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dY8-se-Sp9">
-                                <rect key="frame" x="161" y="151" width="201" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Me" id="L2N-5T-zIn"/>
+                    <navigationItem key="navigationItem" title="Post To Feed" id="gZA-Wo-lKx"/>
                     <connections>
-                        <outlet property="fbProfilePicView" destination="XHF-46-HNx" id="Ocb-I4-l3U"/>
-                        <outlet property="userNameLabel" destination="fq6-0s-YH8" id="Gte-hh-cU9"/>
+                        <outlet property="messageTextField" destination="uCT-E2-GqL" id="C5L-8B-heC"/>
                     </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="EYT-YW-G4F" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Lrk-vv-lje" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="443" y="1612"/>
+            <point key="canvasLocation" x="1619" y="2436"/>
         </scene>
-        <!--Table View Controller - Important Notifications-->
-        <scene sceneID="NxD-wj-sSc">
+        <!--Navigation Controller-->
+        <scene sceneID="9aP-5B-xkt">
             <objects>
-                <tableViewController id="fVi-5N-CIT" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="fI8-ce-GAp">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="hZI-Lr-lDX">
-                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hZI-Lr-lDX" id="h2o-nH-Kup">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="fVi-5N-CIT" id="jP3-vb-NKb"/>
-                            <outlet property="delegate" destination="fVi-5N-CIT" id="4ch-cR-myj"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Important Notifications" id="h2O-M7-BSk"/>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="zYW-Wd-INa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController storyboardIdentifier="Create Post Navigation Controller" definesPresentationContext="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="WO9-8Y-IJ9" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="4Vb-5b-RGQ">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="MbH-Cg-Oi8" kind="relationship" relationship="rootViewController" id="Hnc-g0-raF"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fie-ZX-Fkw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1153" y="871"/>
+            <point key="canvasLocation" x="1043" y="2436"/>
+        </scene>
+        <!--Page View Controller - Best Of Epic Vegas-->
+        <scene sceneID="Cyg-cY-gEr">
+            <objects>
+                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="S3E-UW-0ll" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" title="Best Of Epic Vegas" id="2g9-pE-xLU"/>
+                </pageViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="y7D-cf-Itt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1149" y="833"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="k1m-fb-VgU">
             <objects>
                 <navigationController storyboardIdentifier="Notifications Navigation Controller" definesPresentationContext="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="aoY-KU-Iwr" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="full__0000s_0105_mail.png" id="Kv1-Pn-k8K">
+                    <tabBarItem key="tabBarItem" title="" image="Favorites.png" id="Kv1-Pn-k8K">
                         <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
                     </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="xJK-eR-4cd">
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="fVi-5N-CIT" kind="relationship" relationship="rootViewController" id="2fa-Fn-c9t"/>
+                        <segue destination="S3E-UW-0ll" kind="relationship" relationship="rootViewController" id="fRa-XK-glv"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vOC-8b-Yw2" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -378,11 +357,11 @@
     </scenes>
     <resources>
         <image name="FB-f-Logo__white_50.png" width="25" height="25"/>
+        <image name="Favorites.png" width="60" height="60"/>
+        <image name="Map.png" width="60" height="60"/>
+        <image name="Settings.png" width="60" height="60"/>
         <image name="full__0000s_0032_home.png" width="25" height="25"/>
-        <image name="full__0000s_0092_map.png" width="40" height="60"/>
-        <image name="full__0000s_0105_mail.png" width="25" height="16"/>
         <image name="marquee-las-vegas.jpg" width="319" height="568"/>
-        <image name="person.png" width="27" height="24"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
