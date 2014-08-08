@@ -161,17 +161,17 @@ UIButton* selectExistingPhotoButton;
     // Do any additional setup after loading the view.
     [self setDelegate:self];
     
-    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main"
-                                                             bundle: nil];
-  
-    newsFeedController = [mainStoryboard instantiateViewControllerWithIdentifier:@"News Feed Navigation Controller"];
-    locationController = [mainStoryboard instantiateViewControllerWithIdentifier:@"Location Navigation Controller"];
-    addViewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"Add View Controller"];
-    
-    notificationsController = [mainStoryboard instantiateViewControllerWithIdentifier:@"Notifications Navigation Controller"];
-    profileController = [mainStoryboard instantiateViewControllerWithIdentifier:@"Profile Navigation Controller"];
-    
-    [self setViewControllers:[NSArray arrayWithObjects:newsFeedController, locationController, addViewController, notificationsController, profileController,nil]];
+//    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main"
+//                                                             bundle: nil];
+//  
+//    newsFeedController = [mainStoryboard instantiateViewControllerWithIdentifier:@"News Feed Navigation Controller"];
+//    locationController = [mainStoryboard instantiateViewControllerWithIdentifier:@"Location Navigation Controller"];
+//    addViewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"Add View Controller"];
+//    
+//    notificationsController = [mainStoryboard instantiateViewControllerWithIdentifier:@"Notifications Navigation Controller"];
+//    profileController = [mainStoryboard instantiateViewControllerWithIdentifier:@"Profile Navigation Controller"];
+//    
+//    [self setViewControllers:[NSArray arrayWithObjects:newsFeedController, locationController, addViewController, notificationsController, profileController,nil]];
 
     
     _centerButton = [self addCenterButton];

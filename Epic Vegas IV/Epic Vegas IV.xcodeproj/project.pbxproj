@@ -34,7 +34,6 @@
 		530BED3F19904EE100C5FDAB /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 530BED3E19904EE100C5FDAB /* Accounts.framework */; };
 		530BED4119904FA500C5FDAB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 530BED4019904FA500C5FDAB /* Main.storyboard */; };
 		530BED44199052FF00C5FDAB /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 530BED43199052FF00C5FDAB /* LoginViewController.m */; };
-		53165F4E1991C0330014695B /* NewsFeedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53165F4D1991C0330014695B /* NewsFeedTableViewController.m */; };
 		53165F501991C1F20014695B /* Epic Vegas Nav Bar Title@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53165F4F1991C1F20014695B /* Epic Vegas Nav Bar Title@2x.png */; };
 		53165F531991C49A0014695B /* NotificationsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53165F521991C49A0014695B /* NotificationsTableViewController.m */; };
 		53165F5B1991C9FB0014695B /* full__0000s_0104_user@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53165F5A1991C9FB0014695B /* full__0000s_0104_user@2x.png */; };
@@ -50,6 +49,7 @@
 		532B1646199059DE00C4851F /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 532B1645199059DE00C4851F /* ProfileViewController.m */; };
 		5388ED4D1995741A002CA477 /* All Images@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5388ED4C1995741A002CA477 /* All Images@2x.png */; };
 		5388ED5719957C2F002CA477 /* Location Black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5388ED5619957C2F002CA477 /* Location Black@2x.png */; };
+		5388ED5A19958A96002CA477 /* NewsFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5388ED5919958A96002CA477 /* NewsFeedViewController.m */; };
 		53966CB91992972D00E822DE /* Close Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53966CB81992972D00E822DE /* Close Icon@2x.png */; };
 		53966CBC199299F600E822DE /* AddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53966CBB199299F600E822DE /* AddViewController.m */; };
 		53966CC61992C1A900E822DE /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 53966CC51992C1A900E822DE /* UIImage+ImageEffects.m */; };
@@ -130,8 +130,6 @@
 		530BED4019904FA500C5FDAB /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		530BED42199052FF00C5FDAB /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		530BED43199052FF00C5FDAB /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
-		53165F4C1991C0330014695B /* NewsFeedTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsFeedTableViewController.h; sourceTree = "<group>"; };
-		53165F4D1991C0330014695B /* NewsFeedTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsFeedTableViewController.m; sourceTree = "<group>"; };
 		53165F4F1991C1F20014695B /* Epic Vegas Nav Bar Title@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Epic Vegas Nav Bar Title@2x.png"; sourceTree = "<group>"; };
 		53165F511991C49A0014695B /* NotificationsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationsTableViewController.h; sourceTree = "<group>"; };
 		53165F521991C49A0014695B /* NotificationsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationsTableViewController.m; sourceTree = "<group>"; };
@@ -150,6 +148,8 @@
 		532B1645199059DE00C4851F /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		5388ED4C1995741A002CA477 /* All Images@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "All Images@2x.png"; sourceTree = "<group>"; };
 		5388ED5619957C2F002CA477 /* Location Black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Location Black@2x.png"; sourceTree = "<group>"; };
+		5388ED5819958A96002CA477 /* NewsFeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsFeedViewController.h; sourceTree = "<group>"; };
+		5388ED5919958A96002CA477 /* NewsFeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsFeedViewController.m; sourceTree = "<group>"; };
 		53966CB81992972D00E822DE /* Close Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Close Icon@2x.png"; sourceTree = "<group>"; };
 		53966CBA199299F600E822DE /* AddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddViewController.h; sourceTree = "<group>"; };
 		53966CBB199299F600E822DE /* AddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddViewController.m; sourceTree = "<group>"; };
@@ -283,10 +283,10 @@
 				530BED0319904C7700C5FDAB /* AppDelegate.m */,
 				530BED42199052FF00C5FDAB /* LoginViewController.h */,
 				530BED43199052FF00C5FDAB /* LoginViewController.m */,
+				5388ED5819958A96002CA477 /* NewsFeedViewController.h */,
+				5388ED5919958A96002CA477 /* NewsFeedViewController.m */,
 				53165F601991D04E0014695B /* TabBarViewController.h */,
 				53165F611991D04E0014695B /* TabBarViewController.m */,
-				53165F4C1991C0330014695B /* NewsFeedTableViewController.h */,
-				53165F4D1991C0330014695B /* NewsFeedTableViewController.m */,
 				53966CBA199299F600E822DE /* AddViewController.h */,
 				53966CBB199299F600E822DE /* AddViewController.m */,
 				53165F511991C49A0014695B /* NotificationsTableViewController.h */,
@@ -536,6 +536,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5388ED5A19958A96002CA477 /* NewsFeedViewController.m in Sources */,
 				530BED0419904C7700C5FDAB /* AppDelegate.m in Sources */,
 				530BED0019904C7700C5FDAB /* main.m in Sources */,
 				53165F621991D04E0014695B /* TabBarViewController.m in Sources */,
@@ -546,7 +547,6 @@
 				53A19FA119948B4E008DF739 /* LoggedInUserData.m in Sources */,
 				530BED44199052FF00C5FDAB /* LoginViewController.m in Sources */,
 				53966CBC199299F600E822DE /* AddViewController.m in Sources */,
-				53165F4E1991C0330014695B /* NewsFeedTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
