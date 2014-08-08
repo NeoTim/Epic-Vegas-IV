@@ -27,18 +27,29 @@
 {
     [super viewDidLoad];
     
-    
-    NSString* profilePicUrlString = [NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?width=400&height=400&return_ssl_resources=1", [PFUser currentUser][@"fbId"]];
 
-    NSURL* profilePicUrl = [NSURL URLWithString:profilePicUrlString];
-    
-    [self downloadImageWithURL:profilePicUrl completionBlock:^(BOOL succeeded, UIImage *image) {
-        if (succeeded) {
+    PFQuery *query = [PFQuery queryWithClassName:@"UserPhoto400"];
+    [query getObjectInBackgroundWithId:[PFUser currentUser][@"userPhoto400ObjectId"] block:^(PFObject *userPhoto, NSError *error) {
+        if(!error)
+        {
+            PFFile *theImage = [userPhoto objectForKey:@"imageFile"];
+            NSData *imageData = [theImage getData];
+            UIImage *image = [UIImage imageWithData:imageData];
             _fbProfilePicView.image = image;
-            _fbProfilePicView.clipsToBounds = YES;
+            
+            // fade in profile pic
+            [UIView animateWithDuration:1 delay:0 usingSpringWithDamping:1.f initialSpringVelocity:1.f options:UIViewAnimationOptionCurveLinear animations:^{
+                _fbProfilePicView.alpha = 1;
+            } completion:nil];
+        }
+        else{
+        // Do something with the returned PFObject in the gameScore variable.
+            NSLog(@"%@", error);
         }
     }];
-    
+
+    _fbProfilePicView.clipsToBounds = YES;
+    _fbProfilePicView.alpha = 0;
     _fbProfilePicView.layer.cornerRadius = _fbProfilePicView.layer.frame.size.height / 2;
     
     // Do any additional setup after loading the view.
@@ -47,22 +58,7 @@
     _userNameLabel.text = [PFUser currentUser][@"fbName"];
 }
 
-// http://natashatherobot.com/ios-how-to-download-images-asynchronously-make-uitableview-scroll-fast/
-- (void)downloadImageWithURL:(NSURL *)url completionBlock:(void (^)(BOOL succeeded, UIImage *image))completionBlock
-{
-    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
-    [NSURLConnection sendAsynchronousRequest:request
-                                       queue:[NSOperationQueue mainQueue]
-                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-                               if ( !error )
-                               {
-                                   UIImage *image = [[UIImage alloc] initWithData:data];
-                                   completionBlock(YES,image);
-                               } else{
-                                   completionBlock(NO,nil);
-                               }
-                           }];
-}
+
 
 - (void)didReceiveMemoryWarning
 {

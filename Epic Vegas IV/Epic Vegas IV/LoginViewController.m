@@ -271,7 +271,7 @@
             [userPhoto saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                 if (!error) {
                     user[userPointerName] = userPhoto.objectId;
-                    [user save];
+                   
                     [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                         if (!error) {
                             //        [self refresh:nil];

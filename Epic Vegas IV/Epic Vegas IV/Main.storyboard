@@ -77,7 +77,7 @@
             </objects>
             <point key="canvasLocation" x="-476" y="-446"/>
         </scene>
-        <!--News Feed Table View Controller - Epic Vegas Live Feed-->
+        <!--News Feed Table View Controller - Public Feed-->
         <scene sceneID="ZNU-z9-IGr">
             <objects>
                 <tableViewController id="mpZ-rD-yTV" customClass="NewsFeedTableViewController" sceneMemberID="viewController">
@@ -100,7 +100,7 @@
                             <outlet property="delegate" destination="mpZ-rD-yTV" id="gY6-8O-MgX"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Epic Vegas Live Feed" id="mSi-gU-EBu"/>
+                    <navigationItem key="navigationItem" title="Public Feed" id="mSi-gU-EBu"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="b6y-1y-lwH" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -137,7 +137,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" id="v7Y-FF-SCY">
+                    <tabBarItem key="tabBarItem" enabled="NO" title="" id="v7Y-FF-SCY">
                         <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
                     </tabBarItem>
                 </viewController>
@@ -329,11 +329,11 @@
             </objects>
             <point key="canvasLocation" x="987" y="2436"/>
         </scene>
-        <!--Page View Controller - Best Of Epic Vegas-->
+        <!--Page View Controller - Hall of Fame / Shame-->
         <scene sceneID="Cyg-cY-gEr">
             <objects>
                 <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="S3E-UW-0ll" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" title="Best Of Epic Vegas" id="2g9-pE-xLU"/>
+                    <navigationItem key="navigationItem" title="Hall of Fame / Shame" id="2g9-pE-xLU"/>
                 </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="y7D-cf-Itt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

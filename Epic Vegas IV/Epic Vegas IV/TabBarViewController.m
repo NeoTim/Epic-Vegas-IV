@@ -216,6 +216,14 @@ UIButton* selectExistingPhotoButton;
         
         float bottom = 150;
         
+        button1.alpha = 1;
+        button2.alpha = 1;
+        button3.alpha = 1;
+        
+        buttonBorder1.alpha = 1;
+        buttonBorder2.alpha = 1;
+        buttonBorder3.alpha = 1;
+        
         [button1 setFrame:CGRectMake((screenWidth/3 - (imageWidth / 2)) - 30, (screenHeight - bottom), imageWidth, imageHeight)];
         [button2 setFrame:CGRectMake((screenWidth/2 - (imageWidth / 2)), (screenHeight - bottom - 70), imageWidth, imageHeight)];
         [button3 setFrame:CGRectMake((2*screenWidth/3 - (imageWidth / 2) + 30), (screenHeight - bottom), imageWidth, imageHeight)];
@@ -257,6 +265,15 @@ UIButton* selectExistingPhotoButton;
         [buttonBorder1 setFrame:CGRectMake(_centerButton.center.x, screenHeight, 0.0, 0.0)];
         [buttonBorder2 setFrame:CGRectMake(_centerButton.center.x, screenHeight, 0.0, 0.0)];
         [buttonBorder3 setFrame:CGRectMake(_centerButton.center.x, screenHeight, 0.0, 0.0)];
+        
+        button1.alpha = 0;
+        button2.alpha = 0;
+        button3.alpha = 0;
+        
+        buttonBorder1.alpha = 0;
+        buttonBorder2.alpha = 0;
+        buttonBorder3.alpha = 0;
+
     } completion:^(BOOL finished) {
         //self.buttonsExpanded = NO;
     }];
@@ -279,6 +296,13 @@ UIButton* selectExistingPhotoButton;
     button2.layer.cornerRadius = circleButtonImageRadius;
     button3.layer.cornerRadius = circleButtonImageRadius;
     
+    button1.alpha = 0;
+    button2.alpha = 0;
+    button3.alpha = 0;
+    
+    buttonBorder1.alpha = 0;
+    buttonBorder2.alpha = 0;
+    buttonBorder3.alpha = 0;
     
     button1.layer.masksToBounds = NO;
     button2.layer.masksToBounds = NO;
