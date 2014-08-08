@@ -20,4 +20,5 @@
 
 + (UIColor*)getThemeColor;
 
++ (void)downloadImageWithURL:(NSURL *)url completionBlock:(void (^)(BOOL succeeded, UIImage *image))completionBlock;
 @end

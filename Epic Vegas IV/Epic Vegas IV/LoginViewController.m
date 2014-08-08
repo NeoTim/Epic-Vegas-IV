@@ -27,18 +27,8 @@
 - (void)setupTitleFont
 {
     // set font for epic vegas labels
-    //NSString* fontName = @"BoldDotDigital-7";
-    //NSString* fontName = @"AdvancedDotDigital-7";
-    //NSString* fontName = @"TripleDotDigital-7";
-    //NSString* fontName = @"ModernDotDigital-7"; // no
-    //NSString* fontName = @"EnhancedDotDigital-7";
-    //NSString* fontName = @"LEDCounter7";
-    
     NSString* fontName = @"DS-Digital-BoldItalic";
-    //NSString* fontName = @"AtomicClockRadio";
-    //NSString* fontName = @"The-Vandor-Spot";
-    
-    
+        
     //int fontSize = 74;
     //int fontSize = 50;
     int fontSize = 100;
@@ -195,19 +185,12 @@
             if(fbId != nil)
             {
                 currentUser[@"fbId"] = fbId;
-//             
-//                // also save profile pic url
-//                NSString* profilePicLargeUrl = [NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=large&return_ssl_resources=1", fbId];
-//                currentUser[@"fbProfilePicLargeUrl"] = profilePicLargeUrl;
-//            
-//                NSString* profilePicSmallUrl = [NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=small&return_ssl_resources=1", fbId];
-//                currentUser[@"fbProfilePicSmallUrl"] = profilePicSmallUrl;
-//          
-//                NSString* profilePicSquareUrl = [NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=square&return_ssl_resources=1", fbId];
-//                currentUser[@"fbProfilePicSquareUrl"] = profilePicSquareUrl;
-//            
-//                NSString* profilePicMediumUrl = [NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=normal&return_ssl_resources=1", fbId];
-//                currentUser[@"profilePicMediumUrl"] = profilePicMediumUrl;
+                
+                // get profile picture
+                [self retrieveAndSaveProfileImageIfDoesntExist:400];
+                
+                // save a smaller image too
+                [self retrieveAndSaveProfileImageIfDoesntExist:140];
             }
         
             if(name != nil)
@@ -236,6 +219,88 @@
         }
     }];
 }
+
+-(void)retrieveAndSaveProfileImageIfDoesntExist:(int)imageWidth
+{
+    // see if the user already has the object
+    NSString* userPointerName = [NSString stringWithFormat:@"userPhoto%dObjectId", imageWidth];
+    
+    if([PFUser currentUser][userPointerName] != nil)
+    {
+        // already has uploaded image
+        NSLog(@"User already has image for '%@'", userPointerName);
+        return;
+    }
+    
+    // get profile picture
+    NSString* profilePicUrlString = [NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?width=%d&height=%d&return_ssl_resources=1", [PFUser currentUser][@"fbId"], imageWidth, imageWidth];
+    
+    UIImage* image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString: profilePicUrlString]]];
+    
+    // Resize image
+    UIGraphicsBeginImageContext(CGSizeMake(imageWidth, imageWidth));
+    [image drawInRect: CGRectMake(0, 0, imageWidth, imageWidth)];
+    UIImage *smallImage = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    
+    // Upload image
+    NSData *imageData = UIImageJPEGRepresentation(smallImage, 0.05f);
+    
+    [self uploadImage:imageData withClassName:[NSString stringWithFormat:@"UserPhoto%d", imageWidth] withUserPointerName:[NSString stringWithFormat:@"userPhoto%dObjectId", imageWidth]];
+}
+
+- (void)uploadImage:(NSData *)imageData withClassName:(NSString*)className withUserPointerName:(NSString*)userPointerName
+{
+    PFFile *imageFile = [PFFile fileWithName:@"Image.jpg" data:imageData];
+    
+    // Save PFFile
+    [imageFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (!error) {
+            
+            // Create a PFObject around a PFFile and associate it with the current user
+            PFObject *userPhoto = [PFObject objectWithClassName:className];
+            [userPhoto setObject:imageFile forKey:@"imageFile"];
+            
+            // Set the access control list to current user for security purposes
+            
+            //userPhoto.ACL = [PFACL ACLWithUser:[PFUser currentUser]];
+            
+            PFUser *user = [PFUser currentUser];
+            [userPhoto setObject:user forKey:@"user"];
+            
+            [userPhoto saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                if (!error) {
+                    user[userPointerName] = userPhoto.objectId;
+                    [user save];
+                    [user saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                        if (!error) {
+                            //        [self refresh:nil];
+                        }
+                        else{
+                            // Log details of the failure
+                            NSLog(@"Error: %@ %@", error, [error userInfo]);
+                        }
+                    }];
+            //        [self refresh:nil];
+                }
+                else{
+                    // Log details of the failure
+                    NSLog(@"Error: %@ %@", error, [error userInfo]);
+                }
+            }];
+            
+
+
+        }
+        else{
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+    } progressBlock:^(int percentDone) {
+        // Update your progress spinner here. percentDone will be between 0 and 100.
+    }];
+}
+
 
 - (BOOL)prefersStatusBarHidden {
     return YES;

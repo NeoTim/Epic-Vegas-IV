@@ -83,15 +83,7 @@
 		53D2D19519917C62007197F6 /* line__0000s_0104_user@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53D2D19419917C62007197F6 /* line__0000s_0104_user@2x.png */; };
 		53D2D19719917C72007197F6 /* line__0000s_0092_map@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53D2D19619917C72007197F6 /* line__0000s_0092_map@2x.png */; };
 		53D2D19919918563007197F6 /* marquee-las-vegas@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 53D2D19819918563007197F6 /* marquee-las-vegas@2x.jpg */; };
-		53D2D19A1991876C007197F6 /* bold_dot_digital-7.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 530BED2919904DCB00C5FDAB /* bold_dot_digital-7.ttf */; };
-		53D2D19F1991885C007197F6 /* triple_dot_digital-7.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 53D2D19B1991885C007197F6 /* triple_dot_digital-7.ttf */; };
-		53D2D1A01991885C007197F6 /* enhanced_dot_digital-7.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 53D2D19C1991885C007197F6 /* enhanced_dot_digital-7.ttf */; };
-		53D2D1A11991885C007197F6 /* led_counter-7.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 53D2D19D1991885C007197F6 /* led_counter-7.ttf */; };
-		53D2D1A21991885C007197F6 /* modern_dot_digital-7.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 53D2D19E1991885C007197F6 /* modern_dot_digital-7.ttf */; };
 		53D2D1A619918D75007197F6 /* DS-DIGIT.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 53D2D1A519918D75007197F6 /* DS-DIGIT.ttf */; };
-		53D2D1AC19918F71007197F6 /* ATOMICCLOCKRADIO.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 53D2D1A919918F71007197F6 /* ATOMICCLOCKRADIO.ttf */; };
-		53D2D1AD19918F71007197F6 /* the_vandor_spot.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 53D2D1AA19918F71007197F6 /* the_vandor_spot.ttf */; };
-		53D2D1B019919136007197F6 /* advanced_dot_digital-7.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 53D2D1AF19919136007197F6 /* advanced_dot_digital-7.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,7 +115,6 @@
 		530BED1819904C7700C5FDAB /* Epic_Vegas_IVTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Epic_Vegas_IVTests.m; sourceTree = "<group>"; };
 		530BED2519904DA800C5FDAB /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		530BED2719904DBC00C5FDAB /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
-		530BED2919904DCB00C5FDAB /* bold_dot_digital-7.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "bold_dot_digital-7.ttf"; sourceTree = "<group>"; };
 		530BED2A19904EA700C5FDAB /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		530BED2C19904EAE00C5FDAB /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		530BED2E19904EB300C5FDAB /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
@@ -195,14 +186,7 @@
 		53D2D19419917C62007197F6 /* line__0000s_0104_user@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "line__0000s_0104_user@2x.png"; sourceTree = "<group>"; };
 		53D2D19619917C72007197F6 /* line__0000s_0092_map@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "line__0000s_0092_map@2x.png"; sourceTree = "<group>"; };
 		53D2D19819918563007197F6 /* marquee-las-vegas@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "marquee-las-vegas@2x.jpg"; sourceTree = "<group>"; };
-		53D2D19B1991885C007197F6 /* triple_dot_digital-7.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "triple_dot_digital-7.ttf"; sourceTree = "<group>"; };
-		53D2D19C1991885C007197F6 /* enhanced_dot_digital-7.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "enhanced_dot_digital-7.ttf"; sourceTree = "<group>"; };
-		53D2D19D1991885C007197F6 /* led_counter-7.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "led_counter-7.ttf"; sourceTree = "<group>"; };
-		53D2D19E1991885C007197F6 /* modern_dot_digital-7.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "modern_dot_digital-7.ttf"; sourceTree = "<group>"; };
 		53D2D1A519918D75007197F6 /* DS-DIGIT.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DS-DIGIT.ttf"; sourceTree = "<group>"; };
-		53D2D1A919918F71007197F6 /* ATOMICCLOCKRADIO.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ATOMICCLOCKRADIO.ttf; sourceTree = "<group>"; };
-		53D2D1AA19918F71007197F6 /* the_vandor_spot.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = the_vandor_spot.ttf; sourceTree = "<group>"; };
-		53D2D1AF19919136007197F6 /* advanced_dot_digital-7.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "advanced_dot_digital-7.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -406,15 +390,7 @@
 		530BED2419904CE600C5FDAB /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				53D2D1AF19919136007197F6 /* advanced_dot_digital-7.ttf */,
-				53D2D1A919918F71007197F6 /* ATOMICCLOCKRADIO.ttf */,
-				53D2D1AA19918F71007197F6 /* the_vandor_spot.ttf */,
 				53D2D1A519918D75007197F6 /* DS-DIGIT.ttf */,
-				53D2D19B1991885C007197F6 /* triple_dot_digital-7.ttf */,
-				53D2D19C1991885C007197F6 /* enhanced_dot_digital-7.ttf */,
-				53D2D19D1991885C007197F6 /* led_counter-7.ttf */,
-				53D2D19E1991885C007197F6 /* modern_dot_digital-7.ttf */,
-				530BED2919904DCB00C5FDAB /* bold_dot_digital-7.ttf */,
 			);
 			name = Fonts;
 			sourceTree = "<group>";
@@ -495,18 +471,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				530BED4119904FA500C5FDAB /* Main.storyboard in Resources */,
-				53D2D1AC19918F71007197F6 /* ATOMICCLOCKRADIO.ttf in Resources */,
 				53966CE41992F68900E822DE /* person@2x.png in Resources */,
 				53165F5B1991C9FB0014695B /* full__0000s_0104_user@2x.png in Resources */,
-				53D2D1A01991885C007197F6 /* enhanced_dot_digital-7.ttf in Resources */,
 				53966CE31992F68900E822DE /* person.png in Resources */,
-				53D2D1B019919136007197F6 /* advanced_dot_digital-7.ttf in Resources */,
 				53966CE81992F6C700E822DE /* full__0000s_0092_map.png in Resources */,
-				53D2D19F1991885C007197F6 /* triple_dot_digital-7.ttf in Resources */,
 				53D2D19519917C62007197F6 /* line__0000s_0104_user@2x.png in Resources */,
 				53966CCC1992DF7300E822DE /* Add Red Icon@2x.png in Resources */,
 				53165F741991E1B70014695B /* full__0000s_0105_mail@2x.png in Resources */,
-				53D2D19A1991876C007197F6 /* bold_dot_digital-7.ttf in Resources */,
 				53A19F9C1994846E008DF739 /* Location@2x.png in Resources */,
 				53966CCA1992D26700E822DE /* Add Full Icon@2x.png in Resources */,
 				53A19F9219948176008DF739 /* Settings@2x.png in Resources */,
@@ -526,10 +497,8 @@
 				53966CD41992F5C800E822DE /* Subscriptions.png in Resources */,
 				53966CDC1992F60700E822DE /* action.png in Resources */,
 				53966CEA1992F6DE00E822DE /* quote.png in Resources */,
-				53D2D1A11991885C007197F6 /* led_counter-7.ttf in Resources */,
 				53D2D1A619918D75007197F6 /* DS-DIGIT.ttf in Resources */,
 				53165F701991E15B0014695B /* full__0000s_0032_home@2x.png in Resources */,
-				53D2D1A21991885C007197F6 /* modern_dot_digital-7.ttf in Resources */,
 				53966CDE1992F60C00E822DE /* action@2x.png in Resources */,
 				53D2D19119906597007197F6 /* FB-f-Logo__white_50@2x.png in Resources */,
 				53966CD11992F5C800E822DE /* 15-tags.png in Resources */,
@@ -537,7 +506,6 @@
 				53A19F7819943C68008DF739 /* Location 60@2x.png in Resources */,
 				53A19F7619943B4F008DF739 /* Camera 60@2x.png in Resources */,
 				53D2D19919918563007197F6 /* marquee-las-vegas@2x.jpg in Resources */,
-				53D2D1AD19918F71007197F6 /* the_vandor_spot.ttf in Resources */,
 				53966CD21992F5C800E822DE /* 28-star.png in Resources */,
 				530BED0619904C7700C5FDAB /* Images.xcassets in Resources */,
 				53A19F9E199484DD008DF739 /* Map@2x.png in Resources */,
