@@ -195,6 +195,19 @@
             if(fbId != nil)
             {
                 currentUser[@"fbId"] = fbId;
+//             
+//                // also save profile pic url
+//                NSString* profilePicLargeUrl = [NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=large&return_ssl_resources=1", fbId];
+//                currentUser[@"fbProfilePicLargeUrl"] = profilePicLargeUrl;
+//            
+//                NSString* profilePicSmallUrl = [NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=small&return_ssl_resources=1", fbId];
+//                currentUser[@"fbProfilePicSmallUrl"] = profilePicSmallUrl;
+//          
+//                NSString* profilePicSquareUrl = [NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=square&return_ssl_resources=1", fbId];
+//                currentUser[@"fbProfilePicSquareUrl"] = profilePicSquareUrl;
+//            
+//                NSString* profilePicMediumUrl = [NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=normal&return_ssl_resources=1", fbId];
+//                currentUser[@"profilePicMediumUrl"] = profilePicMediumUrl;
             }
         
             if(name != nil)

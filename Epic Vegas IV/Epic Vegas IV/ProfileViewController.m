@@ -27,10 +27,41 @@
 {
     [super viewDidLoad];
     
-    // Do any additional setup after loading the view.    
-    _fbProfilePicView.profileID = [PFUser currentUser][@"fbId"];
+    
+    NSString* profilePicUrlString = [NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?width=400&height=400&return_ssl_resources=1", [PFUser currentUser][@"fbId"]];
+
+    NSURL* profilePicUrl = [NSURL URLWithString:profilePicUrlString];
+    
+    [self downloadImageWithURL:profilePicUrl completionBlock:^(BOOL succeeded, UIImage *image) {
+        if (succeeded) {
+            _fbProfilePicView.image = image;
+            _fbProfilePicView.clipsToBounds = YES;
+        }
+    }];
+    
     _fbProfilePicView.layer.cornerRadius = _fbProfilePicView.layer.frame.size.height / 2;
+    
+    // Do any additional setup after loading the view.
+    //_fbProfilePicView.profileID = [PFUser currentUser][@"fbId"];
+    
     _userNameLabel.text = [PFUser currentUser][@"fbName"];
+}
+
+// http://natashatherobot.com/ios-how-to-download-images-asynchronously-make-uitableview-scroll-fast/
+- (void)downloadImageWithURL:(NSURL *)url completionBlock:(void (^)(BOOL succeeded, UIImage *image))completionBlock
+{
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url];
+    [NSURLConnection sendAsynchronousRequest:request
+                                       queue:[NSOperationQueue mainQueue]
+                           completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+                               if ( !error )
+                               {
+                                   UIImage *image = [[UIImage alloc] initWithData:data];
+                                   completionBlock(YES,image);
+                               } else{
+                                   completionBlock(NO,nil);
+                               }
+                           }];
 }
 
 - (void)didReceiveMemoryWarning

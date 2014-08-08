@@ -12,7 +12,7 @@
 
 @interface ProfileViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet FBProfilePictureView *fbProfilePicView;
+@property (weak, nonatomic) IBOutlet UIImageView *fbProfilePicView;
 
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
 
