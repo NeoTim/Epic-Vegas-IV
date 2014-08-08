@@ -13,10 +13,12 @@
 
 
 @property (weak, nonatomic) IBOutlet UITextView *messageTextView;
-@property (weak, nonatomic) IBOutlet UIToolbar *toolbar;
+@property (strong, nonatomic) IBOutlet UIToolbar *toolbar;
 - (IBAction)cancelButtonPressed:(id)sender;
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
 @property (weak, nonatomic) IBOutlet UITextField *placeholderTextField;
-@property (weak, nonatomic) IBOutlet UILabel *wordCountLabel;
+@property (weak, nonatomic) IBOutlet UILabel *characterCountLabel;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *postButton;
+- (IBAction)postButtonPressed:(id)sender;
 
 @end
