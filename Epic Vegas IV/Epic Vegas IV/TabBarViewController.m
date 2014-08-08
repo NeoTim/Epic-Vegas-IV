@@ -25,6 +25,7 @@ UIImageView* centerButtonRedImageView;
 
 UIImageView* blurredImageView;
 UIImageView* tintView;
+UIImagePickerController *photoPicker;
 
 BOOL isAddButtonPressed = NO;
 
@@ -40,6 +41,7 @@ UIButton *buttonBorder1;
 UIButton *buttonBorder2;
 UIButton *buttonBorder3;
 float addButtonActionBorderWidth = 10;
+UIButton* selectExistingPhotoButton;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -290,9 +292,9 @@ float addButtonActionBorderWidth = 10;
     button2.frame = rect;
     button3.frame = rect;
     
-    [button1 addTarget:self action:@selector(someButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
-    [button2 addTarget:self action:@selector(someButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
-    [button3 addTarget:self action:@selector(someButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [button1 addTarget:self action:@selector(locationButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [button2 addTarget:self action:@selector(cameraButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    [button3 addTarget:self action:@selector(writeTextButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     
     
     
@@ -333,9 +335,42 @@ float addButtonActionBorderWidth = 10;
     
 }
 
-- (IBAction)someButtonClicked:(id)sender {
-
+- (IBAction)locationButtonClicked:(id)sender {
+    [self handleAddCompleted];
     
+    
+}
+
+- (IBAction)cameraButtonClicked:(id)sender {
+    
+    photoPicker = [[UIImagePickerController alloc] init];
+    photoPicker.delegate = self;
+    photoPicker.allowsEditing = YES;
+    photoPicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    
+    float screenHeight = self.view.frame.size.height;
+    float screenWidth = self.view.frame.size.width;
+
+    // add button to select existing photo
+    selectExistingPhotoButton = [[UIButton alloc] initWithFrame:CGRectMake(75, 5,30,30)];
+    selectExistingPhotoButton.backgroundColor = [UIColor orangeColor];
+    [photoPicker.view addSubview:selectExistingPhotoButton];
+    [selectExistingPhotoButton addTarget:self action:@selector(selectExistingPhotoButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+
+    [self handleAddCompleted];
+
+    [self presentViewController:photoPicker animated:YES completion:NULL];
+}
+
+- (IBAction)addTextButtonClicked:(id)sender {
+    [self handleAddCompleted];
+
+}
+
+-(IBAction)selectExistingPhotoButtonClicked:(id)sender
+{
+    selectExistingPhotoButton.alpha = 0;
+    photoPicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
 }
 
 // Create a custom UIButton and add it to the center of our tab bar
@@ -370,6 +405,24 @@ float addButtonActionBorderWidth = 10;
     [self.tabBar addSubview:centerButtonRedImageView];
     return button;
 }
+
+#pragma mark - Image Picker Controller delegate methods
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    
+    UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
+    //self.imageView.image = chosenImage;
+    
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+    
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+    
+}
+
 
 /*
 #pragma mark - Navigation

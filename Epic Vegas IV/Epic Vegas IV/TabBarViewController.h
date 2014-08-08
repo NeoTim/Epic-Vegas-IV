@@ -11,7 +11,7 @@
 #import "AddViewController.h"
 #import "UIImage+ImageEffects.h"
 
-@interface TabBarViewController : UITabBarController <UITabBarControllerDelegate>
+@interface TabBarViewController : UITabBarController <UITabBarControllerDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *centerButton;
 
