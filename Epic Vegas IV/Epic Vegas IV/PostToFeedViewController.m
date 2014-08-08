@@ -16,7 +16,7 @@
 
 @implementation PostToFeedViewController
 
-int characterLimit = 150;
+NSInteger characterLimit = 150;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -59,7 +59,6 @@ int characterLimit = 150;
     //_profileImageView.layer.cornerRadius = _profileImageView.layer.frame.size.height / 2;
     
     [self updateCharacterCountString];
-    [self initializeToolbar];
     
     // observe keyboard hide and show notifications to resize the text view appropriately
     [[NSNotificationCenter defaultCenter] addObserver:self
@@ -73,12 +72,19 @@ int characterLimit = 150;
  
     // start editing text
     [_messageTextView becomeFirstResponder];
+    
+    [self initMessageAccessoryView];
+    
 }
 
--(void)initializeToolbar
+-(void)initMessageAccessoryView
 {
-    _toolbar = [[UIToolbar alloc] init];
-    _toolbar.backgroundColor = [UIColor redColor];
+    UIToolbar* numberToolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, 320, 50)];
+    //numberToolbar.barStyle = UIBarStyleBlackTranslucent;
+    numberToolbar.items = [NSArray arrayWithObjects:
+                           [[UIBarButtonItem alloc]initWithTitle:@"Done" style:UIBarButtonItemStyleDone target:self action:@selector(done:)],nil];
+    [numberToolbar sizeToFit];
+    _messageTextView.inputAccessoryView = numberToolbar;
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -93,11 +99,6 @@ int characterLimit = 150;
 
 
 - (BOOL)textViewShouldEndEditing:(UITextView *)aTextView {
-    // note: you can create the accessory view programmatically (in code), or from the storyboard
-    if (_messageTextView.inputAccessoryView == nil) {
-        
-        _messageTextView.inputAccessoryView = _toolbar;  // use what's in the storyboard
-    }
     [aTextView resignFirstResponder];
     return YES;
 }
@@ -114,6 +115,11 @@ int characterLimit = 150;
 }
 
 - (void)textViewDidBeginEditing:(UITextView *)textView {
+    
+    if (!_messageTextView.inputAccessoryView) {
+        
+    //    _messageTextView.inputAccessoryView = [self keyboardToolBar];  // use what's in the storyboard
+    }
     
     [self adjustSelection:textView];
 }

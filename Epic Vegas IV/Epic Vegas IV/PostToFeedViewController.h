@@ -1,4 +1,4 @@
-//
+	//
 //  PostToFeedViewController.h
 //  Epic Vegas IV
 //
@@ -13,8 +13,9 @@
 
 
 @property (weak, nonatomic) IBOutlet UITextView *messageTextView;
-@property (strong, nonatomic) IBOutlet UIToolbar *toolbar;
+
 - (IBAction)cancelButtonPressed:(id)sender;
+
 @property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
 @property (weak, nonatomic) IBOutlet UITextField *placeholderTextField;
 @property (weak, nonatomic) IBOutlet UILabel *characterCountLabel;
