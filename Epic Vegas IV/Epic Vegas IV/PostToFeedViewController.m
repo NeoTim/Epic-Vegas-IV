@@ -155,11 +155,7 @@ NSInteger characterLimit = 300;
 
 -(void)updateCharacterCountString
 {
-    NSString* text = _messageTextView.text;
-    while([text characterAtIndex:text.length - 1] == ' ')
-    {
-        text = [text substringToIndex:text.length - 1];
-    }
+    NSString* text = [self getTruncatedText];
     
     _characterCountLabel.text = [NSString stringWithFormat:@"%d", characterLimit - text.length];
     
@@ -178,6 +174,16 @@ NSInteger characterLimit = 300;
         _postButton.enabled = YES;
         _characterCountLabel.textColor = [UIColor blackColor];
     }
+}
+
+-(NSString*)getTruncatedText
+{
+    NSString* text = _messageTextView.text;
+    while([text characterAtIndex:text.length - 1] == ' ')
+    {
+        text = [text substringToIndex:text.length - 1];
+    }
+    return  text;
 }
 
 - (void)didReceiveMemoryWarning
@@ -206,8 +212,44 @@ NSInteger characterLimit = 300;
 }
 
 - (IBAction)postButtonPressed:(id)sender {
+    // show spinner
+    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc]initWithFrame:CGRectMake(self.view.frame.size.width / 2 - 40,self.view.frame.size.height / 2 - 125,80,80)];
+
+    //spinner.color = [UIColor darkGrayColor];
+    spinner.backgroundColor = [UIColor darkGrayColor];
+    spinner.layer.cornerRadius = 5;
+    spinner.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
+    [spinner startAnimating];
+    [self.view addSubview:spinner];
     
-      [_messageTextView resignFirstResponder];
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        // lots of code run in the background
+        
+        PFObject *post = [PFObject objectWithClassName:@"Post"];
+        [post setObject:[self getTruncatedText] forKey:@"message"];
+        PFUser *user = [PFUser currentUser];
+        [post setObject:user forKey:@"user"];
+        [post save];
+        
+        [post saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            if (!error) {
+                
+            }
+            else{
+                // Log details of the failure
+                NSLog(@"Error: %@ %@", error, [error userInfo]);
+            }
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                // stop and remove the spinner on the background when done
+                [spinner removeFromSuperview];
+                
+                // dismiss view
+                [self dismissViewControllerAnimated:YES completion:nil];
+            });
+        }];
+
+    });
 }
 
 
