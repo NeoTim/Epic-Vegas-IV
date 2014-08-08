@@ -11,6 +11,8 @@
 
 @interface TabBarViewController ()
 
+@property (strong, nonatomic) UILabel* shareContentLabel;
+
 @end
 
 @implementation TabBarViewController
@@ -35,7 +37,6 @@ float circleButtonImageRadius = 30;
 UIButton *button1;
 UIButton *button2;
 UIButton *button3;
-
 
 UIButton *buttonBorder1;
 UIButton *buttonBorder2;
@@ -107,7 +108,7 @@ UIButton* selectExistingPhotoButton;
         self.modalPresentationStyle = UIModalPresentationCurrentContext;
         self.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
         
-        [UIView animateWithDuration:1 delay:0 usingSpringWithDamping:1.f initialSpringVelocity:1.f options:UIViewAnimationOptionCurveLinear animations:^{blurredImageView.alpha = 1; tintView.alpha = .6f;} completion:nil];
+        [UIView animateWithDuration:1 delay:0 usingSpringWithDamping:1.f initialSpringVelocity:1.f options:UIViewAnimationOptionCurveLinear animations:^{blurredImageView.alpha = 1; tintView.alpha = .85f;} completion:nil];
         
         
         // rotate button now so that + becomes x and change color to red
@@ -207,14 +208,17 @@ UIButton* selectExistingPhotoButton;
 
 -(void)showAddActionButtons
 {
+    float screenWidth = self.view.frame.size.width;
+    float screenHeight = self.view.frame.size.height;
+    float imageWidth = circleButtonImageRadius * 2;
+    float imageHeight = circleButtonImageRadius * 2;
+    float bottom = 150;
+    
+    
     // Animate Position
     [UIView animateWithDuration:0.25 animations:^{
-        float screenWidth = self.view.frame.size.width;
-        float screenHeight = self.view.frame.size.height;
-        float imageWidth = circleButtonImageRadius * 2;
-        float imageHeight = circleButtonImageRadius * 2;
-        
-        float bottom = 150;
+      
+        _shareContentLabel.alpha = 1;
         
         button1.alpha = 1;
         button2.alpha = 1;
@@ -274,6 +278,8 @@ UIButton* selectExistingPhotoButton;
         buttonBorder2.alpha = 0;
         buttonBorder3.alpha = 0;
 
+        _shareContentLabel.alpha = 0;
+        
     } completion:^(BOOL finished) {
         //self.buttonsExpanded = NO;
     }];
@@ -357,6 +363,19 @@ UIButton* selectExistingPhotoButton;
     [self.view addSubview:button2];
     [self.view addSubview:button3];
     
+    
+    float screenWidth = self.view.frame.size.width;
+    float imageWidth = circleButtonImageRadius * 2;
+    float imageHeight = circleButtonImageRadius * 2;
+    float bottom = 150;
+
+    _shareContentLabel = [[UILabel alloc] initWithFrame:CGRectMake((0), (screenHeight - bottom - 135), screenWidth, 50)];
+    _shareContentLabel.textAlignment = NSTextAlignmentCenter;
+    _shareContentLabel.alpha = 0;
+    _shareContentLabel.textColor = borderColor;
+    _shareContentLabel.text = @"What would you like to post?";
+    _shareContentLabel.font = [UIFont boldSystemFontOfSize:17];
+    [self.view addSubview:_shareContentLabel];
 }
 
 - (IBAction)locationButtonClicked:(id)sender {
