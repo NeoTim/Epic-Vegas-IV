@@ -7,11 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
 
-@interface PostToFeedViewController : UIViewController
+@interface PostToFeedViewController : UIViewController <UITextViewDelegate>
 
 
-@property (weak, nonatomic) IBOutlet UITextField *messageTextField;
+@property (weak, nonatomic) IBOutlet UITextView *messageTextView;
 @property (weak, nonatomic) IBOutlet UIToolbar *toolbar;
+- (IBAction)cancelButtonPressed:(id)sender;
+@property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
+@property (weak, nonatomic) IBOutlet UITextField *placeholderTextField;
+@property (weak, nonatomic) IBOutlet UILabel *wordCountLabel;
 
 @end

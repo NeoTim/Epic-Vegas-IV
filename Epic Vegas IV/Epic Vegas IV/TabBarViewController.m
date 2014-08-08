@@ -370,20 +370,23 @@ UIButton* selectExistingPhotoButton;
     photoPicker = [[UIImagePickerController alloc] init];
     photoPicker.delegate = self;
     photoPicker.allowsEditing = YES;
+   
     [self handleAddCompleted];
-
+    photoPicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    [self presentViewController:photoPicker animated:YES completion:NULL];
     
     
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil
-                                                             delegate:self
-                                                    cancelButtonTitle:@"Cancel"
-                                               destructiveButtonTitle:nil
-                                                    otherButtonTitles:@"Take photo", @"Choose Existing", nil];
-    actionSheet.tag = 7432;
-    [actionSheet showInView:self.view];
+    //UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil
+    //                                                         delegate:self
+    //                                                cancelButtonTitle:@"Cancel"
+    //                                           destructiveButtonTitle:nil
+    //                                                otherButtonTitles:@"Take photo", @"Choose Existing", nil];
+    //actionSheet.tag = 7432;
+    //[actionSheet showInView:self.view];
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
     // action sheet for camera button press
     if(actionSheet.tag == 7432)
     {
@@ -404,9 +407,10 @@ UIButton* selectExistingPhotoButton;
 - (IBAction)writeTextButtonClicked:(id)sender {
     [self handleAddCompleted];
 
-    //UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
     
-    //[self presentViewController:[mainStoryboard instantiateViewControllerWithIdentifier:@"Create Post Navigation Controller"] animated:YES completion:NULL];
+    
+    [self presentViewController:[mainStoryboard instantiateViewControllerWithIdentifier:@"Create Post Navigation Controller"] animated:YES completion:NULL];
 }
 
 -(IBAction)selectExistingPhotoButtonClicked:(id)sender

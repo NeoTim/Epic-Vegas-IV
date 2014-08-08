@@ -292,22 +292,45 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="share something..." minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uCT-E2-GqL">
-                                <rect key="frame" x="103" y="79" width="182" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MXr-WV-H0k">
-                                <rect key="frame" x="10" y="79" width="85" height="85"/>
+                                <rect key="frame" x="10" y="79" width="70" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" keyboardDismissMode="onDrag" translatesAutoresizingMaskIntoConstraints="NO" id="Ciz-Tu-SCk">
+                                <rect key="frame" x="88" y="79" width="192" height="228"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" enablesReturnKeyAutomatically="YES"/>
+                                <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES"/>
+                            </textView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Having fun?" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lHk-Nx-fo0">
+                                <rect key="frame" x="92" y="81" width="187" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" enablesReturnKeyAutomatically="YES"/>
+                            </textField>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0/200" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jxy-Br-cor">
+                                <rect key="frame" x="13" y="157" width="67" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Post To Feed" id="gZA-Wo-lKx"/>
+                    <navigationItem key="navigationItem" title="Post To Feed" id="gZA-Wo-lKx">
+                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="cancel" id="Ogm-I1-92i">
+                            <connections>
+                                <action selector="cancelButtonPressed:" destination="MbH-Cg-Oi8" id="tzi-uP-32v"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
-                        <outlet property="messageTextField" destination="uCT-E2-GqL" id="C5L-8B-heC"/>
+                        <outlet property="messageTextView" destination="Ciz-Tu-SCk" id="bbS-wa-ENP"/>
+                        <outlet property="placeholderTextField" destination="lHk-Nx-fo0" id="PMF-Ws-WaY"/>
+                        <outlet property="profileImageView" destination="MXr-WV-H0k" id="HCd-gi-xe0"/>
+                        <outlet property="wordCountLabel" destination="jxy-Br-cor" id="wZU-g4-C4R"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lrk-vv-lje" userLabel="First Responder" sceneMemberID="firstResponder"/>
