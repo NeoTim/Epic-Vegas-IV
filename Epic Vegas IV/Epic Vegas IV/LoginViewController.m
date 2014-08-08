@@ -7,6 +7,7 @@
 //
 
 #import "LoginViewController.h"
+#import "AppDelegate.h"
 
 @interface LoginViewController ()
 
@@ -47,11 +48,8 @@
     _ivLabel.font = [UIFont fontWithName:fontName size:fontSize];
 
     _epicLabel.layer.masksToBounds = NO;
-    
     _vegasLabel.layer.masksToBounds = NO;
-    
     _ivLabel.layer.masksToBounds = NO;
-    
 }
 
 -(void)printFonts
@@ -119,16 +117,109 @@
         } else if (user.isNew) {
             NSLog(@"New user with facebook signed up and logged in! Id=%@,  User=%@, Password=%@, Email=%@", user.objectId, user.username, user.password, user.email);
 
-            // TODO - show them the access code page, store access code inside the database
-            
+            [self fetchUserDataFromFacebook];
             [self performSegueWithIdentifier:@"loggedInSegue" sender:self];
             //[self.navigationController pushViewController:[[UserDetailsViewController alloc] initWithStyle:UITableViewStyleGrouped] animated:YES];
         } else {
             NSLog(@"User with facebook logged in!  Id=%@,  User=%@, Password=%@, Email=%@", user.objectId, user.username, user.password, user.email);
 
+            [self fetchUserDataFromFacebook];
             [self performSegueWithIdentifier:@"loggedInSegue" sender:self];
                         
             //[self.navigationController pushViewController:[[UserDetailsViewController alloc] initWithStyle:UITableViewStyleGrouped] animated:YES];
+        }
+    }];
+}
+
+-(void)fetchUserDataFromFacebook
+{
+    // Create request for user's Facebook data
+    FBRequest *request = [FBRequest requestForMe];
+    
+//    // Send request to Facebook
+//    [request startWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+//        if (!error) {
+//            // result is a dictionary with the user's Facebook data
+//            NSDictionary *userData = (NSDictionary *)result;
+//            
+//            NSString *facebookID = userData[@"id"];
+//            NSString *name = userData[@"name"];
+//            NSString *location = userData[@"location"][@"name"];
+//            NSString *gender = userData[@"gender"];
+//            NSString *birthday = userData[@"birthday"];
+//            NSString *relationship = userData[@"relationship_status"];
+//            
+//            NSURL *pictureURL = [NSURL URLWithString:[NSString stringWithFormat:@"https://graph.facebook.com/%@/picture?type=large&return_ssl_resources=1", facebookID]];
+//                        
+//            //_fbProfilePicView.profileID = facebookID;
+//            //_userNameLabel.text = name;
+//            
+//            
+//            //UIImage *im = [UIImage imageWithData: [NSData dataWithContentsOfURL:pictureURL]];
+//            
+//            PFUser *currentUser = [PFUser currentUser];
+//            currentUser[@"fbId"] = facebookID;
+//            currentUser[@"fbGender"] = gender;
+//            currentUser[@"fbName"] = name;
+//            currentUser[@"fbBirthday"] = birthday;
+//            currentUser[@"fbRelationship"] = relationship;
+//            currentUser[@"fbLocation"] = location;
+//            currentUser[@"fbProfilePicUrl"] = pictureURL;
+//            [currentUser saveInBackground];
+//        }
+//    }];
+    NSLog(@"Fetching user info from Facebook...");
+    [FBRequestConnection startForMeWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+        if (!error) {
+            // Store the current user's Facebook ID on the user
+            
+            NSDictionary *userData = (NSDictionary *)result;
+            
+//            NSString* fbId = [result objectForKey:@"id"];
+//            NSString* name =[result objectForKey:@"name"];
+//            NSString* gender =[result objectForKey:@"gender"];
+//            NSString* birthday =[result objectForKey:@"birthday"];
+//            NSString* relationship =[result objectForKey:@"relationship"];
+            
+            NSString* fbId = userData[@"id"];
+            NSString* name =userData[@"name"];
+            NSString* gender =userData[@"gender"];
+            NSString* birthday =userData[@"birthday"];
+            NSString* relationship =userData[@"relationship"];
+            NSString* email =userData[@"email"];
+            NSString* phone =userData[@"phone"];
+            
+
+            PFUser* currentUser = [PFUser currentUser];
+
+            if(fbId != nil)
+            {
+                currentUser[@"fbId"] = fbId;
+            }
+        
+            if(name != nil)
+                currentUser[@"fbName"] = name;
+            
+            if(gender != nil)
+                currentUser[@"fbGender"] = gender;
+           
+            if(birthday != nil)
+                currentUser[@"fbBirthday"] = birthday;
+            
+            if(relationship != nil)
+                currentUser[@"fbRelationship"] = relationship;
+            
+            if(userData[@"location"] != nil && userData[@"location"][@"name"] != nil)
+                currentUser[@"fbLocation"] = userData[@"location"][@"name"];
+          
+            if(email != nil)
+                currentUser[@"fbEmail"] = email;
+            
+            if(phone != nil)
+                currentUser[@"fbPhone"] = phone;
+            
+            NSLog(@"Saving user:%@", [PFUser currentUser]);
+            [[PFUser currentUser] saveInBackground];
         }
     }];
 }

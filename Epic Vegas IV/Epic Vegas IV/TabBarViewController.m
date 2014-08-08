@@ -380,10 +380,9 @@ UIButton* selectExistingPhotoButton;
 - (IBAction)writeTextButtonClicked:(id)sender {
     [self handleAddCompleted];
 
-    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main"
-                                                             bundle: nil];
+    //UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
     
-    [self presentViewController:[mainStoryboard instantiateViewControllerWithIdentifier:@"Create Post Navigation Controller"] animated:YES completion:NULL];    
+    //[self presentViewController:[mainStoryboard instantiateViewControllerWithIdentifier:@"Create Post Navigation Controller"] animated:YES completion:NULL];
 }
 
 -(IBAction)selectExistingPhotoButtonClicked:(id)sender

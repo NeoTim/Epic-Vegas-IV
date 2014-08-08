@@ -10,6 +10,7 @@
 #import <FacebookSDK/FacebookSDK.h>
 #import <Parse/Parse.h>
 #import <QuartzCore/QuartzCore.h>
+#import "LoggedInUserData.h"
 
 @interface LoginViewController : UIViewController <FBLoginViewDelegate>
 
