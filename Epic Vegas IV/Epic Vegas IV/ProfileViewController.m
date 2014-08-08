@@ -81,4 +81,44 @@
 }
 */
 
+- (IBAction)logOutButtonPressed:(id)sender {
+    
+    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Are you sure you want to log out?"
+                                                             delegate:self
+                                                    cancelButtonTitle:@"Cancel"
+                                               destructiveButtonTitle:nil
+                                                    otherButtonTitles:@"Log Out", nil];
+    actionSheet.tag = 7431;
+    [actionSheet showInView:self.view];
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    // action sheet for logout confirmation
+    if(actionSheet.tag == 7431)
+    {
+        if (buttonIndex == 0) {
+            // log out
+            NSLog(@"Logging out");
+
+            [PFUser logOut];
+     
+            // show login view
+            UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main"
+                                                                     bundle: nil];
+          
+            UIViewController* loginViewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"loginViewController"];
+            
+            [UIView transitionFromView:self.view.window.rootViewController.view
+                                toView:loginViewController.view
+                              duration:1.f
+                               options:UIViewAnimationOptionTransitionCrossDissolve
+                            completion:^(BOOL finished){
+                                self.view.window.rootViewController = loginViewController;
+                            }];
+        }
+    }
+}
+
+- (IBAction)shareLocationSwitchChanged:(id)sender {
+}
 @end

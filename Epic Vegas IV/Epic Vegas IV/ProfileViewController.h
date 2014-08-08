@@ -10,10 +10,18 @@
 #import <FacebookSDK/FacebookSDK.h>
 #import <Parse/Parse.h>
 
-@interface ProfileViewController : UIViewController
+@interface ProfileViewController : UIViewController <UIActionSheetDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *fbProfilePicView;
 
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
+
+@property (weak, nonatomic) IBOutlet UIButton *logOutButton;
+
+- (IBAction)logOutButtonPressed:(id)sender;
+
+@property (weak, nonatomic) IBOutlet UISwitch *shareLocationSwitch;
+
+- (IBAction)shareLocationSwitchChanged:(id)sender;
 
 @end
