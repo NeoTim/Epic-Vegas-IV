@@ -87,7 +87,7 @@ NSInteger characterLimit = 150;
     cameraBarButton.tintColor = [UIColor darkGrayColor];
     
     UIBarButtonItem* locationButton =[[UIBarButtonItem alloc]initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:@selector(done:)];
-    locationButton.image = [UIImage imageNamed:@"full__0000s_0092_map.png"];
+    locationButton.image = [UIImage imageNamed:@"Location Black.png"];
     locationButton.tintColor = [UIColor darkGrayColor];
     
     numberToolbar.items = [NSArray arrayWithObjects:cameraBarButton,locationButton, nil];

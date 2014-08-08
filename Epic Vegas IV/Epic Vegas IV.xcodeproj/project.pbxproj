@@ -48,6 +48,8 @@
 		53165F761991E25C0014695B /* full__0000s_0101_drawer@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53165F751991E25C0014695B /* full__0000s_0101_drawer@2x.png */; };
 		53165F781991E2870014695B /* full__0000s_0092_map@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53165F771991E2870014695B /* full__0000s_0092_map@2x.png */; };
 		532B1646199059DE00C4851F /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 532B1645199059DE00C4851F /* ProfileViewController.m */; };
+		5388ED4D1995741A002CA477 /* All Images@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5388ED4C1995741A002CA477 /* All Images@2x.png */; };
+		5388ED5719957C2F002CA477 /* Location Black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5388ED5619957C2F002CA477 /* Location Black@2x.png */; };
 		53966CB91992972D00E822DE /* Close Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53966CB81992972D00E822DE /* Close Icon@2x.png */; };
 		53966CBC199299F600E822DE /* AddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53966CBB199299F600E822DE /* AddViewController.m */; };
 		53966CC61992C1A900E822DE /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 53966CC51992C1A900E822DE /* UIImage+ImageEffects.m */; };
@@ -146,6 +148,8 @@
 		53165F771991E2870014695B /* full__0000s_0092_map@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "full__0000s_0092_map@2x.png"; sourceTree = "<group>"; };
 		532B1644199059DE00C4851F /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		532B1645199059DE00C4851F /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
+		5388ED4C1995741A002CA477 /* All Images@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "All Images@2x.png"; sourceTree = "<group>"; };
+		5388ED5619957C2F002CA477 /* Location Black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Location Black@2x.png"; sourceTree = "<group>"; };
 		53966CB81992972D00E822DE /* Close Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Close Icon@2x.png"; sourceTree = "<group>"; };
 		53966CBA199299F600E822DE /* AddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddViewController.h; sourceTree = "<group>"; };
 		53966CBB199299F600E822DE /* AddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddViewController.m; sourceTree = "<group>"; };
@@ -341,6 +345,8 @@
 		530BED2319904CDE00C5FDAB /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				5388ED5619957C2F002CA477 /* Location Black@2x.png */,
+				5388ED4C1995741A002CA477 /* All Images@2x.png */,
 				53A19F9D199484DD008DF739 /* Map@2x.png */,
 				53A19F9B1994846E008DF739 /* Location@2x.png */,
 				53A19F93199481E6008DF739 /* Favorites@2x.png */,
@@ -467,6 +473,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5388ED5719957C2F002CA477 /* Location Black@2x.png in Resources */,
 				530BED4119904FA500C5FDAB /* Main.storyboard in Resources */,
 				53966CE41992F68900E822DE /* person@2x.png in Resources */,
 				53165F5B1991C9FB0014695B /* full__0000s_0104_user@2x.png in Resources */,
@@ -480,6 +487,7 @@
 				53A19F7A19944BB6008DF739 /* Quotes 60@2x.png in Resources */,
 				53A19F86199450D8008DF739 /* Write Text@2x.png in Resources */,
 				530BECFE19904C7700C5FDAB /* InfoPlist.strings in Resources */,
+				5388ED4D1995741A002CA477 /* All Images@2x.png in Resources */,
 				53D2D19719917C72007197F6 /* line__0000s_0092_map@2x.png in Resources */,
 				53165F5F1991CF730014695B /* Add Icon@2x.png in Resources */,
 				53165F6E1991E0920014695B /* Tab Bar Separators@2x.png in Resources */,

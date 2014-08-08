@@ -394,7 +394,14 @@ UIButton* selectExistingPhotoButton;
     photoPicker.sourceType = UIImagePickerControllerSourceTypeCamera;
     [self presentViewController:photoPicker animated:YES completion:NULL];
     
+    float screenWidth = self.view.frame.size.width;
     
+    selectExistingPhotoButton = [[UIButton alloc] initWithFrame:CGRectMake(screenWidth - 75, 8, 25, 25)];
+    [selectExistingPhotoButton setImage:[UIImage imageNamed:@"All Images.png"] forState:UIControlStateNormal];
+    [photoPicker.view addSubview:selectExistingPhotoButton];
+    
+    [selectExistingPhotoButton addTarget:self action:@selector(selectExistingPhotoButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+
     //UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil
     //                                                         delegate:self
     //                                                cancelButtonTitle:@"Cancel"
@@ -428,7 +435,6 @@ UIButton* selectExistingPhotoButton;
 
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
     
-    
     [self presentViewController:[mainStoryboard instantiateViewControllerWithIdentifier:@"Create Post Navigation Controller"] animated:YES completion:NULL];
 }
 
@@ -436,6 +442,7 @@ UIButton* selectExistingPhotoButton;
 {
     selectExistingPhotoButton.alpha = 0;
     photoPicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    
 }
 
 // Create a custom UIButton and add it to the center of our tab bar
@@ -480,12 +487,19 @@ UIButton* selectExistingPhotoButton;
     
     [picker dismissViewControllerAnimated:YES completion:NULL];
     
+    // save image to camera roll!
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
     
-    [picker dismissViewControllerAnimated:YES completion:NULL];
-    
+    // if in camera than dismiss view, otherwise switch back to camera view
+    if(picker.sourceType == UIImagePickerControllerSourceTypeCamera)
+        [picker dismissViewControllerAnimated:YES completion:NULL];
+    else
+    {
+        picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+        selectExistingPhotoButton.alpha = 1;
+    }
 }
 
 

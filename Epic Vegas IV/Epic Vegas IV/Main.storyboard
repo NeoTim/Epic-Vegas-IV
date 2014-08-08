@@ -359,16 +359,6 @@
             </objects>
             <point key="canvasLocation" x="987" y="2436"/>
         </scene>
-        <!--Page View Controller - Best of Epic Vegas-->
-        <scene sceneID="Cyg-cY-gEr">
-            <objects>
-                <pageViewController autoresizesArchivedViewToFullSize="NO" transitionStyle="pageCurl" navigationOrientation="horizontal" spineLocation="min" id="S3E-UW-0ll" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" title="Best of Epic Vegas" id="2g9-pE-xLU"/>
-                </pageViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="y7D-cf-Itt" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1149" y="833"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="k1m-fb-VgU">
             <objects>
@@ -380,12 +370,31 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="S3E-UW-0ll" kind="relationship" relationship="rootViewController" id="fRa-XK-glv"/>
+                        <segue destination="k59-u5-SDR" kind="relationship" relationship="rootViewController" id="pqQ-Bq-2UH"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vOC-8b-Yw2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="541" y="871"/>
+        </scene>
+        <!--View Controller - Best of Epic Vegas-->
+        <scene sceneID="nxP-jt-iJ3">
+            <objects>
+                <viewController id="k59-u5-SDR" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Boj-0i-i8c"/>
+                        <viewControllerLayoutGuide type="bottom" id="gcC-m7-pJc"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Sv7-Hj-QCt">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Best of Epic Vegas" id="eHN-yq-otK"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5nK-ej-Pgr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="956" y="871"/>
         </scene>
         <!--Tab Bar View Controller-->
         <scene sceneID="lLH-MC-Vek">
