@@ -282,9 +282,9 @@ float addButtonActionBorderWidth = 10;
     button2.layer.masksToBounds = NO;
     button3.layer.masksToBounds = NO;
         
-    [button1 setImage:[UIImage imageNamed:@"Camera Image 70.png"] forState:UIControlStateNormal];
-    [button2 setImage:[UIImage imageNamed:@"full__0000s_0122_camera.png"] forState:UIControlStateNormal];
-    [button3 setImage:[UIImage imageNamed:@"quote.png"] forState:UIControlStateNormal];
+    [button1 setImage:[UIImage imageNamed:@"Location 60.png"] forState:UIControlStateNormal];
+    [button2 setImage:[UIImage imageNamed:@"Camera 60.png"] forState:UIControlStateNormal];
+    [button3 setImage:[UIImage imageNamed:@"Write Text 60.png"] forState:UIControlStateNormal];
     
     button1.frame = rect;
     button2.frame = rect;
