@@ -16,7 +16,7 @@
 
 @implementation PostToFeedViewController
 
-NSInteger characterLimit = 150;
+NSInteger characterLimit = 300;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -79,7 +79,7 @@ NSInteger characterLimit = 150;
 
 -(void)initMessageAccessoryView
 {
-    UIToolbar* numberToolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, 320, 50)];
+    UIToolbar* keyboardToolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, 320, 50)];
     //numberToolbar.barStyle = UIBarStyleBlackTranslucent;
     
     UIBarButtonItem* cameraBarButton =[[UIBarButtonItem alloc]initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:@selector(done:)];
@@ -90,9 +90,12 @@ NSInteger characterLimit = 150;
     locationButton.image = [UIImage imageNamed:@"Location Black.png"];
     locationButton.tintColor = [UIColor darkGrayColor];
     
-    numberToolbar.items = [NSArray arrayWithObjects:cameraBarButton,locationButton, nil];
-    [numberToolbar sizeToFit];
-    _messageTextView.inputAccessoryView = numberToolbar;
+    keyboardToolbar.items = [NSArray arrayWithObjects:cameraBarButton,locationButton, nil];
+    [keyboardToolbar sizeToFit];
+    
+    [keyboardToolbar addSubview:_characterCountLabel];
+    [_characterCountLabel setFrame:CGRectMake(250, 3, 50, 40)];
+    _messageTextView.inputAccessoryView = keyboardToolbar;
 }
 
 - (void)viewDidDisappear:(BOOL)animated {

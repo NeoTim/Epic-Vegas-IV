@@ -293,15 +293,14 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ciz-Tu-SCk">
-                                <rect key="frame" x="58" y="79" width="242" height="404"/>
+                                <rect key="frame" x="58" y="79" width="242" height="230"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" enablesReturnKeyAutomatically="YES"/>
                                 <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES"/>
                             </textView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Having fun?" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lHk-Nx-fo0">
-                                <rect key="frame" x="63" y="84" width="187" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="What would you like to share?" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lHk-Nx-fo0">
+                                <rect key="frame" x="63" y="84" width="237" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" enablesReturnKeyAutomatically="YES"/>
@@ -311,7 +310,6 @@
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="Ciz-Tu-SCk" secondAttribute="trailing" constant="20" id="epi-uU-4vg"/>
                             <constraint firstItem="Ciz-Tu-SCk" firstAttribute="top" secondItem="3A1-Zn-RsN" secondAttribute="bottom" constant="15" id="sJ3-R6-BjN"/>
-                            <constraint firstItem="AHn-nW-SLx" firstAttribute="top" secondItem="Ciz-Tu-SCk" secondAttribute="bottom" id="xm4-m9-esb"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Post To Feed" id="gZA-Wo-lKx">

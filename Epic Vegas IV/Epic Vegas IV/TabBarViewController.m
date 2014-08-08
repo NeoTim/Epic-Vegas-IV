@@ -373,7 +373,7 @@ UIButton* selectExistingPhotoButton;
     _shareContentLabel.textAlignment = NSTextAlignmentCenter;
     _shareContentLabel.alpha = 0;
     _shareContentLabel.textColor = borderColor;
-    _shareContentLabel.text = @"What would you like to post?";
+    _shareContentLabel.text = @"What would you like to share?";
     _shareContentLabel.font = [UIFont boldSystemFontOfSize:17];
     [self.view addSubview:_shareContentLabel];
 }
