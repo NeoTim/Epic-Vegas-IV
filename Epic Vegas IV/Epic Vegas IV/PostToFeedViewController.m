@@ -33,33 +33,32 @@ NSInteger characterLimit = 300;
     
     // Do any additional setup after loading the view.
     _messageTextView.delegate = self;
-
-    PFQuery *query = [PFQuery queryWithClassName:@"UserPhoto140"];
-    id userPhoto = [PFUser currentUser][@"userPhoto140ObjectId"];
-    if(userPhoto)
+    
+    // round out profile image
+    _profileImageView.clipsToBounds = YES;
+    _profileImageView.alpha = 0;
+    _profileImageView.layer.cornerRadius = _profileImageView.layer.frame.size.height / 2;
+    
+    // Load user's photo into the post text box
+    if(!_profileImageView.image)
     {
-        [query getObjectInBackgroundWithId:userPhoto block:^(PFObject *userPhoto, NSError *error) {
-            if(!error)
-            {
-                PFFile *theImage = [userPhoto objectForKey:@"imageFile"];
-                NSData *imageData = [theImage getData];
-                UIImage *image = [UIImage imageWithData:imageData];
-                _profileImageView.image = image;
-                
-                // fade in profile pic
-                [UIView animateWithDuration:1 delay:0 usingSpringWithDamping:1.f initialSpringVelocity:1.f options:UIViewAnimationOptionCurveLinear animations:^{
-                    _profileImageView.alpha = 1;
-                } completion:nil];
-            }
-            else{
-                // Do something with the returned PFObject in the gameScore variable.
-                NSLog(@"%@", error);
-            }
+        PFFile *imageFile = [[PFUser currentUser] objectForKey:kUserProfilePicMediumKey];
+        if (imageFile) {
+            [_profileImageView setFile:imageFile];
+            [_profileImageView loadInBackground:^(UIImage *image, NSError *error) {
+                if (!error) {
+                    [UIView animateWithDuration:1.0f animations:^{
+                        _profileImageView.alpha = 1.0f;
+                    }];
+                }
+            }];
+        }
+    }
+    else{
+        [UIView animateWithDuration:1.0f animations:^{
+            _profileImageView.alpha = 1.0f;
         }];
     }
-    //_profileImageView.clipsToBounds = YES;
-    _profileImageView.alpha = 0;
-    //_profileImageView.layer.cornerRadius = _profileImageView.layer.frame.size.height / 2;
     
     [self updateCharacterCountString];
     

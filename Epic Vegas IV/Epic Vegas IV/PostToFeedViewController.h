@@ -16,7 +16,7 @@
 
 - (IBAction)cancelButtonPressed:(id)sender;
 
-@property (weak, nonatomic) IBOutlet UIImageView *profileImageView;
+@property (weak, nonatomic) IBOutlet PFImageView *profileImageView;
 @property (weak, nonatomic) IBOutlet UITextField *placeholderTextField;
 @property (weak, nonatomic) IBOutlet UILabel *characterCountLabel;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *postButton;
