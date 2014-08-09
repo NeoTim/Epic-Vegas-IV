@@ -13,6 +13,12 @@
 
 #pragma Colors
 
++ (UIColor*)getThemeColor
+{
+    UIColor* themeColor = [UIColor colorWithRed:50/255.0 green:50/255.0 blue:50/255.0 alpha:1];
+    return themeColor;
+}
+
 // http://jslim.net/blog/2014/05/05/ios-customize-uitabbar-appearance/
 + (UIImage *)imageFromColor:(UIColor *)color forSize:(CGSize)size withCornerRadius:(CGFloat)radius
 {

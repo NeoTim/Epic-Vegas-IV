@@ -28,9 +28,7 @@
 {
     // set font for epic vegas labels
     NSString* fontName = @"DS-Digital-BoldItalic";
-        
-    //int fontSize = 74;
-    //int fontSize = 50;
+    
     int fontSize = 100;
     
     _epicLabel.font = [UIFont fontWithName:fontName size:fontSize];
@@ -40,20 +38,6 @@
     _epicLabel.layer.masksToBounds = NO;
     _vegasLabel.layer.masksToBounds = NO;
     _ivLabel.layer.masksToBounds = NO;
-}
-
--(void)printFonts
-{
-    // Code to print fonts
-    for (NSString* family in [UIFont familyNames])
-    {
-        NSLog(@"%@", family);
-        
-        for (NSString* name in [UIFont fontNamesForFamilyName: family])
-        {
-            NSLog(@"  %@", name);
-        }
-    }
 }
 
 - (void)viewDidLoad

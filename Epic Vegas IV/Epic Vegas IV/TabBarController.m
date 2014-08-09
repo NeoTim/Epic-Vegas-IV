@@ -6,16 +6,16 @@
 //  Copyright (c) 2014 Zach Kohl. All rights reserved.
 //
 
-#import "TabBarViewController.h"
+#import "TabBarController.h"
 #import "AppDelegate.h"
 
-@interface TabBarViewController ()
+@interface TabBarController ()
 
 @property (strong, nonatomic) UILabel* shareContentLabel;
 
 @end
 
-@implementation TabBarViewController
+@implementation TabBarController
 
 UINavigationController* newsFeedController;
 UINavigationController* locationController;
@@ -294,9 +294,9 @@ UIButton* selectExistingPhotoButton;
     button2 = [UIButton buttonWithType:UIButtonTypeCustom];
     button3 = [UIButton buttonWithType:UIButtonTypeCustom];
     
-    button1.backgroundColor = [AppDelegate getThemeColor];
-    button2.backgroundColor = [AppDelegate getThemeColor];
-    button3.backgroundColor = [AppDelegate getThemeColor];
+    button1.backgroundColor = [Utility getThemeColor];
+    button2.backgroundColor = [Utility getThemeColor];
+    button3.backgroundColor = [Utility getThemeColor];
     
     button1.layer.cornerRadius = circleButtonImageRadius;
     button2.layer.cornerRadius = circleButtonImageRadius;

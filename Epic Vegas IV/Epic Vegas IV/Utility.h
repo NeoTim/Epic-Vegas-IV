@@ -10,6 +10,7 @@
 
 @interface Utility : NSObject
 
++ (UIColor*)getThemeColor;
 + (UIImage *)imageFromColor:(UIColor *)color forSize:(CGSize)size withCornerRadius:(CGFloat)radius;
 
 

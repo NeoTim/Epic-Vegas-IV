@@ -11,12 +11,24 @@
 #import <Parse/Parse.h>
 #import <QuartzCore/QuartzCore.h>
 
+@class LoginViewController;
+
+// define the protocol for the delegate
+@protocol LoginViewControllerDelegate
+
+// define protocol functions that can be used in any class using this delegate
+-(void)didLogInUser:(PFUser *)user;
+
+@end
+
 @interface LoginViewController : UIViewController <FBLoginViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *epicLabel;
 @property (weak, nonatomic) IBOutlet UILabel *vegasLabel;
 @property (weak, nonatomic) IBOutlet UILabel *ivLabel;
 
+// define delegate property
+@property (nonatomic, assign) id  delegate;
 
 - (IBAction)fbLoginButtonClicked:(id)sender;
 @property (weak, nonatomic) IBOutlet UIButton *fbLoginButton;

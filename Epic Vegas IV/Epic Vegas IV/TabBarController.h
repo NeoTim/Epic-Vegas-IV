@@ -10,7 +10,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "UIImage+ImageEffects.h"
 
-@interface TabBarViewController : UITabBarController <UITabBarControllerDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIActionSheetDelegate>
+@interface TabBarController : UITabBarController <UITabBarControllerDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIActionSheetDelegate>
 
 @property (weak, nonatomic) IBOutlet UIButton *centerButton;
 

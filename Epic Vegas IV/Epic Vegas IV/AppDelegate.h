@@ -8,12 +8,28 @@
 
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
+#import "LoginViewController.h"
+#import "TabBarController.h"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate, LoginViewControllerDelegate>
 
 
 @property (strong, nonatomic) UIWindow *window;
 
-+ (UIColor*)getThemeColor;
+@property (nonatomic, strong) TabBarController *tabBarController;
+@property (nonatomic, strong) UINavigationController *navController;
+
+@property (nonatomic, readonly) int networkStatus;
+
+- (BOOL)isParseReachable;
+
+- (void)presentLoginViewController;
+- (void)presentLoginViewControllerAnimated:(BOOL)animated;
+- (void)presentTabBarController;
+
+- (void)logOut;
+
+- (void)facebookRequestDidLoad:(id)result;
+- (void)facebookRequestDidFailWithError:(NSError *)error;
 
 @end
