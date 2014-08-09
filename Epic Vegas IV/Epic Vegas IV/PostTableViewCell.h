@@ -12,5 +12,6 @@
 @interface PostTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet AutoSizeLabel *titleLabel;
 @property (weak, nonatomic) IBOutlet AutoSizeLabel *subtitleLabel;
+@property (weak, nonatomic) IBOutlet PFImageView *userImageView;
 
 @end

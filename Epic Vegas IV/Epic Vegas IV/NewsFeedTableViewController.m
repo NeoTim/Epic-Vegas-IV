@@ -121,6 +121,10 @@
 - (void)configureBasicCell:(PostTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     NSDictionary* post = [_posts objectAtIndex:indexPath.row];
     
+    cell.userImageView.clipsToBounds = YES;
+    cell.userImageView.alpha = 0;
+    cell.userImageView.layer.cornerRadius = cell.userImageView.layer.frame.size.height / 2;
+    
     [self setTitleForCell:cell item:post];
     [self setSubtitleForCell:cell item:post];
 }
@@ -146,6 +150,20 @@
                 if(displayName)
                 {
                     title = [NSString stringWithFormat:@"%@ posted a message", displayName];
+                }
+                
+                PFFile *imageFile = [user objectForKey:kUserProfilePicLargeKey];
+                if (imageFile) {
+                    
+                    [cell.userImageView setFile:imageFile];
+                    cell.userImageView.alpha = 0.f;
+                    [cell.userImageView loadInBackground:^(UIImage *image, NSError *error) {
+                        if (!error) {
+                            [UIView animateWithDuration:0.5f animations:^{
+                                cell.userImageView.alpha = 1.0f;
+                            }];
+                        }
+                    }];
                 }
             }
         }
