@@ -28,18 +28,7 @@
 {
     [super viewDidLoad];
     
-    PFFile *imageFile = [[PFUser currentUser] objectForKey:kUserProfilePicLargeKey];
-    if (imageFile) {
-        [_fbProfilePicView setFile:imageFile];
-        [_fbProfilePicView loadInBackground:^(UIImage *image, NSError *error) {
-            if (!error) {
-                [UIView animateWithDuration:0.5f animations:^{
-                    _fbProfilePicView.alpha = 1.0f;
-                }];
-            }
-        }];
-    }
-
+   
     _fbProfilePicView.clipsToBounds = YES;
     _fbProfilePicView.alpha = 0;
     _fbProfilePicView.layer.cornerRadius = _fbProfilePicView.layer.frame.size.height / 2;
@@ -50,6 +39,30 @@
     _userNameLabel.text = [PFUser currentUser][kUserDisplayNameKey];
 }
 
+-(void)viewWillAppear:(BOOL)animated
+{
+    if(!_fbProfilePicView.image)
+    {
+        PFFile *imageFile = [[PFUser currentUser] objectForKey:kUserProfilePicLargeKey];
+        if (imageFile) {
+            [_fbProfilePicView setFile:imageFile];
+            [_fbProfilePicView loadInBackground:^(UIImage *image, NSError *error) {
+                if (!error) {
+                    [UIView animateWithDuration:0.5f animations:^{
+                        _fbProfilePicView.alpha = 1.0f;
+                    }];
+                }
+            }];
+        }
+    }
+    else {
+        // image already loaded
+        _fbProfilePicView.alpha = 0;
+        [UIView animateWithDuration:0.5f animations:^{
+            _fbProfilePicView.alpha = 1.0f;
+        }];
+    }
+}
 
 
 - (void)didReceiveMemoryWarning
