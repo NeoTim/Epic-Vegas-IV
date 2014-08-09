@@ -12,7 +12,7 @@
 #import "TabBarController.h"
 #import "ProfileViewController.h"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate, LoginViewControllerDelegate>
+@interface AppDelegate : UIResponder <UIApplicationDelegate,NSURLConnectionDataDelegate, LoginViewControllerDelegate>
 
 
 @property (strong, nonatomic) UIWindow *window;
