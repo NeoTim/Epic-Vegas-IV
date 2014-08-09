@@ -480,88 +480,28 @@
             }
         }
     }
-    else
+    else if( secondsSinceDate < 24.0 * 60.0 * 60.0 * 7)
     {
+        // if less than one week then show the day of the week ex: "Thursday at 7:29 pm"
         NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-        [dateFormat setDateFormat:@"EEEE MMMM dd"];
+        [dateFormat setDateFormat:@"EEEE"];
         
         NSDateFormatter *timeFormat = [[NSDateFormatter alloc] init];
         [timeFormat setDateFormat:@"hh:mm a"];
         
-        return [NSString stringWithFormat:@"%@ %@" , [dateFormat stringFromDate:date], [timeFormat stringFromDate:date]];
+        return [NSString stringWithFormat:@"%@ at %@" , [dateFormat stringFromDate:date], [timeFormat stringFromDate:date]];
+    }
+    else // show the date "August 5th at 7:29 pm"
+    {
+    
+        NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
+        [dateFormat setDateFormat:@"MMMM DD"];
+        
+        NSDateFormatter *timeFormat = [[NSDateFormatter alloc] init];
+        [timeFormat setDateFormat:@"hh:mm a"];
+        
+        return [NSString stringWithFormat:@"%@ at %@" , [dateFormat stringFromDate:date], [timeFormat stringFromDate:date]];
     }
 }
 
-///*
-// Gets a string saying how long ago something happened.
-// Like "10 seconds ago"
-// */
-//+ (NSString*)getTimeReferenceString:(NSDate* )date
-//{
-//    NSDate* now = [NSDate date];
-//    NSTimeInterval secs = [now timeIntervalSinceDate:date];
-//    
-//    
-//    NSDateFormatter *dateComparisonFormatter = [[NSDateFormatter alloc] init];
-//    [dateComparisonFormatter setDateFormat:@"yyyy-MM-dd"];
-//
-//    // special case for today
-//    if( [[dateComparisonFormatter stringFromDate:date] isEqualToString:[dateComparisonFormatter stringFromDate:now]] ) {
-//
-//    }
-//    else
-//    {
-//        
-//    }
-//    
-//    int SECOND = 1;
-//    int MINUTE = 60 * SECOND;
-//    int HOUR = 60 * MINUTE;
-//    int DAY = 24 * HOUR;
-//    int MONTH = 30 * DAY;
-//    
-//    if(now.date.da)
-//    
-//    
-//    if (secs < 0)
-//    {
-//        return @"not yet";
-//    }
-//    if (secs < 1 * MINUTE)
-//    {
-//        return secs == 1 ? @"one second ago" : [NSString stringWithFormat:@"%f %@", secs, @"seconds ago"];
-//    }
-//    if (secs < 2 * MINUTE)
-//    {
-//        return @"a minute ago";
-//    }
-//    if (secs < 45 * MINUTE)
-//    {
-//        return [NSString stringWithFormat:@"%f %@", (secs / MINUTE), @"minutes ago"];
-//    }
-//    if (secs < 90 * MINUTE)
-//    {
-//        return @"an hour ago";
-//    }
-//    if (secs < 24 * HOUR)
-//    {
-//        return [NSString stringWithFormat:@"%f %@", (secs / HOUR), @"hours ago"];
-//    }
-//    if (secs < 48 * HOUR)
-//    {
-//        return @"yesterday";
-//    }
-//    if (secs < 30 * DAY)
-//    {
-//        return [NSString stringWithFormat:@"%f %@", (secs / DAY), @"days ago"];
-//    }
-//    if (secs < 12 * MONTH)
-//    {
-//        int months = Convert.ToInt32(Math.Floor((double)(secs / DAY) / 30));
-//        return months <= 1 ? @"one month ago" : [NSString stringWithFormat:@"%f %@", (secs / MONTH), @"months ago"];;
-//    }
-//    else{
-//        return @"Way too long ago";
-//    }
-//}
 @end
