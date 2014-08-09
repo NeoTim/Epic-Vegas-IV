@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import <QuartzCore/QuartzCore.h>
-#import "AddViewController.h"
 #import "UIImage+ImageEffects.h"
 
 @interface TabBarViewController : UITabBarController <UITabBarControllerDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIActionSheetDelegate>

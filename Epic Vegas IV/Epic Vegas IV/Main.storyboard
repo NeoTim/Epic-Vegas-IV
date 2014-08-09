@@ -104,16 +104,16 @@
                         <viewControllerLayoutGuide type="bottom" id="hZ9-52-lkv"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Rre-tX-Uc5">
-                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="Thp-ug-DyN">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="9Rc-0r-khu">
-                                        <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9Rc-0r-khu" id="Ckt-I3-44E">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
@@ -129,17 +129,17 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <navigationItem key="navigationItem" title="Epic Vegas Public Feed" id="s5E-c1-UtO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ynM-wg-2G9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="103" y="-1422"/>
         </scene>
-        <!--Add View Controller-->
+        <!--View Controller-->
         <scene sceneID="wR1-C1-lvg">
             <objects>
-                <viewController storyboardIdentifier="Add View Controller" modalTransitionStyle="partialCurl" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5H1-Gt-4bD" customClass="AddViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Add View Controller" modalTransitionStyle="partialCurl" useStoryboardIdentifierAsRestorationIdentifier="YES" id="5H1-Gt-4bD" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="W3w-eD-fTl"/>
                         <viewControllerLayoutGuide type="bottom" id="fY7-0a-4IK"/>
@@ -184,11 +184,11 @@
                         <viewControllerLayoutGuide type="bottom" id="jG2-eo-zxD"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="q4Q-MU-YdR">
-                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <navigationItem key="navigationItem" title="Who's Partying?" id="19U-1e-9dC">
                         <barButtonItem key="rightBarButtonItem" title="Map" id="hMo-oq-g21"/>
                     </navigationItem>
@@ -398,11 +398,11 @@
                         <viewControllerLayoutGuide type="bottom" id="gcC-m7-pJc"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Sv7-Hj-QCt">
-                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <navigationItem key="navigationItem" title="Best of Epic Vegas" id="eHN-yq-otK"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5nK-ej-Pgr" userLabel="First Responder" sceneMemberID="firstResponder"/>

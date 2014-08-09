@@ -35,7 +35,6 @@
 		530BED4119904FA500C5FDAB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 530BED4019904FA500C5FDAB /* Main.storyboard */; };
 		530BED44199052FF00C5FDAB /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 530BED43199052FF00C5FDAB /* LoginViewController.m */; };
 		53165F501991C1F20014695B /* Epic Vegas Nav Bar Title@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53165F4F1991C1F20014695B /* Epic Vegas Nav Bar Title@2x.png */; };
-		53165F531991C49A0014695B /* NotificationsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53165F521991C49A0014695B /* NotificationsTableViewController.m */; };
 		53165F5B1991C9FB0014695B /* full__0000s_0104_user@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53165F5A1991C9FB0014695B /* full__0000s_0104_user@2x.png */; };
 		53165F5D1991CCE30014695B /* News Feed Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53165F5C1991CCE30014695B /* News Feed Icon@2x.png */; };
 		53165F5F1991CF730014695B /* Add Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53165F5E1991CF730014695B /* Add Icon@2x.png */; };
@@ -51,7 +50,6 @@
 		5388ED5719957C2F002CA477 /* Location Black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5388ED5619957C2F002CA477 /* Location Black@2x.png */; };
 		5388ED5A19958A96002CA477 /* NewsFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5388ED5919958A96002CA477 /* NewsFeedViewController.m */; };
 		53966CB91992972D00E822DE /* Close Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53966CB81992972D00E822DE /* Close Icon@2x.png */; };
-		53966CBC199299F600E822DE /* AddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53966CBB199299F600E822DE /* AddViewController.m */; };
 		53966CC61992C1A900E822DE /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 53966CC51992C1A900E822DE /* UIImage+ImageEffects.m */; };
 		53966CCA1992D26700E822DE /* Add Full Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53966CC91992D26700E822DE /* Add Full Icon@2x.png */; };
 		53966CCC1992DF7300E822DE /* Add Red Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53966CCB1992DF7300E822DE /* Add Red Icon@2x.png */; };
@@ -78,13 +76,19 @@
 		53A19F94199481E6008DF739 /* Favorites@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53A19F93199481E6008DF739 /* Favorites@2x.png */; };
 		53A19F9C1994846E008DF739 /* Location@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53A19F9B1994846E008DF739 /* Location@2x.png */; };
 		53A19F9E199484DD008DF739 /* Map@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53A19F9D199484DD008DF739 /* Map@2x.png */; };
-		53A19FA119948B4E008DF739 /* LoggedInUserData.m in Sources */ = {isa = PBXBuildFile; fileRef = 53A19FA019948B4E008DF739 /* LoggedInUserData.m */; };
 		53D2D19119906597007197F6 /* FB-f-Logo__white_50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53D2D19019906597007197F6 /* FB-f-Logo__white_50@2x.png */; };
 		53D2D1931990A2B1007197F6 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53D2D1921990A2B1007197F6 /* MapKit.framework */; };
 		53D2D19519917C62007197F6 /* line__0000s_0104_user@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53D2D19419917C62007197F6 /* line__0000s_0104_user@2x.png */; };
 		53D2D19719917C72007197F6 /* line__0000s_0092_map@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53D2D19619917C72007197F6 /* line__0000s_0092_map@2x.png */; };
 		53D2D19919918563007197F6 /* marquee-las-vegas@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 53D2D19819918563007197F6 /* marquee-las-vegas@2x.jpg */; };
 		53D2D1A619918D75007197F6 /* DS-DIGIT.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 53D2D1A519918D75007197F6 /* DS-DIGIT.ttf */; };
+		53EFEAAD1995B1D8006798C3 /* UIImage+AlphaAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 53EFEAA81995B1D8006798C3 /* UIImage+AlphaAdditions.m */; };
+		53EFEAAE1995B1D8006798C3 /* UIImage+ResizeAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 53EFEAAA1995B1D8006798C3 /* UIImage+ResizeAdditions.m */; };
+		53EFEAAF1995B1D8006798C3 /* UIImage+RoundedCornerAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 53EFEAAC1995B1D8006798C3 /* UIImage+RoundedCornerAdditions.m */; };
+		53EFEAB61995B1F0006798C3 /* PAPConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = 53EFEAB11995B1F0006798C3 /* PAPConstants.m */; };
+		53EFEABB1995B2EA006798C3 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 53EFEABA1995B2EA006798C3 /* Constants.m */; };
+		53EFEAC11995B3C2006798C3 /* Cache.m in Sources */ = {isa = PBXBuildFile; fileRef = 53EFEAC01995B3C2006798C3 /* Cache.m */; };
+		53EFEAC41995B493006798C3 /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 53EFEAC31995B493006798C3 /* Utility.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -131,8 +135,6 @@
 		530BED42199052FF00C5FDAB /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		530BED43199052FF00C5FDAB /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		53165F4F1991C1F20014695B /* Epic Vegas Nav Bar Title@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Epic Vegas Nav Bar Title@2x.png"; sourceTree = "<group>"; };
-		53165F511991C49A0014695B /* NotificationsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NotificationsTableViewController.h; sourceTree = "<group>"; };
-		53165F521991C49A0014695B /* NotificationsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NotificationsTableViewController.m; sourceTree = "<group>"; };
 		53165F5A1991C9FB0014695B /* full__0000s_0104_user@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "full__0000s_0104_user@2x.png"; sourceTree = "<group>"; };
 		53165F5C1991CCE30014695B /* News Feed Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "News Feed Icon@2x.png"; sourceTree = "<group>"; };
 		53165F5E1991CF730014695B /* Add Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Add Icon@2x.png"; sourceTree = "<group>"; };
@@ -151,8 +153,6 @@
 		5388ED5819958A96002CA477 /* NewsFeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsFeedViewController.h; sourceTree = "<group>"; };
 		5388ED5919958A96002CA477 /* NewsFeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsFeedViewController.m; sourceTree = "<group>"; };
 		53966CB81992972D00E822DE /* Close Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Close Icon@2x.png"; sourceTree = "<group>"; };
-		53966CBA199299F600E822DE /* AddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddViewController.h; sourceTree = "<group>"; };
-		53966CBB199299F600E822DE /* AddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddViewController.m; sourceTree = "<group>"; };
 		53966CC41992C1A900E822DE /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
 		53966CC51992C1A900E822DE /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
 		53966CC91992D26700E822DE /* Add Full Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Add Full Icon@2x.png"; sourceTree = "<group>"; };
@@ -181,14 +181,26 @@
 		53A19F93199481E6008DF739 /* Favorites@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Favorites@2x.png"; sourceTree = "<group>"; };
 		53A19F9B1994846E008DF739 /* Location@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Location@2x.png"; sourceTree = "<group>"; };
 		53A19F9D199484DD008DF739 /* Map@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Map@2x.png"; sourceTree = "<group>"; };
-		53A19F9F19948B4E008DF739 /* LoggedInUserData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoggedInUserData.h; sourceTree = "<group>"; };
-		53A19FA019948B4E008DF739 /* LoggedInUserData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoggedInUserData.m; sourceTree = "<group>"; };
 		53D2D19019906597007197F6 /* FB-f-Logo__white_50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FB-f-Logo__white_50@2x.png"; sourceTree = "<group>"; };
 		53D2D1921990A2B1007197F6 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		53D2D19419917C62007197F6 /* line__0000s_0104_user@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "line__0000s_0104_user@2x.png"; sourceTree = "<group>"; };
 		53D2D19619917C72007197F6 /* line__0000s_0092_map@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "line__0000s_0092_map@2x.png"; sourceTree = "<group>"; };
 		53D2D19819918563007197F6 /* marquee-las-vegas@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "marquee-las-vegas@2x.jpg"; sourceTree = "<group>"; };
 		53D2D1A519918D75007197F6 /* DS-DIGIT.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DS-DIGIT.ttf"; sourceTree = "<group>"; };
+		53EFEAA71995B1D8006798C3 /* UIImage+AlphaAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+AlphaAdditions.h"; sourceTree = "<group>"; };
+		53EFEAA81995B1D8006798C3 /* UIImage+AlphaAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+AlphaAdditions.m"; sourceTree = "<group>"; };
+		53EFEAA91995B1D8006798C3 /* UIImage+ResizeAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ResizeAdditions.h"; sourceTree = "<group>"; };
+		53EFEAAA1995B1D8006798C3 /* UIImage+ResizeAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ResizeAdditions.m"; sourceTree = "<group>"; };
+		53EFEAAB1995B1D8006798C3 /* UIImage+RoundedCornerAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+RoundedCornerAdditions.h"; sourceTree = "<group>"; };
+		53EFEAAC1995B1D8006798C3 /* UIImage+RoundedCornerAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+RoundedCornerAdditions.m"; sourceTree = "<group>"; };
+		53EFEAB01995B1F0006798C3 /* PAPConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PAPConstants.h; sourceTree = "<group>"; };
+		53EFEAB11995B1F0006798C3 /* PAPConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PAPConstants.m; sourceTree = "<group>"; };
+		53EFEAB91995B2EA006798C3 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
+		53EFEABA1995B2EA006798C3 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
+		53EFEABF1995B3C2006798C3 /* Cache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cache.h; sourceTree = "<group>"; };
+		53EFEAC01995B3C2006798C3 /* Cache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cache.m; sourceTree = "<group>"; };
+		53EFEAC21995B493006798C3 /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
+		53EFEAC31995B493006798C3 /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -276,30 +288,22 @@
 		530BECF919904C7700C5FDAB /* Epic Vegas IV */ = {
 			isa = PBXGroup;
 			children = (
-				53966CC41992C1A900E822DE /* UIImage+ImageEffects.h */,
-				53966CC51992C1A900E822DE /* UIImage+ImageEffects.m */,
+				53EFEAA61995B169006798C3 /* Categories */,
+				53EFEAA01995AF65006798C3 /* Controllers */,
 				530BED2219904CD700C5FDAB /* Resources */,
 				530BED0219904C7700C5FDAB /* AppDelegate.h */,
 				530BED0319904C7700C5FDAB /* AppDelegate.m */,
-				530BED42199052FF00C5FDAB /* LoginViewController.h */,
-				530BED43199052FF00C5FDAB /* LoginViewController.m */,
-				5388ED5819958A96002CA477 /* NewsFeedViewController.h */,
-				5388ED5919958A96002CA477 /* NewsFeedViewController.m */,
-				53165F601991D04E0014695B /* TabBarViewController.h */,
-				53165F611991D04E0014695B /* TabBarViewController.m */,
-				53966CBA199299F600E822DE /* AddViewController.h */,
-				53966CBB199299F600E822DE /* AddViewController.m */,
-				53165F511991C49A0014695B /* NotificationsTableViewController.h */,
-				53165F521991C49A0014695B /* NotificationsTableViewController.m */,
-				532B1644199059DE00C4851F /* ProfileViewController.h */,
-				532B1645199059DE00C4851F /* ProfileViewController.m */,
+				53EFEAB01995B1F0006798C3 /* PAPConstants.h */,
+				53EFEAB11995B1F0006798C3 /* PAPConstants.m */,
+				53EFEAB91995B2EA006798C3 /* Constants.h */,
+				53EFEABA1995B2EA006798C3 /* Constants.m */,
+				53EFEABF1995B3C2006798C3 /* Cache.h */,
+				53EFEAC01995B3C2006798C3 /* Cache.m */,
+				53EFEAC21995B493006798C3 /* Utility.h */,
+				53EFEAC31995B493006798C3 /* Utility.m */,
 				530BED4019904FA500C5FDAB /* Main.storyboard */,
-				53A19F8A199466C1008DF739 /* PostToFeedViewController.h */,
-				53A19F8B199466C1008DF739 /* PostToFeedViewController.m */,
 				530BED0519904C7700C5FDAB /* Images.xcassets */,
 				530BECFA19904C7700C5FDAB /* Supporting Files */,
-				53A19F9F19948B4E008DF739 /* LoggedInUserData.h */,
-				53A19FA019948B4E008DF739 /* LoggedInUserData.m */,
 			);
 			path = "Epic Vegas IV";
 			sourceTree = "<group>";
@@ -396,6 +400,78 @@
 				53D2D1A519918D75007197F6 /* DS-DIGIT.ttf */,
 			);
 			name = Fonts;
+			sourceTree = "<group>";
+		};
+		53EFEAA01995AF65006798C3 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				53EFEAA51995B006006798C3 /* Post */,
+				53EFEAA41995AFE8006798C3 /* Profile */,
+				53EFEAA31995AF8C006798C3 /* Tab Bar */,
+				53EFEAA21995AF81006798C3 /* News Feed */,
+				53EFEAA11995AF73006798C3 /* Login */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		53EFEAA11995AF73006798C3 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				530BED42199052FF00C5FDAB /* LoginViewController.h */,
+				530BED43199052FF00C5FDAB /* LoginViewController.m */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
+		53EFEAA21995AF81006798C3 /* News Feed */ = {
+			isa = PBXGroup;
+			children = (
+				5388ED5819958A96002CA477 /* NewsFeedViewController.h */,
+				5388ED5919958A96002CA477 /* NewsFeedViewController.m */,
+			);
+			name = "News Feed";
+			sourceTree = "<group>";
+		};
+		53EFEAA31995AF8C006798C3 /* Tab Bar */ = {
+			isa = PBXGroup;
+			children = (
+				53165F601991D04E0014695B /* TabBarViewController.h */,
+				53165F611991D04E0014695B /* TabBarViewController.m */,
+			);
+			name = "Tab Bar";
+			sourceTree = "<group>";
+		};
+		53EFEAA41995AFE8006798C3 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				532B1644199059DE00C4851F /* ProfileViewController.h */,
+				532B1645199059DE00C4851F /* ProfileViewController.m */,
+			);
+			name = Profile;
+			sourceTree = "<group>";
+		};
+		53EFEAA51995B006006798C3 /* Post */ = {
+			isa = PBXGroup;
+			children = (
+				53A19F8A199466C1008DF739 /* PostToFeedViewController.h */,
+				53A19F8B199466C1008DF739 /* PostToFeedViewController.m */,
+			);
+			name = Post;
+			sourceTree = "<group>";
+		};
+		53EFEAA61995B169006798C3 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				53EFEAA71995B1D8006798C3 /* UIImage+AlphaAdditions.h */,
+				53EFEAA81995B1D8006798C3 /* UIImage+AlphaAdditions.m */,
+				53EFEAA91995B1D8006798C3 /* UIImage+ResizeAdditions.h */,
+				53EFEAAA1995B1D8006798C3 /* UIImage+ResizeAdditions.m */,
+				53EFEAAB1995B1D8006798C3 /* UIImage+RoundedCornerAdditions.h */,
+				53EFEAAC1995B1D8006798C3 /* UIImage+RoundedCornerAdditions.m */,
+				53966CC41992C1A900E822DE /* UIImage+ImageEffects.h */,
+				53966CC51992C1A900E822DE /* UIImage+ImageEffects.m */,
+			);
+			name = Categories;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -539,14 +615,18 @@
 				5388ED5A19958A96002CA477 /* NewsFeedViewController.m in Sources */,
 				530BED0419904C7700C5FDAB /* AppDelegate.m in Sources */,
 				530BED0019904C7700C5FDAB /* main.m in Sources */,
+				53EFEAAE1995B1D8006798C3 /* UIImage+ResizeAdditions.m in Sources */,
+				53EFEABB1995B2EA006798C3 /* Constants.m in Sources */,
+				53EFEAAF1995B1D8006798C3 /* UIImage+RoundedCornerAdditions.m in Sources */,
+				53EFEAC11995B3C2006798C3 /* Cache.m in Sources */,
 				53165F621991D04E0014695B /* TabBarViewController.m in Sources */,
+				53EFEAC41995B493006798C3 /* Utility.m in Sources */,
 				53A19F8C199466C1008DF739 /* PostToFeedViewController.m in Sources */,
-				53165F531991C49A0014695B /* NotificationsTableViewController.m in Sources */,
 				532B1646199059DE00C4851F /* ProfileViewController.m in Sources */,
+				53EFEAAD1995B1D8006798C3 /* UIImage+AlphaAdditions.m in Sources */,
 				53966CC61992C1A900E822DE /* UIImage+ImageEffects.m in Sources */,
-				53A19FA119948B4E008DF739 /* LoggedInUserData.m in Sources */,
 				530BED44199052FF00C5FDAB /* LoginViewController.m in Sources */,
-				53966CBC199299F600E822DE /* AddViewController.m in Sources */,
+				53EFEAB61995B1F0006798C3 /* PAPConstants.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
