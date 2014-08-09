@@ -17,12 +17,6 @@
 
 #pragma mark - UIViewController
 
-- (void)loadView {
-    UIImageView *backgroundImageView = [[UIImageView alloc] initWithFrame:[[UIScreen mainScreen] applicationFrame]];
-    [backgroundImageView setImage:[UIImage imageNamed:@"Default.png"]];
-    self.view = backgroundImageView;
-}
-
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
