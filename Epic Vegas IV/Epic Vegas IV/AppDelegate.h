@@ -10,6 +10,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import "LoginViewController.h"
 #import "TabBarController.h"
+#import "ProfileViewController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate, LoginViewControllerDelegate>
 
@@ -20,6 +21,8 @@
 @property (nonatomic, strong) UINavigationController *navController;
 
 @property (nonatomic, readonly) int networkStatus;
+
++(AppDelegate*)sharedInstance;
 
 - (BOOL)isParseReachable;
 

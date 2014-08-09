@@ -18,7 +18,7 @@
 
 // define protocol functions that can be used in any class using this delegate
 /// Sent to the delegate when a PFUser is logged in.
-- (void)logInViewController:(LoginViewController *)logInController didLogInUser:(PFUser *)user;
+- (void)loginViewController:(LoginViewController *)loginController didLogInUser:(PFUser *)user;
 @end
 
 @interface LoginViewController : UIViewController <FBLoginViewDelegate>

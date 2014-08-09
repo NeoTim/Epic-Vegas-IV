@@ -128,7 +128,7 @@
                 //[self.navigationController pushViewController:[[UserDetailsViewController alloc] initWithStyle:UITableViewStyleGrouped] animated:YES];
             }
             
-            [self.delegate logInViewController:self didLogInUser:user];
+            [self.delegate loginViewController:self didLogInUser:user];
         }
     }];
 }

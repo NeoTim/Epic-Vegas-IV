@@ -10,6 +10,8 @@
 #import <FacebookSDK/FacebookSDK.h>
 #import <Parse/Parse.h>
 
+@class ProfileViewController;
+
 @interface ProfileViewController : UIViewController <UIActionSheetDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *fbProfilePicView;

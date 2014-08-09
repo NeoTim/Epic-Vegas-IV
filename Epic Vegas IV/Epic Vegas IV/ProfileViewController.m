@@ -7,6 +7,7 @@
 //
 
 #import "ProfileViewController.h"
+#import "AppDelegate.h"
 
 @interface ProfileViewController ()
 
@@ -97,23 +98,7 @@
     {
         if (buttonIndex == 0) {
             // log out
-            NSLog(@"Logging out");
-
-            [PFUser logOut];
-     
-            // show login view
-            UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main"
-                                                                     bundle: nil];
-          
-            UIViewController* loginViewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"loginViewController"];
-            
-            [UIView transitionFromView:self.view.window.rootViewController.view
-                                toView:loginViewController.view
-                              duration:1.f
-                               options:UIViewAnimationOptionTransitionCrossDissolve
-                            completion:^(BOOL finished){
-                                self.view.window.rootViewController = loginViewController;
-                            }];
+            [[AppDelegate sharedInstance] logOut];
         }
     }
 }
