@@ -11,13 +11,9 @@
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
-+ (UIImage *)imageFromColor:(UIColor *)color forSize:(CGSize)size withCornerRadius:(CGFloat)radius;
 
 @property (strong, nonatomic) UIWindow *window;
 
-@property (strong, nonatomic) NSURL *pictureURL;
-
 + (UIColor*)getThemeColor;
 
-+ (void)downloadImageWithURL:(NSURL *)url completionBlock:(void (^)(BOOL succeeded, UIImage *image))completionBlock;
 @end

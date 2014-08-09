@@ -94,7 +94,7 @@ UIButton* selectExistingPhotoButton;
         blurredImageView.alpha = 0;
         [self.selectedViewController.view addSubview:blurredImageView];
         
-        UIImage* tintColorImage = [AppDelegate imageFromColor:[UIColor blackColor] forSize:self.selectedViewController.view.frame.size withCornerRadius:0];
+        UIImage* tintColorImage = [Utility imageFromColor:[UIColor blackColor] forSize:self.selectedViewController.view.frame.size withCornerRadius:0];
         
         // initialize dark tint view
         tintView = [[UIImageView alloc] initWithFrame:self.selectedViewController.view.frame];
