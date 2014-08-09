@@ -87,7 +87,6 @@
 		53EFEABB1995B2EA006798C3 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 53EFEABA1995B2EA006798C3 /* Constants.m */; };
 		53EFEAC11995B3C2006798C3 /* Cache.m in Sources */ = {isa = PBXBuildFile; fileRef = 53EFEAC01995B3C2006798C3 /* Cache.m */; };
 		53EFEAC41995B493006798C3 /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 53EFEAC31995B493006798C3 /* Utility.m */; };
-		53EFEAC71995BF46006798C3 /* WelcomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53EFEAC61995BF46006798C3 /* WelcomeViewController.m */; };
 		53EFEACA1995C6BF006798C3 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53EFEAC91995C6BF006798C3 /* Accelerate.framework */; };
 		53EFEACC1995C6C5006798C3 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53EFEACB1995C6C5006798C3 /* AdSupport.framework */; };
 		53EFEACE1995C6D8006798C3 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53EFEACD1995C6D8006798C3 /* MessageUI.framework */; };
@@ -205,8 +204,6 @@
 		53EFEAC01995B3C2006798C3 /* Cache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cache.m; sourceTree = "<group>"; };
 		53EFEAC21995B493006798C3 /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
 		53EFEAC31995B493006798C3 /* Utility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utility.m; sourceTree = "<group>"; };
-		53EFEAC51995BF46006798C3 /* WelcomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WelcomeViewController.h; sourceTree = "<group>"; };
-		53EFEAC61995BF46006798C3 /* WelcomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WelcomeViewController.m; sourceTree = "<group>"; };
 		53EFEAC91995C6BF006798C3 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
 		53EFEACB1995C6C5006798C3 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		53EFEACD1995C6D8006798C3 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
@@ -444,8 +441,6 @@
 		53EFEAA11995AF73006798C3 /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				53EFEAC51995BF46006798C3 /* WelcomeViewController.h */,
-				53EFEAC61995BF46006798C3 /* WelcomeViewController.m */,
 				530BED42199052FF00C5FDAB /* LoginViewController.h */,
 				530BED43199052FF00C5FDAB /* LoginViewController.m */,
 			);
@@ -684,7 +679,6 @@
 				53EFEAAE1995B1D8006798C3 /* UIImage+ResizeAdditions.m in Sources */,
 				53EFEAE01995C827006798C3 /* TTTTimeIntervalFormatter.m in Sources */,
 				53EFEABB1995B2EA006798C3 /* Constants.m in Sources */,
-				53EFEAC71995BF46006798C3 /* WelcomeViewController.m in Sources */,
 				53EFEAAF1995B1D8006798C3 /* UIImage+RoundedCornerAdditions.m in Sources */,
 				53EFEAC11995B3C2006798C3 /* Cache.m in Sources */,
 				53165F621991D04E0014695B /* TabBarController.m in Sources */,

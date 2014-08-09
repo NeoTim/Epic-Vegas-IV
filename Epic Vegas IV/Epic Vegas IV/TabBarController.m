@@ -157,6 +157,8 @@ UIButton* selectExistingPhotoButton;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    NSLog(@"Tab Bar Controller Did Load");
 
     // Do any additional setup after loading the view.
     [self setDelegate:self];

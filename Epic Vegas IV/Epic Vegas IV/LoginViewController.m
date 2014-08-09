@@ -42,6 +42,7 @@
 
 - (void)viewDidLoad
 {
+    NSLog(@"Login View Controller Did Load");
     [super viewDidLoad];
     
     // Do any additional setup after loading the view.    
@@ -70,37 +71,64 @@
 
 
 - (IBAction)fbLoginButtonClicked:(id)sender {
+    NSLog(@"Facebook Login Button Pressed");
     // The permissions requested from the user
     NSArray *permissionsArray = @[ @"public_profile", @"email", @"user_friends"];
     
     // Login PFUser using Facebook
+    NSLog(@"Logging In PFUser");
     [PFFacebookUtils logInWithPermissions:permissionsArray block:^(PFUser *user, NSError *error) {
         //[_activityIndicator stopAnimating]; // Hide loading indicator
         
         if (!user) {
+            
+            NSLog(@"Error Logging In PFUser");
             if (!error) {
-                NSLog(@"Uh oh. The user cancelled the Facebook login.");
+                NSLog(@"he user cancelled the Facebook login.");
             }
             else if([[[error userInfo] objectForKey:@"com.facebook.sdk:ErrorLoginFailedReason"] isEqualToString:@"com.facebook.sdk:SystemLoginDisallowedWithoutError"])
             {
-                NSLog(@"Please go to Settings->Facebook and allow Epic Vegas IV to use your Facebook Account.");
+                
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Facebook Login Error"
+                                                                message:@"Please go to Settings->Facebook and allow Epic Vegas IV to use your Facebook Account."
+                                                               delegate:nil
+                                                      cancelButtonTitle:@"OK"
+                                                      otherButtonTitles:nil];
+                [alert show];
             }
             else {
-                NSLog(@"Uh oh. An error occurred: %@", error);
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Facebook Login Error"
+                                                                message:[NSString stringWithFormat:@"%@", error]
+                                                               delegate:nil
+                                                      cancelButtonTitle:@"OK"
+                                                      otherButtonTitles:nil];
+                [alert show];
+                NSLog(@"An error occurred logging in: %@", error);
             }
-        } else if (user.isNew) {
-            NSLog(@"New user with facebook signed up and logged in! Id=%@,  User=%@, Password=%@, Email=%@", user.objectId, user.username, user.password, user.email);
-
-            [self fetchUserDataFromFacebook];
-            [self performSegueWithIdentifier:@"loggedInSegue" sender:self];
-            //[self.navigationController pushViewController:[[UserDetailsViewController alloc] initWithStyle:UITableViewStyleGrouped] animated:YES];
-        } else {
-            NSLog(@"User with facebook logged in!  Id=%@,  User=%@, Password=%@, Email=%@", user.objectId, user.username, user.password, user.email);
-
-            [self fetchUserDataFromFacebook];
-            [self performSegueWithIdentifier:@"loggedInSegue" sender:self];
-                        
-            //[self.navigationController pushViewController:[[UserDetailsViewController alloc] initWithStyle:UITableViewStyleGrouped] animated:YES];
+        }
+        else{
+            
+            NSLog(@"PFUser Logged In");
+            if (user.isNew) {
+                
+                NSLog(@"New PFUser was created");
+                //NSLog(@"New user with facebook signed up and logged in! Id=%@,  User=%@, Password=%@, Email=%@", user.objectId, user.username, user.password, user.email);
+                
+                //[self fetchUserDataFromFacebook];
+                //[self performSegueWithIdentifier:@"loggedInSegue" sender:self];
+                //[self.navigationController pushViewController:[[UserDetailsViewController alloc] initWithStyle:UITableViewStyleGrouped] animated:YES];
+            } else {
+                
+                NSLog(@"Existing PFUser was logged in");
+                //NSLog(@"User with facebook logged in!  Id=%@,  User=%@, Password=%@, Email=%@", user.objectId, user.username, user.password, user.email);
+                
+                //[self fetchUserDataFromFacebook];
+                //[self performSegueWithIdentifier:@"loggedInSegue" sender:self];
+                
+                //[self.navigationController pushViewController:[[UserDetailsViewController alloc] initWithStyle:UITableViewStyleGrouped] animated:YES];
+            }
+            
+            [self.delegate logInViewController:self didLogInUser:user];
         }
     }];
 }
