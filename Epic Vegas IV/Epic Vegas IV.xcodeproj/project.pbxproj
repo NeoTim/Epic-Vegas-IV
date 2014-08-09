@@ -69,7 +69,6 @@
 		53A19F7619943B4F008DF739 /* Camera 60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53A19F7519943B4F008DF739 /* Camera 60@2x.png */; };
 		53A19F7819943C68008DF739 /* Location 60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53A19F7719943C68008DF739 /* Location 60@2x.png */; };
 		53A19F7A19944BB6008DF739 /* Quotes 60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53A19F7919944BB6008DF739 /* Quotes 60@2x.png */; };
-		53A19F86199450D8008DF739 /* Write Text 60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53A19F85199450D8008DF739 /* Write Text 60@2x.png */; };
 		53A19F8C199466C1008DF739 /* PostToFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53A19F8B199466C1008DF739 /* PostToFeedViewController.m */; };
 		53A19F9219948176008DF739 /* Settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53A19F9119948176008DF739 /* Settings@2x.png */; };
 		53A19F94199481E6008DF739 /* Favorites@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53A19F93199481E6008DF739 /* Favorites@2x.png */; };
@@ -96,6 +95,7 @@
 		53EFEADF1995C827006798C3 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 53EFEAD81995C827006798C3 /* Reachability.m */; };
 		53EFEAE01995C827006798C3 /* TTTTimeIntervalFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 53EFEADB1995C827006798C3 /* TTTTimeIntervalFormatter.m */; };
 		53EFEAE11995C827006798C3 /* UIImage+ImageEffects.m in Sources */ = {isa = PBXBuildFile; fileRef = 53EFEADE1995C827006798C3 /* UIImage+ImageEffects.m */; };
+		53EFEAE51995EC24006798C3 /* Write Text 60@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53EFEAE41995EC24006798C3 /* Write Text 60@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -179,7 +179,6 @@
 		53A19F7519943B4F008DF739 /* Camera 60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Camera 60@2x.png"; sourceTree = "<group>"; };
 		53A19F7719943C68008DF739 /* Location 60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Location 60@2x.png"; sourceTree = "<group>"; };
 		53A19F7919944BB6008DF739 /* Quotes 60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Quotes 60@2x.png"; sourceTree = "<group>"; };
-		53A19F85199450D8008DF739 /* Write Text 60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Write Text 60@2x.png"; sourceTree = "<group>"; };
 		53A19F8A199466C1008DF739 /* PostToFeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostToFeedViewController.h; sourceTree = "<group>"; };
 		53A19F8B199466C1008DF739 /* PostToFeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostToFeedViewController.m; sourceTree = "<group>"; };
 		53A19F9119948176008DF739 /* Settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Settings@2x.png"; sourceTree = "<group>"; };
@@ -216,6 +215,7 @@
 		53EFEADB1995C827006798C3 /* TTTTimeIntervalFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTTTimeIntervalFormatter.m; sourceTree = "<group>"; };
 		53EFEADD1995C827006798C3 /* UIImage+ImageEffects.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ImageEffects.h"; sourceTree = "<group>"; };
 		53EFEADE1995C827006798C3 /* UIImage+ImageEffects.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ImageEffects.m"; sourceTree = "<group>"; };
+		53EFEAE41995EC24006798C3 /* Write Text 60@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Write Text 60@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -373,13 +373,13 @@
 		530BED2319904CDE00C5FDAB /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				53EFEAE41995EC24006798C3 /* Write Text 60@2x.png */,
 				5388ED5619957C2F002CA477 /* Location Black@2x.png */,
 				5388ED4C1995741A002CA477 /* All Images@2x.png */,
 				53A19F9D199484DD008DF739 /* Map@2x.png */,
 				53A19F9B1994846E008DF739 /* Location@2x.png */,
 				53A19F93199481E6008DF739 /* Favorites@2x.png */,
 				53A19F9119948176008DF739 /* Settings@2x.png */,
-				53A19F85199450D8008DF739 /* Write Text 60@2x.png */,
 				53A19F7919944BB6008DF739 /* Quotes 60@2x.png */,
 				53A19F7719943C68008DF739 /* Location 60@2x.png */,
 				53A19F7519943B4F008DF739 /* Camera 60@2x.png */,
@@ -622,10 +622,10 @@
 				53966CCA1992D26700E822DE /* Add Full Icon@2x.png in Resources */,
 				53A19F9219948176008DF739 /* Settings@2x.png in Resources */,
 				53A19F7A19944BB6008DF739 /* Quotes 60@2x.png in Resources */,
-				53A19F86199450D8008DF739 /* Write Text 60@2x.png in Resources */,
 				530BECFE19904C7700C5FDAB /* InfoPlist.strings in Resources */,
 				5388ED4D1995741A002CA477 /* All Images@2x.png in Resources */,
 				53D2D19719917C72007197F6 /* line__0000s_0092_map@2x.png in Resources */,
+				53EFEAE51995EC24006798C3 /* Write Text 60@2x.png in Resources */,
 				53165F5F1991CF730014695B /* Add Icon@2x.png in Resources */,
 				53165F6E1991E0920014695B /* Tab Bar Separators@2x.png in Resources */,
 				53966CB91992972D00E822DE /* Close Icon@2x.png in Resources */,

@@ -35,25 +35,28 @@ NSInteger characterLimit = 300;
     _messageTextView.delegate = self;
 
     PFQuery *query = [PFQuery queryWithClassName:@"UserPhoto140"];
-    [query getObjectInBackgroundWithId:[PFUser currentUser][@"userPhoto140ObjectId"] block:^(PFObject *userPhoto, NSError *error) {
-        if(!error)
-        {
-            PFFile *theImage = [userPhoto objectForKey:@"imageFile"];
-            NSData *imageData = [theImage getData];
-            UIImage *image = [UIImage imageWithData:imageData];
-            _profileImageView.image = image;
-            
-            // fade in profile pic
-            [UIView animateWithDuration:1 delay:0 usingSpringWithDamping:1.f initialSpringVelocity:1.f options:UIViewAnimationOptionCurveLinear animations:^{
-                _profileImageView.alpha = 1;
-            } completion:nil];
-        }
-        else{
-            // Do something with the returned PFObject in the gameScore variable.
-            NSLog(@"%@", error);
-        }
-    }];
-    
+    id userPhoto = [PFUser currentUser][@"userPhoto140ObjectId"];
+    if(userPhoto)
+    {
+        [query getObjectInBackgroundWithId:userPhoto block:^(PFObject *userPhoto, NSError *error) {
+            if(!error)
+            {
+                PFFile *theImage = [userPhoto objectForKey:@"imageFile"];
+                NSData *imageData = [theImage getData];
+                UIImage *image = [UIImage imageWithData:imageData];
+                _profileImageView.image = image;
+                
+                // fade in profile pic
+                [UIView animateWithDuration:1 delay:0 usingSpringWithDamping:1.f initialSpringVelocity:1.f options:UIViewAnimationOptionCurveLinear animations:^{
+                    _profileImageView.alpha = 1;
+                } completion:nil];
+            }
+            else{
+                // Do something with the returned PFObject in the gameScore variable.
+                NSLog(@"%@", error);
+            }
+        }];
+    }
     //_profileImageView.clipsToBounds = YES;
     _profileImageView.alpha = 0;
     //_profileImageView.layer.cornerRadius = _profileImageView.layer.frame.size.height / 2;
