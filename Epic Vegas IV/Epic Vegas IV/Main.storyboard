@@ -227,7 +227,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lP0-Nw-eY1" customClass="UIImageView">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lP0-Nw-eY1" customClass="PFImageView">
                                 <rect key="frame" x="60" y="128" width="200" height="200"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
@@ -279,7 +279,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Me" id="Eah-US-s9d"/>
                     <connections>
-                        <outlet property="fbProfilePicView" destination="lP0-Nw-eY1" id="Eub-dL-skh"/>
+                        <outlet property="fbProfilePicView" destination="lP0-Nw-eY1" id="Oar-VD-D1Y"/>
                         <outlet property="logOutButton" destination="hLt-yj-TvN" id="Hu2-yp-5Dq"/>
                         <outlet property="shareLocationSwitch" destination="SlK-xF-0Hq" id="f6B-Vl-mKe"/>
                         <outlet property="userNameLabel" destination="bb3-bP-RBZ" id="6dn-lM-gUL"/>

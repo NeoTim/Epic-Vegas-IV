@@ -14,7 +14,7 @@
 
 @interface ProfileViewController : UIViewController <UIActionSheetDelegate>
 
-@property (weak, nonatomic) IBOutlet UIImageView *fbProfilePicView;
+@property (weak, nonatomic) IBOutlet PFImageView *fbProfilePicView;
 
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
 
