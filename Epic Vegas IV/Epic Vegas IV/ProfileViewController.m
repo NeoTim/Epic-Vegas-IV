@@ -28,7 +28,7 @@
 {
     [super viewDidLoad];
     
-    PFFile *imageFile = [[PFUser currentUser] objectForKey:kUserProfilePicMediumKey];
+    PFFile *imageFile = [[PFUser currentUser] objectForKey:kUserProfilePicLargeKey];
     if (imageFile) {
         [_fbProfilePicView setFile:imageFile];
         [_fbProfilePicView loadInBackground:^(UIImage *image, NSError *error) {
@@ -47,7 +47,7 @@
     // Do any additional setup after loading the view.
     //_fbProfilePicView.profileID = [PFUser currentUser][@"fbId"];
     
-    _userNameLabel.text = [PFUser currentUser][@"fbName"];
+    _userNameLabel.text = [PFUser currentUser][kUserDisplayNameKey];
 }
 
 

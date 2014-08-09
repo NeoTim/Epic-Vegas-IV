@@ -199,11 +199,23 @@
     
     UIImage *image = [UIImage imageWithData:newProfilePictureData];
     
+    UIImage *largeImage = [image thumbnailImage:800 transparentBorder:0 cornerRadius:0 interpolationQuality:kCGInterpolationHigh];
     UIImage *mediumImage = [image thumbnailImage:280 transparentBorder:0 cornerRadius:0 interpolationQuality:kCGInterpolationHigh];
     UIImage *smallRoundedImage = [image thumbnailImage:64 transparentBorder:0 cornerRadius:9 interpolationQuality:kCGInterpolationLow];
-    
-    NSData *mediumImageData = UIImageJPEGRepresentation(mediumImage, 0.5); // using JPEG for larger pictures
+    NSData *largeImageData = UIImageJPEGRepresentation(largeImage, 1.0); // using JPEG for larger pictures
+    NSData *mediumImageData = UIImageJPEGRepresentation(mediumImage, 1.0); // using JPEG for larger pictures
     NSData *smallRoundedImageData = UIImagePNGRepresentation(smallRoundedImage);
+    
+    if (largeImageData.length > 0) {
+        PFFile *fileLargeImage = [PFFile fileWithData:largeImageData];
+        [fileLargeImage saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            if (!error) {
+                [[PFUser currentUser] setObject:fileLargeImage forKey:kUserProfilePicLargeKey];
+                [[PFUser currentUser] saveEventually];
+            }
+        }];
+    }
+
     
     if (mediumImageData.length > 0) {
         PFFile *fileMediumImage = [PFFile fileWithData:mediumImageData];

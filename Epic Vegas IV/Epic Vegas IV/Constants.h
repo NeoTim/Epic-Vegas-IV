@@ -94,6 +94,7 @@ extern NSString *const kUserFacebookIDKey;
 extern NSString *const kUserPhotoIDKey;
 extern NSString *const kUserProfilePicSmallKey;
 extern NSString *const kUserProfilePicMediumKey;
+extern NSString *const kUserProfilePicLargeKey;
 extern NSString *const kUserFacebookFriendsKey;
 extern NSString *const kUserAlreadyAutoFollowedFacebookFriendsKey;
 

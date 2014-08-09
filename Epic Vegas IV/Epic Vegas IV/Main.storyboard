@@ -201,7 +201,7 @@
         <scene sceneID="rqj-ag-923">
             <objects>
                 <navigationController storyboardIdentifier="Profile Navigation Controller" definesPresentationContext="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="wx6-35-1tI" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="" image="Settings.png" id="kyy-Ka-xw1">
+                    <tabBarItem key="tabBarItem" title="" image="person.png" id="kyy-Ka-xw1">
                         <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
                     </tabBarItem>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="OSF-hL-sPW">
@@ -228,12 +228,12 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lP0-Nw-eY1" customClass="PFImageView">
-                                <rect key="frame" x="60" y="128" width="200" height="200"/>
+                                <rect key="frame" x="10" y="70" width="71" height="66"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Zach Kohl" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bb3-bP-RBZ">
-                                <rect key="frame" x="0.0" y="91" width="320" height="21"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Rajeev Krithivasan" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bb3-bP-RBZ">
+                                <rect key="frame" x="99" y="92" width="208" height="26"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <nil key="highlightedColor"/>
@@ -274,10 +274,25 @@
                                     <action selector="logOutButtonPressed:" destination="FIi-fW-rub" eventType="touchUpInside" id="z2H-Iz-h8s"/>
                                 </connections>
                             </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="nL9-8g-wm5">
+                                <rect key="frame" x="0.0" y="144" width="320" height="29"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <segments>
+                                    <segment title="100 Favorites"/>
+                                    <segment title="50 Posts"/>
+                                </segments>
+                                <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Me" id="Eah-US-s9d"/>
+                    <navigationItem key="navigationItem" title="Me" id="Eah-US-s9d">
+                        <barButtonItem key="rightBarButtonItem" image="Settings 44.png" style="plain" id="haI-wP-Tfs">
+                            <connections>
+                                <segue destination="3rz-ig-IEu" kind="push" id="eRb-9A-HBw"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="fbProfilePicView" destination="lP0-Nw-eY1" id="Oar-VD-D1Y"/>
                         <outlet property="logOutButton" destination="hLt-yj-TvN" id="Hu2-yp-5Dq"/>
@@ -288,6 +303,35 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BAg-kP-qHI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-159" y="1305"/>
+        </scene>
+        <!--Table View Controller - Settings-->
+        <scene sceneID="h09-iM-vU0">
+            <objects>
+                <tableViewController hidesBottomBarWhenPushed="YES" id="3rz-ig-IEu" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="ZLe-wn-JTL">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="cSE-oa-lic">
+                                <rect key="frame" x="0.0" y="86" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cSE-oa-lic" id="c28-O2-9Ed">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="3rz-ig-IEu" id="dy9-hm-wsy"/>
+                            <outlet property="delegate" destination="3rz-ig-IEu" id="cFR-yW-6gR"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Settings" id="bkN-tM-GoR"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LZj-sf-Sqp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="413" y="1561"/>
         </scene>
         <!--Post To Feed View Controller - Post To Feed-->
         <scene sceneID="n2T-hz-SlS">
@@ -437,9 +481,10 @@
         <image name="112-group.png" width="32" height="21"/>
         <image name="29-heart.png" width="24" height="21"/>
         <image name="FB-f-Logo__white_50.png" width="25" height="25"/>
-        <image name="Settings.png" width="60" height="60"/>
+        <image name="Settings 44.png" width="22" height="22"/>
         <image name="full__0000s_0032_home.png" width="25" height="25"/>
         <image name="marquee-las-vegas.jpg" width="319" height="568"/>
+        <image name="person.png" width="27" height="24"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
