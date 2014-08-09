@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NewsFeedViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
-
+@interface NewsFeedViewController : UIViewController
 
 @end
