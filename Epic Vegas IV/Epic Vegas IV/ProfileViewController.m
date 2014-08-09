@@ -27,26 +27,29 @@
 {
     [super viewDidLoad];
     
-
     PFQuery *query = [PFQuery queryWithClassName:@"UserPhoto400"];
-    [query getObjectInBackgroundWithId:[PFUser currentUser][@"userPhoto400ObjectId"] block:^(PFObject *userPhoto, NSError *error) {
-        if(!error)
-        {
-            PFFile *theImage = [userPhoto objectForKey:@"imageFile"];
-            NSData *imageData = [theImage getData];
-            UIImage *image = [UIImage imageWithData:imageData];
-            _fbProfilePicView.image = image;
-            
-            // fade in profile pic
-            [UIView animateWithDuration:1 delay:0 usingSpringWithDamping:1.f initialSpringVelocity:1.f options:UIViewAnimationOptionCurveLinear animations:^{
-                _fbProfilePicView.alpha = 1;
-            } completion:nil];
-        }
-        else{
-        // Do something with the returned PFObject in the gameScore variable.
-            NSLog(@"%@", error);
-        }
-    }];
+    id userPhoto = [PFUser currentUser][@"userPhoto400ObjectId"];
+    if(userPhoto)
+    {
+        [query getObjectInBackgroundWithId:[PFUser currentUser][@"userPhoto400ObjectId"] block:^(PFObject *userPhoto, NSError *error) {
+            if(!error)
+            {
+                PFFile *theImage = [userPhoto objectForKey:@"imageFile"];
+                NSData *imageData = [theImage getData];
+                UIImage *image = [UIImage imageWithData:imageData];
+                _fbProfilePicView.image = image;
+                
+                // fade in profile pic
+                [UIView animateWithDuration:1 delay:0 usingSpringWithDamping:1.f initialSpringVelocity:1.f options:UIViewAnimationOptionCurveLinear animations:^{
+                    _fbProfilePicView.alpha = 1;
+                } completion:nil];
+            }
+            else{
+                // Do something with the returned PFObject in the gameScore variable.
+                NSLog(@"%@", error);
+            }
+        }];
+    }
 
     _fbProfilePicView.clipsToBounds = YES;
     _fbProfilePicView.alpha = 0;
