@@ -127,29 +127,28 @@
     
     [self setTitleForCell:cell item:post];
     [self setSubtitleForCell:cell item:post];
+    [self setMessageForCell:cell item:post];
 }
 
 - (void)setTitleForCell:(PostTableViewCell *)cell item:(NSDictionary *)post {
     
-    NSString* title = @"No Title";
-    
+    NSString* userName = @"";
+    NSString* actionDescription = @"";
     PFUser* userPointer = post[@"user"];
     if(userPointer)
     {
         PFQuery *query = [PFQuery queryWithClassName:@"_User"];
         query.cachePolicy = kPFCachePolicyCacheElseNetwork;
         
-     
-        //NSLog(@"User Object Id is %@", userPointer.objectId);
         @try
         {
             PFObject* user = [query getObjectWithId:userPointer.objectId];
             if(user)
             {
-                NSString* displayName = user[kUserDisplayNameKey];
-                if(displayName)
+                userName = user[kUserDisplayNameKey];
+                if(userName)
                 {
-                    title = [NSString stringWithFormat:@"%@ posted a message", displayName];
+                    actionDescription = @"posted a message";
                 }
                 
                 PFFile *imageFile = [user objectForKey:kUserProfilePicLargeKey];
@@ -173,12 +172,38 @@
         }
     }
     
-    [cell.titleLabel setText:title];
+    if(!userName)
+    {
+        NSLog(@"Error getting username");
+    }
+    
+    
+    const CGFloat fontSize = 13;
+    UIFont *boldFont = [UIFont boldSystemFontOfSize:fontSize];
+    UIFont *regularFont = [UIFont systemFontOfSize:fontSize];
+    UIColor *foregroundColor = [UIColor blackColor];
+    
+    // Create the attributes
+    NSDictionary *boldAttributes = [NSDictionary dictionaryWithObjectsAndKeys:
+                           boldFont, NSFontAttributeName,
+                           foregroundColor, NSForegroundColorAttributeName, nil];
+    NSDictionary *normalAttributes = [NSDictionary dictionaryWithObjectsAndKeys:
+                              regularFont, NSFontAttributeName, nil];
+    const NSRange range = NSMakeRange(userName.length, actionDescription.length + 1); // range of the actionDescription after the user name
+    
+    // Create the attributed string (text + attributes)
+    NSString* titleText = [NSString stringWithFormat:@"%@ %@", userName, actionDescription];
+    NSMutableAttributedString *attributedText = [[NSMutableAttributedString alloc] initWithString:titleText attributes:boldAttributes];
+    [attributedText setAttributes:normalAttributes range:range];
+    
+    // Set it in our UILabel and we are done!
+    [cell.titleLabel setAttributedText:attributedText];
 }
 
 - (void)setSubtitleForCell:(PostTableViewCell *)cell item:(NSDictionary *)post {
     NSString *subtitle = post[@"message"] ?: @"[No Message]";
     
+    subtitle = @"1 hour ago.";
     // Some subtitles can be really long, so only display the
     // first 200 characters
     if (subtitle.length > 200) {
@@ -186,6 +211,18 @@
     }
     
     [cell.subtitleLabel setText:subtitle];
+}
+
+- (void)setMessageForCell:(PostTableViewCell *)cell item:(NSDictionary *)post {
+    NSString *message = post[@"message"] ?: @"[No Message]";
+    
+    // Some messages can be really long, so only display the
+    // first 200 characters
+    if (message.length > 200) {
+        message = [NSString stringWithFormat:@"%@...", [message substringToIndex:200]];
+    }
+    
+    [cell.messageLabel setText:message];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
