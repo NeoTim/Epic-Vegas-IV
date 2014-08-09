@@ -119,64 +119,90 @@
 }
 
 - (void)configureBasicCell:(PostTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-    NSDictionary* post = [_posts objectAtIndex:indexPath.row];
+    PFObject* post = [_posts objectAtIndex:indexPath.row];
+    
+    
+    PFUser* userPointer = post[@"user"];
+    
+    if(!userPointer)
+        return;
+    
+    // query for user object, try from cache first
+    PFObject* user = nil;
+    PFQuery *query = [PFQuery queryWithClassName:@"_User"];
+    query.cachePolicy = kPFCachePolicyCacheElseNetwork;
+    @try
+    {
+        user = [query getObjectWithId:userPointer.objectId];
+        
+        [self setContentHidden:cell];
+        [self setUserImageForCell:cell forUser:user];
+        [self setTitleForCell:cell forUser:user];
+        [self setSubtitleForCell:cell forPost:post];
+        [self setMessageForCell:cell forPost:post];
+        [self fadeInContent:cell];
+    }
+    @catch(NSException *exception)
+    {
+        NSLog(@"Exception: %@", exception);
+    }
+}
+
+-(void)setContentHidden:(PostTableViewCell *)cell
+{
+    cell.userImageView.alpha = 0;
+    cell.messageLabel.alpha = 0;
+    cell.titleLabel.alpha = 0;
+    cell.subtitleLabel.alpha = 0;
+}
+
+
+-(void)fadeInContent:(PostTableViewCell *)cell
+{
+    [cell.userImageView loadInBackground:^(UIImage *image, NSError *error) {
+        if (!error) {
+            [UIView animateWithDuration:0.5f animations:^{
+                cell.userImageView.alpha = 1;
+                cell.messageLabel.alpha = 1;
+                cell.titleLabel.alpha = 1;
+                cell.subtitleLabel.alpha = 1;
+            }];
+        }
+    }];
+}
+
+- (void)setUserImageForCell:(PostTableViewCell *)cell forUser:(PFObject *)user {
+    if(!user)
+        return;
     
     cell.userImageView.clipsToBounds = YES;
     cell.userImageView.alpha = 0;
-    cell.userImageView.layer.cornerRadius = cell.userImageView.layer.frame.size.height / 2;
+    cell.userImageView.layer.cornerRadius = 20;
     
-    [self setTitleForCell:cell item:post];
-    [self setSubtitleForCell:cell item:post];
-    [self setMessageForCell:cell item:post];
+    if(user)
+    {
+        PFFile *imageFile = [user objectForKey:kUserProfilePicSmallKey];
+        if (imageFile) {
+            
+            [cell.userImageView setFile:imageFile];
+            
+        }
+        
+    }
+
 }
 
-- (void)setTitleForCell:(PostTableViewCell *)cell item:(NSDictionary *)post {
-    
-    NSString* userName = @"";
+- (void)setTitleForCell:(PostTableViewCell *)cell forUser:(PFObject *)user {
+    if(!user)
+        return;
+
+    NSString* userName = user[kUserDisplayNameKey];
     NSString* actionDescription = @"";
-    PFUser* userPointer = post[@"user"];
-    if(userPointer)
-    {
-        PFQuery *query = [PFQuery queryWithClassName:@"_User"];
-        query.cachePolicy = kPFCachePolicyCacheElseNetwork;
-        
-        @try
-        {
-            PFObject* user = [query getObjectWithId:userPointer.objectId];
-            if(user)
-            {
-                userName = user[kUserDisplayNameKey];
-                if(userName)
-                {
-                    actionDescription = @"posted a message";
-                }
-                
-                PFFile *imageFile = [user objectForKey:kUserProfilePicLargeKey];
-                if (imageFile) {
-                    
-                    [cell.userImageView setFile:imageFile];
-                    cell.userImageView.alpha = 0.f;
-                    [cell.userImageView loadInBackground:^(UIImage *image, NSError *error) {
-                        if (!error) {
-                            [UIView animateWithDuration:0.5f animations:^{
-                                cell.userImageView.alpha = 1.0f;
-                            }];
-                        }
-                    }];
-                }
-            }
-        }
-        @catch(NSException *exception)
-        {
-            NSLog(@"Exception: %@", exception);
-        }
-    }
-    
     if(!userName)
     {
         NSLog(@"Error getting username");
+        return;
     }
-    
     
     const CGFloat fontSize = 13;
     UIFont *boldFont = [UIFont boldSystemFontOfSize:fontSize];
@@ -185,10 +211,10 @@
     
     // Create the attributes
     NSDictionary *boldAttributes = [NSDictionary dictionaryWithObjectsAndKeys:
-                           boldFont, NSFontAttributeName,
-                           foregroundColor, NSForegroundColorAttributeName, nil];
+                                    boldFont, NSFontAttributeName,
+                                    foregroundColor, NSForegroundColorAttributeName, nil];
     NSDictionary *normalAttributes = [NSDictionary dictionaryWithObjectsAndKeys:
-                              regularFont, NSFontAttributeName, nil];
+                                      regularFont, NSFontAttributeName, nil];
     const NSRange range = NSMakeRange(userName.length, actionDescription.length + 1); // range of the actionDescription after the user name
     
     // Create the attributed string (text + attributes)
@@ -198,12 +224,16 @@
     
     // Set it in our UILabel and we are done!
     [cell.titleLabel setAttributedText:attributedText];
+    
 }
 
-- (void)setSubtitleForCell:(PostTableViewCell *)cell item:(NSDictionary *)post {
+- (void)setSubtitleForCell:(PostTableViewCell *)cell forPost:(PFObject *)post {
+    if(!post)
+        return;
+    
     NSString *subtitle = post[@"message"] ?: @"[No Message]";
     
-    subtitle = @"1 hour ago.";
+    subtitle = @"1 hour ago";
     // Some subtitles can be really long, so only display the
     // first 200 characters
     if (subtitle.length > 200) {
@@ -213,7 +243,10 @@
     [cell.subtitleLabel setText:subtitle];
 }
 
-- (void)setMessageForCell:(PostTableViewCell *)cell item:(NSDictionary *)post {
+- (void)setMessageForCell:(PostTableViewCell *)cell forPost:(PFObject *)post {
+    if(!post)
+        return;
+    
     NSString *message = post[@"message"] ?: @"[No Message]";
     
     // Some messages can be really long, so only display the
