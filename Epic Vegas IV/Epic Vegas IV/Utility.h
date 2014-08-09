@@ -37,4 +37,5 @@
 
 + (PFQuery *)queryForActivitiesOnPhoto:(PFObject *)photo cachePolicy:(PFCachePolicy)cachePolicy;
 
++ (NSString *)formattedDate:(NSDate *)date;
 @end

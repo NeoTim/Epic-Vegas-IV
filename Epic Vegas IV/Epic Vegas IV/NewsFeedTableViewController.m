@@ -231,14 +231,8 @@
     if(!post)
         return;
     
-    NSString *subtitle = post[@"message"] ?: @"[No Message]";
-    
-    subtitle = @"1 hour ago";
-    // Some subtitles can be really long, so only display the
-    // first 200 characters
-    if (subtitle.length > 200) {
-        subtitle = [NSString stringWithFormat:@"%@...", [subtitle substringToIndex:200]];
-    }
+    NSDate* createdAt = post.createdAt;
+    NSString* subtitle = [Utility formattedDate:createdAt];
     
     [cell.subtitleLabel setText:subtitle];
 }
