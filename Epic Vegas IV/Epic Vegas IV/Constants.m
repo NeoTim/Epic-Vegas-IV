@@ -60,6 +60,12 @@ NSString *const kActivityTypeJoined     = @"joined";
 // Field keys
 NSString *const kUserDisplayNameKey                          = @"displayName";
 NSString *const kUserFacebookIDKey                           = @"facebookId";
+NSString *const kUserGenderKey                           = @"gender";
+NSString *const kUserRelationshipKey                           = @"relationship";
+NSString *const kUserHomeLocationKey                           = @"homeLocation";
+NSString *const kUserBirthdayKey                           = @"birthday";
+NSString *const kUserEmailKey                           = @"email";
+NSString *const kUserPhoneKey                           = @"phone";
 NSString *const kUserPhotoIDKey                              = @"photoId";
 NSString *const kUserProfilePicSmallKey                      = @"profilePictureSmall";
 NSString *const kUserProfilePicMediumKey                     = @"profilePictureMedium";

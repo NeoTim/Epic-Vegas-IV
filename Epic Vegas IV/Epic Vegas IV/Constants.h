@@ -91,6 +91,12 @@ extern NSString *const kActivityTypeJoined;
 // Field keys
 extern NSString *const kUserDisplayNameKey;
 extern NSString *const kUserFacebookIDKey;
+extern NSString *const kUserGenderKey;
+extern NSString *const kUserRelationshipKey;
+extern NSString *const kUserHomeLocationKey;
+extern NSString *const kUserBirthdayKey;
+extern NSString *const kUserEmailKey;
+extern NSString *const kUserPhoneKey;
 extern NSString *const kUserPhotoIDKey;
 extern NSString *const kUserProfilePicSmallKey;
 extern NSString *const kUserProfilePicMediumKey;
