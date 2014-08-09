@@ -7,6 +7,7 @@
 //
 
 #import "NewsFeedTableViewController.h"
+#import "PostTableViewCell.h"
 
 @interface NewsFeedTableViewController ()
 
@@ -48,7 +49,12 @@
             
             NSLog(@"Retrieved Posts!: %@", objects);
             _posts = objects;
-            [self.tableView reloadData];
+            
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self.tableView reloadData];
+                [self.tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:NO];
+            });
+            
             if (error) {
                 return;
             }
@@ -103,16 +109,90 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *simpleTableIdentifier = @"SimpleTableCell";
+    return [self basicCellAtIndexPath:indexPath];
+}
+
+- (PostTableViewCell *)basicCellAtIndexPath:(NSIndexPath *)indexPath {
+    PostTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"PostCell" forIndexPath:indexPath];
+    [self configureBasicCell:cell atIndexPath:indexPath];
+    return cell;
+}
+
+- (void)configureBasicCell:(PostTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+    NSDictionary* post = [_posts objectAtIndex:indexPath.row];
     
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:simpleTableIdentifier];
+    [self setTitleForCell:cell item:post];
+    [self setSubtitleForCell:cell item:post];
+}
+
+- (void)setTitleForCell:(PostTableViewCell *)cell item:(NSDictionary *)post {
     
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:simpleTableIdentifier];
+    NSString* title = @"No Title";
+    
+    PFUser* userPointer = post[@"user"];
+    if(userPointer)
+    {
+        PFQuery *query = [PFQuery queryWithClassName:@"_User"];
+        query.cachePolicy = kPFCachePolicyCacheElseNetwork;
+        
+     
+        //NSLog(@"User Object Id is %@", userPointer.objectId);
+        @try
+        {
+            PFObject* user = [query getObjectWithId:userPointer.objectId];
+            if(user)
+            {
+                NSString* displayName = user[kUserDisplayNameKey];
+                if(displayName)
+                {
+                    title = [NSString stringWithFormat:@"%@ posted a message", displayName];
+                }
+            }
+        }
+        @catch(NSException *exception)
+        {
+            NSLog(@"Exception: %@", exception);
+        }
     }
     
-    cell.textLabel.text = [NSString stringWithFormat:@"%@",[_posts objectAtIndex:indexPath.row][@"message"]];
-    return cell;
+    [cell.titleLabel setText:title];
+}
+
+- (void)setSubtitleForCell:(PostTableViewCell *)cell item:(NSDictionary *)post {
+    NSString *subtitle = post[@"message"] ?: @"[No Message]";
+    
+    // Some subtitles can be really long, so only display the
+    // first 200 characters
+    if (subtitle.length > 200) {
+        subtitle = [NSString stringWithFormat:@"%@...", [subtitle substringToIndex:200]];
+    }
+    
+    [cell.subtitleLabel setText:subtitle];
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return [self heightForBasicCellAtIndexPath:indexPath];
+}
+
+- (CGFloat)heightForBasicCellAtIndexPath:(NSIndexPath *)indexPath {
+    static PostTableViewCell *sizingCell = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sizingCell = [self.tableView dequeueReusableCellWithIdentifier:@"PostCell"];
+    });
+    
+    [self configureBasicCell:sizingCell atIndexPath:indexPath];
+    return [self calculateHeightForConfiguredSizingCell:sizingCell];
+}
+
+- (CGFloat)calculateHeightForConfiguredSizingCell:(UITableViewCell *)sizingCell {
+    sizingCell.bounds = CGRectMake(0.0f, 0.0f, CGRectGetWidth(self.tableView.bounds), 0.0f);
+    
+    [sizingCell setNeedsLayout];
+    [sizingCell layoutIfNeeded];
+    
+    CGSize size = [sizingCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+    return size.height;
 }
 
 /*

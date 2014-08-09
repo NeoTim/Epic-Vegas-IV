@@ -76,12 +76,14 @@
 		53A19F94199481E6008DF739 /* Favorites@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53A19F93199481E6008DF739 /* Favorites@2x.png */; };
 		53A19F9C1994846E008DF739 /* Location@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53A19F9B1994846E008DF739 /* Location@2x.png */; };
 		53A19F9E199484DD008DF739 /* Map@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53A19F9D199484DD008DF739 /* Map@2x.png */; };
+		53C5BCC51996A3FB0060B49A /* AutoSizeLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 53C5BCC41996A3FB0060B49A /* AutoSizeLabel.m */; };
 		53D2D19119906597007197F6 /* FB-f-Logo__white_50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53D2D19019906597007197F6 /* FB-f-Logo__white_50@2x.png */; };
 		53D2D1931990A2B1007197F6 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53D2D1921990A2B1007197F6 /* MapKit.framework */; };
 		53D2D19519917C62007197F6 /* line__0000s_0104_user@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53D2D19419917C62007197F6 /* line__0000s_0104_user@2x.png */; };
 		53D2D19719917C72007197F6 /* line__0000s_0092_map@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53D2D19619917C72007197F6 /* line__0000s_0092_map@2x.png */; };
 		53D2D19919918563007197F6 /* marquee-las-vegas@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 53D2D19819918563007197F6 /* marquee-las-vegas@2x.jpg */; };
 		53D2D1A619918D75007197F6 /* DS-DIGIT.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 53D2D1A519918D75007197F6 /* DS-DIGIT.ttf */; };
+		53DF0C0219969E36007E7AA8 /* PostTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 53DF0C0119969E36007E7AA8 /* PostTableViewCell.m */; };
 		53EFEAAD1995B1D8006798C3 /* UIImage+AlphaAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 53EFEAA81995B1D8006798C3 /* UIImage+AlphaAdditions.m */; };
 		53EFEAAE1995B1D8006798C3 /* UIImage+ResizeAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 53EFEAAA1995B1D8006798C3 /* UIImage+ResizeAdditions.m */; };
 		53EFEAAF1995B1D8006798C3 /* UIImage+RoundedCornerAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 53EFEAAC1995B1D8006798C3 /* UIImage+RoundedCornerAdditions.m */; };
@@ -190,12 +192,16 @@
 		53A19F93199481E6008DF739 /* Favorites@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Favorites@2x.png"; sourceTree = "<group>"; };
 		53A19F9B1994846E008DF739 /* Location@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Location@2x.png"; sourceTree = "<group>"; };
 		53A19F9D199484DD008DF739 /* Map@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Map@2x.png"; sourceTree = "<group>"; };
+		53C5BCC31996A3FB0060B49A /* AutoSizeLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoSizeLabel.h; sourceTree = "<group>"; };
+		53C5BCC41996A3FB0060B49A /* AutoSizeLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoSizeLabel.m; sourceTree = "<group>"; };
 		53D2D19019906597007197F6 /* FB-f-Logo__white_50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FB-f-Logo__white_50@2x.png"; sourceTree = "<group>"; };
 		53D2D1921990A2B1007197F6 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		53D2D19419917C62007197F6 /* line__0000s_0104_user@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "line__0000s_0104_user@2x.png"; sourceTree = "<group>"; };
 		53D2D19619917C72007197F6 /* line__0000s_0092_map@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "line__0000s_0092_map@2x.png"; sourceTree = "<group>"; };
 		53D2D19819918563007197F6 /* marquee-las-vegas@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "marquee-las-vegas@2x.jpg"; sourceTree = "<group>"; };
 		53D2D1A519918D75007197F6 /* DS-DIGIT.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DS-DIGIT.ttf"; sourceTree = "<group>"; };
+		53DF0C0019969E36007E7AA8 /* PostTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostTableViewCell.h; sourceTree = "<group>"; };
+		53DF0C0119969E36007E7AA8 /* PostTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostTableViewCell.m; sourceTree = "<group>"; };
 		53EFEAA71995B1D8006798C3 /* UIImage+AlphaAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+AlphaAdditions.h"; sourceTree = "<group>"; };
 		53EFEAA81995B1D8006798C3 /* UIImage+AlphaAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+AlphaAdditions.m"; sourceTree = "<group>"; };
 		53EFEAA91995B1D8006798C3 /* UIImage+ResizeAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+ResizeAdditions.h"; sourceTree = "<group>"; };
@@ -460,6 +466,10 @@
 				5388ED5919958A96002CA477 /* NewsFeedViewController.m */,
 				5343386F19960FAF00A48326 /* NewsFeedTableViewController.h */,
 				5343387019960FAF00A48326 /* NewsFeedTableViewController.m */,
+				53DF0C0019969E36007E7AA8 /* PostTableViewCell.h */,
+				53DF0C0119969E36007E7AA8 /* PostTableViewCell.m */,
+				53C5BCC31996A3FB0060B49A /* AutoSizeLabel.h */,
+				53C5BCC41996A3FB0060B49A /* AutoSizeLabel.m */,
 			);
 			name = "News Feed";
 			sourceTree = "<group>";
@@ -686,6 +696,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5388ED5A19958A96002CA477 /* NewsFeedViewController.m in Sources */,
+				53DF0C0219969E36007E7AA8 /* PostTableViewCell.m in Sources */,
 				530BED0419904C7700C5FDAB /* AppDelegate.m in Sources */,
 				530BED0019904C7700C5FDAB /* main.m in Sources */,
 				53EFEAAE1995B1D8006798C3 /* UIImage+ResizeAdditions.m in Sources */,
@@ -700,6 +711,7 @@
 				5343387119960FAF00A48326 /* NewsFeedTableViewController.m in Sources */,
 				532B1646199059DE00C4851F /* ProfileViewController.m in Sources */,
 				53EFEAE11995C827006798C3 /* UIImage+ImageEffects.m in Sources */,
+				53C5BCC51996A3FB0060B49A /* AutoSizeLabel.m in Sources */,
 				53EFEAAD1995B1D8006798C3 /* UIImage+AlphaAdditions.m in Sources */,
 				530BED44199052FF00C5FDAB /* LoginViewController.m in Sources */,
 			);
