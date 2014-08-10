@@ -159,7 +159,12 @@ NSInteger characterLimit = 300;
     UIImage* originalImage=info[UIImagePickerControllerOriginalImage];
     UIImageWriteToSavedPhotosAlbum(originalImage, nil, nil, nil);
     
-    _attachedImageView.image = originalImage;
+    [self attachImage:originalImage];    
+}
+
+-(void)attachImage:(UIImage*)image
+{
+    _attachedImageView.image = image;
     _attachedImageView.layer.borderColor = [UIColor blackColor].CGColor;
     _attachedImageView.layer.borderWidth = .1f;
     _cameraButton.tintColor = [UIColor redColor];
@@ -169,7 +174,6 @@ NSInteger characterLimit = 300;
     [UIView animateWithDuration:1.0f delay:1.5f options:UIViewAnimationOptionCurveLinear animations:^{
         _attachedImageView.alpha = 1.0f;
     } completion:nil];
-    
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
