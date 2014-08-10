@@ -12,7 +12,7 @@
 
 @interface NewsFeedTableViewController ()
 @property (nonatomic, assign) BOOL shouldReloadOnAppear;
-
+@property (nonatomic, assign) NSInteger numObjectsBeforeNextPageLoad;
 @end
 
 @implementation NewsFeedTableViewController
@@ -53,7 +53,7 @@
         self.pullToRefreshEnabled = YES;
         
         // The number of objects to show per page
-        self.objectsPerPage = 25;
+        self.objectsPerPage = 10;
         
         // Improve scrolling performance by reusing UITableView section headers
         //self.reusableSectionHeaderViews = [NSMutableSet setWithCapacity:3];
@@ -207,11 +207,21 @@ if (self.paginationEnabled && rows != 0)
 //    return _posts.count;
 //}
 
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.row == self.objects.count) {
         UITableViewCell *cell = [self tableView:tableView cellForNextPageAtIndexPath:indexPath];
-        [self loadNextPage];
+        
+//        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+//            // switch to a background thread and perform your expensive operation
+//            [self loadNextPage];
+//            
+////            dispatch_async(dispatch_get_main_queue(), ^{
+////                // switch back to the main thread to update your UI
+////                
+////            });
+//        });
         return cell;
     } else {
 
@@ -223,6 +233,20 @@ if (self.paginationEnabled && rows != 0)
     
     return cell;
     }
+}
+
+- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath;
+{
+    if (indexPath.row == self.objects.count)
+    {
+        // this method gets called when the cell is scrolling into view, but also when it's first added to the table view
+        // we only care about the first case
+        if ([tableView.indexPathsForVisibleRows containsObject:indexPath])
+        {
+            [self loadNextPage];
+        }
+    }
+    
 }
 
 
@@ -289,10 +313,10 @@ if (self.paginationEnabled && rows != 0)
 
 -(void)setContentHidden:(PostTableViewCell *)cell
 {
-    cell.userImageView.alpha = 0;
-    cell.messageLabel.alpha = 0;
-    cell.titleLabel.alpha = 0;
-    cell.subtitleLabel.alpha = 0;
+//    cell.userImageView.alpha = 0;
+//    cell.messageLabel.alpha = 0;
+//    cell.titleLabel.alpha = 0;
+//    cell.subtitleLabel.alpha = 0;
 }
 
 
@@ -300,12 +324,12 @@ if (self.paginationEnabled && rows != 0)
 {
     [cell.userImageView loadInBackground:^(UIImage *image, NSError *error) {
         if (!error) {
-            [UIView animateWithDuration:0.5f animations:^{
-                cell.userImageView.alpha = 1;
-                cell.messageLabel.alpha = 1;
-                cell.titleLabel.alpha = 1;
-                cell.subtitleLabel.alpha = 1;
-            }];
+//            [UIView animateWithDuration:0.5f animations:^{
+//                cell.userImageView.alpha = 1;
+//                cell.messageLabel.alpha = 1;
+//                cell.titleLabel.alpha = 1;
+//                cell.subtitleLabel.alpha = 1;
+//            }];
         }
     }];
 }
@@ -419,17 +443,6 @@ if (self.paginationEnabled && rows != 0)
 }
 
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    [super tableView:tableView didSelectRowAtIndexPath:indexPath];
-    
-    [tableView deselectRowAtIndexPath:indexPath animated:NO];
-    
-    if (indexPath.row == self.objects.count && self.paginationEnabled) {
-        // Load More Cell
-        [self loadNextPage];
-    }
-}
 
 /*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
