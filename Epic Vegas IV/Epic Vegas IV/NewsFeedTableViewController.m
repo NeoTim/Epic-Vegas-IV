@@ -9,6 +9,7 @@
 #import "NewsFeedTableViewController.h"
 #import "PostTableViewCell.h"
 #import "AppDelegate.h"
+#import "LoadNextPageTableViewCell.h"
 
 @interface NewsFeedTableViewController ()
 @property (nonatomic, assign) BOOL shouldReloadOnAppear;
@@ -213,15 +214,6 @@ if (self.paginationEnabled && rows != 0)
     if (indexPath.row == self.objects.count) {
         UITableViewCell *cell = [self tableView:tableView cellForNextPageAtIndexPath:indexPath];
         
-//        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-//            // switch to a background thread and perform your expensive operation
-//            [self loadNextPage];
-//            
-////            dispatch_async(dispatch_get_main_queue(), ^{
-////                // switch back to the main thread to update your UI
-////                
-////            });
-//        });
         return cell;
     } else {
 
@@ -274,8 +266,8 @@ if (self.paginationEnabled && rows != 0)
                                                                  
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForNextPageAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"LoadMoreCell" forIndexPath:indexPath];
-    
+    LoadNextPageTableViewCell *cell = (LoadNextPageTableViewCell*)[self.tableView dequeueReusableCellWithIdentifier:@"LoadMoreCell" forIndexPath:indexPath];
+    [cell.activityIndicator startAnimating];
     return cell;
 }
 
