@@ -8,22 +8,47 @@
 
 #import "NewsFeedTableViewController.h"
 #import "PostTableViewCell.h"
+#import "AppDelegate.h"
 
 @interface NewsFeedTableViewController ()
+@property (nonatomic, assign) BOOL shouldReloadOnAppear;
 
-@property (strong, nonatomic) NSArray *posts;
 @end
 
 @implementation NewsFeedTableViewController
+
+@synthesize shouldReloadOnAppear;
+
+
+#pragma mark - Initialization
+
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
     if (self) {
-        // Custom initialization
+        // The className to query on
+        self.parseClassName = @"Post";
+        
+        // Whether the built-in pagination is enabled
+        self.paginationEnabled = YES;
+        
+        // Whether the built-in pull-to-refresh is enabled
+        self.pullToRefreshEnabled = YES;
+        
+        // The number of objects to show per page
+        self.objectsPerPage = 10;
+        
+        // Improve scrolling performance by reusing UITableView section headers
+        //self.reusableSectionHeaderViews = [NSMutableSet setWithCapacity:3];
+        
+        self.shouldReloadOnAppear = NO;
+
     }
     return self;
 }
+
+#pragma mark - UIViewController
 
 - (void)viewDidLoad
 {
@@ -34,57 +59,125 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    [self initRefreshControl];
+    //[self initRefreshControl];
     
-    [self refreshData];
+    //[self refreshData];
    
 }
 
--(void)refreshData
-{
+- (void)viewDidAppear:(BOOL)animated {
+    [super viewDidAppear:animated];
+    
+    if (self.shouldReloadOnAppear) {
+        self.shouldReloadOnAppear = NO;
+        [self loadObjects];
+    }
+}
+
+
+#pragma mark - UITableViewDataSource
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.objects.count;
+}
+
+
+#pragma mark - PFQueryTableViewController
+
+- (PFQuery *)queryForTable {
+    if (![PFUser currentUser]) {
+        PFQuery *query = [PFQuery queryWithClassName:self.parseClassName];
+        [query setLimit:0];
+        return query;
+    }
+    
     PFQuery *query = [PFQuery queryWithClassName:@"Post"];
-    query.cachePolicy = kPFCachePolicyNetworkOnly;
-    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-        @synchronized(self) {
-            
-            NSLog(@"Retrieved Posts!: %@", objects);
-            _posts = objects;
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self.tableView reloadData];
-                [self.tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:NO];
-            });
-            
-            if (error) {
-                return;
-            }
-        }
-    }];
-
-}
-
--(void)initRefreshControl
-{
-    UIRefreshControl* refreshControl = [[UIRefreshControl alloc] init];
-    refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"Pull to Refresh"];
-    [refreshControl addTarget:self action:@selector(refreshView:) forControlEvents:UIControlEventValueChanged];
-    self.refreshControl = refreshControl;
+    [query orderByDescending:@"createdAt"];
     
+    // A pull-to-refresh should always trigger a network request.
+    [query setCachePolicy:kPFCachePolicyNetworkOnly];
+    
+    // If no objects are loaded in memory, we look to the cache first to fill the table
+    // and then subsequently do a query against the network.
+    //
+    // If there is no network connection, we will hit the cache first.
+    if (self.objects.count == 0 || ![[UIApplication sharedApplication].delegate performSelector:@selector(isParseReachable)]) {
+        [query setCachePolicy:kPFCachePolicyCacheThenNetwork];
+    }
+    
+    /*
+     This query will result in an error if the schema hasn't been set beforehand. While Parse usually handles this automatically, this is not the case for a compound query such as this one. The error thrown is:
+     
+     Error: bad special key: __type
+     
+     To set up your schema, you may post a photo with a caption. This will automatically set up the Photo and Activity classes needed by this query.
+     
+     You may also use the Data Browser at Parse.com to set up your classes in the following manner.
+     
+     Create a User class: "User" (if it does not exist)
+     
+     Create a Custom class: "Activity"
+     - Add a column of type pointer to "User", named "fromUser"
+     - Add a column of type pointer to "User", named "toUser"
+     - Add a string column "type"
+     
+     Create a Custom class: "Photo"
+     - Add a column of type pointer to "User", named "user"
+     
+     You'll notice that these correspond to each of the fields used by the preceding query.
+     */
+    
+    return query;
 }
 
--(void)refreshView:(UIRefreshControl *)refresh {
-    refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"Refreshing data..."];
-   
-    [self refreshData];
-    // custom refresh logic would be placed here...
-//       NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-//       [formatter setDateFormat:@"MMM d, h:mm a"];
-//       NSString *lastUpdated = [NSString stringWithFormat:@"Last updated on %@",
-//                [formatter stringFromDate:[NSDate date]]];
-//        refresh.attributedTitle = [[NSAttributedString alloc] initWithString:lastUpdated];
-    
-    [refresh endRefreshing];
-}
+//-(void)refreshData
+//{
+//    PFQuery *query = [PFQuery queryWithClassName:@"Post"];
+//    query.cachePolicy = kPFCachePolicyNetworkOnly;
+//    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+//        @synchronized(self) {
+//            
+//            NSLog(@"Retrieved Posts!: %@", objects);
+//            _posts = objects;
+//            
+//            dispatch_async(dispatch_get_main_queue(), ^{
+//                [self.tableView reloadData];
+//                [self.tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:NO];
+//            });
+//            
+//            if (error) {
+//                return;
+//            }
+//        }
+//    }];
+//}
+//
+//-(void)initRefreshControl
+//{
+//    UIRefreshControl* refreshControl = [[UIRefreshControl alloc] init];
+//    refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"Pull to Refresh"];
+//    [refreshControl addTarget:self action:@selector(refreshView:) forControlEvents:UIControlEventValueChanged];
+//    self.refreshControl = refreshControl;
+//    
+//}
+//
+//-(void)refreshView:(UIRefreshControl *)refresh {
+//    refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"Refreshing data..."];
+//   
+//    [self refreshData];
+//    // custom refresh logic would be placed here...
+////       NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+////       [formatter setDateFormat:@"MMM d, h:mm a"];
+////       NSString *lastUpdated = [NSString stringWithFormat:@"Last updated on %@",
+////                [formatter stringFromDate:[NSDate date]]];
+////        refresh.attributedTitle = [[NSAttributedString alloc] initWithString:lastUpdated];
+//    
+//    [refresh endRefreshing];
+//}
 
 
 - (void)didReceiveMemoryWarning
@@ -93,19 +186,19 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Table view data source
-
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-#warning Potentially incomplete method implementation.
-    // Return the number of sections.
-    return 1;
-}
-
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return _posts.count;
-}
+//#pragma mark - Table view data source
+//
+//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
+//{
+//#warning Potentially incomplete method implementation.
+//    // Return the number of sections.
+//    return 1;
+//}
+//
+//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
+//{
+//    return _posts.count;
+//}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -118,8 +211,10 @@
     return cell;
 }
 
+
 - (void)configureBasicCell:(PostTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-    PFObject* post = [_posts objectAtIndex:indexPath.row];
+    NSLog(@"Configure basic cell");
+    PFObject* post = [self.objects objectAtIndex:indexPath.row];
     
     
     PFUser* userPointer = post[@"user"];
@@ -135,12 +230,12 @@
     {
         user = [query getObjectWithId:userPointer.objectId];
         
-        [self setContentHidden:cell];
+        //[self setContentHidden:cell];
         [self setUserImageForCell:cell forUser:user];
         [self setTitleForCell:cell forUser:user];
         [self setSubtitleForCell:cell forPost:post];
         [self setMessageForCell:cell forPost:post];
-        [self fadeInContent:cell];
+        //[self fadeInContent:cell];
     }
     @catch(NSException *exception)
     {
@@ -148,46 +243,43 @@
     }
 }
 
--(void)setContentHidden:(PostTableViewCell *)cell
-{
-    cell.userImageView.alpha = 0;
-    cell.messageLabel.alpha = 0;
-    cell.titleLabel.alpha = 0;
-    cell.subtitleLabel.alpha = 0;
-}
+//-(void)setContentHidden:(PostTableViewCell *)cell
+//{
+//    cell.userImageView.alpha = 0;
+//    cell.messageLabel.alpha = 0;
+//    cell.titleLabel.alpha = 0;
+//    cell.subtitleLabel.alpha = 0;
+//}
 
 
--(void)fadeInContent:(PostTableViewCell *)cell
-{
-    [cell.userImageView loadInBackground:^(UIImage *image, NSError *error) {
-        if (!error) {
-            [UIView animateWithDuration:0.5f animations:^{
-                cell.userImageView.alpha = 1;
-                cell.messageLabel.alpha = 1;
-                cell.titleLabel.alpha = 1;
-                cell.subtitleLabel.alpha = 1;
-            }];
-        }
-    }];
-}
+//-(void)fadeInContent:(PostTableViewCell *)cell
+//{
+//    [cell.userImageView loadInBackground:^(UIImage *image, NSError *error) {
+//        if (!error) {
+//            [UIView animateWithDuration:0.5f animations:^{
+//                cell.userImageView.alpha = 1;
+//                cell.messageLabel.alpha = 1;
+//                cell.titleLabel.alpha = 1;
+//                cell.subtitleLabel.alpha = 1;
+//            }];
+//        }
+//    }];
+//}
 
 - (void)setUserImageForCell:(PostTableViewCell *)cell forUser:(PFObject *)user {
     if(!user)
+    {
+        NSLog(@"Couldn't set image for cell");
         return;
+    }
     
     cell.userImageView.clipsToBounds = YES;
-    cell.userImageView.alpha = 0;
     cell.userImageView.layer.cornerRadius = 20;
-    
-    if(user)
-    {
-        PFFile *imageFile = [user objectForKey:kUserProfilePicSmallKey];
-        if (imageFile) {
-            
-            [cell.userImageView setFile:imageFile];
-            
-        }
-        
+
+    PFFile *imageFile = [user objectForKey:kUserProfilePicSmallKey];
+    if (imageFile) {
+        NSLog(@"Setting image for cell");
+        [cell.userImageView setFile:imageFile];
     }
 
 }

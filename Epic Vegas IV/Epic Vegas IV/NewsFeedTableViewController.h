@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface NewsFeedTableViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource>
+@interface NewsFeedTableViewController : PFQueryTableViewController <UITableViewDelegate, UITableViewDataSource>
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 
