@@ -24,5 +24,5 @@
 
 -(void)setContentInvisible;
 -(void)setContentVisible;
-
+-(void)clearCellForReuese;
 @end

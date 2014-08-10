@@ -39,6 +39,15 @@
     [self setBackgroundColors];
 }
 
+-(void)clearCellForReuese
+{
+    self.userImageView.image = nil;
+    self.photoView.image = nil;
+    self.titleLabel.text = @"";
+    self.subtitleLabel.text = @"";
+    self.messageLabel.text = @"";
+}
+
 -(void)setContentInvisible
 {
     self.titleLabel.alpha = 0;
@@ -84,6 +93,7 @@
     _commentsSummaryView.layer.masksToBounds = YES;
     _footerView.layer.masksToBounds = YES;
 }
+
 
 -(void)setBorderWidths
 {

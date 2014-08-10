@@ -259,16 +259,12 @@ NSInteger _numOfObjectsBeforeLoadMore;
     [self setMessageForCell:cell forPost:post];
 }
 
--(void)clearCell:(PostTableViewCell *)cell
-{
-    cell.userImageView.image = nil;
-    cell.photoView.image = nil;
-}
+
 
 - (void)configureBasicCell:(PostTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"Configure basic cell");
     
-    [self clearCell:cell];
+    [cell clearCellForReuese];
     
     PFObject* post = [self.objects objectAtIndex:indexPath.row];
     
