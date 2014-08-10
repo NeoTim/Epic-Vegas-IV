@@ -152,10 +152,9 @@
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9I0-dz-Wtv" customClass="PFImageView">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9I0-dz-Wtv" customClass="UIImageView">
                                                     <rect key="frame" x="10" y="10" width="60" height="60"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="3Ji-2y-u6X"/>
                                                         <constraint firstAttribute="width" constant="60" id="KCd-nx-9Wa"/>
@@ -177,7 +176,6 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
                                             <constraints>
                                                 <constraint firstItem="zFf-VB-zZa" firstAttribute="leading" secondItem="JCD-dP-GMG" secondAttribute="leading" constant="10" id="1pF-c0-wjD"/>
                                                 <constraint firstItem="WB9-yE-odN" firstAttribute="top" secondItem="f2i-QE-abh" secondAttribute="bottom" id="82m-Mv-VAd"/>
@@ -194,10 +192,9 @@
                                                 <constraint firstItem="f2i-QE-abh" firstAttribute="leading" secondItem="9I0-dz-Wtv" secondAttribute="trailing" constant="10" id="yZo-lF-a0W"/>
                                             </constraints>
                                         </view>
-                                        <view contentMode="scaleToFill" verticalCompressionResistancePriority="749" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="D98-Cd-Lg1" customClass="PFImageView">
+                                        <view contentMode="scaleToFill" verticalCompressionResistancePriority="749" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="D98-Cd-Lg1" customClass="UIImageView">
                                             <rect key="frame" x="5" y="116" width="310" height="47"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                         </view>
                                         <view contentMode="scaleToFill" verticalCompressionResistancePriority="749" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dbz-Yv-mhg" customClass="UIImageView">
                                             <rect key="frame" x="5" y="163" width="310" height="61"/>
@@ -255,7 +252,6 @@
                                                     </state>
                                                 </button>
                                             </subviews>
-                                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="40" id="rPQ-vD-WNY"/>
                                             </constraints>

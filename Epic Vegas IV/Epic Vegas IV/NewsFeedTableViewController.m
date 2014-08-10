@@ -242,11 +242,16 @@ NSInteger _numOfObjectsBeforeLoadMore;
     
     if(!userPointer)
         return;
+
+    cell.alpha = 0;
+    cell.userImageView.alpha = 0;
+    cell.photoView.alpha = 0;
+    cell.headerView.alpha = 0;
+    cell.footerView.alpha = 0;
     
     dispatch_queue_t myQueue = dispatch_queue_create("My Queue",NULL);
     dispatch_async(myQueue, ^{
-        // Perform long running process in background
-
+        
         // get user who posted
         PFObject* user = nil;
         PFQuery *query = [PFQuery queryWithClassName:@"_User"];
@@ -260,7 +265,8 @@ NSInteger _numOfObjectsBeforeLoadMore;
             return;
         }
         
-        PFObject* photo = nil;
+        
+        UIImage *photoImage = nil;
         
         // query for photo object if there is one
         if(post[@"photo"])
@@ -268,63 +274,88 @@ NSInteger _numOfObjectsBeforeLoadMore;
             PFObject* photoObject = post[@"photo"];
             if(photoObject)
             {
-                photo = [PFQuery getObjectOfClass:@"Photo" objectId:photoObject.objectId];
+                PFObject* photo = [PFQuery getObjectOfClass:@"Photo" objectId:photoObject.objectId];
+                if(photo)
+                {
+                    PFFile *theImage = [photo objectForKey:@"thumbnail"];
+                    if(theImage)
+                    {
+                        NSData *imageData = [theImage getData];
+                        photoImage = [UIImage imageWithData:imageData];
+                    }
+                }
             }
+        }
+        
+        // query for user photo
+        UIImage *userImage = nil;
+        PFFile *userImageFile = [user objectForKey:kUserProfilePicSmallKey];
+        if (userImageFile)
+        {
+            NSData *imageData = [userImageFile getData];
+            userImage = [UIImage imageWithData:imageData];
         }
         
         dispatch_async(dispatch_get_main_queue(), ^{
             // Update the UI
             [self setSubtitleForCell:cell forPost:post];
             [self setMessageForCell:cell forPost:post];
-            [self setUserImageForCell:cell forUser:user];
+            [self setUserImageForCell:cell forUser:userImage];
             [self setTitleForCell:cell forUser:user];
-            [self setPhotoImageForCell:cell forPhoto:photo];
+            [self setPhotoImageForCell:cell forPhoto:photoImage];
+            
+            // fade in user image view
+            [UIView animateWithDuration:.5 delay:0 usingSpringWithDamping:1 initialSpringVelocity:1.f options:UIViewAnimationOptionCurveEaseInOut
+                                         animations:^{
+                                             cell.alpha = 1;
+                                             cell.userImageView.alpha = 1;
+                                             cell.photoView.alpha = 1;
+                                             
+                                             cell.headerView.alpha = 1;
+                                             cell.footerView.alpha = 1;
+                                         } completion:nil];
+
         });
     });
 }
 
-- (void)setPhotoImageForCell:(PostTableViewCell *)cell forPhoto:(PFObject *)photo {
-    if(!photo)
+- (void)setPhotoImageForCell:(PostTableViewCell *)cell forPhoto:(UIImage *)photoImage {
+    if(!photoImage)
     {
         cell.photoView.image = nil;
         return;
     }
-    
-    PFFile *imageFile = [photo objectForKey:@"thumbnail"];
-    if (imageFile) {
-        NSLog(@"Setting photo for cell");
-        [cell.photoView setFile:imageFile];
-        
-        [cell.photoView loadInBackground:^(UIImage *image, NSError *error) {
-            if (error) {
-                NSLog(@"Error loading post photo: %@", error);
-            }
-        }];
-    }
-
+    cell.photoView.image = photoImage;
 }
 
-- (void)setUserImageForCell:(PostTableViewCell *)cell forUser:(PFObject *)user {
-    if(!user)
+- (void)setUserImageForCell:(PostTableViewCell *)cell forUser:(UIImage *)userImage {
+    if(!userImage)
     {
-        NSLog(@"Couldn't set image for cell");
+        cell.userImageView.image = nil;
         return;
     }
+    cell.userImageView.image = userImage;
     
     cell.userImageView.clipsToBounds = YES;
     cell.userImageView.layer.cornerRadius = 30;
     
-    PFFile *imageFile = [user objectForKey:kUserProfilePicSmallKey];
-    if (imageFile) {
-        NSLog(@"Setting image for cell");
-        [cell.userImageView setFile:imageFile];
-        
-        [cell.userImageView loadInBackground:^(UIImage *image, NSError *error) {
-            if (error) {
-                NSLog(@"Error loading user image: %@", error);
-            }
-        }];
-    }
+//    PFFile *imageFile = [user objectForKey:kUserProfilePicSmallKey];
+//    if (imageFile) {
+//        NSLog(@"Setting image for cell");
+//        [cell.userImageView setFile:imageFile];
+//        
+//        [cell.userImageView loadInBackground:^(UIImage *image, NSError *error) {
+//            if (error) {
+//                NSLog(@"Error loading user image: %@", error);
+//            }
+//            
+//            // fade in user image view
+//            [UIView animateWithDuration:1.5 delay:0 usingSpringWithDamping:.8f initialSpringVelocity:1.f options:UIViewAnimationOptionCurveEaseInOut
+//                             animations:^{
+//                                 cell.userImageView.alpha = 1;
+//                             } completion:nil];
+//        }];
+//    }
 }
 
 - (void)setTitleForCell:(PostTableViewCell *)cell forUser:(PFObject *)user {
