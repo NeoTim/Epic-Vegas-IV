@@ -239,11 +239,15 @@ if (self.paginationEnabled && rows != 0)
     return cell;
 }
 
+- (void)configureBasicCellForAutoSize:(PostTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+    PFObject* post = [self.objects objectAtIndex:indexPath.row];
+    [self setSubtitleForCell:cell forPost:post];
+    [self setMessageForCell:cell forPost:post];
+}
 
 - (void)configureBasicCell:(PostTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"Configure basic cell");
     PFObject* post = [self.objects objectAtIndex:indexPath.row];
-    
     
     PFUser* userPointer = post[@"user"];
     
@@ -253,23 +257,23 @@ if (self.paginationEnabled && rows != 0)
     [self setSubtitleForCell:cell forPost:post];
     [self setMessageForCell:cell forPost:post];
 
-//    // query for user object, try from cache first
-//    PFObject* user = nil;
-//    PFQuery *query = [PFQuery queryWithClassName:@"_User"];
-//    query.cachePolicy = kPFCachePolicyCacheElseNetwork;
-//    @try
-//    {
-//        user = [query getObjectWithId:userPointer.objectId];
-//        
-//        //[self setContentHidden:cell];
-//        //[self setUserImageForCell:cell forUser:user];
-//        [self setTitleForCell:cell forUser:user];
-//               //[self fadeInContent:cell];
-//    }
-//    @catch(NSException *exception)
-//    {
-//        NSLog(@"Exception: %@", exception);
-//    }
+    // query for user object, try from cache first
+    PFObject* user = nil;
+    PFQuery *query = [PFQuery queryWithClassName:@"_User"];
+    query.cachePolicy = kPFCachePolicyCacheElseNetwork;
+    @try
+    {
+        user = [query getObjectWithId:userPointer.objectId];
+        
+        [self setContentHidden:cell];
+        [self setUserImageForCell:cell forUser:user];
+        [self setTitleForCell:cell forUser:user];
+        [self fadeInContent:cell];
+    }
+    @catch(NSException *exception)
+    {
+        NSLog(@"Exception: %@", exception);
+    }
 }
 
 //- (void)scrollViewDidScroll: (UIScrollView*)scroll {
@@ -283,28 +287,28 @@ if (self.paginationEnabled && rows != 0)
 //    }
 //}
 
-//-(void)setContentHidden:(PostTableViewCell *)cell
-//{
-//    cell.userImageView.alpha = 0;
-//    cell.messageLabel.alpha = 0;
-//    cell.titleLabel.alpha = 0;
-//    cell.subtitleLabel.alpha = 0;
-//}
+-(void)setContentHidden:(PostTableViewCell *)cell
+{
+    cell.userImageView.alpha = 0;
+    cell.messageLabel.alpha = 0;
+    cell.titleLabel.alpha = 0;
+    cell.subtitleLabel.alpha = 0;
+}
 
 
-//-(void)fadeInContent:(PostTableViewCell *)cell
-//{
-//    [cell.userImageView loadInBackground:^(UIImage *image, NSError *error) {
-//        if (!error) {
-//            [UIView animateWithDuration:0.5f animations:^{
-//                cell.userImageView.alpha = 1;
-//                cell.messageLabel.alpha = 1;
-//                cell.titleLabel.alpha = 1;
-//                cell.subtitleLabel.alpha = 1;
-//            }];
-//        }
-//    }];
-//}
+-(void)fadeInContent:(PostTableViewCell *)cell
+{
+    [cell.userImageView loadInBackground:^(UIImage *image, NSError *error) {
+        if (!error) {
+            [UIView animateWithDuration:0.5f animations:^{
+                cell.userImageView.alpha = 1;
+                cell.messageLabel.alpha = 1;
+                cell.titleLabel.alpha = 1;
+                cell.subtitleLabel.alpha = 1;
+            }];
+        }
+    }];
+}
 
 - (void)setUserImageForCell:(PostTableViewCell *)cell forUser:(PFObject *)user {
     if(!user)
@@ -400,7 +404,7 @@ if (self.paginationEnabled && rows != 0)
         sizingCell = [self.tableView dequeueReusableCellWithIdentifier:@"PostCell"];
     });
     
-    [self configureBasicCell:sizingCell atIndexPath:indexPath];
+    [self configureBasicCellForAutoSize:sizingCell atIndexPath:indexPath];
     return [self calculateHeightForConfiguredSizingCell:sizingCell];
 }
 
