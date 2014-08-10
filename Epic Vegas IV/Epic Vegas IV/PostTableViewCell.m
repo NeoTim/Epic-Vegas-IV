@@ -31,13 +31,64 @@
 {
     float gray = 235.0/255.0;
     self.backgroundColor = [UIColor colorWithRed:gray green:gray blue:gray alpha:1];
-    _cardView.backgroundColor = [UIColor whiteColor];    
-    _cardView.layer.cornerRadius = 4;
-    _cardView.layer.masksToBounds = YES;
+
+    [self setSectionVisibility];
+    [self setBorderCorners];
+    [self setBorderWidths];
+    [self setBorderColors];
+    [self setBackgroundColors];
+}
+
+-(void)setSectionVisibility
+{
+    _photoView.hidden = YES;
+    _locationView.hidden = YES;
+    _commentsView.hidden = YES;
+    _commentsSummaryView.hidden = YES;
+}
+
+-(void)setBorderCorners
+{
+    //_headerView.layer.cornerRadius = 4;
     
+    _headerView.layer.masksToBounds = YES;
+    _photoView.layer.masksToBounds = YES;
+    _locationView.layer.masksToBounds = YES;
+    _commentsView.layer.masksToBounds = YES;
+    _commentsSummaryView.layer.masksToBounds = YES;
+    _footerView.layer.masksToBounds = YES;
+}
+
+-(void)setBorderWidths
+{
+    float width = .1;
+    _headerView.layer.borderWidth = width;
+    _photoView.layer.borderWidth = width;
+    _locationView.layer.borderWidth = width;
+    _commentsView.layer.borderWidth = width;
+    _commentsSummaryView.layer.borderWidth = width;
+    _footerView.layer.borderWidth = width;
+}
+-(void)setBorderColors
+{
     float borderColorGray = 150.0/255.0;
-    _cardView.layer.borderColor = [UIColor colorWithRed:borderColorGray green:borderColorGray blue:borderColorGray alpha:1].CGColor;
-    _cardView.layer.borderWidth = .1;
+    CGColorRef color = [UIColor colorWithRed:borderColorGray green:borderColorGray blue:borderColorGray alpha:1].CGColor;
+    _headerView.layer.borderColor = color;
+    _photoView.layer.borderColor = color;
+    _locationView.layer.borderColor = color;
+    _commentsView.layer.borderColor = color;
+    _commentsSummaryView.layer.borderColor = color;
+    _footerView.layer.borderColor = color;
+}
+
+-(void)setBackgroundColors
+{
+    _headerView.backgroundColor = [UIColor whiteColor];
+    _photoView.backgroundColor = [UIColor whiteColor];
+    _locationView.backgroundColor = [UIColor whiteColor];
+    _commentsView.backgroundColor = [UIColor whiteColor];
+    _commentsSummaryView.backgroundColor = [UIColor whiteColor];
+    _footerView.backgroundColor = [UIColor whiteColor];
 }
 
 -(id)initWithCoder:(NSCoder *)aDecoder
