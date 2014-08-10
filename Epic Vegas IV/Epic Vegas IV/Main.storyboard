@@ -158,20 +158,20 @@
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" misplaced="YES" placeholderIntrinsicWidth="280" placeholderIntrinsicHeight="21" text="Title Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="f2i-QE-abh" customClass="AutoSizeLabel">
                                             <rect key="frame" x="60" y="10" width="280" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="16"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" misplaced="YES" placeholderIntrinsicWidth="280" placeholderIntrinsicHeight="21" text="Subtitle" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="WB9-yE-odN" customClass="AutoSizeLabel">
                                             <rect key="frame" x="60" y="39" width="280" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleSubhead"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="12"/>
                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" misplaced="YES" placeholderIntrinsicWidth="280" placeholderIntrinsicHeight="21" text="Message" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="320" translatesAutoresizingMaskIntoConstraints="NO" id="zFf-VB-zZa" customClass="AutoSizeLabel">
                                             <rect key="frame" x="20" y="89" width="320" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                            <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
                                             <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -185,7 +185,7 @@
                                         <constraint firstItem="9I0-dz-Wtv" firstAttribute="top" secondItem="2fu-vz-YEB" secondAttribute="top" constant="25" id="L2o-Rb-dL0"/>
                                         <constraint firstAttribute="bottom" secondItem="zFf-VB-zZa" secondAttribute="bottom" constant="20" id="N2w-kD-ttT"/>
                                         <constraint firstAttribute="bottom" secondItem="jDR-Ty-G9M" secondAttribute="bottom" constant="5" id="OHg-LK-Kae"/>
-                                        <constraint firstItem="zFf-VB-zZa" firstAttribute="leading" secondItem="2fu-vz-YEB" secondAttribute="leading" constant="15" id="OK8-WN-tX7"/>
+                                        <constraint firstItem="zFf-VB-zZa" firstAttribute="leading" secondItem="2fu-vz-YEB" secondAttribute="leading" constant="20" id="OK8-WN-tX7"/>
                                         <constraint firstItem="f2i-QE-abh" firstAttribute="top" secondItem="2fu-vz-YEB" secondAttribute="top" constant="35" id="RLs-T0-9NE"/>
                                         <constraint firstItem="WB9-yE-odN" firstAttribute="leading" secondItem="9I0-dz-Wtv" secondAttribute="trailing" constant="10" id="TBv-58-WSo"/>
                                         <constraint firstAttribute="trailing" secondItem="zFf-VB-zZa" secondAttribute="trailing" constant="15" id="UHh-a1-tiq"/>
