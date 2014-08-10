@@ -442,8 +442,14 @@ UIButton* selectExistingPhotoButton;
 
 -(IBAction)selectExistingPhotoButtonClicked:(id)sender
 {
-    selectExistingPhotoButton.alpha = 0;
-    photoPicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    [UIView transitionWithView:self.view.window
+                      duration:0.5
+                       options:UIViewAnimationOptionTransitionFlipFromLeft
+                    animations:^{
+                        selectExistingPhotoButton.alpha = 0;
+                        photoPicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+                    }
+                    completion:nil];
     
 }
 
@@ -497,8 +503,14 @@ UIButton* selectExistingPhotoButton;
         [picker dismissViewControllerAnimated:YES completion:NULL];
     else
     {
-        picker.sourceType = UIImagePickerControllerSourceTypeCamera;
-        selectExistingPhotoButton.alpha = 1;
+        [UIView transitionWithView:self.view.window
+                          duration:0.5
+                           options:UIViewAnimationOptionTransitionFlipFromLeft
+                        animations:^{
+                            picker.sourceType = UIImagePickerControllerSourceTypeCamera;
+                            selectExistingPhotoButton.alpha = 1;
+                        }
+                        completion:nil];
     }
 }
 
