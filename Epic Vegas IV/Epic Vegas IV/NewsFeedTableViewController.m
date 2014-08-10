@@ -22,11 +22,27 @@
 
 #pragma mark - Initialization
 
+-(id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        [self initializeProperties];
+    }
+    return  self;
+}
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
     if (self) {
+        [self initializeProperties];
+    }
+    return self;
+}
+
+-(void)initializeProperties
+{
+   
         // The className to query on
         self.parseClassName = @"Post";
         
@@ -37,32 +53,20 @@
         self.pullToRefreshEnabled = YES;
         
         // The number of objects to show per page
-        self.objectsPerPage = 10;
+        self.objectsPerPage = 25;
         
         // Improve scrolling performance by reusing UITableView section headers
         //self.reusableSectionHeaderViews = [NSMutableSet setWithCapacity:3];
         
         self.shouldReloadOnAppear = NO;
-
-    }
-    return self;
 }
 
 #pragma mark - UIViewController
 
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    //[self initRefreshControl];
-    
-    //[self refreshData];
-   
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -82,7 +86,10 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.objects.count;
+    NSInteger rows = self.objects.count;
+if (self.paginationEnabled && rows != 0)
+        rows++;
+    return rows;
 }
 
 
@@ -95,7 +102,7 @@
         return query;
     }
     
-    PFQuery *query = [PFQuery queryWithClassName:@"Post"];
+    PFQuery *query = [PFQuery queryWithClassName:self.parseClassName];
     [query orderByDescending:@"createdAt"];
     
     // A pull-to-refresh should always trigger a network request.
@@ -202,12 +209,33 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return [self basicCellAtIndexPath:indexPath];
+    if (indexPath.row == self.objects.count) {
+        UITableViewCell *cell = [self tableView:tableView cellForNextPageAtIndexPath:indexPath];
+        [self loadNextPage];
+        return cell;
+    } else {
+
+        UITableViewCell* cell = [self basicCellAtIndexPath:indexPath];
+
+    // load more if last cell
+    //if(indexPath.row == self.objects.count - 1)
+    //    [self loadNextPage];
+    
+    return cell;
+    }
+}
+
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForNextPageAtIndexPath:(NSIndexPath *)indexPath {    
+    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"LoadMoreCell" forIndexPath:indexPath];
+    
+    return cell;
 }
 
 - (PostTableViewCell *)basicCellAtIndexPath:(NSIndexPath *)indexPath {
     PostTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"PostCell" forIndexPath:indexPath];
     [self configureBasicCell:cell atIndexPath:indexPath];
+
     return cell;
 }
 
@@ -222,26 +250,38 @@
     if(!userPointer)
         return;
     
-    // query for user object, try from cache first
-    PFObject* user = nil;
-    PFQuery *query = [PFQuery queryWithClassName:@"_User"];
-    query.cachePolicy = kPFCachePolicyCacheElseNetwork;
-    @try
-    {
-        user = [query getObjectWithId:userPointer.objectId];
-        
-        //[self setContentHidden:cell];
-        [self setUserImageForCell:cell forUser:user];
-        [self setTitleForCell:cell forUser:user];
-        [self setSubtitleForCell:cell forPost:post];
-        [self setMessageForCell:cell forPost:post];
-        //[self fadeInContent:cell];
-    }
-    @catch(NSException *exception)
-    {
-        NSLog(@"Exception: %@", exception);
-    }
+    [self setSubtitleForCell:cell forPost:post];
+    [self setMessageForCell:cell forPost:post];
+
+//    // query for user object, try from cache first
+//    PFObject* user = nil;
+//    PFQuery *query = [PFQuery queryWithClassName:@"_User"];
+//    query.cachePolicy = kPFCachePolicyCacheElseNetwork;
+//    @try
+//    {
+//        user = [query getObjectWithId:userPointer.objectId];
+//        
+//        //[self setContentHidden:cell];
+//        //[self setUserImageForCell:cell forUser:user];
+//        [self setTitleForCell:cell forUser:user];
+//               //[self fadeInContent:cell];
+//    }
+//    @catch(NSException *exception)
+//    {
+//        NSLog(@"Exception: %@", exception);
+//    }
 }
+
+//- (void)scrollViewDidScroll: (UIScrollView*)scroll {
+//    // UITableView only moves in one direction, y axis
+//    CGFloat currentOffset = scroll.contentOffset.y;
+//    CGFloat maximumOffset = scroll.contentSize.height - scroll.frame.size.height;
+//    
+//    // Change 10.0 to adjust the distance from bottom
+//    if (maximumOffset - currentOffset <= 10.0) {
+//        [self loadNextPage];
+//    }
+//}
 
 //-(void)setContentHidden:(PostTableViewCell *)cell
 //{
@@ -349,14 +389,15 @@
 }
 
 - (CGFloat)heightForBasicCellAtIndexPath:(NSIndexPath *)indexPath {
-    static PostTableViewCell *sizingCell = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        sizingCell = [self.tableView dequeueReusableCellWithIdentifier:@"PostCell"];
-    });
-    
-    [self configureBasicCell:sizingCell atIndexPath:indexPath];
-    return [self calculateHeightForConfiguredSizingCell:sizingCell];
+//    static PostTableViewCell *sizingCell = nil;
+//    static dispatch_once_t onceToken;
+//    dispatch_once(&onceToken, ^{
+//        sizingCell = [self.tableView dequeueReusableCellWithIdentifier:@"PostCell"];
+//    });
+//    
+//    [self configureBasicCell:sizingCell atIndexPath:indexPath];
+//    return [self calculateHeightForConfiguredSizingCell:sizingCell];
+    return  50;
 }
 
 - (CGFloat)calculateHeightForConfiguredSizingCell:(UITableViewCell *)sizingCell {
@@ -367,6 +408,19 @@
     
     CGSize size = [sizingCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
     return size.height;
+}
+
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [super tableView:tableView didSelectRowAtIndexPath:indexPath];
+    
+    [tableView deselectRowAtIndexPath:indexPath animated:NO];
+    
+    if (indexPath.row == self.objects.count && self.paginationEnabled) {
+        // Load More Cell
+        [self loadNextPage];
+    }
 }
 
 /*
