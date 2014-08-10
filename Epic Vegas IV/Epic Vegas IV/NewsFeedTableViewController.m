@@ -308,19 +308,19 @@ if (self.paginationEnabled && rows != 0)
     PFObject* user = nil;
     PFQuery *query = [PFQuery queryWithClassName:@"_User"];
     query.cachePolicy = kPFCachePolicyCacheElseNetwork;
-    @try
-    {
-        user = [query getObjectWithId:userPointer.objectId];
-        
-        [self setContentHidden:cell];
-        [self setUserImageForCell:cell forUser:user];
-        [self setTitleForCell:cell forUser:user];
-        [self fadeInContent:cell];
-    }
-    @catch(NSException *exception)
-    {
-        NSLog(@"Exception: %@", exception);
-    }
+//    @try
+//    {
+//        //user = [query getObjectWithId:userPointer.objectId];
+//        
+//        //[self setContentHidden:cell];
+//        //[self setUserImageForCell:cell forUser:user];
+//        //[self setTitleForCell:cell forUser:user];
+//        //[self fadeInContent:cell];
+//    }
+//    @catch(NSException *exception)
+//    {
+//        NSLog(@"Exception: %@", exception);
+//    }
 }
 
 //- (void)scrollViewDidScroll: (UIScrollView*)scroll {
