@@ -43,23 +43,20 @@
 
 -(void)initializeProperties
 {
-   
-        // The className to query on
-        self.parseClassName = @"Post";
-        
-        // Whether the built-in pagination is enabled
-        self.paginationEnabled = YES;
-        
-        // Whether the built-in pull-to-refresh is enabled
-        self.pullToRefreshEnabled = YES;
-        
-        // The number of objects to show per page
-        self.objectsPerPage = 10;
-        
-        // Improve scrolling performance by reusing UITableView section headers
-        //self.reusableSectionHeaderViews = [NSMutableSet setWithCapacity:3];
-        
-        self.shouldReloadOnAppear = NO;
+    
+    // The className to query on
+    self.parseClassName = @"Post";
+    
+    // Whether the built-in pagination is enabled
+    self.paginationEnabled = YES;
+    
+    // Whether the built-in pull-to-refresh is enabled
+    self.pullToRefreshEnabled = YES;
+    
+    // The number of objects to show per page
+    self.objectsPerPage = 10;
+    
+    self.shouldReloadOnAppear = NO;
 }
 
 #pragma mark - UIViewController
@@ -88,7 +85,8 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     NSInteger rows = self.objects.count;
-if (self.paginationEnabled && rows != 0)
+    
+    if (self.paginationEnabled && rows != 0)
         rows++;
     return rows;
 }
@@ -142,97 +140,25 @@ if (self.paginationEnabled && rows != 0)
     return query;
 }
 
-//-(void)refreshData
-//{
-//    PFQuery *query = [PFQuery queryWithClassName:@"Post"];
-//    query.cachePolicy = kPFCachePolicyNetworkOnly;
-//    [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
-//        @synchronized(self) {
-//            
-//            NSLog(@"Retrieved Posts!: %@", objects);
-//            _posts = objects;
-//            
-//            dispatch_async(dispatch_get_main_queue(), ^{
-//                [self.tableView reloadData];
-//                [self.tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:NO];
-//            });
-//            
-//            if (error) {
-//                return;
-//            }
-//        }
-//    }];
-//}
-//
-//-(void)initRefreshControl
-//{
-//    UIRefreshControl* refreshControl = [[UIRefreshControl alloc] init];
-//    refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"Pull to Refresh"];
-//    [refreshControl addTarget:self action:@selector(refreshView:) forControlEvents:UIControlEventValueChanged];
-//    self.refreshControl = refreshControl;
-//    
-//}
-//
-//-(void)refreshView:(UIRefreshControl *)refresh {
-//    refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"Refreshing data..."];
-//   
-//    [self refreshData];
-//    // custom refresh logic would be placed here...
-////       NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-////       [formatter setDateFormat:@"MMM d, h:mm a"];
-////       NSString *lastUpdated = [NSString stringWithFormat:@"Last updated on %@",
-////                [formatter stringFromDate:[NSDate date]]];
-////        refresh.attributedTitle = [[NSAttributedString alloc] initWithString:lastUpdated];
-//    
-//    [refresh endRefreshing];
-//}
-
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
 
-//#pragma mark - Table view data source
-//
-//- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-//{
-//#warning Potentially incomplete method implementation.
-//    // Return the number of sections.
-//    return 1;
-//}
-//
-//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-//{
-//    return _posts.count;
-//}
-
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == self.objects.count) {
-        UITableViewCell *cell = [self tableView:tableView cellForNextPageAtIndexPath:indexPath];
-        
-        return cell;
-    } else {
-
-        UITableViewCell* cell = [self basicCellAtIndexPath:indexPath];
-
-    // load more if last cell
-    //if(indexPath.row == self.objects.count - 1)
-    //    [self loadNextPage];
-    
-    return cell;
-    }
+    if (indexPath.row == self.objects.count)
+        return [self tableView:tableView cellForNextPageAtIndexPath:indexPath];
+    else
+        return [self basicCellAtIndexPath:indexPath];
 }
 
 -(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
     if(!decelerate)
-    {
         [self checkIfAtLastCellAndShouldLoadNextPage:scrollView];
-    }
 }
 
 -(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
@@ -259,11 +185,11 @@ if (self.paginationEnabled && rows != 0)
     float reload_distance = 10;
     if(y > h - reload_distance) {
         NSLog(@"load more rows");
-           [self loadNextPage];
+        [self loadNextPage];
     }
 }
-                                                                 
-                                                                 
+
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForNextPageAtIndexPath:(NSIndexPath *)indexPath {
     LoadNextPageTableViewCell *cell = (LoadNextPageTableViewCell*)[self.tableView dequeueReusableCellWithIdentifier:@"LoadMoreCell" forIndexPath:indexPath];
@@ -274,7 +200,7 @@ if (self.paginationEnabled && rows != 0)
 - (PostTableViewCell *)basicCellAtIndexPath:(NSIndexPath *)indexPath {
     PostTableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"PostCell" forIndexPath:indexPath];
     [self configureBasicCell:cell atIndexPath:indexPath];
-
+    
     return cell;
 }
 
@@ -293,61 +219,31 @@ if (self.paginationEnabled && rows != 0)
     if(!userPointer)
         return;
     
-    [self setSubtitleForCell:cell forPost:post];
-    [self setMessageForCell:cell forPost:post];
-
-    // query for user object, try from cache first
-    PFObject* user = nil;
-    PFQuery *query = [PFQuery queryWithClassName:@"_User"];
-    query.cachePolicy = kPFCachePolicyCacheElseNetwork;
-//    @try
-//    {
-//        //user = [query getObjectWithId:userPointer.objectId];
-//        
-//        //[self setContentHidden:cell];
-//        //[self setUserImageForCell:cell forUser:user];
-//        //[self setTitleForCell:cell forUser:user];
-//        //[self fadeInContent:cell];
-//    }
-//    @catch(NSException *exception)
-//    {
-//        NSLog(@"Exception: %@", exception);
-//    }
-}
-
-//- (void)scrollViewDidScroll: (UIScrollView*)scroll {
-//    // UITableView only moves in one direction, y axis
-//    CGFloat currentOffset = scroll.contentOffset.y;
-//    CGFloat maximumOffset = scroll.contentSize.height - scroll.frame.size.height;
-//    
-//    // Change 10.0 to adjust the distance from bottom
-//    if (maximumOffset - currentOffset <= 10.0) {
-//        [self loadNextPage];
-//    }
-//}
-
--(void)setContentHidden:(PostTableViewCell *)cell
-{
-//    cell.userImageView.alpha = 0;
-//    cell.messageLabel.alpha = 0;
-//    cell.titleLabel.alpha = 0;
-//    cell.subtitleLabel.alpha = 0;
-}
-
-
--(void)fadeInContent:(PostTableViewCell *)cell
-{
-    [cell.userImageView loadInBackground:^(UIImage *image, NSError *error) {
-        if (!error) {
-//            [UIView animateWithDuration:0.5f animations:^{
-//                cell.userImageView.alpha = 1;
-//                cell.messageLabel.alpha = 1;
-//                cell.titleLabel.alpha = 1;
-//                cell.subtitleLabel.alpha = 1;
-//            }];
+    dispatch_queue_t myQueue = dispatch_queue_create("My Queue",NULL);
+    dispatch_async(myQueue, ^{
+        // Perform long running process in background
+        PFObject* user = nil;
+        PFQuery *query = [PFQuery queryWithClassName:@"_User"];
+        query.cachePolicy = kPFCachePolicyCacheElseNetwork;
+        
+        // query for user object, try from cache first
+        user = [query getObjectWithId:userPointer.objectId];
+        if(!user)
+        {
+            NSLog(@"Error querying for user");
+            return;
         }
-    }];
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            // Update the UI
+            [self setSubtitleForCell:cell forPost:post];
+            [self setMessageForCell:cell forPost:post];
+            [self setUserImageForCell:cell forUser:user];
+            [self setTitleForCell:cell forUser:user];
+        });
+    });
 }
+
 
 - (void)setUserImageForCell:(PostTableViewCell *)cell forUser:(PFObject *)user {
     if(!user)
@@ -357,20 +253,25 @@ if (self.paginationEnabled && rows != 0)
     }
     
     cell.userImageView.clipsToBounds = YES;
-    cell.userImageView.layer.cornerRadius = 20;
-
+    cell.userImageView.layer.cornerRadius = 30;
+    
     PFFile *imageFile = [user objectForKey:kUserProfilePicSmallKey];
     if (imageFile) {
         NSLog(@"Setting image for cell");
         [cell.userImageView setFile:imageFile];
+        
+        [cell.userImageView loadInBackground:^(UIImage *image, NSError *error) {
+            if (error) {
+                NSLog(@"Error loading user image: %@", error);
+            }
+        }];
     }
-
 }
 
 - (void)setTitleForCell:(PostTableViewCell *)cell forUser:(PFObject *)user {
     if(!user)
         return;
-
+    
     NSString* userName = user[kUserDisplayNameKey];
     NSString* actionDescription = @"";
     if(!userName)
@@ -435,7 +336,7 @@ if (self.paginationEnabled && rows != 0)
     
     // fixed size for the load next page cell
     if(self.paginationEnabled && indexPath.row == self.objects.count)
-        return  20;
+        return  40;
     
     static PostTableViewCell *sizingCell = nil;
     static dispatch_once_t onceToken;
@@ -459,64 +360,40 @@ if (self.paginationEnabled && rows != 0)
 
 
 
-/*
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:<#@"reuseIdentifier"#> forIndexPath:indexPath];
-    
-    // Configure the cell...
-    
-    return cell;
-}
-*/
 
-/*
+
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // Return NO if you do not want the specified item to be editable.
-    return YES;
+    return NO;
 }
-*/
+
 
 /*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    } else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
+ // Override to support editing the table view.
+ - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+ {
+ if (editingStyle == UITableViewCellEditingStyleDelete) {
+ // Delete the row from the data source
+ [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+ } else if (editingStyle == UITableViewCellEditingStyleInsert) {
+ // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+ }
+ }
+ */
+
+
 
 /*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+ #pragma mark - Navigation
+ 
+ // In a storyboard-based application, you will often want to do a little preparation before navigation
+ - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+ {
+ // Get the new view controller using [segue destinationViewController].
+ // Pass the selected object to the new view controller.
+ }
+ */
 
 @end
