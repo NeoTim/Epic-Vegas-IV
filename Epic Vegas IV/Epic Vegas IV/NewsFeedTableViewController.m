@@ -389,15 +389,19 @@ if (self.paginationEnabled && rows != 0)
 }
 
 - (CGFloat)heightForBasicCellAtIndexPath:(NSIndexPath *)indexPath {
-//    static PostTableViewCell *sizingCell = nil;
-//    static dispatch_once_t onceToken;
-//    dispatch_once(&onceToken, ^{
-//        sizingCell = [self.tableView dequeueReusableCellWithIdentifier:@"PostCell"];
-//    });
-//    
-//    [self configureBasicCell:sizingCell atIndexPath:indexPath];
-//    return [self calculateHeightForConfiguredSizingCell:sizingCell];
-    return  50;
+    
+    // fixed size for the load next page cell
+    if(self.paginationEnabled && indexPath.row == self.objects.count)
+        return  20;
+    
+    static PostTableViewCell *sizingCell = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sizingCell = [self.tableView dequeueReusableCellWithIdentifier:@"PostCell"];
+    });
+    
+    [self configureBasicCell:sizingCell atIndexPath:indexPath];
+    return [self calculateHeightForConfiguredSizingCell:sizingCell];
 }
 
 - (CGFloat)calculateHeightForConfiguredSizingCell:(UITableViewCell *)sizingCell {
