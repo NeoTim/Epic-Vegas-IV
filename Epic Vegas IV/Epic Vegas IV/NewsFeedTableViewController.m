@@ -242,13 +242,8 @@ NSInteger _numOfObjectsBeforeLoadMore;
     
     if(!userPointer)
         return;
-
-    cell.alpha = 0;
-    cell.userImageView.alpha = 0;
-    cell.photoView.alpha = 0;
-    cell.headerView.alpha = 0;
-    cell.footerView.alpha = 0;
     
+    [cell setContentInvisible];
     dispatch_queue_t myQueue = dispatch_queue_create("My Queue",NULL);
     dispatch_async(myQueue, ^{
         
@@ -307,17 +302,15 @@ NSInteger _numOfObjectsBeforeLoadMore;
             // fade in user image view
             [UIView animateWithDuration:.5 delay:0 usingSpringWithDamping:1 initialSpringVelocity:1.f options:UIViewAnimationOptionCurveEaseInOut
                                          animations:^{
-                                             cell.alpha = 1;
-                                             cell.userImageView.alpha = 1;
-                                             cell.photoView.alpha = 1;
-                                             
-                                             cell.headerView.alpha = 1;
-                                             cell.footerView.alpha = 1;
+                                             //cell.alpha = 1;
+                                             [cell setContentVisible];
+
                                          } completion:nil];
 
         });
     });
 }
+
 
 - (void)setPhotoImageForCell:(PostTableViewCell *)cell forPhoto:(UIImage *)photoImage {
     if(!photoImage)

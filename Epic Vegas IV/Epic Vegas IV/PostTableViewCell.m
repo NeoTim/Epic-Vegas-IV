@@ -39,6 +39,32 @@
     [self setBackgroundColors];
 }
 
+-(void)setContentInvisible
+{
+    self.titleLabel.alpha = 0;
+    self.subtitleLabel.alpha = 0;
+    self.messageLabel.alpha = 0;
+    self.userImageView.alpha = 0;
+    self.photoView.alpha = 0;
+    
+    //cell.headerView.alpha = 0;
+    //cell.photoView.alpha = 0;
+    //cell.locationView.alpha = 0;
+    //cell.commentsView.alpha = 0;
+    //cell.commentsSummaryView.alpha = 0;
+    //cell.footerView.alpha = 0;
+}
+
+-(void)setContentVisible
+{
+    self.titleLabel.alpha = 1;
+    self.subtitleLabel.alpha = 1;
+    self.messageLabel.alpha = 1;
+    self.userImageView.alpha = 1;
+    self.photoView.alpha = 1;
+}
+
+
 -(void)setSectionVisibility
 {
 //    _photoView.hidden = YES;

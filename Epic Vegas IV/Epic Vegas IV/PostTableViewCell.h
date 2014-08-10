@@ -22,5 +22,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *commentsSummaryView;
 @property (weak, nonatomic) IBOutlet UIImageView *footerView;
 
+-(void)setContentInvisible;
+-(void)setContentVisible;
 
 @end
