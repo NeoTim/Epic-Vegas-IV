@@ -21,6 +21,8 @@
 @synthesize shouldReloadOnAppear;
 
 
+NSInteger _numOfObjectsBeforeLoadMore;
+
 #pragma mark - Initialization
 
 -(id)initWithCoder:(NSCoder *)aDecoder
@@ -76,6 +78,24 @@
     }
 }
 
+-(void)loadNextPage
+{
+    _numOfObjectsBeforeLoadMore = self.objects.count;
+    [super loadNextPage];
+}
+
+-(BOOL)shouldShowLoadNextPageCell
+{
+    // if object count is not a multiple of the page size, then no
+    if(self.objects.count % self.objectsPerPage != 0)
+        return NO;
+    
+    // if the num of objects before load == the num of objects, then no
+    if(_numObjectsBeforeNextPageLoad == self.objects.count)
+        return  NO;
+
+    return YES;
+}
 
 #pragma mark - UITableViewDataSource
 
@@ -86,7 +106,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     NSInteger rows = self.objects.count;
     
-    if (self.paginationEnabled && rows != 0)
+    if (self.paginationEnabled && rows != 0 && [self shouldShowLoadNextPageCell])
         rows++;
     return rows;
 }
@@ -149,7 +169,8 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if (indexPath.row == self.objects.count)
+    // if last row
+    if (indexPath.row == self.objects.count && [self shouldShowLoadNextPageCell])
         return [self tableView:tableView cellForNextPageAtIndexPath:indexPath];
     else
         return [self basicCellAtIndexPath:indexPath];
@@ -169,6 +190,9 @@
 
 -(void)checkIfAtLastCellAndShouldLoadNextPage:(UIScrollView*)scrollView
 {
+    if(![self shouldShowLoadNextPageCell])
+        return;
+    
     CGPoint offset = scrollView.contentOffset;
     CGRect bounds = scrollView.bounds;
     CGSize size = scrollView.contentSize;
@@ -335,7 +359,7 @@
 - (CGFloat)heightForBasicCellAtIndexPath:(NSIndexPath *)indexPath {
     
     // fixed size for the load next page cell
-    if(self.paginationEnabled && indexPath.row == self.objects.count)
+    if(self.paginationEnabled && indexPath.row == self.objects.count && [self shouldShowLoadNextPageCell])
         return  40;
     
     static PostTableViewCell *sizingCell = nil;

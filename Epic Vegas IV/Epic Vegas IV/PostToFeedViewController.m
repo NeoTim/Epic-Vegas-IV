@@ -28,7 +28,6 @@
 @implementation PostToFeedViewController
 
 
-
 NSInteger characterLimit = 300;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -44,6 +43,7 @@ NSInteger characterLimit = 300;
 {
     [_messageTextView becomeFirstResponder];
 }
+
 
 - (void)viewDidLoad
 {
@@ -211,33 +211,6 @@ NSInteger characterLimit = 300;
     [aTextView resignFirstResponder];
     return YES;
 }
-
-//- (void)adjustSelection:(UITextView *)textView {
-//    
-//    // workaround to UITextView bug, text at the very bottom is slightly cropped by the keyboard
-//    if ([textView respondsToSelector:@selector(textContainerInset)]) {
-//        [textView layoutIfNeeded];
-//        CGRect caretRect = [textView caretRectForPosition:textView.selectedTextRange.end];
-//        caretRect.size.height += textView.textContainerInset.bottom;
-//        [textView scrollRectToVisible:caretRect animated:NO];
-//    }
-//}
-
-//- (void)textViewDidBeginEditing:(UITextView *)textView {
-//    
-//    if (!_messageTextView.inputAccessoryView) {
-//        
-//    //    _messageTextView.inputAccessoryView = [self keyboardToolBar];  // use what's in the storyboard
-//    }
-//    
-//    [self adjustSelection:textView];
-//}
-//
-//- (void)textViewDidChangeSelection:(UITextView *)textView {
-//    
-//    [self adjustSelection:textView];
-//}
-
 
 - (void)textViewDidChange:(UITextView *)txtView
 {
