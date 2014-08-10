@@ -235,22 +235,45 @@ if (self.paginationEnabled && rows != 0)
     }
 }
 
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath;
+-(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
 {
-    if (indexPath.row == self.objects.count)
+    if(!decelerate)
     {
-        // this method gets called when the cell is scrolling into view, but also when it's first added to the table view
-        // we only care about the first case
-        if ([tableView.indexPathsForVisibleRows containsObject:indexPath])
-        {
-            [self loadNextPage];
-        }
+        [self checkIfAtLastCellAndShouldLoadNextPage:scrollView];
     }
-    
+}
+
+-(void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
+{
+    [self checkIfAtLastCellAndShouldLoadNextPage:scrollView];
 }
 
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForNextPageAtIndexPath:(NSIndexPath *)indexPath {    
+-(void)checkIfAtLastCellAndShouldLoadNextPage:(UIScrollView*)scrollView
+{
+    CGPoint offset = scrollView.contentOffset;
+    CGRect bounds = scrollView.bounds;
+    CGSize size = scrollView.contentSize;
+    UIEdgeInsets inset = scrollView.contentInset;
+    float y = offset.y + bounds.size.height - inset.bottom;
+    float h = size.height;
+    // NSLog(@"offset: %f", offset.y);
+    // NSLog(@"content.height: %f", size.height);
+    // NSLog(@"bounds.height: %f", bounds.size.height);
+    // NSLog(@"inset.top: %f", inset.top);
+    // NSLog(@"inset.bottom: %f", inset.bottom);
+    // NSLog(@"pos: %f of %f", y, h);
+    
+    float reload_distance = 10;
+    if(y > h - reload_distance) {
+        NSLog(@"load more rows");
+           [self loadNextPage];
+    }
+}
+                                                                 
+                                                                 
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForNextPageAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:@"LoadMoreCell" forIndexPath:indexPath];
     
     return cell;

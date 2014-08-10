@@ -77,6 +77,7 @@
 		53A19F9C1994846E008DF739 /* Location@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53A19F9B1994846E008DF739 /* Location@2x.png */; };
 		53A19F9E199484DD008DF739 /* Map@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53A19F9D199484DD008DF739 /* Map@2x.png */; };
 		53C5BCC51996A3FB0060B49A /* AutoSizeLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 53C5BCC41996A3FB0060B49A /* AutoSizeLabel.m */; };
+		53C5BCD3199714600060B49A /* LoadNextPageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 53C5BCD2199714600060B49A /* LoadNextPageTableViewCell.m */; };
 		53D2D19119906597007197F6 /* FB-f-Logo__white_50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53D2D19019906597007197F6 /* FB-f-Logo__white_50@2x.png */; };
 		53D2D1931990A2B1007197F6 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53D2D1921990A2B1007197F6 /* MapKit.framework */; };
 		53D2D19519917C62007197F6 /* line__0000s_0104_user@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53D2D19419917C62007197F6 /* line__0000s_0104_user@2x.png */; };
@@ -194,6 +195,8 @@
 		53A19F9D199484DD008DF739 /* Map@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Map@2x.png"; sourceTree = "<group>"; };
 		53C5BCC31996A3FB0060B49A /* AutoSizeLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutoSizeLabel.h; sourceTree = "<group>"; };
 		53C5BCC41996A3FB0060B49A /* AutoSizeLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutoSizeLabel.m; sourceTree = "<group>"; };
+		53C5BCD1199714600060B49A /* LoadNextPageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadNextPageTableViewCell.h; sourceTree = "<group>"; };
+		53C5BCD2199714600060B49A /* LoadNextPageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadNextPageTableViewCell.m; sourceTree = "<group>"; };
 		53D2D19019906597007197F6 /* FB-f-Logo__white_50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "FB-f-Logo__white_50@2x.png"; sourceTree = "<group>"; };
 		53D2D1921990A2B1007197F6 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		53D2D19419917C62007197F6 /* line__0000s_0104_user@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "line__0000s_0104_user@2x.png"; sourceTree = "<group>"; };
@@ -470,6 +473,8 @@
 				53DF0C0119969E36007E7AA8 /* PostTableViewCell.m */,
 				53C5BCC31996A3FB0060B49A /* AutoSizeLabel.h */,
 				53C5BCC41996A3FB0060B49A /* AutoSizeLabel.m */,
+				53C5BCD1199714600060B49A /* LoadNextPageTableViewCell.h */,
+				53C5BCD2199714600060B49A /* LoadNextPageTableViewCell.m */,
 			);
 			name = "News Feed";
 			sourceTree = "<group>";
@@ -700,6 +705,7 @@
 				530BED0419904C7700C5FDAB /* AppDelegate.m in Sources */,
 				530BED0019904C7700C5FDAB /* main.m in Sources */,
 				53EFEAAE1995B1D8006798C3 /* UIImage+ResizeAdditions.m in Sources */,
+				53C5BCD3199714600060B49A /* LoadNextPageTableViewCell.m in Sources */,
 				53EFEAE01995C827006798C3 /* TTTTimeIntervalFormatter.m in Sources */,
 				53EFEABB1995B2EA006798C3 /* Constants.m in Sources */,
 				53EFEAAF1995B1D8006798C3 /* UIImage+RoundedCornerAdditions.m in Sources */,
