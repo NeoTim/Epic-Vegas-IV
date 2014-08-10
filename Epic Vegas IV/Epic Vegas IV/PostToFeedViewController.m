@@ -7,6 +7,7 @@
 //
 
 #import "PostToFeedViewController.h"
+#import "UIImage+ResizeAdditions.h"
 
 @interface PostToFeedViewController ()
 
@@ -16,9 +17,17 @@
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *cameraButton;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *locationButton;
 
+@property (nonatomic, strong) PFFile *photoFile;
+@property (nonatomic, strong) PFFile *thumbnailFile;
+@property (nonatomic, assign) UIBackgroundTaskIdentifier fileUploadBackgroundTaskId;
+@property (nonatomic, assign) UIBackgroundTaskIdentifier photoPostBackgroundTaskId;
+
+@property (nonatomic, strong) UIActivityIndicatorView* spinner;
 @end
 
 @implementation PostToFeedViewController
+
+
 
 NSInteger characterLimit = 300;
 
@@ -84,6 +93,8 @@ NSInteger characterLimit = 300;
     // start editing text
     [self initMessageAccessoryView];
     
+    self.fileUploadBackgroundTaskId = UIBackgroundTaskInvalid;
+    self.photoPostBackgroundTaskId = UIBackgroundTaskInvalid;
 }
 
 -(void)initMessageAccessoryView
@@ -287,43 +298,147 @@ NSInteger characterLimit = 300;
 
 - (IBAction)postButtonPressed:(id)sender {
     // show spinner
-    UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc]initWithFrame:CGRectMake(self.view.frame.size.width / 2 - 40,self.view.frame.size.height / 2 - 125,80,80)];
+    _spinner = [[UIActivityIndicatorView alloc]initWithFrame:CGRectMake(self.view.frame.size.width / 2 - 40,self.view.frame.size.height / 2 - 125,80,80)];
 
     //spinner.color = [UIColor darkGrayColor];
-    spinner.backgroundColor = [UIColor darkGrayColor];
-    spinner.layer.cornerRadius = 5;
-    spinner.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
-    [spinner startAnimating];
-    [self.view addSubview:spinner];
+    _spinner.backgroundColor = [UIColor darkGrayColor];
+    _spinner.layer.cornerRadius = 5;
+    _spinner.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
+    [_spinner startAnimating];
+    [self.view addSubview:_spinner];
     
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
         // lots of code run in the background
         
-        PFObject *post = [PFObject objectWithClassName:@"Post"];
-        [post setObject:[self getTruncatedText] forKey:@"message"];
-        PFUser *user = [PFUser currentUser];
-        [post setObject:user forKey:@"user"];
-        [post save];
-        
-        [post saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-            if (!error) {
-                
-            }
-            else{
-                // Log details of the failure
-                NSLog(@"Error: %@ %@", error, [error userInfo]);
+        // Create Photo if there is a photo
+        PFObject *photo = nil;
+        if(_attachedImageView.image)
+        {
+            // FIX THIS
+            UIImage *resizedImage = [_attachedImageView.image resizedImageWithContentMode:UIViewContentModeScaleAspectFit bounds:CGSizeMake(560.0f, 560.0f) interpolationQuality:kCGInterpolationHigh];
+            UIImage *thumbnailImage = [_attachedImageView.image thumbnailImage:86.0f transparentBorder:0.0f cornerRadius:10.0f interpolationQuality:kCGInterpolationDefault];
+            
+            // JPEG to decrease file size and enable faster uploads & downloads
+            NSData *imageData = UIImageJPEGRepresentation(resizedImage, 0.8f);
+            NSData *thumbnailImageData = UIImagePNGRepresentation(thumbnailImage);
+            
+            self.photoFile = [PFFile fileWithData:imageData];
+            self.thumbnailFile = [PFFile fileWithData:thumbnailImageData];
+            
+            if (!self.photoFile || !self.thumbnailFile) {
+                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Couldn't post your photo" message:nil delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Dismiss", nil];
+                [alert show];
+                return;
             }
             
-            dispatch_async(dispatch_get_main_queue(), ^{
-                // stop and remove the spinner on the background when done
-                [spinner removeFromSuperview];
-                
-                // dismiss view
-                [self dismissViewControllerAnimated:YES completion:nil];
-            });
-        }];
-
+            // Request a background execution task to allow us to finish uploading the photo even if the app is backgrounded
+            self.fileUploadBackgroundTaskId = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{
+                [[UIApplication sharedApplication] endBackgroundTask:self.fileUploadBackgroundTaskId];
+            }];
+            
+            [self.photoFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                if (succeeded) {
+                    [self.thumbnailFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                        [[UIApplication sharedApplication] endBackgroundTask:self.fileUploadBackgroundTaskId];
+                    }];
+                } else {
+                    [[UIApplication sharedApplication] endBackgroundTask:self.fileUploadBackgroundTaskId];
+                }
+            }];
+        
+            
+            // create a photo object
+            photo = [PFObject objectWithClassName:kPhotoClassKey];
+            
+            NSLog(@"photo with object id created: %@", photo.objectId);
+            [photo setObject:[PFUser currentUser] forKey:kPhotoUserKey];
+            [photo setObject:self.photoFile forKey:kPhotoPictureKey];
+            [photo setObject:self.thumbnailFile forKey:kPhotoThumbnailKey];
+            
+            // photos are public, but may only be modified by the user who uploaded them
+            PFACL *photoACL = [PFACL ACLWithUser:[PFUser currentUser]];
+            [photoACL setPublicReadAccess:YES];
+            photo.ACL = photoACL;
+            
+            // Request a background execution task to allow us to finish uploading the photo even if the app is backgrounded
+            self.photoPostBackgroundTaskId = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{
+                [[UIApplication sharedApplication] endBackgroundTask:self.photoPostBackgroundTaskId];
+            }];
+            
+            // Save the Photo PFObject
+            [photo saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                if (succeeded) {
+                    [[Cache sharedCache] setAttributesForPhoto:photo likers:[NSArray array] commenters:[NSArray array] likedByCurrentUser:NO];
+                    
+                    NSLog(@"photo with object id saved: %@", photo.objectId);
+                    
+                    [self createPostWithPhoto:photo];
+//                    // userInfo might contain any caption which might have been posted by the uploader
+//                    if (userInfo) {
+//                        NSString *commentText = [userInfo objectForKey:kEditPhotoViewControllerUserInfoCommentKey];
+//                        
+//                        if (commentText && commentText.length != 0) {
+//                            // create and save photo caption
+//                            PFObject *comment = [PFObject objectWithClassName:kActivityClassKey];
+//                            [comment setObject:kActivityTypeComment forKey:kActivityTypeKey];
+//                            [comment setObject:photo forKey:kActivityPhotoKey];
+//                            [comment setObject:[PFUser currentUser] forKey:kActivityFromUserKey];
+//                            [comment setObject:[PFUser currentUser] forKey:kActivityToUserKey];
+//                            [comment setObject:commentText forKey:kActivityContentKey];
+//                            
+//                            PFACL *ACL = [PFACL ACLWithUser:[PFUser currentUser]];
+//                            [ACL setPublicReadAccess:YES];
+//                            comment.ACL = ACL;
+//                            
+//                            [comment saveEventually];
+//                            [[Cache sharedCache] incrementCommentCountForPhoto:photo];
+//                        }
+//                    }
+                    
+                    //[[NSNotificationCenter defaultCenter] postNotificationName:PAPTabBarControllerDidFinishEditingPhotoNotification object:photo];
+                } else {
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Couldn't post your photo" message:nil delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Dismiss", nil];
+                    [alert show];
+                }
+                [[UIApplication sharedApplication] endBackgroundTask:self.photoPostBackgroundTaskId];
+            }];
+        }
+        else{
+            // Create Post without image
+            [self createPostWithPhoto:nil];
+        }
     });
+}
+
+-(void)createPostWithPhoto:(PFObject*)photo
+{
+    PFObject *post = [PFObject objectWithClassName:@"Post"];
+    [post setObject:[self getTruncatedText] forKey:@"message"];
+    PFUser *user = [PFUser currentUser];
+    [post setObject:user forKey:@"user"];
+    
+    if(photo)
+    {
+        NSLog(@"saving photo with object id to post: %@", photo.objectId);
+        [post setObject:photo forKey:@"photo"];
+    }
+    [post save];
+    
+    [post saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if (error) {
+            // Log details of the failure
+            NSLog(@"Error: %@ %@", error, [error userInfo]);
+        }
+        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            // stop and remove the spinner on the background when done
+            [_spinner removeFromSuperview];
+            
+            // dismiss view
+            [self dismissViewControllerAnimated:YES completion:nil];
+        });
+    }];
+
 }
 
 
