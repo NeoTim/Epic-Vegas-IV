@@ -367,8 +367,6 @@ UIButton* selectExistingPhotoButton;
     
     
     float screenWidth = self.view.frame.size.width;
-    float imageWidth = circleButtonImageRadius * 2;
-    float imageHeight = circleButtonImageRadius * 2;
     float bottom = 150;
 
     _shareContentLabel = [[UILabel alloc] initWithFrame:CGRectMake((0), (screenHeight - bottom - 135), screenWidth, 50)];

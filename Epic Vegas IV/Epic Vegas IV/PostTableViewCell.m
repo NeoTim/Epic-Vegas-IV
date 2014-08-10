@@ -41,10 +41,10 @@
 
 -(void)setSectionVisibility
 {
-    _photoView.hidden = YES;
-    _locationView.hidden = YES;
-    _commentsView.hidden = YES;
-    _commentsSummaryView.hidden = YES;
+//    _photoView.hidden = YES;
+//    _locationView.hidden = YES;
+//    _commentsView.hidden = YES;
+//    _commentsSummaryView.hidden = YES;
 }
 
 -(void)setBorderCorners

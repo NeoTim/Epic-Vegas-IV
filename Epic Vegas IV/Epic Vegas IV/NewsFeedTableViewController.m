@@ -246,6 +246,8 @@ NSInteger _numOfObjectsBeforeLoadMore;
     dispatch_queue_t myQueue = dispatch_queue_create("My Queue",NULL);
     dispatch_async(myQueue, ^{
         // Perform long running process in background
+
+        // get user who posted
         PFObject* user = nil;
         PFQuery *query = [PFQuery queryWithClassName:@"_User"];
         query.cachePolicy = kPFCachePolicyCacheElseNetwork;
@@ -258,16 +260,49 @@ NSInteger _numOfObjectsBeforeLoadMore;
             return;
         }
         
+        PFObject* photo = nil;
+        
+        // query for photo object if there is one
+        if(post[@"photo"])
+        {
+            PFObject* photoObject = post[@"photo"];
+            if(photoObject)
+            {
+                photo = [PFQuery getObjectOfClass:@"Photo" objectId:photoObject.objectId];
+            }
+        }
+        
         dispatch_async(dispatch_get_main_queue(), ^{
             // Update the UI
             [self setSubtitleForCell:cell forPost:post];
             [self setMessageForCell:cell forPost:post];
             [self setUserImageForCell:cell forUser:user];
             [self setTitleForCell:cell forUser:user];
+            [self setPhotoImageForCell:cell forPhoto:photo];
         });
     });
 }
 
+- (void)setPhotoImageForCell:(PostTableViewCell *)cell forPhoto:(PFObject *)photo {
+    if(!photo)
+    {
+        cell.photoView.image = nil;
+        return;
+    }
+    
+    PFFile *imageFile = [photo objectForKey:@"thumbnail"];
+    if (imageFile) {
+        NSLog(@"Setting photo for cell");
+        [cell.photoView setFile:imageFile];
+        
+        [cell.photoView loadInBackground:^(UIImage *image, NSError *error) {
+            if (error) {
+                NSLog(@"Error loading post photo: %@", error);
+            }
+        }];
+    }
+
+}
 
 - (void)setUserImageForCell:(PostTableViewCell *)cell forUser:(PFObject *)user {
     if(!user)

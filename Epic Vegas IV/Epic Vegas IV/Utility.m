@@ -201,7 +201,7 @@
     
     UIImage *largeImage = [image thumbnailImage:800 transparentBorder:0 cornerRadius:0 interpolationQuality:kCGInterpolationHigh];
     UIImage *mediumImage = [image thumbnailImage:280 transparentBorder:0 cornerRadius:0 interpolationQuality:kCGInterpolationHigh];
-    UIImage *smallRoundedImage = [image thumbnailImage:64 transparentBorder:0 cornerRadius:9 interpolationQuality:kCGInterpolationLow];
+    UIImage *smallRoundedImage = [image thumbnailImage:64 transparentBorder:0 cornerRadius:0 interpolationQuality:kCGInterpolationLow];
     NSData *largeImageData = UIImageJPEGRepresentation(largeImage, 1.0); // using JPEG for larger pictures
     NSData *mediumImageData = UIImageJPEGRepresentation(mediumImage, 1.0); // using JPEG for larger pictures
     NSData *smallRoundedImageData = UIImagePNGRepresentation(smallRoundedImage);
