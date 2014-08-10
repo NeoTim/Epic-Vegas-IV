@@ -12,6 +12,7 @@
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintToAdjust;
 
+@property (strong, nonatomic) IBOutlet UIImagePickerController *photoPicker;
 @end
 
 @implementation PostToFeedViewController
@@ -84,11 +85,11 @@ NSInteger characterLimit = 300;
     UIToolbar* keyboardToolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, 320, 50)];
     //numberToolbar.barStyle = UIBarStyleBlackTranslucent;
     
-    UIBarButtonItem* cameraBarButton =[[UIBarButtonItem alloc]initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:@selector(done:)];
+    UIBarButtonItem* cameraBarButton =[[UIBarButtonItem alloc]initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:@selector(cameraButtonClicked:)];
     cameraBarButton.image = [UIImage imageNamed:@"full__0000s_0122_camera.png"];
     cameraBarButton.tintColor = [UIColor darkGrayColor];
     
-    UIBarButtonItem* locationButton =[[UIBarButtonItem alloc]initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:@selector(done:)];
+    UIBarButtonItem* locationButton =[[UIBarButtonItem alloc]initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:@selector(locationButtonClicked:)];
     locationButton.image = [UIImage imageNamed:@"Location Black.png"];
     locationButton.tintColor = [UIColor darkGrayColor];
     
@@ -98,6 +99,64 @@ NSInteger characterLimit = 300;
     [keyboardToolbar addSubview:_characterCountLabel];
     [_characterCountLabel setFrame:CGRectMake(250, 3, 50, 40)];
     _messageTextView.inputAccessoryView = keyboardToolbar;
+}
+
+- (IBAction)cameraButtonClicked:(id)sender {
+    if(_attachedImageView.image)
+    {
+        // if already has photo then show the photo and see if they want to remove
+    }
+    else
+    {
+        // if not, then ask if they want to choose existing photo or take a new photo
+        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil
+                                                                 delegate:self
+                                                        cancelButtonTitle:@"Cancel"
+                                                   destructiveButtonTitle:nil
+                                                        otherButtonTitles:@"Take photo", @"Choose Existing", nil];
+        actionSheet.tag = 7431;
+        [actionSheet showInView:self.view];
+    }
+}
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    // action sheet for camera button press
+    if(actionSheet.tag == 7431)
+    {
+        if (buttonIndex == 0) {
+            // new photo
+            _photoPicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+            [self presentViewController:_photoPicker animated:YES completion:NULL];
+        } else if (buttonIndex == 1) {
+            // existing photo
+            _photoPicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+            [self presentViewController:_photoPicker animated:YES completion:NULL];
+        }
+    }
+}
+
+#pragma mark - Image Picker Controller delegate methods
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    
+    UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
+    [_attachedImageView setImage:chosenImage];
+    
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+    
+    // save image to camera roll!
+    UIImage* originalImage=info[UIImagePickerControllerOriginalImage];
+    UIImageWriteToSavedPhotosAlbum(originalImage, nil, nil, nil);
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+}
+
+- (IBAction)locationButtonClicked:(id)sender {
+    
+    
 }
 
 - (void)viewDidDisappear:(BOOL)animated {

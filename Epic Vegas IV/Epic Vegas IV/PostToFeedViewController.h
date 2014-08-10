@@ -9,8 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 
-@interface PostToFeedViewController : UIViewController <UITextViewDelegate>
-
+@interface PostToFeedViewController : UIViewController <UITextViewDelegate, UIActionSheetDelegate, UIImagePickerControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextView *messageTextView;
 
@@ -21,5 +20,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *characterCountLabel;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *postButton;
 - (IBAction)postButtonPressed:(id)sender;
+@property (weak, nonatomic) IBOutlet PFImageView *attachedImageView;
 
 @end

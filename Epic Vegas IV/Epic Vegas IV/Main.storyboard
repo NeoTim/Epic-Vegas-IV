@@ -463,6 +463,10 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" enablesReturnKeyAutomatically="YES"/>
                             </textField>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="INQ-Hb-obn">
+                                <rect key="frame" x="15" y="274" width="35" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -480,6 +484,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="attachedImageView" destination="INQ-Hb-obn" id="4uX-dU-t06"/>
                         <outlet property="characterCountLabel" destination="jxy-Br-cor" id="Fz1-d1-uLD"/>
                         <outlet property="messageTextView" destination="Ciz-Tu-SCk" id="bbS-wa-ENP"/>
                         <outlet property="placeholderTextField" destination="lHk-Nx-fo0" id="PMF-Ws-WaY"/>

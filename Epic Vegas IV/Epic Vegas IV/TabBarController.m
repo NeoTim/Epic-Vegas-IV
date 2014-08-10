@@ -490,6 +490,8 @@ UIButton* selectExistingPhotoButton;
     [picker dismissViewControllerAnimated:YES completion:NULL];
     
     // save image to camera roll!
+    UIImage* originalImage=info[UIImagePickerControllerOriginalImage];
+    UIImageWriteToSavedPhotosAlbum(originalImage, nil, nil, nil);
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
