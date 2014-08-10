@@ -390,8 +390,8 @@ UIButton* selectExistingPhotoButton;
     
     photoPicker = [[UIImagePickerController alloc] init];
     photoPicker.delegate = self;
-    photoPicker.allowsEditing = YES;
-   
+    photoPicker.allowsEditing = NO;
+
     [self handleAddCompleted];
     photoPicker.sourceType = UIImagePickerControllerSourceTypeCamera;
     [self presentViewController:photoPicker animated:YES completion:NULL];
@@ -483,10 +483,6 @@ UIButton* selectExistingPhotoButton;
 #pragma mark - Image Picker Controller delegate methods
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-    
-    UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
-    //self.imageView.image = chosenImage;
-    
     [picker dismissViewControllerAnimated:YES completion:NULL];
     
     // save image to camera roll!

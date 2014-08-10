@@ -13,6 +13,9 @@
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *constraintToAdjust;
 
 @property (strong, nonatomic) IBOutlet UIImagePickerController *photoPicker;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *cameraButton;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *locationButton;
+
 @end
 
 @implementation PostToFeedViewController
@@ -26,6 +29,11 @@ NSInteger characterLimit = 300;
         // Custom initialization
     }
     return self;
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    
 }
 
 - (void)viewDidLoad
@@ -85,15 +93,17 @@ NSInteger characterLimit = 300;
     UIToolbar* keyboardToolbar = [[UIToolbar alloc]initWithFrame:CGRectMake(0, 0, 320, 50)];
     //numberToolbar.barStyle = UIBarStyleBlackTranslucent;
     
-    UIBarButtonItem* cameraBarButton =[[UIBarButtonItem alloc]initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:@selector(cameraButtonClicked:)];
-    cameraBarButton.image = [UIImage imageNamed:@"full__0000s_0122_camera.png"];
-    cameraBarButton.tintColor = [UIColor darkGrayColor];
+    _cameraButton =[[UIBarButtonItem alloc]initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:@selector(cameraButtonClicked:)];
+    _cameraButton.image = [UIImage imageNamed:@"full__0000s_0122_camera.png"];
+    _cameraButton.tintColor = [UIColor darkGrayColor];
+    _cameraButton.width = 25;
     
-    UIBarButtonItem* locationButton =[[UIBarButtonItem alloc]initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:@selector(locationButtonClicked:)];
-    locationButton.image = [UIImage imageNamed:@"Location Black.png"];
-    locationButton.tintColor = [UIColor darkGrayColor];
+    _locationButton = [[UIBarButtonItem alloc]initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:@selector(locationButtonClicked:)];
+    _locationButton.image = [UIImage imageNamed:@"Location Black.png"];
+    _locationButton.tintColor = [UIColor darkGrayColor];
+    _locationButton.width = 30;
     
-    keyboardToolbar.items = [NSArray arrayWithObjects:cameraBarButton,locationButton, nil];
+    keyboardToolbar.items = [NSArray arrayWithObjects:_cameraButton,_locationButton, nil];
     [keyboardToolbar sizeToFit];
     
     [keyboardToolbar addSubview:_characterCountLabel];
@@ -108,6 +118,10 @@ NSInteger characterLimit = 300;
     }
     else
     {
+        _photoPicker = [[UIImagePickerController alloc] init];
+        _photoPicker.delegate = self;
+        _photoPicker.allowsEditing = NO;
+
         // if not, then ask if they want to choose existing photo or take a new photo
         UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil
                                                                  delegate:self
@@ -139,15 +153,23 @@ NSInteger characterLimit = 300;
 #pragma mark - Image Picker Controller delegate methods
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-    
-    UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
-    [_attachedImageView setImage:chosenImage];
-    
     [picker dismissViewControllerAnimated:YES completion:NULL];
     
     // save image to camera roll!
     UIImage* originalImage=info[UIImagePickerControllerOriginalImage];
     UIImageWriteToSavedPhotosAlbum(originalImage, nil, nil, nil);
+    
+    _attachedImageView.image = originalImage;
+    _attachedImageView.layer.borderColor = [UIColor blackColor].CGColor;
+    _attachedImageView.layer.borderWidth = .1f;
+    _cameraButton.tintColor = [UIColor redColor];
+    
+    // fade in picture
+    _attachedImageView.alpha = 0;
+    [UIView animateWithDuration:1.0f animations:^{
+        _attachedImageView.alpha = 1.0f;
+    }];
+    
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
