@@ -14,6 +14,7 @@
 @interface NewsFeedTableViewController ()
 @property (nonatomic, assign) BOOL shouldReloadOnAppear;
 @property (nonatomic, assign) NSInteger numObjectsBeforeNextPageLoad;
+@property (nonatomic, strong) NSMutableArray* photosArray;
 @end
 
 @implementation NewsFeedTableViewController
@@ -80,8 +81,32 @@ NSInteger _numOfObjectsBeforeLoadMore;
 
 -(void)loadNextPage
 {
+    NSLog(@"loading next page");
     _numOfObjectsBeforeLoadMore = self.objects.count;
     [super loadNextPage];
+}
+
+-(void)loadObjects
+{
+    // clear photos array
+    NSLog(@"loading objects");
+    NSLog(@"clearing photos array");
+    _photosArray = [[NSMutableArray alloc] init];
+    
+    [super loadObjects];
+}
+
+-(void)objectsDidLoad:(NSError *)error
+{
+    [super objectsDidLoad:error];
+    
+    NSLog(@"objects did load: %d", self.objects.count);
+    NSLog(@"resizing photos array: %d", self.objects.count);
+    // set photos array to size of loaded objects
+    while(_photosArray.count < self.objects.count)
+    {
+        [_photosArray addObject:[NSNull null]];
+    }
 }
 
 -(BOOL)shouldShowLoadNextPageCell
@@ -234,8 +259,17 @@ NSInteger _numOfObjectsBeforeLoadMore;
     [self setMessageForCell:cell forPost:post];
 }
 
+-(void)clearCell:(PostTableViewCell *)cell
+{
+    cell.userImageView.image = nil;
+    cell.photoView.image = nil;
+}
+
 - (void)configureBasicCell:(PostTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
     NSLog(@"Configure basic cell");
+    
+    [self clearCell:cell];
+    
     PFObject* post = [self.objects objectAtIndex:indexPath.row];
     
     PFUser* userPointer = post[@"user"];
@@ -263,8 +297,15 @@ NSInteger _numOfObjectsBeforeLoadMore;
         
         UIImage *photoImage = nil;
         
-        // query for photo object if there is one
-        if(post[@"photo"])
+        // try to see if cache has image already
+        if(![[_photosArray objectAtIndex:indexPath.row] isEqual:[NSNull null]]) // image is not equal to NSNull
+        {
+            photoImage = (UIImage*)[_photosArray objectAtIndex:indexPath.row];
+        }
+        
+        
+        // query for photo object if cache didn't have one and server has one
+        if(!photoImage && post[@"photo"])
         {
             PFObject* photoObject = post[@"photo"];
             if(photoObject)
@@ -277,6 +318,9 @@ NSInteger _numOfObjectsBeforeLoadMore;
                     {
                         NSData *imageData = [theImage getData];
                         photoImage = [UIImage imageWithData:imageData];
+
+                        // save for reuse later
+                        [_photosArray setObject:photoImage atIndexedSubscript:indexPath.row];
                     }
                 }
             }
