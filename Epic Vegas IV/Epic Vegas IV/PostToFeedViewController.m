@@ -33,7 +33,7 @@ NSInteger characterLimit = 300;
 
 -(void)viewDidAppear:(BOOL)animated
 {
-    
+    [_messageTextView becomeFirstResponder];
 }
 
 - (void)viewDidLoad
@@ -71,19 +71,17 @@ NSInteger characterLimit = 300;
     
     [self updateCharacterCountString];
     
-    // observe keyboard hide and show notifications to resize the text view appropriately
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardWillShow:)
-                                                 name:UIKeyboardWillShowNotification
-                                               object:nil];
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(keyboardWillHide:)
-                                                 name:UIKeyboardWillHideNotification
-                                               object:nil];
+//    // observe keyboard hide and show notifications to resize the text view appropriately
+//    [[NSNotificationCenter defaultCenter] addObserver:self
+//                                             selector:@selector(keyboardWillShow:)
+//                                                 name:UIKeyboardWillShowNotification
+//                                               object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self
+//                                             selector:@selector(keyboardWillHide:)
+//                                                 name:UIKeyboardWillHideNotification
+//                                               object:nil];
  
     // start editing text
-    [_messageTextView becomeFirstResponder];
-    
     [self initMessageAccessoryView];
     
 }
@@ -142,10 +140,12 @@ NSInteger characterLimit = 300;
             // new photo
             _photoPicker.sourceType = UIImagePickerControllerSourceTypeCamera;
             [self presentViewController:_photoPicker animated:YES completion:NULL];
+            [_messageTextView resignFirstResponder];
         } else if (buttonIndex == 1) {
             // existing photo
             _photoPicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
             [self presentViewController:_photoPicker animated:YES completion:NULL];
+            [_messageTextView resignFirstResponder];
         }
     }
 }
@@ -166,9 +166,9 @@ NSInteger characterLimit = 300;
     
     // fade in picture
     _attachedImageView.alpha = 0;
-    [UIView animateWithDuration:1.0f animations:^{
+    [UIView animateWithDuration:1.0f delay:1.5f options:UIViewAnimationOptionCurveLinear animations:^{
         _attachedImageView.alpha = 1.0f;
-    }];
+    } completion:nil];
     
 }
 
@@ -197,31 +197,31 @@ NSInteger characterLimit = 300;
     return YES;
 }
 
-- (void)adjustSelection:(UITextView *)textView {
-    
-    // workaround to UITextView bug, text at the very bottom is slightly cropped by the keyboard
-    if ([textView respondsToSelector:@selector(textContainerInset)]) {
-        [textView layoutIfNeeded];
-        CGRect caretRect = [textView caretRectForPosition:textView.selectedTextRange.end];
-        caretRect.size.height += textView.textContainerInset.bottom;
-        [textView scrollRectToVisible:caretRect animated:NO];
-    }
-}
+//- (void)adjustSelection:(UITextView *)textView {
+//    
+//    // workaround to UITextView bug, text at the very bottom is slightly cropped by the keyboard
+//    if ([textView respondsToSelector:@selector(textContainerInset)]) {
+//        [textView layoutIfNeeded];
+//        CGRect caretRect = [textView caretRectForPosition:textView.selectedTextRange.end];
+//        caretRect.size.height += textView.textContainerInset.bottom;
+//        [textView scrollRectToVisible:caretRect animated:NO];
+//    }
+//}
 
-- (void)textViewDidBeginEditing:(UITextView *)textView {
-    
-    if (!_messageTextView.inputAccessoryView) {
-        
-    //    _messageTextView.inputAccessoryView = [self keyboardToolBar];  // use what's in the storyboard
-    }
-    
-    [self adjustSelection:textView];
-}
-
-- (void)textViewDidChangeSelection:(UITextView *)textView {
-    
-    [self adjustSelection:textView];
-}
+//- (void)textViewDidBeginEditing:(UITextView *)textView {
+//    
+//    if (!_messageTextView.inputAccessoryView) {
+//        
+//    //    _messageTextView.inputAccessoryView = [self keyboardToolBar];  // use what's in the storyboard
+//    }
+//    
+//    [self adjustSelection:textView];
+//}
+//
+//- (void)textViewDidChangeSelection:(UITextView *)textView {
+//    
+//    [self adjustSelection:textView];
+//}
 
 
 - (void)textViewDidChange:(UITextView *)txtView
@@ -275,20 +275,7 @@ NSInteger characterLimit = 300;
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
-- (void)didRotateFromInterfaceOrientation:(UIInterfaceOrientation)fromInterfaceOrientation {
-    [self adjustSelection:_messageTextView];
-}
 
 - (IBAction)cancelButtonPressed:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -335,80 +322,5 @@ NSInteger characterLimit = 300;
     });
 }
 
-
-#pragma mark - Responding to keyboard events
-
-- (void)adjustTextViewByKeyboardState:(BOOL)showKeyboard keyboardInfo:(NSDictionary *)info {
-    
-    /*
-     Reduce the size of the text view so that it's not obscured by the keyboard.
-     Animate the resize so that it's in sync with the appearance of the keyboard.
-     */
-    
-    // transform the UIViewAnimationCurve to a UIViewAnimationOptions mask
-    UIViewAnimationCurve animationCurve = [info[UIKeyboardAnimationCurveUserInfoKey] unsignedIntegerValue];
-    UIViewAnimationOptions animationOptions = UIViewAnimationOptionBeginFromCurrentState;
-    if (animationCurve == UIViewAnimationCurveEaseIn) {
-        animationOptions |= UIViewAnimationOptionCurveEaseIn;
-    }
-    else if (animationCurve == UIViewAnimationCurveEaseInOut) {
-        animationOptions |= UIViewAnimationOptionCurveEaseInOut;
-    }
-    else if (animationCurve == UIViewAnimationCurveEaseOut) {
-        animationOptions |= UIViewAnimationOptionCurveEaseOut;
-    }
-    else if (animationCurve == UIViewAnimationCurveLinear) {
-        animationOptions |= UIViewAnimationOptionCurveLinear;
-    }
-    
-    [_messageTextView setNeedsUpdateConstraints];
-    
-    if (showKeyboard) {
-        UIDeviceOrientation orientation = self.interfaceOrientation;
-        BOOL isPortrait = UIDeviceOrientationIsPortrait(orientation);
-        
-        NSValue *keyboardFrameVal = [info objectForKey:UIKeyboardFrameEndUserInfoKey];
-        CGRect keyboardFrame = [keyboardFrameVal CGRectValue];
-        CGFloat height = isPortrait ? keyboardFrame.size.height : keyboardFrame.size.width;
-        
-        // adjust the constraint constant to include the keyboard's height
-        self.constraintToAdjust.constant += height;
-    }
-    else {
-        self.constraintToAdjust.constant = 0;
-    }
-    
-    NSTimeInterval animationDuration = [[info objectForKey:UIKeyboardAnimationDurationUserInfoKey] doubleValue];
-    
-    [UIView animateWithDuration:animationDuration delay:0 options:animationOptions animations:^{
-        [self.view layoutIfNeeded];
-    } completion:nil];
-    
-    // now that the frame has changed, move to the selection or point of edit
-    NSRange selectedRange = _messageTextView.selectedRange;
-    [_messageTextView scrollRangeToVisible:selectedRange];
-}
-
-- (void)keyboardWillShow:(NSNotification *)notification {
-    
-    /*
-     Reduce the size of the text view so that it's not obscured by the keyboard.
-     Animate the resize so that it's in sync with the appearance of the keyboard.
-     */
-    
-    NSDictionary *userInfo = [notification userInfo];
-    [self adjustTextViewByKeyboardState:YES keyboardInfo:userInfo];
-}
-
-- (void)keyboardWillHide:(NSNotification *)notification {
-    
-    /*
-     Restore the size of the text view (fill self's view).
-     Animate the resize so that it's in sync with the disappearance of the keyboard.
-     */
-    
-    NSDictionary *userInfo = [notification userInfo];
-    [self adjustTextViewByKeyboardState:NO keyboardInfo:userInfo];
-}
 
 @end
