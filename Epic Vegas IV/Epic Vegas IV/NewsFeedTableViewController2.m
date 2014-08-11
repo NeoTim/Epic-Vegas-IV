@@ -21,10 +21,13 @@
 @property (nonatomic, strong) NSMutableArray* userPhotosArray;
 @property (nonatomic, strong) NSMutableArray* usersArray;
 
+@property (nonatomic, strong) UIRefreshControl* refreshControl;
+
 @property (nonatomic, strong) UIActivityIndicatorView* activityIndicator;
 @property (nonatomic, strong) NSDictionary* users;
 
 @property (nonatomic, strong) NSDate* lastRefreshDate;
+
 
 @end
 
@@ -34,6 +37,7 @@ NSInteger itemsPerPage = 25;
 NSInteger itemsLoaded = 0;
 NSInteger currentPage = 0;
 BOOL hasNextPage;
+BOOL isCurrentlyRefreshing = NO;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -43,6 +47,7 @@ BOOL hasNextPage;
     }
     return self;
 }
+
 
 - (void)viewDidLoad
 {
@@ -54,17 +59,45 @@ BOOL hasNextPage;
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
+    
+    
+    [self setupRefreshIndicator];
     [self refreshDataSources];
 }
 
+-(void)setupRefreshIndicator
+{
+    self.refreshControl = [[UIRefreshControl alloc] init];
+    self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"Pull to Refresh"];
+    [self.refreshControl addTarget:self action:@selector(refreshControlPulled:) forControlEvents:UIControlEventValueChanged];
+}
+
+-(IBAction)refreshControlPulled:(id)sender
+{
+    [self refreshDataSources];
+    [self.refreshControl endRefreshing];
+}
 
 -(void)refreshDataSources
 {
+    if(isCurrentlyRefreshing)
+    {
+        NSLog(@"Refresh Blocked");
+        return;
+    }
+
+    NSLog(@"Refresh Started");
+
+    isCurrentlyRefreshing = YES;
+    
     _postsArray = [[NSMutableArray alloc] init];
     _photosArray = [[NSMutableArray alloc] init];
     _userPhotosArray = [[NSMutableArray alloc] init];
     _usersArray = [[NSMutableArray alloc] init];
-    [self showActivityIndicator];
+    
+    // show activity indicator if refresh control is not visibly refreshing
+    if(!self.refreshControl.isRefreshing)
+        [self showActivityIndicator];
    
     _lastRefreshDate = [NSDate date];
     currentPage = 0;
@@ -79,10 +112,11 @@ BOOL hasNextPage;
 
     postsQuery.limit = itemsPerPage;
     postsQuery.skip = itemsPerPage * currentPage++;
+    
     [postsQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
-            dispatch_queue_t backgroundQueue = dispatch_queue_create("backgroundQueue", NULL);
-            dispatch_async(backgroundQueue, ^(void) {
+            dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
+            dispatch_async(queue, ^(void) {
                 // background work
 
                 // The find succeeded.
@@ -116,57 +150,67 @@ BOOL hasNextPage;
                     query.cachePolicy = kPFCachePolicyCacheElseNetwork;
                     
                     // make threads to get user information, update table when each thread finishes
-                    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
+                    
                     dispatch_async(queue, ^{
                         
-                        // set to yes if we get either user information or the photo for the post
-                        BOOL shouldUpdateTable = NO;
-                        
-                        // query for user object
-                        PFObject* user = [query getObjectWithId:userPointer.objectId];
-                        if(user)
-                        {
-                            _usersArray[postIndex] = user;
+                        @try {
+                            // set to yes if we get either user information or the photo for the post
+                            BOOL shouldUpdateTable = NO;
                             
-                            // query for user photo
-                            NSLog(@"loading user photo for post #%d", postIndex);
-                            PFFile *userImageFile = [user objectForKey:kUserProfilePicSmallKey];
-                            if (userImageFile)
+                            // query for user object
+                            PFObject* user = [query getObjectWithId:userPointer.objectId];
+                            if(user)
                             {
-                                NSData *imageData = [userImageFile getData];
-                                UIImage *userImage = [UIImage imageWithData:imageData];
-                                _userPhotosArray[postIndex] = userImage;
-                                shouldUpdateTable = YES;
+                                _usersArray[postIndex] = user;
                                 
-                            }
-                        }
-                        
-                        // get post photo,
-                        //NSLog(@"loading post photo for post #%d", postIndex);
-                        PFObject* photoObject = post[@"photo"];
-                        if(photoObject)
-                        {
-                            PFObject* photo = [PFQuery getObjectOfClass:@"Photo" objectId:photoObject.objectId];
-                            if(photo)
-                            {
-                                
-                                PFFile *theImage = [photo objectForKey:@"thumbnail"];
-                                if(theImage)
+                                // query for user photo
+                                //NSLog(@"loading user photo for post #%d", postIndex);
+                                PFFile *userImageFile = [user objectForKey:kUserProfilePicSmallKey];
+                                if (userImageFile)
                                 {
-                                    NSData *imageData = [theImage getData];
-                                    UIImage* photoImage = [UIImage imageWithData:imageData];
-                                    _photosArray[postIndex] = photoImage;
+                                    NSData *imageData = [userImageFile getData];
+                                    UIImage *userImage = [UIImage imageWithData:imageData];
+                                    _userPhotosArray[postIndex] = userImage;
                                     shouldUpdateTable = YES;
+                                    
                                 }
                             }
-                        }
-                        
-                        // tell the table to reload the data if we found new data for this row
-                        if(shouldUpdateTable)
+                            
+                            // get post photo,
+                            //NSLog(@"loading post photo for post #%d", postIndex);
+                            PFObject* photoObject = post[@"photo"];
+                            if(photoObject)
+                            {
+                                PFObject* photo = [PFQuery getObjectOfClass:@"Photo" objectId:photoObject.objectId];
+                                if(photo)
+                                {
+                                    
+                                    PFFile *theImage = [photo objectForKey:@"thumbnail"];
+                                    if(theImage)
+                                    {
+                                        NSData *imageData = [theImage getData];
+                                        UIImage* photoImage = [UIImage imageWithData:imageData];
+                                        _photosArray[postIndex] = photoImage;
+                                        shouldUpdateTable = YES;
+                                    }
+                                }
+                            }
+                            
+                            // tell the table to reload the data if we found new data for this row
+                            if(shouldUpdateTable)
                             {dispatch_async(dispatch_get_main_queue(), ^{
                                 [self.tableView reloadData];
                             });
+                            }
                         }
+                        @catch (NSException *exception) {
+                            NSLog(@"Exception: %@", exception);
+                        }
+                        @finally {
+                        
+                        }
+                        
+                        
                     });
                 }
                 
@@ -175,6 +219,11 @@ BOOL hasNextPage;
                     [self.tableView reloadData];
                     [self hideActivityIndicator];
                 });
+                
+                // background thread blocks until all threads are complete
+                dispatch_sync(queue, ^{});
+                isCurrentlyRefreshing = NO;
+                NSLog(@"Refresh Ended");
             });
             
         } else {
@@ -259,18 +308,24 @@ BOOL hasNextPage;
         return cell;
     }
 
-    // otherwise is a post cell
-    NewsFeedTableViewCell* cell = (NewsFeedTableViewCell*)[tableView dequeueReusableCellWithIdentifier:@"PostCell" forIndexPath:indexPath];
-    if (cell == nil) {
-        cell = (NewsFeedTableViewCell*)[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault  reuseIdentifier:@"PostCell"];
+    @try {
+        // otherwise is a post cell
+        NewsFeedTableViewCell* cell = (NewsFeedTableViewCell*)[tableView dequeueReusableCellWithIdentifier:@"PostCell" forIndexPath:indexPath];
+        if (cell == nil) {
+            cell = (NewsFeedTableViewCell*)[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault  reuseIdentifier:@"PostCell"];
+        }
+        else{
+            [cell clearCellForReuese];
+        }
+        
+        [self configurePostCell:cell ForRowAtIndexPath:indexPath];
+        return cell;
     }
-    else{
-        [cell clearCellForReuese];
+    @catch (NSException *exception) {
+        NSLog(@"Exception: %@", exception);
+        return [tableView dequeueReusableCellWithIdentifier:@"PostCell" forIndexPath:indexPath];
     }
-
-    [self configurePostCell:cell ForRowAtIndexPath:indexPath];
-    return cell;
-}
+   }
 
 //-(void)clearPostCellForReuse:(NewsFeedTableViewCell*)cell
 //{
