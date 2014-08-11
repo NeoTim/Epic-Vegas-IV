@@ -400,8 +400,17 @@ UIButton* selectExistingPhotoButton;
     [selectExistingPhotoButton addTarget:self action:@selector(selectExistingPhotoButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
 }
 
+-(void)initializePostViewController
+{
+    
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
+    
+    [self presentViewController:[mainStoryboard instantiateViewControllerWithIdentifier:@"Create Post Navigation Controller"] animated:YES completion:NULL];
+}
+
 - (IBAction)cameraButtonClicked:(id)sender {
     [self handleAddCompleted];
+    selectExistingPhotoButton.alpha = 1;
     photoPicker.sourceType = UIImagePickerControllerSourceTypeCamera;
     [self presentViewController:photoPicker animated:YES completion:NULL];
 
