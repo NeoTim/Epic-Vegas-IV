@@ -14,9 +14,6 @@
 @property (nonatomic, assign) BOOL shouldReloadOnAppear;
 
 @property (nonatomic, strong) NSMutableArray* postsArray;
-@property (nonatomic, strong) NSMutableArray* photosArray;
-@property (nonatomic, strong) NSMutableArray* userPhotosArray;
-@property (nonatomic, strong) NSMutableArray* usersArray;
 
 @property (nonatomic, strong) UIRefreshControl* refreshControl;
 

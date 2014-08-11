@@ -14,9 +14,9 @@
 @property (weak, nonatomic) IBOutlet AutoSizeLabel *titleLabel;
 
 @property (weak, nonatomic) IBOutlet AutoSizeLabel *subtitleLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *userImageView;
+@property (weak, nonatomic) IBOutlet PFImageView *userImageView;
 @property (weak, nonatomic) IBOutlet AutoSizeLabel *messageLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *photoImageView;
+@property (weak, nonatomic) IBOutlet PFImageView *photoImageView;
 
 @property (weak, nonatomic) IBOutlet UIImageView *cardView;
 

@@ -78,9 +78,7 @@ BOOL isCurrentlyRefreshing = NO;
     isCurrentlyRefreshing = YES;
     
     _postsArray = [[NSMutableArray alloc] init];
-    _photosArray = [[NSMutableArray alloc] init];
-    _userPhotosArray = [[NSMutableArray alloc] init];
-    _usersArray = [[NSMutableArray alloc] init];
+ 
     
     // show activity indicator if refresh control is not visibly refreshing
     if(!self.refreshControl.isRefreshing)
@@ -107,7 +105,7 @@ BOOL isCurrentlyRefreshing = NO;
                 // background work
 
                 // The find succeeded.
-                //NSLog(@"Successfully retrieved %d new posts.", objects.count);
+                NSLog(@"Successfully retrieved %d new posts.", objects.count);
                 
                 if(objects.count != itemsPerPage || objects.count == 0)
                     hasNextPage = NO;
@@ -116,101 +114,15 @@ BOOL isCurrentlyRefreshing = NO;
                 for(id object in objects)
                 {
                     [_postsArray addObject:object];
-                    [_userPhotosArray addObject:[NSNull null]];
-                    [_photosArray addObject:[NSNull null]];
-                    [_usersArray addObject:[NSNull null]];
-                }
-                
-                // iterate over each post getting the user and photo data
-                for(int i = 0; i < objects.count; i++)
-                {
-                    int postIndex = i + postsQuery.skip;
-                    PFObject* post = _postsArray[postIndex];
-                    
-                    // first get user
-                    //NSLog(@"loading user for post #%d", postIndex);
-                    PFUser* userPointer = post[@"user"];
-                    if(!userPointer)
-                        continue;
-                    
-                    PFQuery *query = [PFQuery queryWithClassName:@"_User"];
-                    query.cachePolicy = kPFCachePolicyCacheElseNetwork;
-                    
-                    // make threads to get user information, update table when each thread finishes
-                    
-                    dispatch_async(queue, ^{
-                        
-                        @try {
-                            // set to yes if we get either user information or the photo for the post
-                            BOOL shouldUpdateTable = NO;
-                            
-                            // query for user object
-                            PFObject* user = [query getObjectWithId:userPointer.objectId];
-                            if(user)
-                            {
-                                _usersArray[postIndex] = user;
-                                
-                                // query for user photo
-                                //NSLog(@"loading user photo for post #%d", postIndex);
-                                PFFile *userImageFile = [user objectForKey:kUserProfilePicSmallKey];
-                                if (userImageFile)
-                                {
-                                    NSData *imageData = [userImageFile getData];
-                                    UIImage *userImage = [UIImage imageWithData:imageData];
-                                    _userPhotosArray[postIndex] = userImage;
-                                    shouldUpdateTable = YES;
-                                    
-                                }
-                            }
-                            
-                            // get post photo,
-                            //NSLog(@"loading post photo for post #%d", postIndex);
-                            PFObject* photoObject = post[@"photo"];
-                            if(photoObject)
-                            {
-                                PFObject* photo = [PFQuery getObjectOfClass:@"Photo" objectId:photoObject.objectId];
-                                if(photo)
-                                {
-                                    
-                                    PFFile *theImage = [photo objectForKey:@"thumbnail"];
-                                    if(theImage)
-                                    {
-                                        NSData *imageData = [theImage getData];
-                                        UIImage* photoImage = [UIImage imageWithData:imageData];
-                                        _photosArray[postIndex] = photoImage;
-                                        shouldUpdateTable = YES;
-                                    }
-                                }
-                            }
-                            
-                            // tell the table to reload the data if we found new data for this row
-                            if(shouldUpdateTable)
-                            {dispatch_async(dispatch_get_main_queue(), ^{
-                                [self.tableView reloadData];
-                            });
-                            }
-                        }
-                        @catch (NSException *exception) {
-                            NSLog(@"Exception: %@", exception);
-                        }
-                        @finally {
-                        
-                        }
-                        
-                        
-                    });
                 }
                 
                 // update main ui thread
                 dispatch_async(dispatch_get_main_queue(), ^(void) {
                     [self.tableView reloadData];
                     [self hideActivityIndicator];
-                });
-                
-                // background thread blocks until all threads are complete
-                dispatch_sync(queue, ^{});
-                isCurrentlyRefreshing = NO;
-                NSLog(@"Refresh Ended");
+                    isCurrentlyRefreshing = NO;
+                    NSLog(@"Refresh Ended");
+                });     
             });
             
         } else {
@@ -241,7 +153,10 @@ BOOL isCurrentlyRefreshing = NO;
 - (PFQuery *)queryForTable {
     PFQuery *query = [PFQuery queryWithClassName:@"Post"];
     [query orderByDescending:@"createdAt"];
-    
+    [query includeKey:@"photo"];
+    [query includeKey:@"user"];
+    //[query includeKey:@"user.profilePictureSmall"];
+
     // enforce last refresh date to get data in pages (so pages don't get messed up when new things are added after refresh)
     [query whereKey:@"createdAt" lessThanOrEqualTo:_lastRefreshDate];
     
@@ -312,16 +227,8 @@ BOOL isCurrentlyRefreshing = NO;
         NSLog(@"Exception: %@", exception);
         return [tableView dequeueReusableCellWithIdentifier:@"PostCell" forIndexPath:indexPath];
     }
-   }
+}
 
-//-(void)clearPostCellForReuse:(NewsFeedTableViewCell*)cell
-//{
-//    cell.userImageView.image = nil;
-//    cell.titleLabel.text = @"";
-//    cell.photoImageView.image = nil;
-//    cell.messageLabel.text= @"";
-//    cell.subtitleLabel.text= @"";
-//}
 
 -(void)configurePostCell:(NewsFeedTableViewCell*)cell ForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -329,23 +236,39 @@ BOOL isCurrentlyRefreshing = NO;
     cell.messageLabel.text = message;
     
     int postIndex = indexPath.row;
-    
-    if(![_userPhotosArray[postIndex] isEqual:[NSNull null]])
-        cell.userImageView.image = _userPhotosArray[postIndex];
-    
-    if(![_usersArray[postIndex] isEqual:[NSNull null]])
-        cell.titleLabel.text = _usersArray[postIndex][@"displayName"] ?: @"";
-    
-    if(![_photosArray[postIndex] isEqual:[NSNull null]])
-        cell.photoImageView.image = _photosArray[postIndex];
-    
     PFObject* post = _postsArray[postIndex];
-    if(post)
+    if(!post)
+        return;
+
+    cell.messageLabel.text= post[@"message"] ?: @"";
+    NSDate* createdAt = post.createdAt;
+    NSString* subtitle = [Utility formattedDate:createdAt];
+    cell.subtitleLabel.text = subtitle;
+
+    if(post[@"user"])
     {
-        cell.messageLabel.text= post[@"message"] ?: @"";
-        NSDate* createdAt = post.createdAt;
-        NSString* subtitle = [Utility formattedDate:createdAt];
-        cell.subtitleLabel.text = subtitle;
+        cell.titleLabel.text = post[@"displayName"] ?: @"";
+
+        if(post[@"user"][@"profilePictureSmall"])
+        {
+            // set pic
+            PFFile *userImageFile = post[@"user"][@"profilePictureSmall"];
+            if (userImageFile)
+            {
+                [cell.userImageView setFile:userImageFile];
+                [cell.userImageView loadInBackground];
+            }
+        }
+    }
+    
+    if(post[@"photo"])
+    {
+        PFFile *photoImageFIle = post[@"photo"][@"thumbnail"];
+        if (photoImageFIle)
+        {
+            [cell.photoImageView setFile:photoImageFIle];
+            [cell.photoImageView loadInBackground];
+        }
     }
 }
 
@@ -366,25 +289,24 @@ BOOL isCurrentlyRefreshing = NO;
     CGFloat height = 150;
     
     int postIndex = indexPath.row;
-    
-    
-    if(![_photosArray[postIndex] isEqual:[NSNull null]])
-    {
-        UIImage* image = ((UIImage*)_photosArray[postIndex]);
-        CGFloat fixedWidth = 320 - 48;
-        
-        CGFloat heightMultiplier = fixedWidth / image.size.width;
-        CGFloat scaledHeight = image.size.height * heightMultiplier;
-        
-        height += scaledHeight;
-    }
     PFObject* post = _postsArray[postIndex];
-    if(post)
+    if(!post)
+        return height;
+    
+    NSString *theText=post[@"message"] ?: @"";
+    CGSize labelSize = [theText sizeWithFont:[UIFont fontWithName: @"HelveticaNeue" size: 15.0f] constrainedToSize:CGSizeMake(300, 600)];
+    height += labelSize.height;
+    
+    if(post[@"photo"])
     {
-        NSString *theText=post[@"message"] ?: @"";
-        
-        CGSize labelSize = [theText sizeWithFont:[UIFont fontWithName: @"HelveticaNeue" size: 15.0f] constrainedToSize:CGSizeMake(300, 600)];
-        height += labelSize.height;
+//        UIImage* image = ((UIImage*)_photosArray[postIndex]);
+//        CGFloat fixedWidth = 320 - 48;
+//        
+//        CGFloat heightMultiplier = fixedWidth / image.size.width;
+//        CGFloat scaledHeight = image.size.height * heightMultiplier;
+//        
+//        height += scaledHeight;
+        height += 350;
     }
 
     //NSLog(@"Height: %f", height);
