@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
+#import "RemovePhotoViewController.h"
 
-@interface PostToFeedViewController : UIViewController <UITextViewDelegate, UIActionSheetDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate>
+@interface PostToFeedViewController : UIViewController <UITextViewDelegate, UIActionSheetDelegate,UINavigationControllerDelegate, UIImagePickerControllerDelegate, RemovePhotoViewControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextView *messageTextView;
 
@@ -20,10 +21,12 @@
 @property (weak, nonatomic) IBOutlet UILabel *characterCountLabel;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *postButton;
 - (IBAction)postButtonPressed:(id)sender;
-@property (weak, nonatomic) IBOutlet UIImageView *attachedImageView;
+
+@property (weak, nonatomic) IBOutlet UIImageView* attachedImageView;
+@property (weak, nonatomic) IBOutlet UIButton *attachedImageButton;
 
 @property (strong, nonatomic) UIImage* passedInImage;
 
 -(void)attachImage:(UIImage*)image;
-
+-(IBAction)showRemovePhotoButtonPressed:(id)sender;
 @end

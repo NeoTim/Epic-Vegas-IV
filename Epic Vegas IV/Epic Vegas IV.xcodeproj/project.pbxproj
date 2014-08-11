@@ -51,6 +51,7 @@
 		5388ED4D1995741A002CA477 /* All Images@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5388ED4C1995741A002CA477 /* All Images@2x.png */; };
 		5388ED5719957C2F002CA477 /* Location Black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5388ED5619957C2F002CA477 /* Location Black@2x.png */; };
 		5388ED5A19958A96002CA477 /* NewsFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5388ED5919958A96002CA477 /* NewsFeedViewController.m */; };
+		5394C934199845F8002EB1A3 /* RemovePhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5394C933199845F8002EB1A3 /* RemovePhotoViewController.m */; };
 		53966CB91992972D00E822DE /* Close Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53966CB81992972D00E822DE /* Close Icon@2x.png */; };
 		53966CCA1992D26700E822DE /* Add Full Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53966CC91992D26700E822DE /* Add Full Icon@2x.png */; };
 		53966CCC1992DF7300E822DE /* Add Red Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53966CCB1992DF7300E822DE /* Add Red Icon@2x.png */; };
@@ -167,6 +168,8 @@
 		5388ED5619957C2F002CA477 /* Location Black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Location Black@2x.png"; sourceTree = "<group>"; };
 		5388ED5819958A96002CA477 /* NewsFeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsFeedViewController.h; sourceTree = "<group>"; };
 		5388ED5919958A96002CA477 /* NewsFeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsFeedViewController.m; sourceTree = "<group>"; };
+		5394C932199845F8002EB1A3 /* RemovePhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemovePhotoViewController.h; sourceTree = "<group>"; };
+		5394C933199845F8002EB1A3 /* RemovePhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemovePhotoViewController.m; sourceTree = "<group>"; };
 		53966CB81992972D00E822DE /* Close Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Close Icon@2x.png"; sourceTree = "<group>"; };
 		53966CC91992D26700E822DE /* Add Full Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Add Full Icon@2x.png"; sourceTree = "<group>"; };
 		53966CCB1992DF7300E822DE /* Add Red Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Add Red Icon@2x.png"; sourceTree = "<group>"; };
@@ -502,6 +505,8 @@
 			children = (
 				53A19F8A199466C1008DF739 /* PostToFeedViewController.h */,
 				53A19F8B199466C1008DF739 /* PostToFeedViewController.m */,
+				5394C932199845F8002EB1A3 /* RemovePhotoViewController.h */,
+				5394C933199845F8002EB1A3 /* RemovePhotoViewController.m */,
 			);
 			name = Post;
 			sourceTree = "<group>";
@@ -711,6 +716,7 @@
 				53EFEAAF1995B1D8006798C3 /* UIImage+RoundedCornerAdditions.m in Sources */,
 				53EFEAC11995B3C2006798C3 /* Cache.m in Sources */,
 				53165F621991D04E0014695B /* TabBarController.m in Sources */,
+				5394C934199845F8002EB1A3 /* RemovePhotoViewController.m in Sources */,
 				53EFEAC41995B493006798C3 /* Utility.m in Sources */,
 				53EFEADF1995C827006798C3 /* Reachability.m in Sources */,
 				53A19F8C199466C1008DF739 /* PostToFeedViewController.m in Sources */,

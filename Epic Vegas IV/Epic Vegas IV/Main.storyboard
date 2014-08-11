@@ -376,7 +376,7 @@
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <navigationItem key="navigationItem" title="Who's Partying?" id="19U-1e-9dC">
-                        <barButtonItem key="rightBarButtonItem" title="Map" id="hMo-oq-g21"/>
+                        <barButtonItem key="rightBarButtonItem" title="See Map" style="done" id="hMo-oq-g21"/>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MtK-gI-f06" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -552,29 +552,38 @@
                                 <rect key="frame" x="7" y="244" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="T3U-E5-ZZW">
+                                <rect key="frame" x="9" y="244" width="46" height="50"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <navigationItem key="navigationItem" title="Post To Feed" id="gZA-Wo-lKx">
-                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="cancel" id="Ogm-I1-92i">
+                        <barButtonItem key="leftBarButtonItem" style="done" systemItem="cancel" id="Ogm-I1-92i">
                             <connections>
                                 <action selector="cancelButtonPressed:" destination="MbH-Cg-Oi8" id="tzi-uP-32v"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Post" id="ils-zI-T14">
+                        <barButtonItem key="rightBarButtonItem" title="Post" style="done" id="ils-zI-T14">
                             <connections>
                                 <action selector="postButtonPressed:" destination="MbH-Cg-Oi8" id="UXM-48-buj"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="attachedImageButton" destination="T3U-E5-ZZW" id="Zrt-Ks-zdr"/>
                         <outlet property="attachedImageView" destination="INQ-Hb-obn" id="4uX-dU-t06"/>
                         <outlet property="characterCountLabel" destination="jxy-Br-cor" id="Fz1-d1-uLD"/>
                         <outlet property="messageTextView" destination="Ciz-Tu-SCk" id="bbS-wa-ENP"/>
                         <outlet property="placeholderTextField" destination="lHk-Nx-fo0" id="PMF-Ws-WaY"/>
                         <outlet property="postButton" destination="ils-zI-T14" id="SdZ-tl-yjo"/>
                         <outlet property="profileImageView" destination="MXr-WV-H0k" id="HCd-gi-xe0"/>
+                        <segue destination="99o-wE-0j7" kind="push" identifier="removePhotoSegue" id="mGZ-Hn-GRV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Lrk-vv-lje" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -586,6 +595,70 @@
                 </label>
             </objects>
             <point key="canvasLocation" x="1429" y="2428"/>
+        </scene>
+        <!--Remove Photo View Controller - Attached Photo-->
+        <scene sceneID="c5j-kt-nze">
+            <objects>
+                <viewController storyboardIdentifier="Remove Photo View Controller" useStoryboardIdentifierAsRestorationIdentifier="YES" id="99o-wE-0j7" customClass="RemovePhotoViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="QT0-xs-uiE"/>
+                        <viewControllerLayoutGuide type="bottom" id="wxl-rp-4jU"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hNq-96-pQN">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QWi-Ce-bMp">
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="QWi-Ce-bMp" firstAttribute="top" secondItem="QT0-xs-uiE" secondAttribute="bottom" id="4Iv-Zg-Jlc"/>
+                            <constraint firstAttribute="trailing" secondItem="QWi-Ce-bMp" secondAttribute="trailing" id="CvC-mk-ELc"/>
+                            <constraint firstItem="QWi-Ce-bMp" firstAttribute="leading" secondItem="hNq-96-pQN" secondAttribute="leading" id="sOX-Tk-8X3"/>
+                            <constraint firstItem="wxl-rp-4jU" firstAttribute="top" secondItem="QWi-Ce-bMp" secondAttribute="bottom" id="wcu-1h-d8n"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Attached Photo" id="QA9-PB-bsU">
+                        <barButtonItem key="leftBarButtonItem" title="Remove" style="done" id="Qjl-b1-7Mo">
+                            <connections>
+                                <action selector="removeButtonPressed:" destination="99o-wE-0j7" id="vBu-hx-4O4"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="4Lz-rb-mMq">
+                            <connections>
+                                <action selector="doneButtonPressed:" destination="99o-wE-0j7" id="138-FS-Wm6"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="attachedImageView" destination="QWi-Ce-bMp" id="cqe-q8-3lb"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="T5q-DS-nzr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2000" y="2347"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="hMx-b3-qG4">
+            <objects>
+                <viewController id="cDf-Rd-J09" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="l6A-8k-3RO"/>
+                        <viewControllerLayoutGuide type="bottom" id="Hrd-BT-dPi"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="9WE-eE-P1p">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="UQX-Wa-6lr"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NVA-NI-hEf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1886" y="3105"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="9aP-5B-xkt">

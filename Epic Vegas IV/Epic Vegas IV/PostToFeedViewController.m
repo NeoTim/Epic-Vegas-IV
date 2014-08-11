@@ -22,6 +22,8 @@
 @property (nonatomic, assign) UIBackgroundTaskIdentifier fileUploadBackgroundTaskId;
 @property (nonatomic, assign) UIBackgroundTaskIdentifier photoPostBackgroundTaskId;
 
+@property (nonatomic, strong) UIActionSheet *cameraActionSheet;
+
 @property (nonatomic, strong) UIActivityIndicatorView* spinner;
 @end
 
@@ -98,6 +100,7 @@ NSInteger characterLimit = 300;
  
     // start editing text
     [self initMessageAccessoryView];
+    [self initializeCameraActionSheet];
     
     self.fileUploadBackgroundTaskId = UIBackgroundTaskInvalid;
     self.photoPostBackgroundTaskId = UIBackgroundTaskInvalid;
@@ -130,6 +133,7 @@ NSInteger characterLimit = 300;
     if(_attachedImageView.image)
     {
         // if already has photo then show the photo and see if they want to remove
+        [self showRemovePhotoView];
     }
     else
     {
@@ -138,14 +142,18 @@ NSInteger characterLimit = 300;
         _photoPicker.allowsEditing = NO;
 
         // if not, then ask if they want to choose existing photo or take a new photo
-        UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil
-                                                                 delegate:self
-                                                        cancelButtonTitle:@"Cancel"
-                                                   destructiveButtonTitle:nil
-                                                        otherButtonTitles:@"Take photo", @"Choose Existing", nil];
-        actionSheet.tag = 7431;
-        [actionSheet showInView:self.view];
+        [_cameraActionSheet showInView:self.view];
     }
+}
+
+-(void)initializeCameraActionSheet
+{
+    _cameraActionSheet = [[UIActionSheet alloc] initWithTitle:nil
+                                                                   delegate:self
+                                                          cancelButtonTitle:@"Cancel"
+                                                     destructiveButtonTitle:nil
+                                                          otherButtonTitles:@"Take photo", @"Choose Existing", nil];
+    _cameraActionSheet.tag = 7431;
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
@@ -176,7 +184,7 @@ NSInteger characterLimit = 300;
     UIImage* originalImage=info[UIImagePickerControllerOriginalImage];
     UIImageWriteToSavedPhotosAlbum(originalImage, nil, nil, nil);
     
-    [self attachImage:originalImage withDelay:1.5f];
+    [self attachImage:originalImage withDelay:1.0f];
 }
 
 -(void)attachImage:(UIImage*)image withDelay:(CGFloat)delay
@@ -184,6 +192,7 @@ NSInteger characterLimit = 300;
     _attachedImageView.image = image;
     _attachedImageView.layer.borderColor = [UIColor blackColor].CGColor;
     _attachedImageView.layer.borderWidth = .1f;
+    [_attachedImageButton addTarget:self action:@selector(showRemovePhotoButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     _cameraButton.tintColor = [UIColor redColor];
     
     // fade in picture
@@ -420,5 +429,36 @@ NSInteger characterLimit = 300;
 
 }
 
+- (IBAction)showRemovePhotoButtonPressed:(id)sender {
+    if(_attachedImageView.image != nil)
+        [self showRemovePhotoView];
+}
+
+-(void)showRemovePhotoView
+{
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
+    
+    RemovePhotoViewController* removePhotoViewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"Remove Photo View Controller"];
+    
+    removePhotoViewController.delegate = self;
+    removePhotoViewController.imageToShow = _attachedImageView.image;
+    [self.navigationController pushViewController:removePhotoViewController animated:YES];
+}
+
+-(void)removeAttachedPhoto
+{
+    // unhook attached image button event
+    [_attachedImageButton removeTarget:self action:@selector(showRemovePhotoButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+    
+    // remove attached image border
+    _attachedImageView.layer.borderColor = [UIColor clearColor].CGColor;
+
+    [UIView animateWithDuration:1.0f delay:0 options:UIViewAnimationOptionCurveLinear animations:^{
+        _attachedImageView.alpha = 1.0f;
+        _cameraButton.tintColor = [UIColor blackColor];
+    }completion:^(BOOL finished) {
+        _attachedImageView.image = nil;
+    }];
+}
 
 @end
