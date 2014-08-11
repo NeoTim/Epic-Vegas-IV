@@ -319,7 +319,7 @@ NSInteger characterLimit = 300;
                 widthIsLongSide = YES;
 
             // always resize to fit a certain width
-            CGFloat thumbnailWidth = 320;
+            CGFloat thumbnailWidth = 640;
             CGFloat thumbnailHeightMultiplier = thumbnailWidth / originalWidth;
             
             CGFloat thumbnailHeight = originalHeight * thumbnailHeightMultiplier;
@@ -366,8 +366,8 @@ NSInteger characterLimit = 300;
             }
           
             // JPEG to decrease file size and enable faster uploads & downloads
-            NSData *imageData = UIImageJPEGRepresentation(originalImage, 0.3f);
-            NSData *thumbnailImageData = UIImageJPEGRepresentation(thumbnailImage, .8f);
+            NSData *imageData = UIImageJPEGRepresentation(originalImage, 0.2f);
+            NSData *thumbnailImageData = UIImageJPEGRepresentation(thumbnailImage, .7f);
             
             self.photoFile = [PFFile fileWithData:imageData];
             self.resizedPhotoFile = [PFFile fileWithData:thumbnailImageData];
