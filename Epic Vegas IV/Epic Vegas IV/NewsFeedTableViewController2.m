@@ -115,29 +115,36 @@ BOOL hasNextPage;
                     PFQuery *query = [PFQuery queryWithClassName:@"_User"];
                     query.cachePolicy = kPFCachePolicyCacheElseNetwork;
                     
-                    // query for user object, try from cache first
-                    PFObject* user = [query getObjectWithId:userPointer.objectId];
-                    if(!user)
-                        continue;
-                    _usersArray[postIndex] = user;
+                    // make threads to get user information, update table when finished
+                    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
+                    dispatch_async(queue, ^{
+                        // query for user object, try from cache first
+                        PFObject* user = [query getObjectWithId:userPointer.objectId];
+                        if(!user)
+                            return;
+                        _usersArray[postIndex] = user;
+                        
+                        // query for user photo
+                        NSLog(@"loading user photo for post #%d", postIndex);
+                        PFFile *userImageFile = [user objectForKey:kUserProfilePicSmallKey];
+                        if (userImageFile)
+                        {
+                            NSData *imageData = [userImageFile getData];
+                            UIImage *userImage = [UIImage imageWithData:imageData];
+                            _userPhotosArray[postIndex] = userImage;
+                            
+                            dispatch_async(dispatch_get_main_queue(), ^{
+                                [self.tableView reloadData];
+                            });
+                        }
+                    });
                     
-                    // query for user photo
-                    NSLog(@"loading user photo for post #%d", postIndex);
-                    PFFile *userImageFile = [user objectForKey:kUserProfilePicSmallKey];
-                    if (userImageFile)
-                    {
-                        NSData *imageData = [userImageFile getData];
-                        UIImage *userImage = [UIImage imageWithData:imageData];
-                        _userPhotosArray[postIndex] = userImage;
-                    }
-                    
-                    // then get post photo
+                    // make threads to get post photos, update table when each finishes
                     NSLog(@"loading post photo for post #%d", postIndex);
                     PFObject* photoObject = post[@"photo"];
                     if(!photoObject)
                         continue;
-
-                    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
+                    
                     dispatch_async(queue, ^{
                         PFObject* photo = [PFQuery getObjectOfClass:@"Photo" objectId:photoObject.objectId];
                         if(!photo)
@@ -149,11 +156,11 @@ BOOL hasNextPage;
                             NSData *imageData = [theImage getData];
                             UIImage* photoImage = [UIImage imageWithData:imageData];
                             _photosArray[postIndex] = photoImage;
+                            
+                            dispatch_async(dispatch_get_main_queue(), ^{
+                                [self.tableView reloadData];
+                            });
                         }
-                        
-                        dispatch_async(dispatch_get_main_queue(), ^{
-                            [self.tableView reloadData];
-                        });
                     });
 
                 }
