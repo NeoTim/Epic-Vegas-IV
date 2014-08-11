@@ -180,6 +180,7 @@ UIButton* selectExistingPhotoButton;
     _centerButton = [self addCenterButton];
     
     [self createAddActionButtons];
+    [self initializeImagePicker];
 }
 
 /*
@@ -385,23 +386,24 @@ UIButton* selectExistingPhotoButton;
     
 }
 
-- (IBAction)cameraButtonClicked:(id)sender {
-    
+-(void)initializeImagePicker
+{
     photoPicker = [[UIImagePickerController alloc] init];
     photoPicker.delegate = self;
     photoPicker.allowsEditing = NO;
-
-    [self handleAddCompleted];
-    photoPicker.sourceType = UIImagePickerControllerSourceTypeCamera;
-    [self presentViewController:photoPicker animated:YES completion:NULL];
     
     float screenWidth = self.view.frame.size.width;
     
     selectExistingPhotoButton = [[UIButton alloc] initWithFrame:CGRectMake(screenWidth - 75, 8, 25, 25)];
     [selectExistingPhotoButton setImage:[UIImage imageNamed:@"All Images.png"] forState:UIControlStateNormal];
     [photoPicker.view addSubview:selectExistingPhotoButton];
-    
     [selectExistingPhotoButton addTarget:self action:@selector(selectExistingPhotoButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+}
+
+- (IBAction)cameraButtonClicked:(id)sender {
+    [self handleAddCompleted];
+    photoPicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    [self presentViewController:photoPicker animated:YES completion:NULL];
 
     //UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil
     //                                                         delegate:self
