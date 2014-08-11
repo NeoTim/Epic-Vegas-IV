@@ -136,18 +136,26 @@ BOOL hasNextPage;
                     PFObject* photoObject = post[@"photo"];
                     if(!photoObject)
                         continue;
-                    
-                    PFObject* photo = [PFQuery getObjectOfClass:@"Photo" objectId:photoObject.objectId];
-                    if(!photo)
-                        continue;
 
-                    PFFile *theImage = [photo objectForKey:@"thumbnail"];
-                    if(theImage)
-                    {
-                        NSData *imageData = [theImage getData];
-                        UIImage* photoImage = [UIImage imageWithData:imageData];
-                        _photosArray[postIndex] = photoImage;
-                    }
+                    dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
+                    dispatch_async(queue, ^{
+                        PFObject* photo = [PFQuery getObjectOfClass:@"Photo" objectId:photoObject.objectId];
+                        if(!photo)
+                            return;
+                        
+                        PFFile *theImage = [photo objectForKey:@"thumbnail"];
+                        if(theImage)
+                        {
+                            NSData *imageData = [theImage getData];
+                            UIImage* photoImage = [UIImage imageWithData:imageData];
+                            _photosArray[postIndex] = photoImage;
+                        }
+                        
+                        dispatch_async(dispatch_get_main_queue(), ^{
+                            [self.tableView reloadData];
+                        });
+                    });
+
                 }
                 
                 // update main ui thread
