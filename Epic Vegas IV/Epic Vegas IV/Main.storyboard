@@ -686,32 +686,67 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
-                        <segue destination="k59-u5-SDR" kind="relationship" relationship="rootViewController" id="pqQ-Bq-2UH"/>
+                        <segue destination="D1O-Mi-zYC" kind="relationship" relationship="rootViewController" id="LBQ-QI-bMv"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vOC-8b-Yw2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="541" y="871"/>
         </scene>
-        <!--View Controller - Best of Epic Vegas-->
-        <scene sceneID="nxP-jt-iJ3">
+        <!--News Feed Table View Controller2 - Best of Epic Vegas-->
+        <scene sceneID="yxh-hD-WAh">
             <objects>
-                <viewController id="k59-u5-SDR" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Boj-0i-i8c"/>
-                        <viewControllerLayoutGuide type="bottom" id="gcC-m7-pJc"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Sv7-Hj-QCt">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
-                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
-                    <navigationItem key="navigationItem" title="Best of Epic Vegas" id="eHN-yq-otK"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5nK-ej-Pgr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tableViewController id="D1O-Mi-zYC" customClass="NewsFeedTableViewController2" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="250" sectionHeaderHeight="22" sectionFooterHeight="22" id="mKf-69-YLn">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PostCell" rowHeight="250" id="Z6U-t3-Md9" customClass="NewsFeedTableViewCell">
+                                <rect key="frame" x="0.0" y="86" width="320" height="250"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Z6U-t3-Md9" id="cI3-RJ-S9w">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="249"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uUA-yB-Tqo">
+                                            <rect key="frame" x="66" y="58" width="46" height="30"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <state key="normal" title="Button">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                        </button>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="aButton" destination="uUA-yB-Tqo" id="9fe-2v-ojS"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="LoadMoreCell" rowHeight="40" id="Q7I-0z-YGs" customClass="NewsFeedTableViewCell">
+                                <rect key="frame" x="0.0" y="336" width="320" height="40"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Q7I-0z-YGs" id="Vo3-bH-SiM">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="39"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <activityIndicatorView opaque="NO" tag="123" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="iNp-4J-edx">
+                                            <rect key="frame" x="150" y="10" width="20" height="20"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </activityIndicatorView>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="D1O-Mi-zYC" id="gFN-V2-cjF"/>
+                            <outlet property="delegate" destination="D1O-Mi-zYC" id="2uH-eJ-9UK"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Best of Epic Vegas" id="Py2-Om-GLd"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Q4Q-ki-gJd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="956" y="871"/>
+            <point key="canvasLocation" x="1010" y="871"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="lLH-MC-Vek">

@@ -48,10 +48,12 @@
 		532B1646199059DE00C4851F /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 532B1645199059DE00C4851F /* ProfileViewController.m */; };
 		5343387119960FAF00A48326 /* NewsFeedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5343387019960FAF00A48326 /* NewsFeedTableViewController.m */; };
 		5346127F1995F9E000530770 /* Settings 44@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5346127E1995F9E000530770 /* Settings 44@2x.png */; };
+		53672A6B199873C300E71C50 /* NewsFeedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 53672A6A199873C300E71C50 /* NewsFeedTableViewCell.m */; };
 		5388ED4D1995741A002CA477 /* All Images@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5388ED4C1995741A002CA477 /* All Images@2x.png */; };
 		5388ED5719957C2F002CA477 /* Location Black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5388ED5619957C2F002CA477 /* Location Black@2x.png */; };
 		5388ED5A19958A96002CA477 /* NewsFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5388ED5919958A96002CA477 /* NewsFeedViewController.m */; };
 		5394C934199845F8002EB1A3 /* RemovePhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5394C933199845F8002EB1A3 /* RemovePhotoViewController.m */; };
+		5394C93E19986946002EB1A3 /* NewsFeedTableViewController2.m in Sources */ = {isa = PBXBuildFile; fileRef = 5394C93D19986946002EB1A3 /* NewsFeedTableViewController2.m */; };
 		53966CB91992972D00E822DE /* Close Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53966CB81992972D00E822DE /* Close Icon@2x.png */; };
 		53966CCA1992D26700E822DE /* Add Full Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53966CC91992D26700E822DE /* Add Full Icon@2x.png */; };
 		53966CCC1992DF7300E822DE /* Add Red Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53966CCB1992DF7300E822DE /* Add Red Icon@2x.png */; };
@@ -164,12 +166,16 @@
 		5343386F19960FAF00A48326 /* NewsFeedTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsFeedTableViewController.h; sourceTree = "<group>"; };
 		5343387019960FAF00A48326 /* NewsFeedTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsFeedTableViewController.m; sourceTree = "<group>"; };
 		5346127E1995F9E000530770 /* Settings 44@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Settings 44@2x.png"; sourceTree = "<group>"; };
+		53672A69199873C300E71C50 /* NewsFeedTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsFeedTableViewCell.h; sourceTree = "<group>"; };
+		53672A6A199873C300E71C50 /* NewsFeedTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsFeedTableViewCell.m; sourceTree = "<group>"; };
 		5388ED4C1995741A002CA477 /* All Images@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "All Images@2x.png"; sourceTree = "<group>"; };
 		5388ED5619957C2F002CA477 /* Location Black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Location Black@2x.png"; sourceTree = "<group>"; };
 		5388ED5819958A96002CA477 /* NewsFeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsFeedViewController.h; sourceTree = "<group>"; };
 		5388ED5919958A96002CA477 /* NewsFeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsFeedViewController.m; sourceTree = "<group>"; };
 		5394C932199845F8002EB1A3 /* RemovePhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemovePhotoViewController.h; sourceTree = "<group>"; };
 		5394C933199845F8002EB1A3 /* RemovePhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemovePhotoViewController.m; sourceTree = "<group>"; };
+		5394C93C19986946002EB1A3 /* NewsFeedTableViewController2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsFeedTableViewController2.h; sourceTree = "<group>"; };
+		5394C93D19986946002EB1A3 /* NewsFeedTableViewController2.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsFeedTableViewController2.m; sourceTree = "<group>"; };
 		53966CB81992972D00E822DE /* Close Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Close Icon@2x.png"; sourceTree = "<group>"; };
 		53966CC91992D26700E822DE /* Add Full Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Add Full Icon@2x.png"; sourceTree = "<group>"; };
 		53966CCB1992DF7300E822DE /* Add Red Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Add Red Icon@2x.png"; sourceTree = "<group>"; };
@@ -444,6 +450,17 @@
 			name = Fonts;
 			sourceTree = "<group>";
 		};
+		5394C93519986834002EB1A3 /* News Feed 2 */ = {
+			isa = PBXGroup;
+			children = (
+				5394C93C19986946002EB1A3 /* NewsFeedTableViewController2.h */,
+				5394C93D19986946002EB1A3 /* NewsFeedTableViewController2.m */,
+				53672A69199873C300E71C50 /* NewsFeedTableViewCell.h */,
+				53672A6A199873C300E71C50 /* NewsFeedTableViewCell.m */,
+			);
+			name = "News Feed 2";
+			sourceTree = "<group>";
+		};
 		53EFEAA01995AF65006798C3 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -451,6 +468,7 @@
 				53EFEAA41995AFE8006798C3 /* Profile */,
 				53EFEAA31995AF8C006798C3 /* Tab Bar */,
 				53EFEAA21995AF81006798C3 /* News Feed */,
+				5394C93519986834002EB1A3 /* News Feed 2 */,
 				53EFEAA11995AF73006798C3 /* Login */,
 			);
 			name = Controllers;
@@ -714,12 +732,14 @@
 				53EFEAE01995C827006798C3 /* TTTTimeIntervalFormatter.m in Sources */,
 				53EFEABB1995B2EA006798C3 /* Constants.m in Sources */,
 				53EFEAAF1995B1D8006798C3 /* UIImage+RoundedCornerAdditions.m in Sources */,
+				5394C93E19986946002EB1A3 /* NewsFeedTableViewController2.m in Sources */,
 				53EFEAC11995B3C2006798C3 /* Cache.m in Sources */,
 				53165F621991D04E0014695B /* TabBarController.m in Sources */,
 				5394C934199845F8002EB1A3 /* RemovePhotoViewController.m in Sources */,
 				53EFEAC41995B493006798C3 /* Utility.m in Sources */,
 				53EFEADF1995C827006798C3 /* Reachability.m in Sources */,
 				53A19F8C199466C1008DF739 /* PostToFeedViewController.m in Sources */,
+				53672A6B199873C300E71C50 /* NewsFeedTableViewCell.m in Sources */,
 				5343387119960FAF00A48326 /* NewsFeedTableViewController.m in Sources */,
 				532B1646199059DE00C4851F /* ProfileViewController.m in Sources */,
 				53EFEAE11995C827006798C3 /* UIImage+ImageEffects.m in Sources */,

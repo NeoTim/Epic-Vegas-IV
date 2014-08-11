@@ -194,6 +194,7 @@ NSInteger _numOfObjectsBeforeLoadMore;
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    NSLog(@"Getting cell for row");
     // if last row
     if (indexPath.row == self.objects.count && [self shouldShowLoadNextPageCell])
         return [self tableView:tableView cellForNextPageAtIndexPath:indexPath];
@@ -253,11 +254,18 @@ NSInteger _numOfObjectsBeforeLoadMore;
     return cell;
 }
 
-- (void)configureBasicCellForAutoSize:(PostTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
-    PFObject* post = [self.objects objectAtIndex:indexPath.row];
-    [self setSubtitleForCell:cell forPost:post];
-    [self setMessageForCell:cell forPost:post];
+
+-(void)setSizesOfViews:(PostTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
+{
+    [cell.locationView setFrame:CGRectMake(0, 0, 0, 0)];
+    [cell.commentsView setFrame:CGRectMake(0, 0, 0, 0)];
+    [cell.commentsSummaryView setFrame:CGRectMake(0, 0, 0, 0)];
 }
+
+- (NSIndexPath *)tableView:(UITableView *)tableView willSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    return nil;
+}
+
 
 
 
@@ -265,6 +273,7 @@ NSInteger _numOfObjectsBeforeLoadMore;
     NSLog(@"Configure basic cell");
     
     [cell clearCellForReuese];
+    [self setSizesOfViews:cell atIndexPath:indexPath];
     
     PFObject* post = [self.objects objectAtIndex:indexPath.row];
     
@@ -356,9 +365,11 @@ NSInteger _numOfObjectsBeforeLoadMore;
     if(!photoImage)
     {
         cell.photoView.image = nil;
+        [cell.photoView setFrame:CGRectMake(0, 0, 0, 0)];
         return;
     }
     cell.photoView.image = photoImage;
+    [cell.photoView setFrame:CGRectMake(cell.photoView.frame.origin.x, cell.photoView.frame.origin.y, 320, photoImage.size.height)];
 }
 
 - (void)setUserImageForCell:(PostTableViewCell *)cell forUser:(UIImage *)userImage {
@@ -452,37 +463,53 @@ NSInteger _numOfObjectsBeforeLoadMore;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return [self heightForBasicCellAtIndexPath:indexPath];
-}
-
-- (CGFloat)heightForBasicCellAtIndexPath:(NSIndexPath *)indexPath {
-    
     // fixed size for the load next page cell
+    
+    NSLog(@"Getting height for row");
     if(self.paginationEnabled && indexPath.row == self.objects.count && [self shouldShowLoadNextPageCell])
         return  40;
+
+    PostTableViewCell* cell = [self.tableView dequeueReusableCellWithIdentifier:@"PostCell"];
     
-    static PostTableViewCell *sizingCell = nil;
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken, ^{
-        sizingCell = [self.tableView dequeueReusableCellWithIdentifier:@"PostCell"];
-    });
     
-    [self configureBasicCellForAutoSize:sizingCell atIndexPath:indexPath];
-    return [self calculateHeightForConfiguredSizingCell:sizingCell];
+    
+    return 240;
+    
+    //return [self heightForBasicCellAtIndexPath:indexPath];
 }
 
-- (CGFloat)calculateHeightForConfiguredSizingCell:(UITableViewCell *)sizingCell {
-    sizingCell.bounds = CGRectMake(0.0f, 0.0f, CGRectGetWidth(self.tableView.bounds), 0.0f);
-    
-    [sizingCell setNeedsLayout];
-    [sizingCell layoutIfNeeded];
-    
-    CGSize size = [sizingCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
-    return size.height;
-}
+//- (CGFloat)heightForBasicCellAtIndexPath:(NSIndexPath *)indexPath {
+//    
+//    // fixed size for the load next page cell
+//    if(self.paginationEnabled && indexPath.row == self.objects.count && [self shouldShowLoadNextPageCell])
+//        return  40;
+//    
+//    static PostTableViewCell *sizingCell = nil;
+//    static dispatch_once_t onceToken;
+//    dispatch_once(&onceToken, ^{
+//        sizingCell = [self.tableView dequeueReusableCellWithIdentifier:@"PostCell"];
+//    });
+//    
+//    [self configureBasicCellForAutoSize:sizingCell atIndexPath:indexPath];
+//    return [self calculateHeightForConfiguredSizingCell:sizingCell];
+//}
+
+//- (CGFloat)calculateHeightForConfiguredSizingCell:(UITableViewCell *)sizingCell {
+//    sizingCell.bounds = CGRectMake(0.0f, 0.0f, CGRectGetWidth(self.tableView.bounds), 0.0f);
+//    
+//    [sizingCell setNeedsLayout];
+//    [sizingCell layoutIfNeeded];
+//    
+//    CGSize size = [sizingCell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize];
+//    return size.height;
+//}
 
 
-
+//- (void)configureBasicCellForAutoSize:(PostTableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath {
+////    PFObject* post = [self.objects objectAtIndex:indexPath.row];
+////    [self setSubtitleForCell:cell forPost:post];
+////    [self setMessageForCell:cell forPost:post];
+//}
 
 
 // Override to support conditional editing of the table view.
