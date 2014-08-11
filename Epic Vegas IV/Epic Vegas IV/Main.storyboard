@@ -134,10 +134,11 @@
                         <viewControllerLayoutGuide type="bottom" id="fY7-0a-4IK"/>
                     </layoutGuides>
                     <view key="view" opaque="NO" clearsContextBeforeDrawing="NO" alpha="0.14999999999999969" contentMode="scaleToFill" id="LKI-ND-4RO">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <tabBarItem key="tabBarItem" enabled="NO" title="" id="v7Y-FF-SCY">
                         <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
                     </tabBarItem>
@@ -209,7 +210,7 @@
             <objects>
                 <tableViewController id="ky5-TV-dzz" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="pmK-l8-o7C">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -227,6 +228,7 @@
                             <outlet property="delegate" destination="ky5-TV-dzz" id="uxj-ce-kWp"/>
                         </connections>
                     </tableView>
+                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <navigationItem key="navigationItem" title="Me" id="VhU-bm-plp">
                         <barButtonItem key="rightBarButtonItem" image="Settings 44.png" id="7j6-Sp-BZW">
                             <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -245,7 +247,7 @@
             <objects>
                 <tableViewController hidesBottomBarWhenPushed="YES" id="3rz-ig-IEu" customClass="SettingsTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="ZLe-wn-JTL">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>
@@ -320,6 +322,7 @@
                             <outlet property="delegate" destination="3rz-ig-IEu" id="cFR-yW-6gR"/>
                         </connections>
                     </tableView>
+                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <navigationItem key="navigationItem" title="Settings" id="bkN-tM-GoR">
                         <barButtonItem key="leftBarButtonItem" title="Back" style="done" id="hL0-uy-a9D">
                             <connections>
@@ -518,15 +521,16 @@
                         <viewControllerLayoutGuide type="bottom" id="rdA-em-BZV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="EeK-No-Lhq">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <navigationItem key="navigationItem" title="Best of Epic Vegas" id="hgT-8k-UmL"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ofB-Ab-wfq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1245" y="926"/>
+            <point key="canvasLocation" x="1283" y="918"/>
         </scene>
         <!--News Feed Table View Controller2 - Best of Epic Vegas-->
         <scene sceneID="yxh-hD-WAh">
