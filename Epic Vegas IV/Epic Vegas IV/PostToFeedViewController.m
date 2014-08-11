@@ -363,6 +363,8 @@ NSInteger characterLimit = 300;
             NSLog(@"photo with object id created: %@", photo.objectId);
             [photo setObject:[PFUser currentUser] forKey:kPhotoUserKey];
             [photo setObject:self.resizedPhotoFile forKey:kPhotoThumbnailKey];
+            photo[@"thumbnailWidth"] = [NSString stringWithFormat:@"%f", resizedWidth];
+            photo[@"thumbnailHeight"] = [NSString stringWithFormat:@"%f", resizedHeight];
             
             // photos are public, but may only be modified by the user who uploaded them
             PFACL *photoACL = [PFACL ACLWithUser:[PFUser currentUser]];
@@ -385,6 +387,9 @@ NSInteger characterLimit = 300;
                     
                     // in background upload the larger photo
                     [photo setObject:self.photoFile forKey:kPhotoPictureKey];
+                    
+                    photo[@"originalWidth"] = [NSString stringWithFormat:@"%f", originalWidth];
+                    photo[@"originalHeight"] = [NSString stringWithFormat:@"%f", originalHeight];
                     [photo saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                         if (succeeded) {
                             NSLog(@"full size photo saved");

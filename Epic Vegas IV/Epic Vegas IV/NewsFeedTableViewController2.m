@@ -122,7 +122,7 @@ BOOL isCurrentlyRefreshing = NO;
                     [self hideActivityIndicator];
                     isCurrentlyRefreshing = NO;
                     NSLog(@"Refresh Ended");
-                });     
+                });
             });
             
         } else {
@@ -247,7 +247,7 @@ BOOL isCurrentlyRefreshing = NO;
 
     if(post[@"user"])
     {
-        cell.titleLabel.text = post[@"displayName"] ?: @"";
+        cell.titleLabel.text = post[@"user"][@"displayName"] ?: @"";
 
         if(post[@"user"][@"profilePictureSmall"])
         {
@@ -298,15 +298,19 @@ BOOL isCurrentlyRefreshing = NO;
     height += labelSize.height;
     
     if(post[@"photo"])
-    {
-//        UIImage* image = ((UIImage*)_photosArray[postIndex]);
-//        CGFloat fixedWidth = 320 - 48;
-//        
-//        CGFloat heightMultiplier = fixedWidth / image.size.width;
-//        CGFloat scaledHeight = image.size.height * heightMultiplier;
-//        
-//        height += scaledHeight;
-        height += 350;
+    {        
+        if(post[@"photo"][@"thumbnailHeight"])
+        {
+            CGFloat photoWidth = [post[@"photo"][@"thumbnailWidth"] floatValue];
+            CGFloat photoHeight = [post[@"photo"][@"thumbnailHeight"] floatValue];
+            
+            CGFloat fixedWidth = 320 - 48;
+            CGFloat heightMultiplier = fixedWidth / photoWidth;
+            CGFloat scaledHeight = photoHeight * heightMultiplier;
+            height += scaledHeight;
+            
+            NSLog(@"photo width = %f", scaledHeight);
+        }
     }
 
     //NSLog(@"Height: %f", height);
