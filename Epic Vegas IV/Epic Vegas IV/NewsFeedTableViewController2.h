@@ -8,21 +8,8 @@
 
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
+#import "QueryTableViewController.h"
 
-@interface NewsFeedTableViewController2 : UITableViewController <UITableViewDelegate, UITableViewDataSource>
-
-@property (nonatomic, assign) BOOL shouldReloadOnAppear;
-
-@property (nonatomic, strong) NSMutableArray* postsArray;
-
-@property (nonatomic, strong) UIRefreshControl* refreshControl;
-
-@property (nonatomic, strong) UIActivityIndicatorView* activityIndicator;
-@property (nonatomic, strong) NSDictionary* users;
-
-@property (nonatomic, strong) NSDate* lastRefreshDate;
-
-
-- (PFQuery *)queryForTable;
+@interface NewsFeedTableViewController2 : QueryTableViewController
 
 @end
