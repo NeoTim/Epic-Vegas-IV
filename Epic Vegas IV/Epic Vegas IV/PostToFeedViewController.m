@@ -312,29 +312,65 @@ NSInteger characterLimit = 300;
             
             CGFloat originalWidth = originalImage.size.width;
             CGFloat originalHeight = originalImage.size.height;
+            NSLog(@"Original image width=%f, height=%f", originalWidth, originalHeight);
             
             BOOL widthIsLongSide = NO;
             if(originalWidth > originalHeight)
                 widthIsLongSide = YES;
 
             // always resize to fit a certain width
-            CGFloat resizedWidth = 320;
-            CGFloat resizeMultiplier = resizedWidth / originalWidth;
+            CGFloat thumbnailWidth = 320;
+            CGFloat thumbnailHeightMultiplier = thumbnailWidth / originalWidth;
             
-            CGFloat resizedHeight = originalHeight * resizeMultiplier;
-            resizedHeight = (CGFloat)(int)(resizedHeight + .5f); //round to nearest whole number
+            CGFloat thumbnailHeight = originalHeight * thumbnailHeightMultiplier;
+            thumbnailHeight = (CGFloat)(int)(thumbnailHeight + .5f); //round to nearest whole number
             
-            NSLog(@"Original image width=%f, height=%f", originalWidth, originalHeight);
-            NSLog(@"Resized image width=%f, height=%f", resizedWidth, resizedHeight);
+            NSLog(@"thumbnail image width=%f, height=%f", thumbnailWidth, thumbnailHeight);
+          
+            UIImage *thumbnailImage = [originalImage resizedImageWithContentMode:UIViewContentModeScaleAspectFit bounds:CGSizeMake(thumbnailWidth, thumbnailHeight) interpolationQuality:kCGInterpolationHigh];
             
-            UIImage *resizedImage = [originalImage resizedImageWithContentMode:UIViewContentModeScaleAspectFit bounds:CGSizeMake(resizedWidth, resizedHeight) interpolationQuality:kCGInterpolationHigh];
-      
+            // max length is 2048
+            CGFloat longestLength = 2048;
+            CGFloat resizeMultiplier = 1.0;
+            if(originalHeight > originalWidth && originalHeight > longestLength)
+            {
+                // if height is long edge, then reduce if height is longer than 2048
+                resizeMultiplier = longestLength / originalHeight;
+            }
+            else if(originalWidth > originalHeight && originalWidth > longestLength)
+            {
+                // if width is long edge, then reduce if width is > 2048
+                resizeMultiplier = longestLength / originalWidth;
+            }
+            else if(originalWidth > longestLength) // sides are equal, but longer than allowed
+            {
+                resizeMultiplier = longestLength / originalWidth;
+            }
+            
+            UIImage *largeImage = originalImage;
+            CGFloat largeImageWidth = originalWidth;
+            CGFloat largeImageHeight = originalHeight;
+            if(resizeMultiplier != 1.0)
+            {
+                largeImageHeight = originalHeight * resizeMultiplier;
+                largeImageHeight = (CGFloat)(int)(largeImageHeight + .5f); //round to nearest whole number
+                
+                largeImageWidth = originalWidth * resizeMultiplier;
+                largeImageWidth = (CGFloat)(int)(largeImageWidth + .5f); //round to nearest whole number
+                NSLog(@"resized large image width=%f, height=%f", largeImageWidth, largeImageHeight);
+                
+                largeImage = [originalImage resizedImageWithContentMode:UIViewContentModeScaleAspectFit bounds:CGSizeMake(largeImageWidth, largeImageHeight) interpolationQuality:kCGInterpolationHigh];
+            }
+            else{
+                NSLog(@"no resizing of original image");
+            }
+          
             // JPEG to decrease file size and enable faster uploads & downloads
-            NSData *imageData = UIImageJPEGRepresentation(originalImage, 0.8f);
-            NSData *resizedImageData = UIImageJPEGRepresentation(resizedImage, 0.8f);
+            NSData *imageData = UIImageJPEGRepresentation(originalImage, 0.3f);
+            NSData *thumbnailImageData = UIImageJPEGRepresentation(thumbnailImage, .8f);
             
             self.photoFile = [PFFile fileWithData:imageData];
-            self.resizedPhotoFile = [PFFile fileWithData:resizedImageData];
+            self.resizedPhotoFile = [PFFile fileWithData:thumbnailImageData];
             
             if (!self.photoFile || !self.resizedPhotoFile) {
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Couldn't post your photo" message:nil delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Dismiss", nil];
@@ -363,8 +399,8 @@ NSInteger characterLimit = 300;
             NSLog(@"photo with object id created: %@", photo.objectId);
             [photo setObject:[PFUser currentUser] forKey:kPhotoUserKey];
             [photo setObject:self.resizedPhotoFile forKey:kPhotoThumbnailKey];
-            photo[@"thumbnailWidth"] = [NSString stringWithFormat:@"%f", resizedWidth];
-            photo[@"thumbnailHeight"] = [NSString stringWithFormat:@"%f", resizedHeight];
+            photo[@"thumbnailWidth"] = [NSString stringWithFormat:@"%f", thumbnailWidth];
+            photo[@"thumbnailHeight"] = [NSString stringWithFormat:@"%f", thumbnailHeight];
             
             // photos are public, but may only be modified by the user who uploaded them
             PFACL *photoACL = [PFACL ACLWithUser:[PFUser currentUser]];
@@ -388,11 +424,11 @@ NSInteger characterLimit = 300;
                     // in background upload the larger photo
                     [photo setObject:self.photoFile forKey:kPhotoPictureKey];
                     
-                    photo[@"originalWidth"] = [NSString stringWithFormat:@"%f", originalWidth];
-                    photo[@"originalHeight"] = [NSString stringWithFormat:@"%f", originalHeight];
+                    photo[@"originalWidth"] = [NSString stringWithFormat:@"%f", largeImageWidth];
+                    photo[@"originalHeight"] = [NSString stringWithFormat:@"%f", largeImageHeight];
                     [photo saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                         if (succeeded) {
-                            NSLog(@"full size photo saved");
+                            NSLog(@"large size photo saved");
                         }
                     }];
 
