@@ -362,7 +362,6 @@ NSInteger characterLimit = 300;
             
             NSLog(@"photo with object id created: %@", photo.objectId);
             [photo setObject:[PFUser currentUser] forKey:kPhotoUserKey];
-            [photo setObject:self.photoFile forKey:kPhotoPictureKey];
             [photo setObject:self.resizedPhotoFile forKey:kPhotoThumbnailKey];
             
             // photos are public, but may only be modified by the user who uploaded them
@@ -380,9 +379,18 @@ NSInteger characterLimit = 300;
                 if (succeeded) {
                     [[Cache sharedCache] setAttributesForPhoto:photo likers:[NSArray array] commenters:[NSArray array] likedByCurrentUser:NO];
                     
-                    NSLog(@"photo with object id saved: %@", photo.objectId);
+                    NSLog(@"thumbnail photo saved");
                     
                     [self createPostWithPhoto:photo];
+                    
+                    // in background upload the larger photo
+                    [photo setObject:self.photoFile forKey:kPhotoPictureKey];
+                    [photo saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                        if (succeeded) {
+                            NSLog(@"full size photo saved");
+                        }
+                    }];
+
 //                    // userInfo might contain any caption which might have been posted by the uploader
 //                    if (userInfo) {
 //                        NSString *commentText = [userInfo objectForKey:kEditPhotoViewControllerUserInfoCommentKey];
@@ -432,7 +440,6 @@ NSInteger characterLimit = 300;
         NSLog(@"saving photo with object id to post: %@", photo.objectId);
         [post setObject:photo forKey:@"photo"];
     }
-    [post save];
     
     [post saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
         if (error) {

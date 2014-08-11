@@ -56,6 +56,8 @@
     self.userImageView.layer.cornerRadius = 30;
     
     self.photoImageView.contentMode = UIViewContentModeScaleAspectFit;
+    //self.photoImageView.layer.borderWidth = .1f;
+    //self.photoImageView.layer.borderColor = [UIColor lightGrayColor].CGColor;
 }
 
 -(void)clearCellForReuese

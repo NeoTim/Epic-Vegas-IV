@@ -400,7 +400,7 @@ BOOL isCurrentlyRefreshing = NO;
         height += labelSize.height;
     }
 
-    NSLog(@"Height: %f", height);
+    //NSLog(@"Height: %f", height);
     return height;
 }
 
