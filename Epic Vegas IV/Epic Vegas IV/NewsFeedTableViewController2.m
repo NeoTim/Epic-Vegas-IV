@@ -362,16 +362,54 @@ BOOL isCurrentlyRefreshing = NO;
     }
 }
 
+- (CGSize)text:(NSString *)text sizeWithFont:(UIFont *)font constrainedToSize:(CGSize)size
+{
+    CGRect frame = [text boundingRectWithSize:size
+                                          options:(NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading)
+                                       attributes:@{NSFontAttributeName:font}
+                                          context:nil];
+    return frame.size;
+}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     // fixed height for the load more cell
     if(indexPath.row == _postsArray.count && hasNextPage)
         return  40;
     
-    //NewsFeedTableViewCell* cell = [self.tableView dequeueReusableCellWithIdentifier:@"PostCell"];
-    return 350;
+    CGFloat height = 150;
     
-    //return [self heightForBasicCellAtIndexPath:indexPath];
+    int postIndex = indexPath.row;
+    
+    
+    if(![_photosArray[postIndex] isEqual:[NSNull null]])
+    {
+        UIImage* image = ((UIImage*)_photosArray[postIndex]);
+        CGFloat fixedWidth = 320 - 48;
+        
+        CGFloat heightMultiplier = fixedWidth / image.size.width;
+        CGFloat scaledHeight = image.size.height * heightMultiplier;
+        
+        height += scaledHeight;
+    }
+    PFObject* post = _postsArray[postIndex];
+    if(post)
+    {
+        NSString *theText=post[@"message"] ?: @"";
+        
+        CGSize labelSize = [theText sizeWithFont:[UIFont fontWithName: @"HelveticaNeue" size: 15.0f] constrainedToSize:CGSizeMake(300, 600)];
+        height += labelSize.height;
+    }
+
+    NSLog(@"Height: %f", height);
+    return height;
+}
+
+- (CGFloat)textViewHeightForAttributedText:(NSAttributedString *)text andWidth:(CGFloat)width
+{
+    UITextView *textView = [[UITextView alloc] init];
+    [textView setAttributedText:text];
+    CGSize size = [textView sizeThatFits:CGSizeMake(width, FLT_MAX)];
+    return size.height;
 }
 
 
