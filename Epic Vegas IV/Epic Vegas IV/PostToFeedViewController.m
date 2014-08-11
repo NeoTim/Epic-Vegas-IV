@@ -18,7 +18,7 @@
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *locationButton;
 
 @property (nonatomic, strong) PFFile *photoFile;
-@property (nonatomic, strong) PFFile *thumbnailFile;
+@property (nonatomic, strong) PFFile *resizedPhotoFile;
 @property (nonatomic, assign) UIBackgroundTaskIdentifier fileUploadBackgroundTaskId;
 @property (nonatomic, assign) UIBackgroundTaskIdentifier photoPostBackgroundTaskId;
 
@@ -179,10 +179,15 @@ NSInteger characterLimit = 300;
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     [picker dismissViewControllerAnimated:YES completion:NULL];
-    
-    // save image to camera roll!
     UIImage* originalImage=info[UIImagePickerControllerOriginalImage];
-    UIImageWriteToSavedPhotosAlbum(originalImage, nil, nil, nil);
+    
+    // save image to camera roll but only if took a new photo from camera
+    if(picker.sourceType == UIImagePickerControllerSourceTypeCamera)
+    {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            UIImageWriteToSavedPhotosAlbum(originalImage, nil, nil, nil);
+        });
+    }
     
     [self attachImage:originalImage withDelay:1.0f];
 }
@@ -303,17 +308,35 @@ NSInteger characterLimit = 300;
         if(_attachedImageView.image)
         {
             // FIX THIS
-            UIImage *resizedImage = [_attachedImageView.image resizedImageWithContentMode:UIViewContentModeScaleAspectFit bounds:CGSizeMake(560.0f, 560.0f) interpolationQuality:kCGInterpolationHigh];
-            UIImage *thumbnailImage = [_attachedImageView.image thumbnailImage:86.0f transparentBorder:0.0f cornerRadius:10.0f interpolationQuality:kCGInterpolationDefault];
+            UIImage* originalImage =_attachedImageView.image;
             
+            CGFloat originalWidth = originalImage.size.width;
+            CGFloat originalHeight = originalImage.size.height;
+            
+            BOOL widthIsLongSide = NO;
+            if(originalWidth > originalHeight)
+                widthIsLongSide = YES;
+
+            // always resize to fit a certain width
+            CGFloat resizedWidth = 320;
+            CGFloat resizeMultiplier = resizedWidth / originalWidth;
+            
+            CGFloat resizedHeight = originalHeight * resizeMultiplier;
+            resizedHeight = (CGFloat)(int)(resizedHeight + .5f); //round to nearest whole number
+            
+            NSLog(@"Original image width=%f, height=%f", originalWidth, originalHeight);
+            NSLog(@"Resized image width=%f, height=%f", resizedWidth, resizedHeight);
+            
+            UIImage *resizedImage = [originalImage resizedImageWithContentMode:UIViewContentModeScaleAspectFit bounds:CGSizeMake(resizedWidth, resizedHeight) interpolationQuality:kCGInterpolationHigh];
+      
             // JPEG to decrease file size and enable faster uploads & downloads
-            NSData *imageData = UIImageJPEGRepresentation(resizedImage, 0.8f);
-            NSData *thumbnailImageData = UIImagePNGRepresentation(thumbnailImage);
+            NSData *imageData = UIImageJPEGRepresentation(originalImage, 0.8f);
+            NSData *resizedImageData = UIImageJPEGRepresentation(resizedImage, 0.8f);
             
             self.photoFile = [PFFile fileWithData:imageData];
-            self.thumbnailFile = [PFFile fileWithData:thumbnailImageData];
+            self.resizedPhotoFile = [PFFile fileWithData:resizedImageData];
             
-            if (!self.photoFile || !self.thumbnailFile) {
+            if (!self.photoFile || !self.resizedPhotoFile) {
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Couldn't post your photo" message:nil delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Dismiss", nil];
                 [alert show];
                 return;
@@ -326,14 +349,13 @@ NSInteger characterLimit = 300;
             
             [self.photoFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                 if (succeeded) {
-                    [self.thumbnailFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                    [self.resizedPhotoFile saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                         [[UIApplication sharedApplication] endBackgroundTask:self.fileUploadBackgroundTaskId];
                     }];
                 } else {
                     [[UIApplication sharedApplication] endBackgroundTask:self.fileUploadBackgroundTaskId];
                 }
             }];
-        
             
             // create a photo object
             photo = [PFObject objectWithClassName:kPhotoClassKey];
@@ -341,7 +363,7 @@ NSInteger characterLimit = 300;
             NSLog(@"photo with object id created: %@", photo.objectId);
             [photo setObject:[PFUser currentUser] forKey:kPhotoUserKey];
             [photo setObject:self.photoFile forKey:kPhotoPictureKey];
-            [photo setObject:self.thumbnailFile forKey:kPhotoThumbnailKey];
+            [photo setObject:self.resizedPhotoFile forKey:kPhotoThumbnailKey];
             
             // photos are public, but may only be modified by the user who uploaded them
             PFACL *photoACL = [PFACL ACLWithUser:[PFUser currentUser]];

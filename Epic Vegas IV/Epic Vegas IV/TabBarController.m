@@ -499,7 +499,7 @@ UIButton* selectExistingPhotoButton;
 #pragma mark - Image Picker Controller delegate methods
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-    // save image to camera roll!
+   
     UIImage* originalImage=info[UIImagePickerControllerOriginalImage];
     
     // show post to feed view and attach the image
@@ -514,10 +514,13 @@ UIButton* selectExistingPhotoButton;
 
     [self presentViewController:postToFeedNavigationController animated:YES completion:nil];
     
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        UIImageWriteToSavedPhotosAlbum(originalImage, nil, nil, nil);
-    });
-
+    // save image to camera roll but only if took a new photo from camera
+    if(picker.sourceType == UIImagePickerControllerSourceTypeCamera)
+    {
+        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+            UIImageWriteToSavedPhotosAlbum(originalImage, nil, nil, nil);
+        });
+    }
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
