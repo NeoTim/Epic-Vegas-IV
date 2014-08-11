@@ -7,7 +7,25 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AppDelegate.h"
 
 @interface NewsFeedTableViewController2 : UITableViewController <UITableViewDelegate, UITableViewDataSource>
+
+@property (nonatomic, assign) BOOL shouldReloadOnAppear;
+
+@property (nonatomic, strong) NSMutableArray* postsArray;
+@property (nonatomic, strong) NSMutableArray* photosArray;
+@property (nonatomic, strong) NSMutableArray* userPhotosArray;
+@property (nonatomic, strong) NSMutableArray* usersArray;
+
+@property (nonatomic, strong) UIRefreshControl* refreshControl;
+
+@property (nonatomic, strong) UIActivityIndicatorView* activityIndicator;
+@property (nonatomic, strong) NSDictionary* users;
+
+@property (nonatomic, strong) NSDate* lastRefreshDate;
+
+
+- (PFQuery *)queryForTable;
 
 @end

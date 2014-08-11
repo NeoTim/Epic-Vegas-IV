@@ -82,28 +82,5 @@
 }
 */
 
-- (IBAction)logOutButtonPressed:(id)sender {
-    
-    UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Are you sure you want to log out?"
-                                                             delegate:self
-                                                    cancelButtonTitle:@"Cancel"
-                                               destructiveButtonTitle:nil
-                                                    otherButtonTitles:@"Log Out", nil];
-    actionSheet.tag = 7431;
-    [actionSheet showInView:self.view];
-}
 
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-    // action sheet for logout confirmation
-    if(actionSheet.tag == 7431)
-    {
-        if (buttonIndex == 0) {
-            // log out
-            [[AppDelegate sharedInstance] logOut];
-        }
-    }
-}
-
-- (IBAction)shareLocationSwitchChanged:(id)sender {
-}
 @end

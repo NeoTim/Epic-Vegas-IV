@@ -18,12 +18,4 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
 
-@property (weak, nonatomic) IBOutlet UIButton *logOutButton;
-
-- (IBAction)logOutButtonPressed:(id)sender;
-
-@property (weak, nonatomic) IBOutlet UISwitch *shareLocationSwitch;
-
-- (IBAction)shareLocationSwitchChanged:(id)sender;
-
 @end

@@ -9,24 +9,11 @@
 #import "NewsFeedTableViewController2.h"
 #import "LoadNextPageTableViewCell.h"
 #import "PostTableViewCell.h"
-#import "AppDelegate.h"
 #import "NewsFeedTableViewCell.h"
 
 @interface NewsFeedTableViewController2 ()
 
-@property (nonatomic, assign) BOOL shouldReloadOnAppear;
 
-@property (nonatomic, strong) NSMutableArray* postsArray;
-@property (nonatomic, strong) NSMutableArray* photosArray;
-@property (nonatomic, strong) NSMutableArray* userPhotosArray;
-@property (nonatomic, strong) NSMutableArray* usersArray;
-
-@property (nonatomic, strong) UIRefreshControl* refreshControl;
-
-@property (nonatomic, strong) UIActivityIndicatorView* activityIndicator;
-@property (nonatomic, strong) NSDictionary* users;
-
-@property (nonatomic, strong) NSDate* lastRefreshDate;
 
 
 @end
@@ -108,7 +95,7 @@ BOOL isCurrentlyRefreshing = NO;
 
 -(void)loadNextPage
 {
-    PFQuery* postsQuery = [self queryForPosts];
+    PFQuery* postsQuery = [self queryForTable];
 
     postsQuery.limit = itemsPerPage;
     postsQuery.skip = itemsPerPage * currentPage++;
@@ -251,7 +238,7 @@ BOOL isCurrentlyRefreshing = NO;
     //[self.view removeSubview:_activityIndicator ;]
 }
 
-- (PFQuery *)queryForPosts {
+- (PFQuery *)queryForTable {
     PFQuery *query = [PFQuery queryWithClassName:@"Post"];
     [query orderByDescending:@"createdAt"];
     
