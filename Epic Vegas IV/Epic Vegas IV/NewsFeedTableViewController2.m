@@ -245,17 +245,21 @@ BOOL hasNextPage;
         cell = (NewsFeedTableViewCell*)[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault  reuseIdentifier:@"PostCell"];
     }
     else{
-        [self clearPostCellForReuse:cell];
+        [cell clearCellForReuese];
     }
 
     [self configurePostCell:cell ForRowAtIndexPath:indexPath];
     return cell;
 }
 
--(void)clearPostCellForReuse:(NewsFeedTableViewCell*)cell
-{
-    
-}
+//-(void)clearPostCellForReuse:(NewsFeedTableViewCell*)cell
+//{
+//    cell.userImageView.image = nil;
+//    cell.titleLabel.text = @"";
+//    cell.photoImageView.image = nil;
+//    cell.messageLabel.text= @"";
+//    cell.subtitleLabel.text= @"";
+//}
 
 -(void)configurePostCell:(NewsFeedTableViewCell*)cell ForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -273,9 +277,13 @@ BOOL hasNextPage;
     if(![_photosArray[postIndex] isEqual:[NSNull null]])
         cell.photoImageView.image = _photosArray[postIndex];
     
-    if(_postsArray[postIndex])
+    PFObject* post = _postsArray[postIndex];
+    if(post)
     {
-        cell.messageLabel.text= _postsArray[postIndex][@"message"] ?: @"";
+        cell.messageLabel.text= post[@"message"] ?: @"";
+        NSDate* createdAt = post.createdAt;
+        NSString* subtitle = [Utility formattedDate:createdAt];
+        cell.subtitleLabel.text = subtitle;
     }
 }
 

@@ -18,5 +18,8 @@
 @property (weak, nonatomic) IBOutlet AutoSizeLabel *messageLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *photoImageView;
 
+@property (weak, nonatomic) IBOutlet UIImageView *cardView;
+
+-(void)clearCellForReuese;
 
 @end
