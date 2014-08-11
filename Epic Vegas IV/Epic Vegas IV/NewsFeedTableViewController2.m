@@ -19,6 +19,7 @@
 @property (nonatomic, strong) NSMutableArray* postsArray;
 @property (nonatomic, strong) NSMutableArray* photosArray;
 @property (nonatomic, strong) NSMutableArray* userPhotosArray;
+@property (nonatomic, strong) NSMutableArray* usersArray;
 
 @property (nonatomic, strong) UIActivityIndicatorView* activityIndicator;
 @property (nonatomic, strong) NSDictionary* users;
@@ -62,6 +63,7 @@ BOOL hasNextPage;
     _postsArray = [[NSMutableArray alloc] init];
     _photosArray = [[NSMutableArray alloc] init];
     _userPhotosArray = [[NSMutableArray alloc] init];
+    _usersArray = [[NSMutableArray alloc] init];
     [self showActivityIndicator];
    
     _lastRefreshDate = [NSDate date];
@@ -89,14 +91,67 @@ BOOL hasNextPage;
                 if(objects.count != itemsPerPage || objects.count == 0)
                     hasNextPage = NO;
                 
-                // add objects to posts array
+                // add objects to posts array, make null objects for all other arrays
                 for(id object in objects)
+                {
                     [_postsArray addObject:object];
+                    [_userPhotosArray addObject:[NSNull null]];
+                    [_photosArray addObject:[NSNull null]];
+                    [_usersArray addObject:[NSNull null]];
+                }
                 
-                [NSThread sleepForTimeInterval:5];
+                // iterate over each post getting the user and photo data
+                for(int i = 0; i < objects.count; i++)
+                {
+                    int postIndex = i + postsQuery.skip;
+                    PFObject* post = _postsArray[postIndex];
+                    
+                    // first get user
+                    NSLog(@"loading user for post #%d", postIndex);
+                    PFUser* userPointer = post[@"user"];
+                    if(!userPointer)
+                        continue;
+                    
+                    PFQuery *query = [PFQuery queryWithClassName:@"_User"];
+                    query.cachePolicy = kPFCachePolicyCacheElseNetwork;
+                    
+                    // query for user object, try from cache first
+                    PFObject* user = [query getObjectWithId:userPointer.objectId];
+                    if(!user)
+                        continue;
+                    _usersArray[postIndex] = user;
+                    
+                    // query for user photo
+                    NSLog(@"loading user photo for post #%d", postIndex);
+                    PFFile *userImageFile = [user objectForKey:kUserProfilePicSmallKey];
+                    if (userImageFile)
+                    {
+                        NSData *imageData = [userImageFile getData];
+                        UIImage *userImage = [UIImage imageWithData:imageData];
+                        _userPhotosArray[postIndex] = userImage;
+                    }
+                    
+                    // then get post photo
+                    NSLog(@"loading post photo for post #%d", postIndex);
+                    PFObject* photoObject = post[@"photo"];
+                    if(!photoObject)
+                        continue;
+                    
+                    PFObject* photo = [PFQuery getObjectOfClass:@"Photo" objectId:photoObject.objectId];
+                    if(!photo)
+                        continue;
 
+                    PFFile *theImage = [photo objectForKey:@"thumbnail"];
+                    if(theImage)
+                    {
+                        NSData *imageData = [theImage getData];
+                        UIImage* photoImage = [UIImage imageWithData:imageData];
+                        _photosArray[postIndex] = photoImage;
+                    }
+                }
+                
+                // update main ui thread
                 dispatch_async(dispatch_get_main_queue(), ^(void) {
-                    // update ui thread
                     [self.tableView reloadData];
                     [self hideActivityIndicator];
                 });
@@ -106,42 +161,7 @@ BOOL hasNextPage;
             // Log details of the failure
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
-        
     }];
-    
-//    
-//    
-//    int nextPageStart = itemsLoaded;
-//    
-//    for(int i = 0 ; i < itemsPerPage; i++)
-//    {
-//        int index = nextPageStart + i;
-//        if(i >= _postsArray.count)
-//            break; // no more posts
-//        
-//        PFObject* post = _postsArray[i];
-//
-//        PFUser* userPointer = post[@"user"];
-//        if(userPointer)
-//        {
-//            PFObject* user = nil;
-//            PFQuery *query = [PFQuery queryWithClassName:@"_User"];
-//            query.cachePolicy = kPFCachePolicyCacheElseNetwork;
-//            
-//            // query for user object, try from cache first
-//            user = [query getObjectWithId:userPointer.objectId];
-//            if(user)
-//            {
-//                UIImage *photoImage = nil;
-//            }
-//            else{
-//                
-//                NSLog(@"Error querying for user");
-//            }
-//            
-//            
-//        }
-//    }
 }
     
 -(void)showActivityIndicator
@@ -160,11 +180,6 @@ BOOL hasNextPage;
 {
     [_activityIndicator stopAnimating];
     //[self.view removeSubview:_activityIndicator ;]
-}
-
--(void)getNextPage
-{
-    
 }
 
 - (PFQuery *)queryForPosts {
@@ -205,7 +220,7 @@ BOOL hasNextPage;
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // add an extra row for the get next page indicator
-    if(hasNextPage)
+    if(hasNextPage && _postsArray.count >= 1)
         return _postsArray.count + 1;
 
     return _postsArray.count;
@@ -230,23 +245,49 @@ BOOL hasNextPage;
         cell = (NewsFeedTableViewCell*)[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault  reuseIdentifier:@"PostCell"];
     }
     else{
-        // clear out old content?
+        [self clearPostCellForReuse:cell];
     }
 
-    cell.aButton.titleLabel.text = [NSString stringWithFormat:@"%d", indexPath.row];
-    //cell.aButton.titleLabel.text = [_postsArray objectAtIndex:indexPath.row][@"message"];
-    // Configure the cell...
-    
+    [self configurePostCell:cell ForRowAtIndexPath:indexPath];
     return cell;
 }
 
+-(void)clearPostCellForReuse:(NewsFeedTableViewCell*)cell
+{
+    
+}
+
+-(void)configurePostCell:(NewsFeedTableViewCell*)cell ForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSString *message = _postsArray[indexPath.row][@"message"] ?: @"[No Message]";
+    cell.messageLabel.text = message;
+    
+    int postIndex = indexPath.row;
+    
+    if(![_userPhotosArray[postIndex] isEqual:[NSNull null]])
+        cell.userImageView.image = _userPhotosArray[postIndex];
+    
+    if(![_usersArray[postIndex] isEqual:[NSNull null]])
+        cell.titleLabel.text = _usersArray[postIndex][@"displayName"] ?: @"";
+    
+    if(![_photosArray[postIndex] isEqual:[NSNull null]])
+        cell.photoImageView.image = _photosArray[postIndex];
+    
+    if(_postsArray[postIndex])
+    {
+        cell.messageLabel.text= _postsArray[postIndex][@"message"] ?: @"";
+    }
+}
+
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    NSLog(@"Height for row at index: %d", indexPath.row);
     // fixed height for the load more cell
     if(indexPath.row == _postsArray.count && hasNextPage)
         return  40;
     
-    PostTableViewCell* cell = [self.tableView dequeueReusableCellWithIdentifier:@"PostCell"];
-    return 80;
+    //NewsFeedTableViewCell* cell = [self.tableView dequeueReusableCellWithIdentifier:@"PostCell"];
+    return 350;
     
     //return [self heightForBasicCellAtIndexPath:indexPath];
 }

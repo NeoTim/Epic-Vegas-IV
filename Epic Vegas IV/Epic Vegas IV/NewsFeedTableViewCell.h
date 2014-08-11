@@ -7,8 +7,16 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AutoSizeLabel.h"
 
 @interface NewsFeedTableViewCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UIButton *aButton;
+
+@property (weak, nonatomic) IBOutlet AutoSizeLabel *titleLabel;
+
+@property (weak, nonatomic) IBOutlet AutoSizeLabel *subtitleLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *userImageView;
+@property (weak, nonatomic) IBOutlet AutoSizeLabel *messageLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *photoImageView;
+
 
 @end
