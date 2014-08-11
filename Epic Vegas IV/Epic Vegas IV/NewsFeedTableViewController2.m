@@ -79,22 +79,34 @@ BOOL hasNextPage;
     postsQuery.skip = itemsPerPage * currentPage++;
     [postsQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
         if (!error) {
-            // The find succeeded.
-            NSLog(@"Successfully retrieved %d new posts.", objects.count);
+            dispatch_queue_t backgroundQueue = dispatch_queue_create("backgroundQueue", NULL);
+            dispatch_async(backgroundQueue, ^(void) {
+                // background work
+
+                // The find succeeded.
+                NSLog(@"Successfully retrieved %d new posts.", objects.count);
+                
+                if(objects.count != itemsPerPage || objects.count == 0)
+                    hasNextPage = NO;
+                
+                // add objects to posts array
+                for(id object in objects)
+                    [_postsArray addObject:object];
+                
+                [NSThread sleepForTimeInterval:5];
+
+                dispatch_async(dispatch_get_main_queue(), ^(void) {
+                    // update ui thread
+                    [self.tableView reloadData];
+                    [self hideActivityIndicator];
+                });
+            });
             
-            if(objects.count != itemsPerPage || objects.count == 0)
-                hasNextPage = NO;
-            
-            // add objects to posts array
-            for(id object in objects)
-                [_postsArray addObject:object];
-            
-            [self.tableView reloadData];
-            [self hideActivityIndicator];
         } else {
             // Log details of the failure
             NSLog(@"Error: %@ %@", error, [error userInfo]);
         }
+        
     }];
     
 //    
