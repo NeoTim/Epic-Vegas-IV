@@ -42,6 +42,12 @@ NSInteger characterLimit = 300;
 -(void)viewDidAppear:(BOOL)animated
 {
     [_messageTextView becomeFirstResponder];
+    
+    if(_passedInImage)
+    {
+        [self attachImage:_passedInImage withDelay:0];
+        _passedInImage = nil;
+    }
 }
 
 
@@ -60,7 +66,7 @@ NSInteger characterLimit = 300;
     // Load user's photo into the post text box
     if(!_profileImageView.image)
     {
-        PFFile *imageFile = [[PFUser currentUser] objectForKey:kUserProfilePicMediumKey];
+        PFFile *imageFile = [[PFUser currentUser] objectForKey:kUserProfilePicSmallKey];
         if (imageFile) {
             [_profileImageView setFile:imageFile];
             [_profileImageView loadInBackground:^(UIImage *image, NSError *error) {
@@ -170,10 +176,10 @@ NSInteger characterLimit = 300;
     UIImage* originalImage=info[UIImagePickerControllerOriginalImage];
     UIImageWriteToSavedPhotosAlbum(originalImage, nil, nil, nil);
     
-    [self attachImage:originalImage];    
+    [self attachImage:originalImage withDelay:1.5f];
 }
 
--(void)attachImage:(UIImage*)image
+-(void)attachImage:(UIImage*)image withDelay:(CGFloat)delay
 {
     _attachedImageView.image = image;
     _attachedImageView.layer.borderColor = [UIColor blackColor].CGColor;
@@ -182,7 +188,7 @@ NSInteger characterLimit = 300;
     
     // fade in picture
     _attachedImageView.alpha = 0;
-    [UIView animateWithDuration:1.0f delay:1.5f options:UIViewAnimationOptionCurveLinear animations:^{
+    [UIView animateWithDuration:1.0f delay:delay options:UIViewAnimationOptionCurveLinear animations:^{
         _attachedImageView.alpha = 1.0f;
     } completion:nil];
 }

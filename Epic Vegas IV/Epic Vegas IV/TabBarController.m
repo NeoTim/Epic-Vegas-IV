@@ -8,6 +8,7 @@
 
 #import "TabBarController.h"
 #import "AppDelegate.h"
+#import "PostToFeedViewController.h"
 
 @interface TabBarController ()
 
@@ -487,11 +488,25 @@ UIButton* selectExistingPhotoButton;
 #pragma mark - Image Picker Controller delegate methods
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-    [picker dismissViewControllerAnimated:YES completion:NULL];
-    
     // save image to camera roll!
     UIImage* originalImage=info[UIImagePickerControllerOriginalImage];
-    UIImageWriteToSavedPhotosAlbum(originalImage, nil, nil, nil);
+    
+    // show post to feed view and attach the image
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
+    
+    UINavigationController* postToFeedNavigationController = (UINavigationController*)[mainStoryboard instantiateViewControllerWithIdentifier:@"Create Post Navigation Controller"];
+    
+    PostToFeedViewController* postToFeedController = (PostToFeedViewController*)[postToFeedNavigationController.viewControllers objectAtIndex:0];
+    postToFeedController.passedInImage = originalImage;
+    
+    [picker dismissViewControllerAnimated:NO completion:nil];
+
+    [self presentViewController:postToFeedNavigationController animated:YES completion:nil];
+    
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        UIImageWriteToSavedPhotosAlbum(originalImage, nil, nil, nil);
+    });
+
 }
 
 - (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {

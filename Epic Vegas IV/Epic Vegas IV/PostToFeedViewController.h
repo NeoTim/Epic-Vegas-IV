@@ -22,4 +22,8 @@
 - (IBAction)postButtonPressed:(id)sender;
 @property (weak, nonatomic) IBOutlet UIImageView *attachedImageView;
 
+@property (strong, nonatomic) UIImage* passedInImage;
+
+-(void)attachImage:(UIImage*)image;
+
 @end

@@ -522,7 +522,7 @@
         <!--Post To Feed View Controller - Post To Feed-->
         <scene sceneID="n2T-hz-SlS">
             <objects>
-                <viewController id="MbH-Cg-Oi8" customClass="PostToFeedViewController" sceneMemberID="viewController">
+                <viewController useStoryboardIdentifierAsRestorationIdentifier="YES" id="MbH-Cg-Oi8" customClass="PostToFeedViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3A1-Zn-RsN"/>
                         <viewControllerLayoutGuide type="bottom" id="AHn-nW-SLx"/>
