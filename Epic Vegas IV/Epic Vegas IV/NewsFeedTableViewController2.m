@@ -86,7 +86,7 @@ BOOL hasNextPage;
                 // background work
 
                 // The find succeeded.
-                NSLog(@"Successfully retrieved %d new posts.", objects.count);
+                //NSLog(@"Successfully retrieved %d new posts.", objects.count);
                 
                 if(objects.count != itemsPerPage || objects.count == 0)
                     hasNextPage = NO;
@@ -107,7 +107,7 @@ BOOL hasNextPage;
                     PFObject* post = _postsArray[postIndex];
                     
                     // first get user
-                    NSLog(@"loading user for post #%d", postIndex);
+                    //NSLog(@"loading user for post #%d", postIndex);
                     PFUser* userPointer = post[@"user"];
                     if(!userPointer)
                         continue;
@@ -115,54 +115,59 @@ BOOL hasNextPage;
                     PFQuery *query = [PFQuery queryWithClassName:@"_User"];
                     query.cachePolicy = kPFCachePolicyCacheElseNetwork;
                     
-                    // make threads to get user information, update table when finished
+                    // make threads to get user information, update table when each thread finishes
                     dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
                     dispatch_async(queue, ^{
-                        // query for user object, try from cache first
+                        
+                        // set to yes if we get either user information or the photo for the post
+                        BOOL shouldUpdateTable = NO;
+                        
+                        // query for user object
                         PFObject* user = [query getObjectWithId:userPointer.objectId];
-                        if(!user)
-                            return;
-                        _usersArray[postIndex] = user;
-                        
-                        // query for user photo
-                        NSLog(@"loading user photo for post #%d", postIndex);
-                        PFFile *userImageFile = [user objectForKey:kUserProfilePicSmallKey];
-                        if (userImageFile)
+                        if(user)
                         {
-                            NSData *imageData = [userImageFile getData];
-                            UIImage *userImage = [UIImage imageWithData:imageData];
-                            _userPhotosArray[postIndex] = userImage;
+                            _usersArray[postIndex] = user;
                             
-                            dispatch_async(dispatch_get_main_queue(), ^{
+                            // query for user photo
+                            NSLog(@"loading user photo for post #%d", postIndex);
+                            PFFile *userImageFile = [user objectForKey:kUserProfilePicSmallKey];
+                            if (userImageFile)
+                            {
+                                NSData *imageData = [userImageFile getData];
+                                UIImage *userImage = [UIImage imageWithData:imageData];
+                                _userPhotosArray[postIndex] = userImage;
+                                shouldUpdateTable = YES;
+                                
+                            }
+                        }
+                        
+                        // get post photo,
+                        //NSLog(@"loading post photo for post #%d", postIndex);
+                        PFObject* photoObject = post[@"photo"];
+                        if(photoObject)
+                        {
+                            PFObject* photo = [PFQuery getObjectOfClass:@"Photo" objectId:photoObject.objectId];
+                            if(photo)
+                            {
+                                
+                                PFFile *theImage = [photo objectForKey:@"thumbnail"];
+                                if(theImage)
+                                {
+                                    NSData *imageData = [theImage getData];
+                                    UIImage* photoImage = [UIImage imageWithData:imageData];
+                                    _photosArray[postIndex] = photoImage;
+                                    shouldUpdateTable = YES;
+                                }
+                            }
+                        }
+                        
+                        // tell the table to reload the data if we found new data for this row
+                        if(shouldUpdateTable)
+                            {dispatch_async(dispatch_get_main_queue(), ^{
                                 [self.tableView reloadData];
                             });
                         }
                     });
-                    
-                    // make threads to get post photos, update table when each finishes
-                    NSLog(@"loading post photo for post #%d", postIndex);
-                    PFObject* photoObject = post[@"photo"];
-                    if(!photoObject)
-                        continue;
-                    
-                    dispatch_async(queue, ^{
-                        PFObject* photo = [PFQuery getObjectOfClass:@"Photo" objectId:photoObject.objectId];
-                        if(!photo)
-                            return;
-                        
-                        PFFile *theImage = [photo objectForKey:@"thumbnail"];
-                        if(theImage)
-                        {
-                            NSData *imageData = [theImage getData];
-                            UIImage* photoImage = [UIImage imageWithData:imageData];
-                            _photosArray[postIndex] = photoImage;
-                            
-                            dispatch_async(dispatch_get_main_queue(), ^{
-                                [self.tableView reloadData];
-                            });
-                        }
-                    });
-
                 }
                 
                 // update main ui thread
@@ -304,7 +309,6 @@ BOOL hasNextPage;
 
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSLog(@"Height for row at index: %d", indexPath.row);
     // fixed height for the load more cell
     if(indexPath.row == _postsArray.count && hasNextPage)
         return  40;
