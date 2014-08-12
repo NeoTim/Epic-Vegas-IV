@@ -257,6 +257,7 @@
         <scene sceneID="rqj-ag-923">
             <objects>
                 <navigationController storyboardIdentifier="Profile Navigation Controller" definesPresentationContext="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="wx6-35-1tI" sceneMemberID="viewController">
+                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <tabBarItem key="tabBarItem" title="" image="person.png" id="kyy-Ka-xw1">
                         <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
                     </tabBarItem>

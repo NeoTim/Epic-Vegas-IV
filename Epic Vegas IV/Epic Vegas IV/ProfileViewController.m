@@ -37,9 +37,6 @@
     //_fbProfilePicView.profileID = [PFUser currentUser][@"fbId"];
     
     _userNameLabel.text = [PFUser currentUser][kUserDisplayNameKey];
-
-    
-    
 }
 
 -(void)viewWillAppear:(BOOL)animated

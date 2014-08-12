@@ -66,6 +66,17 @@
     [actionSheet showInView:self.view];
 }
 
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    
+    // log out
+    if(actionSheet.tag == 7431)
+    {
+        if (buttonIndex == 0) {
+            [[AppDelegate sharedInstance] logOut];
+        }
+    }
+}
+
 - (IBAction)doneButtonPressed:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
