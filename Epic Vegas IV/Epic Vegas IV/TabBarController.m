@@ -333,8 +333,6 @@ UIButton* selectExistingPhotoButton;
     [button2 addTarget:self action:@selector(cameraButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     [button3 addTarget:self action:@selector(writeTextButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
     
-    
-    
     buttonBorder1 = [UIButton buttonWithType:UIButtonTypeCustom];
     buttonBorder2 = [UIButton buttonWithType:UIButtonTypeCustom];
     buttonBorder3 = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -348,7 +346,6 @@ UIButton* selectExistingPhotoButton;
     buttonBorder1.layer.cornerRadius = circleButtonImageRadius + addButtonActionBorderWidth;
     buttonBorder2.layer.cornerRadius = circleButtonImageRadius + addButtonActionBorderWidth;
     buttonBorder3.layer.cornerRadius = circleButtonImageRadius + addButtonActionBorderWidth;
-    
     
     buttonBorder1.layer.masksToBounds = NO;
     buttonBorder2.layer.masksToBounds = NO;
@@ -383,11 +380,7 @@ UIButton* selectExistingPhotoButton;
     [self.view addSubview:_shareContentLabel];
 }
 
-- (IBAction)locationButtonClicked:(id)sender {
-    [self handleAddCompleted];
-    
-    
-}
+
 
 -(void)initializeImagePicker
 {
@@ -405,7 +398,6 @@ UIButton* selectExistingPhotoButton;
 
 -(void)initializePostViewController
 {
-    
     UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
     
     [self presentViewController:[mainStoryboard instantiateViewControllerWithIdentifier:@"Create Post Navigation Controller"] animated:YES completion:NULL];
@@ -416,14 +408,6 @@ UIButton* selectExistingPhotoButton;
     selectExistingPhotoButton.alpha = 1;
     photoPicker.sourceType = UIImagePickerControllerSourceTypeCamera;
     [self presentViewController:photoPicker animated:YES completion:NULL];
-
-    //UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil
-    //                                                         delegate:self
-    //                                                cancelButtonTitle:@"Cancel"
-    //                                           destructiveButtonTitle:nil
-    //                                                otherButtonTitles:@"Take photo", @"Choose Existing", nil];
-    //actionSheet.tag = 7432;
-    //[actionSheet showInView:self.view];
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
@@ -445,6 +429,14 @@ UIButton* selectExistingPhotoButton;
     }
 }
 
+- (IBAction)locationButtonClicked:(id)sender {
+    [self handleAddCompleted];
+    
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
+    
+    [self presentViewController:[mainStoryboard instantiateViewControllerWithIdentifier:@"CreateCheckinNavigationController"] animated:YES completion:NULL];
+}
+
 - (IBAction)writeTextButtonClicked:(id)sender {
     [self handleAddCompleted];
 
@@ -463,7 +455,6 @@ UIButton* selectExistingPhotoButton;
                         photoPicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
                     }
                     completion:nil];
-    
 }
 
 // Create a custom UIButton and add it to the center of our tab bar

@@ -199,6 +199,7 @@ NSInteger characterLimit = 300;
     _attachedImageView.image = image;
     _attachedImageView.layer.borderColor = [UIColor blackColor].CGColor;
     _attachedImageView.layer.borderWidth = .1f;
+    _attachedImageButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
     [_attachedImageButton addTarget:self action:@selector(showRemovePhotoButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
     _cameraButton.tintColor = [UIColor redColor];
     
@@ -477,6 +478,9 @@ NSInteger characterLimit = 300;
     [post setObject:[self getTruncatedText] forKey:@"message"];
     PFUser *user = [PFUser currentUser];
     [post setObject:user forKey:@"user"];
+    
+    // set the post type to be "Post"
+    post[@"type"] = @"standard"; // normal post
     
     if(photo)
     {
