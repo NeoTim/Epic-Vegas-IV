@@ -34,6 +34,7 @@
 		530BED3F19904EE100C5FDAB /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 530BED3E19904EE100C5FDAB /* Accounts.framework */; };
 		530BED4119904FA500C5FDAB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 530BED4019904FA500C5FDAB /* Main.storyboard */; };
 		530BED44199052FF00C5FDAB /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 530BED43199052FF00C5FDAB /* LoginViewController.m */; };
+		53139854199ACEBA00E16D09 /* CheckInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53139853199ACEBA00E16D09 /* CheckInViewController.m */; };
 		5315AC201999FAD20071E1DD /* FriendsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5315AC1F1999FAD20071E1DD /* FriendsTableViewController.m */; };
 		5315AC231999FC050071E1DD /* FriendTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5315AC221999FC050071E1DD /* FriendTableViewCell.m */; };
 		5315AC2B199A0C160071E1DD /* Separator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5315AC2A199A0C160071E1DD /* Separator@2x.png */; };
@@ -153,6 +154,8 @@
 		530BED4019904FA500C5FDAB /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		530BED42199052FF00C5FDAB /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		530BED43199052FF00C5FDAB /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		53139852199ACEBA00E16D09 /* CheckInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckInViewController.h; sourceTree = "<group>"; };
+		53139853199ACEBA00E16D09 /* CheckInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckInViewController.m; sourceTree = "<group>"; };
 		5315AC1E1999FAD20071E1DD /* FriendsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsTableViewController.h; sourceTree = "<group>"; };
 		5315AC1F1999FAD20071E1DD /* FriendsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsTableViewController.m; sourceTree = "<group>"; };
 		5315AC211999FC050071E1DD /* FriendTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendTableViewCell.h; sourceTree = "<group>"; };
@@ -257,6 +260,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				530BED3919904ECC00C5FDAB /* CoreLocation.framework in Frameworks */,
+				53D2D1931990A2B1007197F6 /* MapKit.framework in Frameworks */,
 				53EFEAD41995C71C006798C3 /* AddressBook.framework in Frameworks */,
 				53EFEAD21995C712006798C3 /* AVFoundation.framework in Frameworks */,
 				53EFEAD01995C6E8006798C3 /* AddressBookUI.framework in Frameworks */,
@@ -265,10 +270,8 @@
 				530BED2F19904EB300C5FDAB /* Social.framework in Frameworks */,
 				53EFEACC1995C6C5006798C3 /* AdSupport.framework in Frameworks */,
 				53EFEACA1995C6BF006798C3 /* Accelerate.framework in Frameworks */,
-				53D2D1931990A2B1007197F6 /* MapKit.framework in Frameworks */,
 				530BED3D19904EDD00C5FDAB /* AudioToolbox.framework in Frameworks */,
 				530BED3B19904ED800C5FDAB /* CFNetwork.framework in Frameworks */,
-				530BED3919904ECC00C5FDAB /* CoreLocation.framework in Frameworks */,
 				530BED3719904EC800C5FDAB /* libz.dylib in Frameworks */,
 				530BED3519904EC400C5FDAB /* MobileCoreServices.framework in Frameworks */,
 				530BED3319904EBD00C5FDAB /* QuartzCore.framework in Frameworks */,
@@ -462,6 +465,15 @@
 			name = Fonts;
 			sourceTree = "<group>";
 		};
+		53139851199ACE9200E16D09 /* Check In */ = {
+			isa = PBXGroup;
+			children = (
+				53139852199ACEBA00E16D09 /* CheckInViewController.h */,
+				53139853199ACEBA00E16D09 /* CheckInViewController.m */,
+			);
+			name = "Check In";
+			sourceTree = "<group>";
+		};
 		5315AC1D1999FA150071E1DD /* Friends */ = {
 			isa = PBXGroup;
 			children = (
@@ -489,6 +501,7 @@
 		53EFEAA01995AF65006798C3 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				53139851199ACE9200E16D09 /* Check In */,
 				5315AC1D1999FA150071E1DD /* Friends */,
 				53EFEAA51995B006006798C3 /* Post */,
 				53EFEAA41995AFE8006798C3 /* Profile */,
@@ -754,6 +767,7 @@
 				53B5948A1998C38A00505BDD /* SettingsTableViewController.m in Sources */,
 				530BED0419904C7700C5FDAB /* AppDelegate.m in Sources */,
 				53B5948D19995D7C00505BDD /* QueryTableViewController.m in Sources */,
+				53139854199ACEBA00E16D09 /* CheckInViewController.m in Sources */,
 				530BED0019904C7700C5FDAB /* main.m in Sources */,
 				53EFEAAE1995B1D8006798C3 /* UIImage+ResizeAdditions.m in Sources */,
 				53C5BCD3199714600060B49A /* LoadNextPageTableViewCell.m in Sources */,

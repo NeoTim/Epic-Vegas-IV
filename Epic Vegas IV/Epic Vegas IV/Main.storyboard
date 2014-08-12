@@ -433,10 +433,10 @@
             </objects>
             <point key="canvasLocation" x="999" y="1689"/>
         </scene>
-        <!--View Controller - Check In-->
+        <!--Check In View Controller - Check In-->
         <scene sceneID="NQx-Gj-7Qo">
             <objects>
-                <viewController id="OsD-08-a2m" sceneMemberID="viewController">
+                <viewController id="OsD-08-a2m" customClass="CheckInViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Cxv-Qa-TJt"/>
                         <viewControllerLayoutGuide type="bottom" id="KIb-uz-8W7"/>
@@ -446,24 +446,24 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="RXT-je-2Cs">
-                                <rect key="frame" x="0.0" y="66" width="320" height="228"/>
+                                <rect key="frame" x="1" y="66" width="320" height="228"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </mapView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="V32-bu-jdt">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter a name for your location..." minimumFontSize="17" clearButtonMode="unlessEditing" translatesAutoresizingMaskIntoConstraints="NO" id="V32-bu-jdt">
                                 <rect key="frame" x="105" y="310" width="97" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="0F6-MV-zez"/>
+                                    <constraint firstAttribute="height" constant="35" id="0F6-MV-zez"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no" returnKeyType="done" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="V32-bu-jdt" firstAttribute="top" secondItem="RXT-je-2Cs" secondAttribute="bottom" id="5Db-xE-ams"/>
-                            <constraint firstItem="RXT-je-2Cs" firstAttribute="top" secondItem="Cxv-Qa-TJt" secondAttribute="bottom" constant="2" id="99t-IC-Hug"/>
-                            <constraint firstItem="KIb-uz-8W7" firstAttribute="top" secondItem="V32-bu-jdt" secondAttribute="bottom" id="NhN-7R-eaS"/>
+                            <constraint firstItem="RXT-je-2Cs" firstAttribute="top" secondItem="Cxv-Qa-TJt" secondAttribute="bottom" id="99t-IC-Hug"/>
+                            <constraint firstItem="KIb-uz-8W7" firstAttribute="top" secondItem="V32-bu-jdt" secondAttribute="bottom" constant="216" id="NhN-7R-eaS"/>
                             <constraint firstItem="V32-bu-jdt" firstAttribute="leading" secondItem="Wxs-v7-R9P" secondAttribute="leading" id="Ofu-an-n0I"/>
                             <constraint firstAttribute="trailing" secondItem="RXT-je-2Cs" secondAttribute="trailing" id="UrC-lN-7El"/>
                             <constraint firstItem="RXT-je-2Cs" firstAttribute="leading" secondItem="Wxs-v7-R9P" secondAttribute="leading" id="aop-tO-CTC"/>
@@ -472,9 +472,16 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Check In" id="ql1-0r-fER">
-                        <barButtonItem key="leftBarButtonItem" style="done" systemItem="cancel" id="aZ4-Jt-qwb"/>
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="esQ-QR-pS4"/>
+                        <barButtonItem key="leftBarButtonItem" style="done" systemItem="cancel" id="aZ4-Jt-qwb">
+                            <connections>
+                                <action selector="cancelButtonPressed:" destination="OsD-08-a2m" id="BGT-QG-7Fw"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="locationNameTextField" destination="V32-bu-jdt" id="M7G-xU-gdK"/>
+                        <outlet property="mapView" destination="RXT-je-2Cs" id="x4J-Yp-9f5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DJo-La-jlZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
