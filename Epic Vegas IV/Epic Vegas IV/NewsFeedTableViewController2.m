@@ -153,8 +153,11 @@
         PFFile *photoImageFIle = post[@"photo"][@"thumbnail"];
         if (photoImageFIle)
         {
+            //cell.photoImageView.alpha = 0;
             [cell.photoImageView setFile:photoImageFIle];
-            [cell.photoImageView loadInBackground];
+            [cell.photoImageView loadInBackground:^(UIImage *image, NSError *error) {
+                //[UIView animateWithDuration:.25f animations:^{cell.photoImageView.alpha = 1;}];
+            }];
             
             // create the bottom padding constraint for the photo for 8 pixels space to the comments
             hasPhoto = YES;

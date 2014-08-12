@@ -200,11 +200,12 @@
     UIImage *image = [UIImage imageWithData:newProfilePictureData];
     
     UIImage *largeImage = [image thumbnailImage:800 transparentBorder:0 cornerRadius:0 interpolationQuality:kCGInterpolationHigh];
-    UIImage *mediumImage = [image thumbnailImage:280 transparentBorder:0 cornerRadius:0 interpolationQuality:kCGInterpolationHigh];
-    UIImage *smallRoundedImage = [image thumbnailImage:64 transparentBorder:0 cornerRadius:0 interpolationQuality:kCGInterpolationLow];
+    UIImage *mediumImage = [image thumbnailImage:640 transparentBorder:0 cornerRadius:0 interpolationQuality:kCGInterpolationHigh];
+    UIImage *smallRoundedImage = [image thumbnailImage:120 transparentBorder:0 cornerRadius:0 interpolationQuality:kCGInterpolationHigh];
     NSData *largeImageData = UIImageJPEGRepresentation(largeImage, 1.0); // using JPEG for larger pictures
     NSData *mediumImageData = UIImageJPEGRepresentation(mediumImage, 1.0); // using JPEG for larger pictures
-    NSData *smallRoundedImageData = UIImagePNGRepresentation(smallRoundedImage);
+    //NSData *smallRoundedImageData = UIImagePNGRepresentation(smallRoundedImage);
+    NSData *smallRoundedImageData = UIImageJPEGRepresentation(smallRoundedImage, 1.0);
     
     if (largeImageData.length > 0) {
         PFFile *fileLargeImage = [PFFile fileWithData:largeImageData];

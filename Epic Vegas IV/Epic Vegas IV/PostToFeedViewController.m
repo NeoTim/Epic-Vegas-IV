@@ -102,6 +102,8 @@ NSInteger characterLimit = 300;
     [self initMessageAccessoryView];
     [self initializeCameraActionSheet];
     
+    _attachedImageView.contentMode = UIViewContentModeScaleAspectFit;
+    
     self.fileUploadBackgroundTaskId = UIBackgroundTaskInvalid;
     self.photoPostBackgroundTaskId = UIBackgroundTaskInvalid;
 }
@@ -330,7 +332,7 @@ NSInteger characterLimit = 300;
             UIImage *thumbnailImage = [originalImage resizedImageWithContentMode:UIViewContentModeScaleAspectFit bounds:CGSizeMake(thumbnailWidth, thumbnailHeight) interpolationQuality:kCGInterpolationHigh];
             
             // max length is 2048
-            CGFloat longestLength = 2048;
+            CGFloat longestLength = 1024;
             CGFloat resizeMultiplier = 1.0;
             if(originalHeight > originalWidth && originalHeight > longestLength)
             {
@@ -367,7 +369,7 @@ NSInteger characterLimit = 300;
           
             // JPEG to decrease file size and enable faster uploads & downloads
             NSData *imageData = UIImageJPEGRepresentation(originalImage, 0.2f);
-            NSData *thumbnailImageData = UIImageJPEGRepresentation(thumbnailImage, .7f);
+            NSData *thumbnailImageData = UIImageJPEGRepresentation(thumbnailImage, .4f); // should be good
             
             self.photoFile = [PFFile fileWithData:imageData];
             self.resizedPhotoFile = [PFFile fileWithData:thumbnailImageData];
