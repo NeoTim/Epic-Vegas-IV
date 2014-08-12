@@ -146,13 +146,13 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fkw-JK-l8q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="590" y="-677"/>
+            <point key="canvasLocation" x="162" y="-669"/>
         </scene>
         <!--Friends Table View Controller - Who's Partying?-->
         <scene sceneID="ocK-9j-iCW">
             <objects>
                 <tableViewController id="0hV-lm-rDl" customClass="FriendsTableViewController" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Dbz-Gr-fpq">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="Dbz-Gr-fpq">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -166,14 +166,14 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FriendCell" rowHeight="100" id="Dp3-uc-xEd" customClass="FriendTableViewCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FriendCell" rowHeight="100" id="Dp3-uc-xEd" customClass="FriendTableViewCell">
                                 <rect key="frame" x="0.0" y="130" width="320" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Dp3-uc-xEd" id="j8Q-ge-dad">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="center" tableViewCell="Dp3-uc-xEd" id="j8Q-ge-dad">
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="100"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Separator.png" highlightedImage="111-user.png" translatesAutoresizingMaskIntoConstraints="NO" id="LQd-9x-nWa">
+                                        <imageView userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Separator.png" translatesAutoresizingMaskIntoConstraints="NO" id="LQd-9x-nWa">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="108"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
@@ -251,7 +251,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zgy-JT-vcn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1069" y="-685"/>
+            <point key="canvasLocation" x="637" y="-669"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="rqj-ag-923">
@@ -787,13 +787,13 @@
         <!--Profile Table View Controller - Me-->
         <scene sceneID="1du-Oi-F88">
             <objects>
-                <tableViewController id="bvI-kn-yt0" customClass="ProfileTableViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="ProfileTableViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="bvI-kn-yt0" customClass="ProfileTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="250" sectionHeaderHeight="22" sectionFooterHeight="22" id="UCt-ik-9XQ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PostCell" rowHeight="240" id="rPp-nB-Lda" customClass="NewsFeedTableViewCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PostCell" rowHeight="240" id="rPp-nB-Lda" customClass="NewsFeedTableViewCell">
                                 <rect key="frame" x="0.0" y="86" width="320" height="240"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rPp-nB-Lda" id="H2x-fZ-va1">
@@ -869,7 +869,7 @@
                                     <outlet property="subtitleLabel" destination="ADa-Gk-VPV" id="t6y-sA-q6q"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="LoadMoreCell" rowHeight="40" id="rpb-pt-vkw" customClass="NewsFeedTableViewCell">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="LoadMoreCell" rowHeight="40" id="rpb-pt-vkw" customClass="NewsFeedTableViewCell">
                                 <rect key="frame" x="0.0" y="326" width="320" height="40"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="rpb-pt-vkw" id="fRa-Zf-Xc2">
@@ -883,7 +883,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ProfileHeader" rowHeight="420" id="V2N-Sq-1lj">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="ProfileHeader" rowHeight="420" id="V2N-Sq-1lj">
                                 <rect key="frame" x="0.0" y="366" width="320" height="420"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="V2N-Sq-1lj" id="gz7-id-exY">
@@ -951,7 +951,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="111-user.png" width="24" height="21"/>
         <image name="112-group.png" width="32" height="21"/>
         <image name="29-heart.png" width="24" height="21"/>
         <image name="FB-f-Logo__white_50.png" width="25" height="25"/>

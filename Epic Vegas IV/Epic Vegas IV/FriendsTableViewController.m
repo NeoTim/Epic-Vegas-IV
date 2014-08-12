@@ -9,6 +9,7 @@
 #import "FriendsTableViewController.h"
 #import "LoadNextPageTableViewCell.h"
 #import "FriendTableViewCell.h"
+#import "ProfileTableViewController.h"
 
 @interface FriendsTableViewController ()
 
@@ -61,6 +62,27 @@
     
     return query;
 }
+
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    [self showUserProfileForIndexPath:indexPath];
+}
+
+-(void)showUserProfileForIndexPath:(NSIndexPath *)indexPath
+{
+    
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main"
+                                                             bundle: nil];
+    
+    ProfileTableViewController* profileViewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"ProfileTableViewController"];
+    
+    PFUser* user = self.queryObjects[indexPath.row];
+    profileViewController.profileUser = user;
+    [self.navigationController pushViewController:profileViewController animated:YES];
+}
+
 
 /*
 #pragma mark - Navigation

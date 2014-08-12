@@ -33,18 +33,22 @@
     if (self) {
         // Custom initialization
         
-        if(!_profileUser)
-        {
-            _profileUser = [PFUser currentUser];
-            
-            
-        }
     }
     return self;
 }
 
 - (void)viewDidLoad
 {
+    if(!_profileUser)
+    {
+        _profileUser = [PFUser currentUser];
+        self.title = @"Me";
+    }
+    else {
+        self.title =_profileUser[@"displayName"];
+    }
+
+    
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
@@ -54,6 +58,8 @@
         _rightBarbuttonItem.image = [UIImage imageNamed:@"Settings 44.png"];
         [_rightBarbuttonItem setEnabled:YES];
     }
+    
+    
 }
 
 - (void)didReceiveMemoryWarning
