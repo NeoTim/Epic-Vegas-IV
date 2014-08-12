@@ -112,6 +112,12 @@
     if(self.queryObjects.count < indexPath.row)
         return;
 
+    if(self.queryObjects.count == 0)
+    {
+        NSLog(@"No query objects for my friends view, just returning unconfigured cell...");
+        return;
+    }
+    
     int index = indexPath.row;
     PFObject* user = self.queryObjects[index];
     if(!user)

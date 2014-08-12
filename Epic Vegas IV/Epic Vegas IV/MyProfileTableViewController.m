@@ -7,9 +7,10 @@
 //
 
 #import "MyProfileTableViewController.h"
-#import "ProfileTableViewCell.h"
 #import "NewsFeedTableViewCell.h"
 #import "LoadNextPageTableViewCell.h"
+#import "AutoSizeLabel.h"
+#import "AppDelegate.h"
 
 @interface MyProfileTableViewController ()
 
@@ -86,61 +87,8 @@
 {
     if(indexPath.section == 0)
     {
-        // header row
-        UITableViewCell *headerCell = (LoadNextPageTableViewCell*)[self.tableView dequeueReusableCellWithIdentifier:@"ProfileHeader" forIndexPath:indexPath];
-
-        if (headerCell == nil) {
-            headerCell = (UITableViewCell*)[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault  reuseIdentifier:@"ProfileHeader"];
-        }
-        else{
-            
-            PFImageView* profileImageView = (PFImageView*)[headerCell viewWithTag:756];
-            profileImageView.image = nil;
-        }
-        
-        UIImageView* cardView = (UIImageView*)[headerCell viewWithTag:5];
-        cardView.layer.cornerRadius = 4;
-       
-        // card border color
-        float borderColorGray = 150.0/255.0;
-        CGColorRef color = [UIColor colorWithRed:borderColorGray green:borderColorGray blue:borderColorGray alpha:1].CGColor;
-        cardView.layer.borderColor = color;
-        
-        // background color
-        cardView.backgroundColor = [UIColor whiteColor];
-        float gray = 220.0/255.0;
-        headerCell.backgroundColor = [UIColor colorWithRed:gray green:gray blue:gray alpha:1];
-        
-        
-        PFImageView* profileImageView = (PFImageView*)[headerCell viewWithTag:756];
-        profileImageView.image = nil;
-        profileImageView.layer.cornerRadius = 272 / 2;
-        profileImageView.layer.masksToBounds = YES;
-        profileImageView.layer.borderWidth = .1f;
-        profileImageView.layer.borderColor = [UIColor lightGrayColor].CGColor;
-        
-        if([PFUser currentUser][@"profilePictureLarge"])
-        {
-            // set pic
-            PFFile *userImageFile = [PFUser currentUser][@"profilePictureLarge"];
-            if (userImageFile)
-            {
-                [profileImageView setFile:userImageFile];
-                [profileImageView loadInBackground];
-            }
-        }
-        
-        // user name
-        if([PFUser currentUser] && [PFUser currentUser][@"displayName"])
-        {
-            UILabel* userNameLabel = (UILabel*)[headerCell viewWithTag:6];
-            userNameLabel.text = [PFUser currentUser][@"displayName"];
-            userNameLabel.textAlignment = NSTextAlignmentCenter;
-        }
-
-        return headerCell;
+        return [self getHeaderCellForRowAtIndexPath:indexPath];
     }
-    
     
     // the last cell is the load more cell
     if(self.hasNextPage && indexPath.row == self.queryObjects.count && self.queryObjects.count >= self.itemsPerPage)
@@ -152,70 +100,101 @@
         return cell;
     }
     
-    @try {
-        // otherwise is a post cell
-        NewsFeedTableViewCell* cell = (NewsFeedTableViewCell*)[tableView dequeueReusableCellWithIdentifier:@"PostCell" forIndexPath:indexPath];
-        if (cell == nil) {
-            cell = (NewsFeedTableViewCell*)[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault  reuseIdentifier:@"PostCell"];
-        }
-        else{
-            [cell clearCellForReuese];
-        }
-        
-        [self configurePostCell:cell ForRowAtIndexPath:indexPath];
-        return cell;
-    }
-    @catch (NSException *exception) {
-        NSLog(@"Exception: %@", exception);
-        return [tableView dequeueReusableCellWithIdentifier:@"PostCell" forIndexPath:indexPath];
-    }
+    return [self getPostCellForRowAtIndexPath:indexPath];
 }
 
 
--(void)configurePostCell:(NewsFeedTableViewCell*)cell ForRowAtIndexPath:(NSIndexPath *)indexPath
+-(UITableViewCell*)getHeaderCellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // header row
+    UITableViewCell *headerCell = (LoadNextPageTableViewCell*)[self.tableView dequeueReusableCellWithIdentifier:@"ProfileHeader" forIndexPath:indexPath];
+    
+    if (headerCell == nil) {
+        headerCell = (UITableViewCell*)[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault  reuseIdentifier:@"ProfileHeader"];
+    }
+    else{
+        
+        PFImageView* profileImageView = (PFImageView*)[headerCell viewWithTag:756];
+        profileImageView.image = nil;
+    }
+    
+    UIImageView* cardView = (UIImageView*)[headerCell viewWithTag:5];
+    cardView.layer.cornerRadius = 4;
+    
+    // card border color
+    float borderColorGray = 150.0/255.0;
+    CGColorRef color = [UIColor colorWithRed:borderColorGray green:borderColorGray blue:borderColorGray alpha:1].CGColor;
+    cardView.layer.borderColor = color;
+    
+    // background color
+    cardView.backgroundColor = [UIColor whiteColor];
+    float gray = 220.0/255.0;
+    headerCell.backgroundColor = [UIColor colorWithRed:gray green:gray blue:gray alpha:1];
+    
+    
+    PFImageView* profileImageView = (PFImageView*)[headerCell viewWithTag:756];
+    profileImageView.image = nil;
+    profileImageView.layer.cornerRadius = 272 / 2;
+    profileImageView.layer.masksToBounds = YES;
+    profileImageView.layer.borderWidth = .1f;
+    profileImageView.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    
+    if([PFUser currentUser][@"profilePictureLarge"])
+    {
+        // set pic
+        PFFile *userImageFile = [PFUser currentUser][@"profilePictureLarge"];
+        if (userImageFile)
+        {
+            [profileImageView setFile:userImageFile];
+            [profileImageView loadInBackground];
+        }
+    }
+    
+    // user name
+    if([PFUser currentUser] && [PFUser currentUser][@"displayName"])
+    {
+        UILabel* userNameLabel = (UILabel*)[headerCell viewWithTag:6];
+        userNameLabel.text = [PFUser currentUser][@"displayName"];
+        userNameLabel.textAlignment = NSTextAlignmentCenter;
+    }
+    
+    return headerCell;
+}
+
+-(void)configurePostCell:(UITableViewCell*)cell ForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if(self.queryObjects.count < indexPath.row)
         return;
     
-    NSString *message = self.queryObjects[indexPath.row][@"message"] ?: @"[No Message]";
-    cell.messageLabel.text = message;
+    if(self.queryObjects.count == 0)
+    {
+        NSLog(@"No query objects for my profile view, just returning unconfigured cell...");
+        return;
+    }
     
     int postIndex = indexPath.row;
     PFObject* post = self.queryObjects[postIndex];
     if(!post)
         return;
     
-    cell.messageLabel.text= post[@"message"] ?: @"";
+    AutoSizeLabel* messageLabel = (AutoSizeLabel*)[cell viewWithTag:36];
+    messageLabel.text= post[@"message"] ?: @"";
     NSDate* createdAt = post.createdAt;
     NSString* subtitle = [Utility formattedDate:createdAt];
-    cell.subtitleLabel.text = subtitle;
     
-    if(post[@"user"])
-    {
-        cell.titleLabel.text = post[@"user"][@"displayName"] ?: @"";
-        
-        if(post[@"user"][@"profilePictureSmall"])
-        {
-            // set pic
-            PFFile *userImageFile = post[@"user"][@"profilePictureSmall"];
-            if (userImageFile)
-            {
-                [cell.userImageView setFile:userImageFile];
-                [cell.userImageView loadInBackground];
-            }
-        }
-    }
     
-    NSString *messageText=post[@"message"] ?: @"";
-
+    AutoSizeLabel* subtitleLabel = (AutoSizeLabel*)[cell viewWithTag:35];
+    subtitleLabel.text = subtitle;
+    
     if(post[@"photo"])
     {
         PFFile *photoImageFIle = post[@"photo"][@"thumbnail"];
         if (photoImageFIle)
         {
+            PFImageView* photoImageView = (PFImageView*)[cell viewWithTag:37];
             //cell.photoImageView.alpha = 0;
-            [cell.photoImageView setFile:photoImageFIle];
-            [cell.photoImageView loadInBackground:^(UIImage *image, NSError *error) {
+            [photoImageView setFile:photoImageFIle];
+            [photoImageView loadInBackground:^(UIImage *image, NSError *error) {
                 //[UIView animateWithDuration:.25f animations:^{cell.photoImageView.alpha = 1;}];
             }];
         }
@@ -223,6 +202,33 @@
 }
 
 
+-(UITableViewCell*)getPostCellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    @try {
+        // otherwise is a post cell
+        UITableViewCell* cell = (UITableViewCell*)[self.tableView dequeueReusableCellWithIdentifier:@"PostCell" forIndexPath:indexPath];
+        if (cell == nil) {
+            cell = (UITableViewCell*)[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault  reuseIdentifier:@"PostCell"];
+        }
+        else{
+            // clear for reuse
+            AutoSizeLabel* messageLabel = (AutoSizeLabel*)[cell viewWithTag:36];
+            AutoSizeLabel* subtitleLabel = (AutoSizeLabel*)[cell viewWithTag:35];
+            PFImageView* photoImageView = (PFImageView*)[cell viewWithTag:37];
+            
+            messageLabel.text = nil;
+            subtitleLabel.text = nil;
+            photoImageView.image = nil;
+        }
+        
+        [self configurePostCell:cell ForRowAtIndexPath:indexPath];
+        return cell;
+    }
+    @catch (NSException *exception) {
+        NSLog(@"Exception: %@", exception);
+        return [self.tableView dequeueReusableCellWithIdentifier:@"PostCell" forIndexPath:indexPath];
+    }
+}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if(indexPath.section == 0)
@@ -236,7 +242,7 @@
             return  40;
         
         
-        CGFloat height = 172; // this is the correct height
+        CGFloat height = 83; // this is the correct height
         
         
         int postIndex = indexPath.row;
@@ -248,7 +254,6 @@
         
         CGSize labelSize = [self getLabelSize:messageText withFontName:@"HelveticaNeue-Medium" withFontSize:14.0f forFixedWidth:320-48];
         height += labelSize.height;
-        NSLog(@"label height = %f", labelSize.height);
         if(post[@"photo"])
         {
             if(post[@"photo"][@"thumbnailHeight"])
@@ -261,9 +266,9 @@
                 CGFloat scaledHeight = photoHeight * heightMultiplier;
                 height += scaledHeight;
                 
-                NSLog(@"photo width = %f", scaledHeight);
+                //NSLog(@"photo width = %f", scaledHeight);
                 
-                height += 8; // for the padding
+                //height += 8; // for the padding
             }
         }
         

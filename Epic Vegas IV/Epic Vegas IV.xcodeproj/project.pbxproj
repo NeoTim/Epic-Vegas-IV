@@ -80,7 +80,6 @@
 		53A19F94199481E6008DF739 /* Favorites@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53A19F93199481E6008DF739 /* Favorites@2x.png */; };
 		53A19F9C1994846E008DF739 /* Location@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53A19F9B1994846E008DF739 /* Location@2x.png */; };
 		53A19F9E199484DD008DF739 /* Map@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53A19F9D199484DD008DF739 /* Map@2x.png */; };
-		53B39EC5199A72FA00D287FF /* ProfileTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 53B39EC4199A72FA00D287FF /* ProfileTableViewCell.m */; };
 		53B594871998C1AB00505BDD /* MyProfileTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53B594861998C1AB00505BDD /* MyProfileTableViewController.m */; };
 		53B5948A1998C38A00505BDD /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53B594891998C38A00505BDD /* SettingsTableViewController.m */; };
 		53B5948D19995D7C00505BDD /* QueryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53B5948C19995D7C00505BDD /* QueryTableViewController.m */; };
@@ -208,8 +207,6 @@
 		53A19F93199481E6008DF739 /* Favorites@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Favorites@2x.png"; sourceTree = "<group>"; };
 		53A19F9B1994846E008DF739 /* Location@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Location@2x.png"; sourceTree = "<group>"; };
 		53A19F9D199484DD008DF739 /* Map@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Map@2x.png"; sourceTree = "<group>"; };
-		53B39EC3199A72FA00D287FF /* ProfileTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileTableViewCell.h; sourceTree = "<group>"; };
-		53B39EC4199A72FA00D287FF /* ProfileTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileTableViewCell.m; sourceTree = "<group>"; };
 		53B594851998C1AB00505BDD /* MyProfileTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyProfileTableViewController.h; sourceTree = "<group>"; };
 		53B594861998C1AB00505BDD /* MyProfileTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyProfileTableViewController.m; sourceTree = "<group>"; };
 		53B594881998C38A00505BDD /* SettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsTableViewController.h; sourceTree = "<group>"; };
@@ -543,8 +540,6 @@
 				53B594861998C1AB00505BDD /* MyProfileTableViewController.m */,
 				53B594881998C38A00505BDD /* SettingsTableViewController.h */,
 				53B594891998C38A00505BDD /* SettingsTableViewController.m */,
-				53B39EC3199A72FA00D287FF /* ProfileTableViewCell.h */,
-				53B39EC4199A72FA00D287FF /* ProfileTableViewCell.m */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -779,7 +774,6 @@
 				53C5BCC51996A3FB0060B49A /* AutoSizeLabel.m in Sources */,
 				53EFEAAD1995B1D8006798C3 /* UIImage+AlphaAdditions.m in Sources */,
 				530BED44199052FF00C5FDAB /* LoginViewController.m in Sources */,
-				53B39EC5199A72FA00D287FF /* ProfileTableViewCell.m in Sources */,
 				53B594871998C1AB00505BDD /* MyProfileTableViewController.m in Sources */,
 				5315AC231999FC050071E1DD /* FriendTableViewCell.m in Sources */,
 			);

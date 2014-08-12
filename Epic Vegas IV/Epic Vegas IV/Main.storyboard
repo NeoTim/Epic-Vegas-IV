@@ -841,14 +841,14 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="400"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" ambiguous="YES" misplaced="YES" placeholderIntrinsicWidth="280" placeholderIntrinsicHeight="21" text="Subtitle" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="159" translatesAutoresizingMaskIntoConstraints="NO" id="ADa-Gk-VPV" customClass="AutoSizeLabel">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="35" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" misplaced="YES" placeholderIntrinsicWidth="280" placeholderIntrinsicHeight="21" text="Subtitle" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="159" translatesAutoresizingMaskIntoConstraints="NO" id="ADa-Gk-VPV" customClass="AutoSizeLabel">
                                                     <rect key="frame" x="101" y="50" width="159" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="12"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" ambiguous="YES" misplaced="YES" placeholderIntrinsicWidth="280" placeholderIntrinsicHeight="21" text="Message" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="320" translatesAutoresizingMaskIntoConstraints="NO" id="Sae-K9-paB" customClass="AutoSizeLabel">
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="36" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" misplaced="YES" placeholderIntrinsicWidth="280" placeholderIntrinsicHeight="21" text="Message" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="320" translatesAutoresizingMaskIntoConstraints="NO" id="Sae-K9-paB" customClass="AutoSizeLabel">
                                                     <rect key="frame" x="20" y="98" width="320" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <constraints>
@@ -858,7 +858,7 @@
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <view contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="997" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XAk-Fi-tVa" customClass="PFImageView">
+                                                <view tag="37" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="997" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XAk-Fi-tVa" customClass="PFImageView">
                                                     <rect key="frame" x="20" y="141" width="280" height="54"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <constraints>
@@ -872,6 +872,8 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="sBU-5c-ZQn" firstAttribute="top" secondItem="XAk-Fi-tVa" secondAttribute="bottom" constant="8" id="3WR-xq-I28"/>
+                                                <constraint firstItem="ADa-Gk-VPV" firstAttribute="top" secondItem="3MZ-Rg-Rj2" secondAttribute="top" constant="16" id="6ID-6I-3a8"/>
+                                                <constraint firstItem="ADa-Gk-VPV" firstAttribute="leading" secondItem="3MZ-Rg-Rj2" secondAttribute="leading" constant="16" id="Ebd-SN-lcW"/>
                                                 <constraint firstItem="XAk-Fi-tVa" firstAttribute="top" secondItem="Sae-K9-paB" secondAttribute="bottom" id="Fo1-Ni-DJQ"/>
                                                 <constraint firstItem="Sae-K9-paB" firstAttribute="leading" secondItem="3MZ-Rg-Rj2" secondAttribute="leading" constant="16" id="GeO-1c-JAz"/>
                                                 <constraint firstAttribute="bottom" secondItem="sBU-5c-ZQn" secondAttribute="bottom" constant="8" id="KOV-Kc-rnC"/>
@@ -881,6 +883,7 @@
                                                 <constraint firstItem="XAk-Fi-tVa" firstAttribute="leading" secondItem="3MZ-Rg-Rj2" secondAttribute="leading" constant="16" id="kqO-dr-wfn"/>
                                                 <constraint firstAttribute="trailing" secondItem="XAk-Fi-tVa" secondAttribute="trailing" constant="16" id="pmx-uh-NbP"/>
                                                 <constraint firstAttribute="trailing" secondItem="sBU-5c-ZQn" secondAttribute="trailing" constant="16" id="rO7-bz-ZSX"/>
+                                                <constraint firstItem="Sae-K9-paB" firstAttribute="top" secondItem="ADa-Gk-VPV" secondAttribute="bottom" constant="8" id="zDz-ds-Wzh"/>
                                             </constraints>
                                         </view>
                                     </subviews>
