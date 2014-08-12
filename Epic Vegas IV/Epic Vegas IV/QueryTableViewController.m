@@ -240,6 +240,20 @@
     [self checkIfAtLastCellAndShouldLoadNextPage:scrollView];
 }
 
+-(CGSize)getLabelSize:(NSString*)text withFontName:(NSString*)fontName withFontSize:(CGFloat)fontSize forFixedWidth:(CGFloat)width
+{
+    
+    UILabel *gettingSizeLabel = [[UILabel alloc] init];
+    gettingSizeLabel.font = [UIFont fontWithName:fontName size:fontSize];
+    gettingSizeLabel.text = [NSString stringWithFormat:@"%@       ", text];
+    gettingSizeLabel.numberOfLines = 0;
+    gettingSizeLabel.lineBreakMode = NSLineBreakByWordWrapping;
+    CGSize maximumLabelSize = CGSizeMake(width, 9999);
+    
+    CGSize expectSize = [gettingSizeLabel sizeThatFits:maximumLabelSize];
+    return expectSize;
+}
+
 
 -(void)checkIfAtLastCellAndShouldLoadNextPage:(UIScrollView*)scrollView
 {

@@ -31,4 +31,6 @@
 - (CGSize)text:(NSString *)text sizeWithFont:(UIFont *)font constrainedToSize:(CGSize)size;
 - (CGFloat)textViewHeightForAttributedText:(NSAttributedString *)text andWidth:(CGFloat)width;
 
+-(CGSize)getLabelSize:(NSString*)text withFontName:(NSString*)fontName withFontSize:(CGFloat)fontSize forFixedWidth:(CGFloat)width;
+
 @end
