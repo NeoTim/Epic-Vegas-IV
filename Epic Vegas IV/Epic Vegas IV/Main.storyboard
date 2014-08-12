@@ -148,7 +148,7 @@
             </objects>
             <point key="canvasLocation" x="162" y="-669"/>
         </scene>
-        <!--Friends Table View Controller - Who's Partying?-->
+        <!--Friends Table View Controller - Who's Joined The Party?-->
         <scene sceneID="ocK-9j-iCW">
             <objects>
                 <tableViewController id="0hV-lm-rDl" customClass="FriendsTableViewController" sceneMemberID="viewController">
@@ -245,7 +245,7 @@
                         </connections>
                     </tableView>
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
-                    <navigationItem key="navigationItem" title="Who's Partying?" id="fZ4-Gb-Ae8">
+                    <navigationItem key="navigationItem" title="Who's Joined The Party?" id="fZ4-Gb-Ae8">
                         <barButtonItem key="rightBarButtonItem" title="Map" id="ifL-YJ-8HO"/>
                     </navigationItem>
                 </tableViewController>
@@ -612,7 +612,7 @@
             </objects>
             <point key="canvasLocation" x="1283" y="918"/>
         </scene>
-        <!--News Feed Table View Controller2 - Epic Vegas Public Feed-->
+        <!--News Feed Table View Controller2 - The EPIC VEGAS Public Feed-->
         <scene sceneID="yxh-hD-WAh">
             <objects>
                 <tableViewController id="D1O-Mi-zYC" customClass="NewsFeedTableViewController2" sceneMemberID="viewController">
@@ -783,7 +783,7 @@
                         </connections>
                     </tableView>
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
-                    <navigationItem key="navigationItem" title="Epic Vegas Public Feed" id="Py2-Om-GLd"/>
+                    <navigationItem key="navigationItem" title="The EPIC VEGAS Public Feed" id="Py2-Om-GLd"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q4Q-ki-gJd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

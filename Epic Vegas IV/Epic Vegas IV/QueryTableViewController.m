@@ -29,12 +29,6 @@
 {
     [super viewDidLoad];
     
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    
     _itemsPerPage = 25;
     _itemsLoaded = 0;
     _currentPage = 0;
@@ -94,6 +88,7 @@
     postsQuery.skip = _itemsPerPage * _currentPage++;
     
     [postsQuery findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+        
         if (!error) {
             dispatch_queue_t queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0ul);
             dispatch_async(queue, ^(void) {
@@ -120,16 +115,17 @@
                     
                     if(!self.refreshControl)
                         [self setupRefreshIndicator];
-                    else
-                    {
-                        [self.refreshControl endRefreshing];
-                    }
+                    
+                    [self.refreshControl endRefreshing];
                 });
             });
             
         } else {
             // Log details of the failure
-            NSLog(@"Error: %@ %@", error, [error userInfo]);
+            NSLog(@"Error during refresh: %@ %@", error, [error userInfo]);
+            
+            if(self.refreshControl)
+                [self.refreshControl endRefreshing];
         }
     }];
 }
