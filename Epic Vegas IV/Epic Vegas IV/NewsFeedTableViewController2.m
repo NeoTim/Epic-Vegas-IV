@@ -157,8 +157,6 @@
             }];
         }
      }
-    
-
 }
 
 
@@ -195,7 +193,7 @@
             CGFloat scaledHeight = photoHeight * heightMultiplier;
             height += scaledHeight;
             
-            NSLog(@"photo width = %f", scaledHeight);
+            //NSLog(@"photo width = %f", scaledHeight);
             
             height += 8; // for the padding
         }

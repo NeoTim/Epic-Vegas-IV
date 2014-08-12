@@ -271,56 +271,19 @@
             </objects>
             <point key="canvasLocation" x="-699" y="811"/>
         </scene>
-        <!--Table View Controller - Me-->
-        <scene sceneID="Qh5-jL-MQN">
-            <objects>
-                <tableViewController id="ky5-TV-dzz" sceneMemberID="viewController">
-                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="pmK-l8-o7C">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Gxk-N6-AUQ">
-                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Gxk-N6-AUQ" id="FtN-yL-0hx">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                </tableViewCellContentView>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="ky5-TV-dzz" id="kVd-fU-DTg"/>
-                            <outlet property="delegate" destination="ky5-TV-dzz" id="uxj-ce-kWp"/>
-                        </connections>
-                    </tableView>
-                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
-                    <navigationItem key="navigationItem" title="Me" id="VhU-bm-plp">
-                        <barButtonItem key="rightBarButtonItem" image="Settings 44.png" id="7j6-Sp-BZW">
-                            <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                            <connections>
-                                <segue destination="3rz-ig-IEu" kind="push" id="RgT-A4-g02"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qNf-kx-qCS" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-605" y="2189"/>
-        </scene>
         <!--Settings Table View Controller - Settings-->
         <scene sceneID="h09-iM-vU0">
             <objects>
                 <tableViewController hidesBottomBarWhenPushed="YES" id="3rz-ig-IEu" customClass="SettingsTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="ZLe-wn-JTL">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>
                             <tableViewSection headerTitle="Privacy" id="kVk-wx-762">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="120" id="j4H-5F-AzW">
-                                        <rect key="frame" x="0.0" y="22" width="320" height="120"/>
+                                        <rect key="frame" x="0.0" y="86" width="320" height="120"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="j4H-5F-AzW" id="3If-kp-S9Y">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="120"/>
@@ -359,7 +322,7 @@
                             <tableViewSection headerTitle="More Information" id="9hC-7I-fyW">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="110" id="CWX-mu-1Up">
-                                        <rect key="frame" x="0.0" y="164" width="320" height="110"/>
+                                        <rect key="frame" x="0.0" y="228" width="320" height="110"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CWX-mu-1Up" id="Oez-Mt-CfI">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="110"/>
@@ -393,7 +356,7 @@
                             <tableViewSection headerTitle="Experiencing Issues?" id="n5M-ia-dOP">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="60" id="0F0-X8-wdv">
-                                        <rect key="frame" x="0.0" y="296" width="320" height="60"/>
+                                        <rect key="frame" x="0.0" y="360" width="320" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0F0-X8-wdv" id="BYm-hd-sJl">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
@@ -414,7 +377,7 @@
                             <tableViewSection headerTitle="Account" id="Jox-Aa-kf4">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="e18-h0-Hal">
-                                        <rect key="frame" x="0.0" y="378" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="442" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="e18-h0-Hal" id="b0B-3I-QYq">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -452,7 +415,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LZj-sf-Sqp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-63" y="2189"/>
+            <point key="canvasLocation" x="365" y="1578"/>
         </scene>
         <!--Post To Feed View Controller - Post To Feed-->
         <scene sceneID="n2T-hz-SlS">
@@ -821,10 +784,10 @@
             </objects>
             <point key="canvasLocation" x="-529" y="-452"/>
         </scene>
-        <!--My Profile Table View Controller - Me-->
+        <!--Profile Table View Controller - Me-->
         <scene sceneID="1du-Oi-F88">
             <objects>
-                <tableViewController id="bvI-kn-yt0" customClass="MyProfileTableViewController" sceneMemberID="viewController">
+                <tableViewController id="bvI-kn-yt0" customClass="ProfileTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="250" sectionHeaderHeight="22" sectionFooterHeight="22" id="UCt-ik-9XQ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -971,11 +934,20 @@
                         </connections>
                     </tableView>
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
-                    <navigationItem key="navigationItem" title="Me" id="DaM-Pu-NdD"/>
+                    <navigationItem key="navigationItem" title="Me" id="DaM-Pu-NdD">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" id="jiG-Ta-RjV">
+                            <connections>
+                                <segue destination="3rz-ig-IEu" kind="push" id="8QR-r9-EGC"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="rightBarbuttonItem" destination="jiG-Ta-RjV" id="LiA-Ou-0lH"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wpu-hS-v3h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="386" y="1918"/>
+            <point key="canvasLocation" x="-118" y="1116"/>
         </scene>
     </scenes>
     <resources>
@@ -984,7 +956,6 @@
         <image name="29-heart.png" width="24" height="21"/>
         <image name="FB-f-Logo__white_50.png" width="25" height="25"/>
         <image name="Separator.png" width="320" height="100"/>
-        <image name="Settings 44.png" width="22" height="22"/>
         <image name="full__0000s_0032_home.png" width="25" height="25"/>
         <image name="marquee-las-vegas.jpg" width="319" height="568"/>
         <image name="person.png" width="27" height="24"/>

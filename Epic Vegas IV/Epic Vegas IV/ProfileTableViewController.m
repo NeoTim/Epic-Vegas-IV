@@ -6,17 +6,17 @@
 //  Copyright (c) 2014 Zach Kohl. All rights reserved.
 //
 
-#import "MyProfileTableViewController.h"
+#import "ProfileTableViewController.h"
 #import "NewsFeedTableViewCell.h"
 #import "LoadNextPageTableViewCell.h"
 #import "AutoSizeLabel.h"
 #import "AppDelegate.h"
 
-@interface MyProfileTableViewController ()
+@interface ProfileTableViewController ()
 
 @end
 
-@implementation MyProfileTableViewController
+@implementation ProfileTableViewController
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,10 +27,33 @@
     return self;
 }
 
+-(id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        // Custom initialization
+        
+        if(!_profileUser)
+        {
+            _profileUser = [PFUser currentUser];
+            
+            
+        }
+    }
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    if(_profileUser == [PFUser currentUser])
+    {
+        // current user so show the right bar item
+        _rightBarbuttonItem.image = [UIImage imageNamed:@"Settings 44.png"];
+        [_rightBarbuttonItem setEnabled:YES];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -44,7 +67,7 @@
     [query orderByDescending:@"createdAt"];
     [query includeKey:@"photo"];
     [query includeKey:@"user"];
-    [query whereKey:@"user" equalTo:[PFUser currentUser]];
+    [query whereKey:@"user" equalTo:_profileUser];
     
     // enforce last refresh date to get data in pages (so pages don't get messed up when new things are added after refresh)
     [query whereKey:@"createdAt" lessThanOrEqualTo:self.lastRefreshDate];
@@ -139,10 +162,10 @@
     profileImageView.layer.borderWidth = .1f;
     profileImageView.layer.borderColor = [UIColor lightGrayColor].CGColor;
     
-    if([PFUser currentUser][@"profilePictureLarge"])
+    if(_profileUser[@"profilePictureLarge"])
     {
         // set pic
-        PFFile *userImageFile = [PFUser currentUser][@"profilePictureLarge"];
+        PFFile *userImageFile = _profileUser[@"profilePictureLarge"];
         if (userImageFile)
         {
             [profileImageView setFile:userImageFile];
@@ -151,10 +174,10 @@
     }
     
     // user name
-    if([PFUser currentUser] && [PFUser currentUser][@"displayName"])
+    if(_profileUser && _profileUser[@"displayName"])
     {
         UILabel* userNameLabel = (UILabel*)[headerCell viewWithTag:6];
-        userNameLabel.text = [PFUser currentUser][@"displayName"];
+        userNameLabel.text = _profileUser[@"displayName"];
         userNameLabel.textAlignment = NSTextAlignmentCenter;
     }
     

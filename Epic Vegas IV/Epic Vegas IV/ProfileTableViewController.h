@@ -8,6 +8,8 @@
 
 #import "QueryTableViewController.h"
 
-@interface MyProfileTableViewController : QueryTableViewController
+@interface ProfileTableViewController : QueryTableViewController
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *rightBarbuttonItem;
+@property (nonatomic, assign) PFUser* profileUser;
 
 @end
