@@ -46,13 +46,13 @@
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     // Return the number of sections.
-    return 1;
+    return 4;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return 3;
+    return 1;
 }
 
 - (IBAction)logOutButtonPressed:(id)sender {
@@ -70,17 +70,13 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-    // action sheet for logout confirmation
-    if(actionSheet.tag == 7431)
-    {
-        if (buttonIndex == 0) {
-            // log out
-            [[AppDelegate sharedInstance] logOut];
-        }
-    }
+- (IBAction)openGoogleDocInSafari:(id)sender {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://goo.gl/lMSv4Z"]];
 }
 
+- (IBAction)openFacebookEventPageButtonPressed:(id)sender {
+      [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://www.facebook.com/events/496325163824060/?ref=br_tf"]];
+}
 
 /*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

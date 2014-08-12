@@ -16,5 +16,8 @@
 - (IBAction)logOutButtonPressed:(id)sender;
 - (IBAction)doneButtonPressed:(id)sender;
 
+- (IBAction)openGoogleDocInSafari:(id)sender;
+
+- (IBAction)openFacebookEventPageButtonPressed:(id)sender;
 
 @end
