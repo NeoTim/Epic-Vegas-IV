@@ -39,6 +39,8 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    
+    self.tableView.allowsSelection = NO;
 }
 
 - (PFQuery *)queryForTable {
@@ -156,7 +158,11 @@
     if(indexPath.row == self.queryObjects.count && self.hasNextPage)
         return  40;
     
-    CGFloat height = 150;
+    CGFloat height = 142;
+    
+    CGFloat likeAndCommentSectionHeight = 40;
+    
+    height += likeAndCommentSectionHeight;
     
     int postIndex = indexPath.row;
     PFObject* post = self.queryObjects[postIndex];
