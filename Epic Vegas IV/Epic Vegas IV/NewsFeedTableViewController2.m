@@ -180,7 +180,7 @@
             CGFloat photoWidth = [post[@"photo"][@"thumbnailWidth"] floatValue];
             CGFloat photoHeight = [post[@"photo"][@"thumbnailHeight"] floatValue];
             
-            CGFloat fixedWidth = 320 - 48;
+            CGFloat fixedWidth = 320 - 16;
             CGFloat heightMultiplier = fixedWidth / photoWidth;
             CGFloat scaledHeight = photoHeight * heightMultiplier;
             height += scaledHeight;
