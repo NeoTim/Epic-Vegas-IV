@@ -41,15 +41,18 @@
                                 <nil key="highlightedColor"/>
                                 <color key="shadowColor" cocoaTouchSystemColor="darkTextColor"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="*All data and posts are public to event attendees" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="601-Zr-jd1">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="*All data and posts are public to event attendees" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="601-Zr-jd1">
                                 <rect key="frame" x="33" y="527" width="311" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W7T-vM-vRw">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W7T-vM-vRw">
                                 <rect key="frame" x="33" y="468" width="255" height="44"/>
                                 <color key="backgroundColor" red="0.23137254900000001" green="0.34901960780000002" blue="0.59607843140000005" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="Xan-jI-41o"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="14"/>
                                 <state key="normal" title="    Log in with Facebook">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -59,11 +62,19 @@
                                     <action selector="fbLoginButtonClicked:" destination="FMV-jn-Nsq" eventType="touchUpInside" id="wOt-jI-Mfg"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="FB-f-Logo__white_50.png" translatesAutoresizingMaskIntoConstraints="NO" id="ySc-mF-eC2">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="FB-f-Logo__white_50.png" translatesAutoresizingMaskIntoConstraints="NO" id="ySc-mF-eC2">
                                 <rect key="frame" x="46" y="478" width="25" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="25" id="FqL-p9-drp"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="601-Zr-jd1" firstAttribute="top" secondItem="ySc-mF-eC2" secondAttribute="bottom" constant="24" id="Dd7-iL-7IL"/>
+                            <constraint firstItem="Wgc-VN-KBU" firstAttribute="top" secondItem="601-Zr-jd1" secondAttribute="bottom" constant="20" id="Qin-ak-7DS"/>
+                            <constraint firstItem="601-Zr-jd1" firstAttribute="top" secondItem="W7T-vM-vRw" secondAttribute="bottom" constant="15" id="TXD-xk-59G"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="6OB-0f-aT0"/>
                     <connections>
@@ -81,6 +92,7 @@
         <scene sceneID="nOc-2k-WSO">
             <objects>
                 <navigationController storyboardIdentifier="News Feed Navigation Controller" definesPresentationContext="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xVW-UJ-Fze" sceneMemberID="viewController">
+                    <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <tabBarItem key="tabBarItem" title="" image="full__0000s_0032_home.png" id="msz-Zq-5Bf">
                         <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
                     </tabBarItem>

@@ -55,6 +55,8 @@ UIButton* selectExistingPhotoButton;
     return self;
 }
 
+
+
 -(void)handleAddCompleted
 {
     [self hideAddActionButtons];
@@ -150,6 +152,7 @@ UIButton* selectExistingPhotoButton;
     
     // Be nice and clean your mess up
     UIGraphicsEndImageContext();
+    
     
     return blurredSnapshotImage;
 }
