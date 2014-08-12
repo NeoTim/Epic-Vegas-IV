@@ -98,8 +98,27 @@
             profileImageView.image = nil;
         }
         
+        UIImageView* cardView = (UIImageView*)[headerCell viewWithTag:5];
+        cardView.layer.cornerRadius = 4;
+       
+        // card border color
+        float borderColorGray = 150.0/255.0;
+        CGColorRef color = [UIColor colorWithRed:borderColorGray green:borderColorGray blue:borderColorGray alpha:1].CGColor;
+        cardView.layer.borderColor = color;
+        
+        // background color
+        cardView.backgroundColor = [UIColor whiteColor];
+        float gray = 220.0/255.0;
+        headerCell.backgroundColor = [UIColor colorWithRed:gray green:gray blue:gray alpha:1];
+        
+        
         PFImageView* profileImageView = (PFImageView*)[headerCell viewWithTag:756];
         profileImageView.image = nil;
+        profileImageView.layer.cornerRadius = 272 / 2;
+        profileImageView.layer.masksToBounds = YES;
+        profileImageView.layer.borderWidth = .1f;
+        profileImageView.layer.borderColor = [UIColor lightGrayColor].CGColor;
+        
         if([PFUser currentUser][@"profilePictureLarge"])
         {
             // set pic
@@ -109,6 +128,14 @@
                 [profileImageView setFile:userImageFile];
                 [profileImageView loadInBackground];
             }
+        }
+        
+        // user name
+        if([PFUser currentUser] && [PFUser currentUser][@"displayName"])
+        {
+            UILabel* userNameLabel = (UILabel*)[headerCell viewWithTag:6];
+            userNameLabel.text = [PFUser currentUser][@"displayName"];
+            userNameLabel.textAlignment = NSTextAlignmentCenter;
         }
 
         return headerCell;
@@ -180,11 +207,7 @@
     }
     
     NSString *messageText=post[@"message"] ?: @"";
-    //    CGSize labelSize = [messageText sizeWithFont:[UIFont fontWithName: @"HelveticaNeue-Medium" size: 14.0f] constrainedToSize:CGSizeMake(320 - 48, 2000)];
-    //
-    CGSize labelSize = [self getLabelSize:messageText withFontName:@"HelveticaNeue-Medium" withFontSize:14.0f forFixedWidth:320-48];
-    
-    BOOL hasPhoto = NO;
+
     if(post[@"photo"])
     {
         PFFile *photoImageFIle = post[@"photo"][@"thumbnail"];
@@ -195,26 +218,7 @@
             [cell.photoImageView loadInBackground:^(UIImage *image, NSError *error) {
                 //[UIView animateWithDuration:.25f animations:^{cell.photoImageView.alpha = 1;}];
             }];
-            
-            // create the bottom padding constraint for the photo for 8 pixels space to the comments
-            hasPhoto = YES;
-            //            cell.messageHeightConstraint = [NSLayoutConstraint constraintWithItem:cell.messageLabel
-            //                                                                          attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:nil multiplier:1.0f constant:labelSize.height + 13.0f];
-            //            cell.messageHeightConstraint.priority = UILayoutPriorityRequired;
-            //            [cell.contentView addConstraint:cell.messageHeightConstraint];
         }
-    }
-    
-    if(!hasPhoto)
-    {
-        // remove constraint
-        //        if(cell.messageHeightConstraint)
-        //            [cell.commentHolderView removeConstraint:cell.messageHeightConstraint];
-        //
-        //        cell.messageHeightConstraint = [NSLayoutConstraint constraintWithItem:cell.messageLabel
-        //                                                                    attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:nil multiplier:1.0f constant:labelSize.height + 5.0f];
-        //        cell.messageHeightConstraint.priority = UILayoutPriorityRequired;
-        //        [cell.contentView addConstraint:cell.messageHeightConstraint];
     }
 }
 
@@ -223,7 +227,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if(indexPath.section == 0)
     {
-        return 357;
+        return 367;
     }
     else
     {
@@ -243,7 +247,6 @@
         NSString *messageText=post[@"message"] ?: @"";
         
         CGSize labelSize = [self getLabelSize:messageText withFontName:@"HelveticaNeue-Medium" withFontSize:14.0f forFixedWidth:320-48];
-        //    CGSize labelSize = [theText sizeWithFont:[UIFont fontWithName: @"HelveticaNeue-Medium" size: 14.0f] constrainedToSize:CGSizeMake(320 - 48, 2000)];
         height += labelSize.height;
         NSLog(@"label height = %f", labelSize.height);
         if(post[@"photo"])

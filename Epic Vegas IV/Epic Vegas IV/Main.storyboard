@@ -924,15 +924,19 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="420"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" tag="756" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Kf1-fV-qFD" customClass="PFImageView">
-                                            <rect key="frame" x="16" y="16" width="288" height="288"/>
+                                        <imageView userInteractionEnabled="NO" tag="5" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iUD-Ay-URR">
+                                            <rect key="frame" x="8" y="8" width="320" height="166"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                        <imageView userInteractionEnabled="NO" tag="756" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Kf1-fV-qFD" customClass="PFImageView">
+                                            <rect key="frame" x="24" y="24" width="288" height="288"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="288" id="tJI-PF-ehW"/>
-                                                <constraint firstAttribute="height" constant="288" id="u5M-DT-UaB"/>
+                                                <constraint firstAttribute="width" constant="272" id="6Rc-VI-Sfi"/>
+                                                <constraint firstAttribute="height" constant="272" id="u5M-DT-UaB"/>
                                             </constraints>
                                         </imageView>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Rajeev Krithivasan" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aNA-2Y-gd7">
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="6" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Rajeev Krithivasan" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aNA-2Y-gd7">
                                             <rect key="frame" x="16" y="319" width="284" height="21"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <constraints>
@@ -944,10 +948,16 @@
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="Kf1-fV-qFD" firstAttribute="leading" secondItem="gz7-id-exY" secondAttribute="leading" constant="16" id="0ZF-Z1-efe"/>
+                                        <constraint firstItem="Kf1-fV-qFD" firstAttribute="leading" secondItem="gz7-id-exY" secondAttribute="leading" constant="24" id="0ZF-Z1-efe"/>
+                                        <constraint firstAttribute="trailing" secondItem="aNA-2Y-gd7" secondAttribute="trailing" constant="20" id="5Mr-WT-d02"/>
                                         <constraint firstItem="aNA-2Y-gd7" firstAttribute="top" secondItem="Kf1-fV-qFD" secondAttribute="bottom" constant="16" id="OJa-m7-aR4"/>
-                                        <constraint firstAttribute="trailing" secondItem="Kf1-fV-qFD" secondAttribute="trailing" constant="16" id="YWO-vP-KOk"/>
-                                        <constraint firstItem="Kf1-fV-qFD" firstAttribute="top" secondItem="gz7-id-exY" secondAttribute="top" constant="16" id="t2a-WY-is7"/>
+                                        <constraint firstItem="iUD-Ay-URR" firstAttribute="top" secondItem="gz7-id-exY" secondAttribute="top" constant="8" id="Rdr-Df-L0J"/>
+                                        <constraint firstItem="aNA-2Y-gd7" firstAttribute="leading" secondItem="gz7-id-exY" secondAttribute="leading" constant="24" id="TZZ-P9-BhC"/>
+                                        <constraint firstItem="iUD-Ay-URR" firstAttribute="leading" secondItem="gz7-id-exY" secondAttribute="leading" constant="8" id="VuG-fy-uyT"/>
+                                        <constraint firstAttribute="trailing" secondItem="Kf1-fV-qFD" secondAttribute="trailing" constant="24" id="YWO-vP-KOk"/>
+                                        <constraint firstAttribute="bottom" secondItem="iUD-Ay-URR" secondAttribute="bottom" constant="8" id="rwB-YQ-3F9"/>
+                                        <constraint firstItem="Kf1-fV-qFD" firstAttribute="top" secondItem="gz7-id-exY" secondAttribute="top" constant="24" id="t2a-WY-is7"/>
+                                        <constraint firstAttribute="trailing" secondItem="iUD-Ay-URR" secondAttribute="trailing" constant="8" id="w1e-bP-JCX"/>
                                     </constraints>
                                 </tableViewCellContentView>
                             </tableViewCell>
