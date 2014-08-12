@@ -34,6 +34,9 @@
 		530BED3F19904EE100C5FDAB /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 530BED3E19904EE100C5FDAB /* Accounts.framework */; };
 		530BED4119904FA500C5FDAB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 530BED4019904FA500C5FDAB /* Main.storyboard */; };
 		530BED44199052FF00C5FDAB /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 530BED43199052FF00C5FDAB /* LoginViewController.m */; };
+		5315AC201999FAD20071E1DD /* FriendsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5315AC1F1999FAD20071E1DD /* FriendsTableViewController.m */; };
+		5315AC231999FC050071E1DD /* FriendTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5315AC221999FC050071E1DD /* FriendTableViewCell.m */; };
+		5315AC2B199A0C160071E1DD /* Separator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5315AC2A199A0C160071E1DD /* Separator@2x.png */; };
 		53165F501991C1F20014695B /* Epic Vegas Nav Bar Title@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53165F4F1991C1F20014695B /* Epic Vegas Nav Bar Title@2x.png */; };
 		53165F5B1991C9FB0014695B /* full__0000s_0104_user@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53165F5A1991C9FB0014695B /* full__0000s_0104_user@2x.png */; };
 		53165F5D1991CCE30014695B /* News Feed Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53165F5C1991CCE30014695B /* News Feed Icon@2x.png */; };
@@ -152,6 +155,11 @@
 		530BED4019904FA500C5FDAB /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		530BED42199052FF00C5FDAB /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
 		530BED43199052FF00C5FDAB /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
+		5315AC1E1999FAD20071E1DD /* FriendsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsTableViewController.h; sourceTree = "<group>"; };
+		5315AC1F1999FAD20071E1DD /* FriendsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsTableViewController.m; sourceTree = "<group>"; };
+		5315AC211999FC050071E1DD /* FriendTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendTableViewCell.h; sourceTree = "<group>"; };
+		5315AC221999FC050071E1DD /* FriendTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendTableViewCell.m; sourceTree = "<group>"; };
+		5315AC2A199A0C160071E1DD /* Separator@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Separator@2x.png"; sourceTree = "<group>"; };
 		53165F4F1991C1F20014695B /* Epic Vegas Nav Bar Title@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Epic Vegas Nav Bar Title@2x.png"; sourceTree = "<group>"; };
 		53165F5A1991C9FB0014695B /* full__0000s_0104_user@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "full__0000s_0104_user@2x.png"; sourceTree = "<group>"; };
 		53165F5C1991CCE30014695B /* News Feed Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "News Feed Icon@2x.png"; sourceTree = "<group>"; };
@@ -405,6 +413,7 @@
 		530BED2319904CDE00C5FDAB /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				5315AC2A199A0C160071E1DD /* Separator@2x.png */,
 				5346127E1995F9E000530770 /* Settings 44@2x.png */,
 				53EFEAE41995EC24006798C3 /* Write Text 60@2x.png */,
 				5388ED5619957C2F002CA477 /* Location Black@2x.png */,
@@ -459,6 +468,17 @@
 			name = Fonts;
 			sourceTree = "<group>";
 		};
+		5315AC1D1999FA150071E1DD /* Friends */ = {
+			isa = PBXGroup;
+			children = (
+				5315AC1E1999FAD20071E1DD /* FriendsTableViewController.h */,
+				5315AC1F1999FAD20071E1DD /* FriendsTableViewController.m */,
+				5315AC211999FC050071E1DD /* FriendTableViewCell.h */,
+				5315AC221999FC050071E1DD /* FriendTableViewCell.m */,
+			);
+			name = Friends;
+			sourceTree = "<group>";
+		};
 		5394C93519986834002EB1A3 /* News Feed 2 */ = {
 			isa = PBXGroup;
 			children = (
@@ -475,6 +495,7 @@
 		53EFEAA01995AF65006798C3 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				5315AC1D1999FA150071E1DD /* Friends */,
 				53EFEAA51995B006006798C3 /* Post */,
 				53EFEAA41995AFE8006798C3 /* Profile */,
 				53EFEAA31995AF8C006798C3 /* Tab Bar */,
@@ -691,6 +712,7 @@
 				53D2D19719917C72007197F6 /* line__0000s_0092_map@2x.png in Resources */,
 				53EFEAE51995EC24006798C3 /* Write Text 60@2x.png in Resources */,
 				53165F5F1991CF730014695B /* Add Icon@2x.png in Resources */,
+				5315AC2B199A0C160071E1DD /* Separator@2x.png in Resources */,
 				53165F6E1991E0920014695B /* Tab Bar Separators@2x.png in Resources */,
 				53966CB91992972D00E822DE /* Close Icon@2x.png in Resources */,
 				53966CE61992F6B900E822DE /* full__0000s_0122_camera@2x.png in Resources */,
@@ -759,11 +781,13 @@
 				53672A6B199873C300E71C50 /* NewsFeedTableViewCell.m in Sources */,
 				5343387119960FAF00A48326 /* NewsFeedTableViewController.m in Sources */,
 				532B1646199059DE00C4851F /* ProfileViewController.m in Sources */,
+				5315AC201999FAD20071E1DD /* FriendsTableViewController.m in Sources */,
 				53EFEAE11995C827006798C3 /* UIImage+ImageEffects.m in Sources */,
 				53C5BCC51996A3FB0060B49A /* AutoSizeLabel.m in Sources */,
 				53EFEAAD1995B1D8006798C3 /* UIImage+AlphaAdditions.m in Sources */,
 				530BED44199052FF00C5FDAB /* LoginViewController.m in Sources */,
 				53B594871998C1AB00505BDD /* MyProfileTableViewController.m in Sources */,
+				5315AC231999FC050071E1DD /* FriendTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
