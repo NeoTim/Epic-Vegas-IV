@@ -15,14 +15,10 @@
 
 @property (weak, nonatomic) IBOutlet AutoSizeLabel *subtitleLabel;
 @property (weak, nonatomic) IBOutlet PFImageView *userImageView;
-
-@property (weak, nonatomic) IBOutlet UITextView *messageView;
-
+@property (weak, nonatomic) IBOutlet AutoSizeLabel *messageLabel;
 @property (weak, nonatomic) IBOutlet PFImageView *photoImageView;
 
 @property (weak, nonatomic) IBOutlet UIImageView *cardView;
-
-@property (strong, nonatomic) NSLayoutConstraint* messageLabelHeightConstraint;
 
 -(void)clearCellForReuese;
 

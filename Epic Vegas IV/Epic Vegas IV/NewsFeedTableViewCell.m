@@ -45,10 +45,7 @@
     [self setBorderWidths];
     [self setBorderColors];
     [self setBackgroundColors];
-    [self setupImage];
-    
-    _messageView.editable = NO;
-    _messageView.dataDetectorTypes = UIDataDetectorTypeAll;
+    [self setupImage];    
 }
 
 -(void)setupImage
@@ -69,7 +66,7 @@
     self.photoImageView.image = nil;
     self.titleLabel.text = @"";
     self.subtitleLabel.text = @"";
-    self.messageView.text = @"";
+    self.messageLabel.text = @"";
 }
 
 //-(void)setContentInvisible

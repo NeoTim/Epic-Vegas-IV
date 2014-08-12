@@ -357,16 +357,14 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ciz-Tu-SCk">
                                 <rect key="frame" x="63" y="79" width="242" height="215"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" enablesReturnKeyAutomatically="YES"/>
                                 <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES" address="YES"/>
                             </textView>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="What would you like to share?" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lHk-Nx-fo0">
                                 <rect key="frame" x="68" y="84" width="237" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" enablesReturnKeyAutomatically="YES"/>
                             </textField>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="INQ-Hb-obn">
@@ -569,14 +567,13 @@
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0Ht-Jd-aoc">
-                                                    <rect key="frame" x="8" y="94" width="288" height="60"/>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" ambiguous="YES" misplaced="YES" placeholderIntrinsicWidth="280" placeholderIntrinsicHeight="21" text="Message" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="320" translatesAutoresizingMaskIntoConstraints="NO" id="eVx-kW-nCr" customClass="AutoSizeLabel">
+                                                    <rect key="frame" x="20" y="98" width="320" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                                </textView>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                                 <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4p8-zd-Uy5" customClass="PFImageView">
                                                     <rect key="frame" x="20" y="141" width="280" height="54"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -589,18 +586,18 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="0Ht-Jd-aoc" firstAttribute="top" relation="greaterThanOrEqual" secondItem="ah3-N3-xBq" secondAttribute="bottom" constant="16" id="1V4-ZC-8TA"/>
-                                                <constraint firstItem="4p8-zd-Uy5" firstAttribute="top" secondItem="0Ht-Jd-aoc" secondAttribute="bottom" constant="8" id="6eg-vA-f6F"/>
-                                                <constraint firstItem="0Ht-Jd-aoc" firstAttribute="leading" secondItem="yMj-0b-wLS" secondAttribute="leading" constant="16" id="ALK-yA-OvC"/>
+                                                <constraint firstItem="eVx-kW-nCr" firstAttribute="top" relation="greaterThanOrEqual" secondItem="ah3-N3-xBq" secondAttribute="bottom" constant="16" id="15e-zM-0wp"/>
+                                                <constraint firstItem="eVx-kW-nCr" firstAttribute="top" relation="greaterThanOrEqual" secondItem="TxA-gN-i8m" secondAttribute="bottom" constant="16" id="FJT-eR-AxW"/>
                                                 <constraint firstItem="ah3-N3-xBq" firstAttribute="top" secondItem="ypI-KD-gd0" secondAttribute="bottom" constant="5" id="Mzb-99-CjF"/>
-                                                <constraint firstItem="0Ht-Jd-aoc" firstAttribute="top" relation="greaterThanOrEqual" secondItem="TxA-gN-i8m" secondAttribute="bottom" constant="16" id="NKD-EN-SZK"/>
+                                                <constraint firstItem="eVx-kW-nCr" firstAttribute="leading" secondItem="yMj-0b-wLS" secondAttribute="leading" constant="16" id="SAj-OA-jbw"/>
+                                                <constraint firstAttribute="trailing" secondItem="eVx-kW-nCr" secondAttribute="trailing" constant="16" id="TZ8-oS-4kK"/>
+                                                <constraint firstItem="4p8-zd-Uy5" firstAttribute="top" secondItem="eVx-kW-nCr" secondAttribute="bottom" constant="16" id="VtF-hZ-XCR"/>
                                                 <constraint firstItem="ypI-KD-gd0" firstAttribute="leading" secondItem="TxA-gN-i8m" secondAttribute="trailing" constant="16" id="YRA-co-soI"/>
                                                 <constraint firstItem="TxA-gN-i8m" firstAttribute="top" secondItem="yMj-0b-wLS" secondAttribute="top" constant="16" id="Ytg-6V-EBM"/>
                                                 <constraint firstItem="ah3-N3-xBq" firstAttribute="leading" secondItem="TxA-gN-i8m" secondAttribute="trailing" constant="16" id="cEM-oH-Kem"/>
                                                 <constraint firstItem="TxA-gN-i8m" firstAttribute="leading" secondItem="yMj-0b-wLS" secondAttribute="leading" constant="16" id="coI-hk-uNm"/>
                                                 <constraint firstAttribute="trailing" secondItem="ah3-N3-xBq" secondAttribute="trailing" constant="16" id="fXn-0O-x4G"/>
                                                 <constraint firstItem="ypI-KD-gd0" firstAttribute="top" secondItem="yMj-0b-wLS" secondAttribute="top" constant="25" id="juf-VB-ChF"/>
-                                                <constraint firstAttribute="trailing" secondItem="0Ht-Jd-aoc" secondAttribute="trailing" constant="16" id="qpf-zh-23Z"/>
                                                 <constraint firstItem="4p8-zd-Uy5" firstAttribute="leading" secondItem="yMj-0b-wLS" secondAttribute="leading" constant="16" id="sde-9I-bOt"/>
                                                 <constraint firstAttribute="trailing" secondItem="ypI-KD-gd0" secondAttribute="trailing" constant="16" id="usX-jm-O5e"/>
                                                 <constraint firstAttribute="trailing" secondItem="4p8-zd-Uy5" secondAttribute="trailing" constant="16" id="zG0-me-7lH"/>
@@ -616,14 +613,12 @@
                                         <constraint firstItem="yMj-0b-wLS" firstAttribute="top" secondItem="fp3-Wl-n9x" secondAttribute="top" constant="8" id="ZIU-Pt-4WY"/>
                                         <constraint firstAttribute="bottom" secondItem="yMj-0b-wLS" secondAttribute="bottom" constant="8" id="hib-eC-0TX"/>
                                         <constraint firstItem="yMj-0b-wLS" firstAttribute="top" relation="greaterThanOrEqual" secondItem="fp3-Wl-n9x" secondAttribute="top" constant="8" id="j06-ur-QBB"/>
-                                        <constraint firstItem="yMj-0b-wLS" firstAttribute="leading" relation="lessThanOrEqual" secondItem="fp3-Wl-n9x" secondAttribute="leading" constant="8" id="j6s-GL-slI"/>
-                                        <constraint firstItem="yMj-0b-wLS" firstAttribute="top" relation="lessThanOrEqual" secondItem="fp3-Wl-n9x" secondAttribute="top" constant="20" id="jEm-5k-0wv"/>
                                         <constraint firstItem="yMj-0b-wLS" firstAttribute="leading" secondItem="fp3-Wl-n9x" secondAttribute="leading" constant="8" id="wge-sg-btr"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="cardView" destination="yMj-0b-wLS" id="2Re-N6-9WF"/>
-                                    <outlet property="messageView" destination="0Ht-Jd-aoc" id="vw4-Dv-3rd"/>
+                                    <outlet property="messageLabel" destination="eVx-kW-nCr" id="XIW-PJ-co7"/>
                                     <outlet property="photoImageView" destination="4p8-zd-Uy5" id="gG7-D8-ImA"/>
                                     <outlet property="subtitleLabel" destination="ah3-N3-xBq" id="dtJ-GE-SU2"/>
                                     <outlet property="titleLabel" destination="ypI-KD-gd0" id="2IB-u2-SV5"/>
