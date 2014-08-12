@@ -41,8 +41,11 @@
     _hasNextPage = NO;
     _isCurrentlyRefreshing = NO;
     
-    [self setupRefreshIndicator];
     [self refreshDataSources];
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
 }
 
 -(void)setupRefreshIndicator
@@ -55,7 +58,6 @@
 -(IBAction)refreshControlPulled:(id)sender
 {
     [self refreshDataSources];
-    [self.refreshControl endRefreshing];
 }
 
 -(void)refreshDataSources
@@ -74,8 +76,8 @@
     
     
     // show activity indicator if refresh control is not visibly refreshing
-    if(!self.refreshControl.isRefreshing)
-        [self showActivityIndicator];
+    //if(!self.refreshControl || !self.refreshControl.isRefreshing)
+    //    [self showActivityIndicator];
     
     _lastRefreshDate = [NSDate date];
     _currentPage = 0;
@@ -115,6 +117,13 @@
                     [self hideActivityIndicator];
                     _isCurrentlyRefreshing = NO;
                     NSLog(@"Refresh Ended");
+                    
+                    if(!self.refreshControl)
+                        [self setupRefreshIndicator];
+                    else
+                    {
+                        [self.refreshControl endRefreshing];
+                    }
                 });
             });
             
@@ -127,19 +136,20 @@
 
 -(void)showActivityIndicator
 {
-    _activityIndicator = [[UIActivityIndicatorView alloc]initWithFrame:CGRectMake(self.view.frame.size.width / 2 - 40,self.view.frame.size.height / 2 - 125,80,80)];
-    
-    //spinner.color = [UIColor darkGrayColor];
-    _activityIndicator.backgroundColor = [UIColor darkGrayColor];
-    _activityIndicator.layer.cornerRadius = 5;
-    _activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
-    [_activityIndicator startAnimating];
-    [self.view addSubview:_activityIndicator];
+//    _activityIndicator = [[UIActivityIndicatorView alloc]initWithFrame:CGRectMake(self.view.frame.size.width / 2 - 40,self.view.frame.size.height / 2 - 125,80,80)];
+//    
+//    //spinner.color = [UIColor darkGrayColor];
+//    _activityIndicator.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:.8];
+//    _activityIndicator.opaque = NO;
+//    _activityIndicator.layer.cornerRadius = 5;
+//    _activityIndicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyleWhiteLarge;
+//    [_activityIndicator startAnimating];
+//    [self.view addSubview:_activityIndicator];
 }
 
 -(void)hideActivityIndicator
 {
-    [_activityIndicator stopAnimating];
+    //[_activityIndicator stopAnimating];
     //[self.view removeSubview:_activityIndicator ;]
 }
 
