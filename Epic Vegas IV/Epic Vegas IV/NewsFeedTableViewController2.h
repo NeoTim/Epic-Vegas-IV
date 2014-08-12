@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "AppDelegate.h"
 #import "QueryTableViewController.h"
+#import "NewsFeedTableViewCell.h"
 
-@interface NewsFeedTableViewController2 : QueryTableViewController
+@interface NewsFeedTableViewController2 : QueryTableViewController <NewsFeedTableViewCellDelegate>
 
 @end

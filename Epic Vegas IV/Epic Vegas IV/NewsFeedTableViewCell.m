@@ -7,6 +7,7 @@
 //
 
 #import "NewsFeedTableViewCell.h"
+#import "ProfileTableViewController.h"
 
 @implementation NewsFeedTableViewCell
 
@@ -128,7 +129,6 @@
     
     float gray = 220.0/255.0;
     self.backgroundColor = [UIColor colorWithRed:gray green:gray blue:gray alpha:1];
-    
 }
 
 
@@ -137,6 +137,17 @@
     [super setSelected:selected animated:animated];
     
     // Configure the view for the selected state
+}
+
+
+- (IBAction)userImageViewClicked:(id)sender {
+    if(self.delegate)
+        [self.delegate showUser:_postUser];
+}
+
+- (IBAction)userNameLabelClicked:(id)sender {
+    if(self.delegate)
+        [self.delegate showUser:_postUser];
 }
 
 

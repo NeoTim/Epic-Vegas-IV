@@ -9,6 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "AutoSizeLabel.h"
 
+@class NewsFeedTableViewCell;
+
+@protocol NewsFeedTableViewCellDelegate
+
+-(void)showUser:(PFUser*)user;
+
+@end
+
 @interface NewsFeedTableViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet AutoSizeLabel *titleLabel;
@@ -20,10 +28,16 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *cardView;
 
+@property (nonatomic, assign) id  delegate;
+
 @property (weak, nonatomic) IBOutlet UIView *commentHolderView;
 
+- (IBAction)userImageViewClicked:(id)sender;
+- (IBAction)userNameLabelClicked:(id)sender;
 
 @property (strong, nonatomic) NSLayoutConstraint* messageHeightConstraint;
+
+@property (nonatomic, assign) PFUser* postUser;
 
 -(void)clearCellForReuese;
 

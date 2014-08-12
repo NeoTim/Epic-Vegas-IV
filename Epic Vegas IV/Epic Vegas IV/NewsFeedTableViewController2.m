@@ -10,6 +10,7 @@
 #import "LoadNextPageTableViewCell.h"
 #import "PostTableViewCell.h"
 #import "NewsFeedTableViewCell.h"
+#import "ProfileTableViewController.h"
 
 @interface NewsFeedTableViewController2 ()
 
@@ -129,10 +130,13 @@
     NSString* subtitle = [Utility formattedDate:createdAt];
     cell.subtitleLabel.text = subtitle;
 
+    
+    cell.delegate = nil;
     if(post[@"user"])
     {
         cell.titleLabel.text = post[@"user"][@"displayName"] ?: @"";
-
+        cell.postUser = post[@"user"];
+        cell.delegate = self;
         if(post[@"user"][@"profilePictureSmall"])
         {
             // set pic
@@ -160,6 +164,21 @@
 }
 
 
+-(void)showUser:(PFUser*)user
+{
+    if(user)
+    {
+        // show
+        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main"
+                                                                 bundle: nil];
+        
+        ProfileTableViewController* profileViewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"ProfileTableViewController"];
+        
+        profileViewController.profileUser = user;
+        
+        [self.navigationController pushViewController:profileViewController animated:YES];
+    }
+}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     // fixed height for the load more cell
