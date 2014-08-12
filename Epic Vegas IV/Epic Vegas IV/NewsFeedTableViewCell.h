@@ -20,6 +20,11 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *cardView;
 
+@property (weak, nonatomic) IBOutlet UIView *commentHolderView;
+
+
+@property (strong, nonatomic) NSLayoutConstraint* messageHeightConstraint;
+
 -(void)clearCellForReuese;
 
 @end

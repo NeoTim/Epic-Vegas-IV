@@ -142,6 +142,10 @@
         }
     }
     
+    NSString *messageText=post[@"message"] ?: @"";
+    CGSize labelSize = [messageText sizeWithFont:[UIFont fontWithName: @"HelveticaNeue-Medium" size: 14.0f] constrainedToSize:CGSizeMake(320 - 48, 2000)];
+    
+    BOOL hasPhoto = NO;
     if(post[@"photo"])
     {
         PFFile *photoImageFIle = post[@"photo"][@"thumbnail"];
@@ -149,7 +153,26 @@
         {
             [cell.photoImageView setFile:photoImageFIle];
             [cell.photoImageView loadInBackground];
+            
+            // create the bottom padding constraint for the photo for 8 pixels space to the comments
+            hasPhoto = YES;
+            cell.messageHeightConstraint = [NSLayoutConstraint constraintWithItem:cell.messageLabel
+                                                                          attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:nil multiplier:1.0f constant:labelSize.height + 13.0f];
+            cell.messageHeightConstraint.priority = UILayoutPriorityRequired;
+            [cell.contentView addConstraint:cell.messageHeightConstraint];
         }
+     }
+    
+    if(!hasPhoto)
+    {
+        // remove constraint
+        if(cell.messageHeightConstraint)
+            [cell.commentHolderView removeConstraint:cell.messageHeightConstraint];
+        
+        cell.messageHeightConstraint = [NSLayoutConstraint constraintWithItem:cell.messageLabel
+                                                                    attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:nil multiplier:1.0f constant:labelSize.height + 5.0f];
+        cell.messageHeightConstraint.priority = UILayoutPriorityRequired;
+        [cell.contentView addConstraint:cell.messageHeightConstraint];
     }
 }
 
@@ -158,11 +181,12 @@
     if(indexPath.row == self.queryObjects.count && self.hasNextPage)
         return  40;
     
-    CGFloat height = 142;
     
-    CGFloat likeAndCommentSectionHeight = 40;
+    CGFloat height = 172;
     
-    height += likeAndCommentSectionHeight;
+    //CGFloat likeAndCommentSectionHeight = 40;
+    
+    //height += likeAndCommentSectionHeight;
     
     int postIndex = indexPath.row;
     PFObject* post = self.queryObjects[postIndex];
@@ -172,7 +196,7 @@
     NSString *theText=post[@"message"] ?: @"";
     CGSize labelSize = [theText sizeWithFont:[UIFont fontWithName: @"HelveticaNeue-Medium" size: 14.0f] constrainedToSize:CGSizeMake(320 - 48, 2000)];
     height += labelSize.height;
-    
+    NSLog(@"label height = %f", labelSize.height);
     if(post[@"photo"])
     {        
         if(post[@"photo"][@"thumbnailHeight"])
@@ -180,12 +204,14 @@
             CGFloat photoWidth = [post[@"photo"][@"thumbnailWidth"] floatValue];
             CGFloat photoHeight = [post[@"photo"][@"thumbnailHeight"] floatValue];
             
-            CGFloat fixedWidth = 320 - 16;
+            CGFloat fixedWidth = 320 - 48;
             CGFloat heightMultiplier = fixedWidth / photoWidth;
             CGFloat scaledHeight = photoHeight * heightMultiplier;
             height += scaledHeight;
             
             NSLog(@"photo width = %f", scaledHeight);
+            
+            height += 8; // for the padding
         }
     }
 
