@@ -43,6 +43,7 @@
     
     [self setupRefreshIndicator];
     [self refreshDataSources];
+    self.tableView.allowsSelection = false;
 }
 
 -(void)setupRefreshIndicator
@@ -243,6 +244,7 @@
         [self loadNextPage];
     }
 }
+
 
 /*
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath

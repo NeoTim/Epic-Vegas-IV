@@ -112,14 +112,33 @@
         return;
     
     NSString *message = self.queryObjects[indexPath.row][@"message"] ?: @"[No Message]";
-    cell.messageLabel.text = message;
+    cell.messageView.text = message;
+    
+    // remove layout constraints
+    if(cell.messageLabelHeightConstraint)
+    {
+        [cell removeConstraint:cell.messageLabelHeightConstraint];
+    }
     
     int postIndex = indexPath.row;
     PFObject* post = self.queryObjects[postIndex];
     if(!post)
         return;
 
-    cell.messageLabel.text= post[@"message"] ?: @"";
+    // set height constraint for message
+    NSString *theText=post[@"message"] ?: @"";
+    CGSize labelSize = [theText sizeWithFont:[UIFont fontWithName: @"HelveticaNeue-Medium" size: 14.0f] constrainedToSize:CGSizeMake(320 - 48, 2000)];
+    cell.messageLabelHeightConstraint = [NSLayoutConstraint constraintWithItem:cell.messageView
+                                                                     attribute:NSLayoutAttributeHeight
+                                                                     relatedBy:NSLayoutRelationEqual
+                                                                        toItem:nil
+                                                                     attribute:NSLayoutAttributeNotAnAttribute
+                                                                    multiplier:1.0
+                                                                      constant:labelSize.height];
+    [cell addConstraint:cell.messageLabelHeightConstraint];
+    
+    
+    cell.messageView.text= post[@"message"] ?: @"";
     NSDate* createdAt = post.createdAt;
     NSString* subtitle = [Utility formattedDate:createdAt];
     cell.subtitleLabel.text = subtitle;
@@ -164,7 +183,7 @@
         return height;
     
     NSString *theText=post[@"message"] ?: @"";
-    CGSize labelSize = [theText sizeWithFont:[UIFont fontWithName: @"HelveticaNeue" size: 15.0f] constrainedToSize:CGSizeMake(300, 600)];
+    CGSize labelSize = [theText sizeWithFont:[UIFont fontWithName: @"HelveticaNeue-Medium" size: 14.0f] constrainedToSize:CGSizeMake(320 - 48, 2000)];
     height += labelSize.height;
     
     if(post[@"photo"])
