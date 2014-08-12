@@ -28,6 +28,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    _attachedImageView.contentMode = UIViewContentModeScaleAspectFit;
     self.attachedImageView.image = _imageToShow;
 }
 
