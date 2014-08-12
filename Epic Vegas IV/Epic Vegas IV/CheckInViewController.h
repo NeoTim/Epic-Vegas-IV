@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 
-@interface CheckInViewController : UIViewController
+@interface CheckInViewController : UIViewController <UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 @property (weak, nonatomic) IBOutlet UITextField *locationNameTextField;

@@ -27,6 +27,11 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    [self.locationNameTextField setDelegate:self];
+    [self.locationNameTextField addTarget:self
+                       action:@selector(textFieldFinished:)
+             forControlEvents:UIControlEventEditingDidEndOnExit];
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -54,4 +59,13 @@
 - (IBAction)cancelButtonPressed:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+- (IBAction)textFieldFinished:(id)sender
+{
+    NSLog(@"User checked in");
+
+    // initiate a checkin???
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
 @end
