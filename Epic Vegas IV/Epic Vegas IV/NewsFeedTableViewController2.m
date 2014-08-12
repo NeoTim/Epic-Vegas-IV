@@ -164,7 +164,7 @@
         return height;
     
     NSString *theText=post[@"message"] ?: @"";
-    CGSize labelSize = [theText sizeWithFont:[UIFont fontWithName: @"HelveticaNeue" size: 15.0f] constrainedToSize:CGSizeMake(300, 600)];
+    CGSize labelSize = [theText sizeWithFont:[UIFont fontWithName: @"HelveticaNeue-Medium" size: 14.0f] constrainedToSize:CGSizeMake(320 - 48, 2000)];
     height += labelSize.height;
     
     if(post[@"photo"])
