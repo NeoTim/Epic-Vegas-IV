@@ -37,6 +37,36 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [_locationNameTextField becomeFirstResponder];
+    
+    [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint *geoPoint, NSError *error) {
+        if (!error) {
+            NSLog(@"User is currently at %f, %f", geoPoint.latitude, geoPoint.longitude);
+            
+            // create a region and pass it to the Map View
+            MKCoordinateRegion region;
+            region.center.latitude = geoPoint.latitude;
+            region.center.longitude = geoPoint.longitude;
+            region.span.latitudeDelta = 0.012;
+            region.span.longitudeDelta = 0.012;
+            
+            [self.mapView setRegion:region animated:YES];
+            
+            // Add the annotation to our map view
+            //CLLocation* location = [[CLLocation alloc] initWithLatitude:geoPoint.latitude longitude:geoPoint.longitude];
+
+            
+//            // Add an annotation
+//            MKPointAnnotation *myLocationPoint = [[MKPointAnnotation alloc] init];
+//            myLocationPoint.coordinate = location.coordinate;
+//            myLocationPoint.title = @"Where am I?";
+//            myLocationPoint.subtitle = @"I'm here!!!";
+//            
+//            [self.mapView addAnnotation:myLocationPoint];
+            
+            [[PFUser currentUser] setObject:geoPoint forKey:@"currentLocation"];
+            [[PFUser currentUser] saveInBackground];
+        }
+    }];
 }
 
 - (void)didReceiveMemoryWarning
