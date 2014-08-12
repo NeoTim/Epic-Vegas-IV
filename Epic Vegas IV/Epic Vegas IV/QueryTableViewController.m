@@ -211,6 +211,22 @@
 }
 
 
+//- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+//    
+//    UIViewController* parentController = (UIViewController*)self.parentViewController;
+//    UINavigationController* navController= (UINavigationController*)parentController.parentViewController;
+//    UITabBarController* tabController= (UITabBarController*)navController.parentViewController;
+//
+//    if( [scrollView.panGestureRecognizer translationInView:self.view].y  < 0.0f ) {
+//        [tabController.tabBar setHidden:YES];
+//        [navController.toolbar setHidden:YES];
+//    } else if ([scrollView.panGestureRecognizer translationInView:self.view].y  > 0.0f  ) {
+//        [tabController.tabBar setHidden:NO];
+//        [navController.toolbar setHidden:NO];
+//    }
+//    
+//}
+
 #pragma scroll to bottom detection for load more cell
 
 -(void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate
