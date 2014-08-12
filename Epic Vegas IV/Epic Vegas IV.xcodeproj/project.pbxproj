@@ -49,12 +49,10 @@
 		53165F761991E25C0014695B /* full__0000s_0101_drawer@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53165F751991E25C0014695B /* full__0000s_0101_drawer@2x.png */; };
 		53165F781991E2870014695B /* full__0000s_0092_map@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53165F771991E2870014695B /* full__0000s_0092_map@2x.png */; };
 		532B1646199059DE00C4851F /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 532B1645199059DE00C4851F /* ProfileViewController.m */; };
-		5343387119960FAF00A48326 /* NewsFeedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5343387019960FAF00A48326 /* NewsFeedTableViewController.m */; };
 		5346127F1995F9E000530770 /* Settings 44@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5346127E1995F9E000530770 /* Settings 44@2x.png */; };
 		53672A6B199873C300E71C50 /* NewsFeedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 53672A6A199873C300E71C50 /* NewsFeedTableViewCell.m */; };
 		5388ED4D1995741A002CA477 /* All Images@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5388ED4C1995741A002CA477 /* All Images@2x.png */; };
 		5388ED5719957C2F002CA477 /* Location Black@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5388ED5619957C2F002CA477 /* Location Black@2x.png */; };
-		5388ED5A19958A96002CA477 /* NewsFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5388ED5919958A96002CA477 /* NewsFeedViewController.m */; };
 		5394C934199845F8002EB1A3 /* RemovePhotoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5394C933199845F8002EB1A3 /* RemovePhotoViewController.m */; };
 		5394C93E19986946002EB1A3 /* NewsFeedTableViewController2.m in Sources */ = {isa = PBXBuildFile; fileRef = 5394C93D19986946002EB1A3 /* NewsFeedTableViewController2.m */; };
 		53966CB91992972D00E822DE /* Close Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53966CB81992972D00E822DE /* Close Icon@2x.png */; };
@@ -82,6 +80,7 @@
 		53A19F94199481E6008DF739 /* Favorites@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53A19F93199481E6008DF739 /* Favorites@2x.png */; };
 		53A19F9C1994846E008DF739 /* Location@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53A19F9B1994846E008DF739 /* Location@2x.png */; };
 		53A19F9E199484DD008DF739 /* Map@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53A19F9D199484DD008DF739 /* Map@2x.png */; };
+		53B39EC5199A72FA00D287FF /* ProfileTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 53B39EC4199A72FA00D287FF /* ProfileTableViewCell.m */; };
 		53B594871998C1AB00505BDD /* MyProfileTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53B594861998C1AB00505BDD /* MyProfileTableViewController.m */; };
 		53B5948A1998C38A00505BDD /* SettingsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53B594891998C38A00505BDD /* SettingsTableViewController.m */; };
 		53B5948D19995D7C00505BDD /* QueryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53B5948C19995D7C00505BDD /* QueryTableViewController.m */; };
@@ -174,15 +173,11 @@
 		53165F771991E2870014695B /* full__0000s_0092_map@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "full__0000s_0092_map@2x.png"; sourceTree = "<group>"; };
 		532B1644199059DE00C4851F /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		532B1645199059DE00C4851F /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
-		5343386F19960FAF00A48326 /* NewsFeedTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsFeedTableViewController.h; sourceTree = "<group>"; };
-		5343387019960FAF00A48326 /* NewsFeedTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsFeedTableViewController.m; sourceTree = "<group>"; };
 		5346127E1995F9E000530770 /* Settings 44@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Settings 44@2x.png"; sourceTree = "<group>"; };
 		53672A69199873C300E71C50 /* NewsFeedTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsFeedTableViewCell.h; sourceTree = "<group>"; };
 		53672A6A199873C300E71C50 /* NewsFeedTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsFeedTableViewCell.m; sourceTree = "<group>"; };
 		5388ED4C1995741A002CA477 /* All Images@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "All Images@2x.png"; sourceTree = "<group>"; };
 		5388ED5619957C2F002CA477 /* Location Black@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Location Black@2x.png"; sourceTree = "<group>"; };
-		5388ED5819958A96002CA477 /* NewsFeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsFeedViewController.h; sourceTree = "<group>"; };
-		5388ED5919958A96002CA477 /* NewsFeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsFeedViewController.m; sourceTree = "<group>"; };
 		5394C932199845F8002EB1A3 /* RemovePhotoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemovePhotoViewController.h; sourceTree = "<group>"; };
 		5394C933199845F8002EB1A3 /* RemovePhotoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemovePhotoViewController.m; sourceTree = "<group>"; };
 		5394C93C19986946002EB1A3 /* NewsFeedTableViewController2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsFeedTableViewController2.h; sourceTree = "<group>"; };
@@ -213,6 +208,8 @@
 		53A19F93199481E6008DF739 /* Favorites@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Favorites@2x.png"; sourceTree = "<group>"; };
 		53A19F9B1994846E008DF739 /* Location@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Location@2x.png"; sourceTree = "<group>"; };
 		53A19F9D199484DD008DF739 /* Map@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Map@2x.png"; sourceTree = "<group>"; };
+		53B39EC3199A72FA00D287FF /* ProfileTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileTableViewCell.h; sourceTree = "<group>"; };
+		53B39EC4199A72FA00D287FF /* ProfileTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileTableViewCell.m; sourceTree = "<group>"; };
 		53B594851998C1AB00505BDD /* MyProfileTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MyProfileTableViewController.h; sourceTree = "<group>"; };
 		53B594861998C1AB00505BDD /* MyProfileTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MyProfileTableViewController.m; sourceTree = "<group>"; };
 		53B594881998C38A00505BDD /* SettingsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsTableViewController.h; sourceTree = "<group>"; };
@@ -518,10 +515,6 @@
 		53EFEAA21995AF81006798C3 /* News Feed */ = {
 			isa = PBXGroup;
 			children = (
-				5388ED5819958A96002CA477 /* NewsFeedViewController.h */,
-				5388ED5919958A96002CA477 /* NewsFeedViewController.m */,
-				5343386F19960FAF00A48326 /* NewsFeedTableViewController.h */,
-				5343387019960FAF00A48326 /* NewsFeedTableViewController.m */,
 				53DF0C0019969E36007E7AA8 /* PostTableViewCell.h */,
 				53DF0C0119969E36007E7AA8 /* PostTableViewCell.m */,
 				53C5BCC31996A3FB0060B49A /* AutoSizeLabel.h */,
@@ -550,6 +543,8 @@
 				53B594861998C1AB00505BDD /* MyProfileTableViewController.m */,
 				53B594881998C38A00505BDD /* SettingsTableViewController.h */,
 				53B594891998C38A00505BDD /* SettingsTableViewController.m */,
+				53B39EC3199A72FA00D287FF /* ProfileTableViewCell.h */,
+				53B39EC4199A72FA00D287FF /* ProfileTableViewCell.m */,
 			);
 			name = Profile;
 			sourceTree = "<group>";
@@ -760,7 +755,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5388ED5A19958A96002CA477 /* NewsFeedViewController.m in Sources */,
 				53DF0C0219969E36007E7AA8 /* PostTableViewCell.m in Sources */,
 				53B5948A1998C38A00505BDD /* SettingsTableViewController.m in Sources */,
 				530BED0419904C7700C5FDAB /* AppDelegate.m in Sources */,
@@ -779,13 +773,13 @@
 				53EFEADF1995C827006798C3 /* Reachability.m in Sources */,
 				53A19F8C199466C1008DF739 /* PostToFeedViewController.m in Sources */,
 				53672A6B199873C300E71C50 /* NewsFeedTableViewCell.m in Sources */,
-				5343387119960FAF00A48326 /* NewsFeedTableViewController.m in Sources */,
 				532B1646199059DE00C4851F /* ProfileViewController.m in Sources */,
 				5315AC201999FAD20071E1DD /* FriendsTableViewController.m in Sources */,
 				53EFEAE11995C827006798C3 /* UIImage+ImageEffects.m in Sources */,
 				53C5BCC51996A3FB0060B49A /* AutoSizeLabel.m in Sources */,
 				53EFEAAD1995B1D8006798C3 /* UIImage+AlphaAdditions.m in Sources */,
 				530BED44199052FF00C5FDAB /* LoginViewController.m in Sources */,
+				53B39EC5199A72FA00D287FF /* ProfileTableViewCell.m in Sources */,
 				53B594871998C1AB00505BDD /* MyProfileTableViewController.m in Sources */,
 				5315AC231999FC050071E1DD /* FriendTableViewCell.m in Sources */,
 			);

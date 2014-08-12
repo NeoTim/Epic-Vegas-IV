@@ -6,8 +6,8 @@
 //  Copyright (c) 2014 Zach Kohl. All rights reserved.
 //
 
-#import "NewsFeedTableViewController2.h"
+#import "QueryTableViewController.h"
 
-@interface MyProfileTableViewController : NewsFeedTableViewController2
+@interface MyProfileTableViewController : QueryTableViewController
 
 @end
