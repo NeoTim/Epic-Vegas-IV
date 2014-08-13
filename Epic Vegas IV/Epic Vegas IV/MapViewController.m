@@ -132,7 +132,7 @@
         userAnnotation.coordinate = coordinate;
         userAnnotation.title = user[@"displayName"];
         
-        PFFile *imageFile = [[PFUser currentUser] objectForKey:@"profilePictureSmall"];
+        PFFile *imageFile = [user objectForKey:@"profilePictureSmall"];
         if (imageFile) {
             [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
                 if(!error)
