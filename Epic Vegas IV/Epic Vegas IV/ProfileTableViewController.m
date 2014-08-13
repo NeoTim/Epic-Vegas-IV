@@ -76,6 +76,7 @@
     [query includeKey:@"photo"];
     [query includeKey:@"user"];
     [query whereKey:@"user" equalTo:_profileUser];
+    [query whereKeyExists:@"message"];
     
     // enforce last refresh date to get data in pages (so pages don't get messed up when new things are added after refresh)
     [query whereKey:@"createdAt" lessThanOrEqualTo:self.lastRefreshDate];

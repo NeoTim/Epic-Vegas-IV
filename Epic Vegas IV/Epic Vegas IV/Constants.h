@@ -71,20 +71,20 @@ extern NSString *const kInstallationUserKey;
 
 #pragma mark - PFObject Activity Class
 // Class key
-extern NSString *const kActivityClassKey;
+//extern NSString *const kActivityClassKey;
 
-// Field keys
-extern NSString *const kActivityTypeKey;
-extern NSString *const kActivityFromUserKey;
-extern NSString *const kActivityToUserKey;
-extern NSString *const kActivityContentKey;
-extern NSString *const kActivityPhotoKey;
-
-// Type values
-extern NSString *const kActivityTypeLike;
-extern NSString *const kActivityTypeFollow;
-extern NSString *const kActivityTypeComment;
-extern NSString *const kActivityTypeJoined;
+//// Field keys
+//extern NSString *const kActivityTypeKey;
+//extern NSString *const kActivityFromUserKey;
+//extern NSString *const kActivityToUserKey;
+//extern NSString *const kActivityContentKey;
+//extern NSString *const kActivityPhotoKey;
+//
+//// Type values
+//extern NSString *const kActivityTypeLike;
+//extern NSString *const kActivityTypeFollow;
+//extern NSString *const kActivityTypeComment;
+//extern NSString *const kActivityTypeJoined;
 
 
 #pragma mark - PFObject User Class

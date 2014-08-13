@@ -41,6 +41,8 @@
         if (!error) {
             NSLog(@"User is currently at %f, %f", geoPoint.latitude, geoPoint.longitude);
             
+            [Utility updateCurrentUsersLocation:geoPoint withLocationName:nil];
+            
             // create a region and pass it to the Map View
             MKCoordinateRegion region;
             region.center.latitude = geoPoint.latitude;

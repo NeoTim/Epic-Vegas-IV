@@ -245,9 +245,7 @@
                         </connections>
                     </tableView>
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
-                    <navigationItem key="navigationItem" title="Who Joined The Party?" id="fZ4-Gb-Ae8">
-                        <barButtonItem key="rightBarButtonItem" title="Map" id="ifL-YJ-8HO"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Who Joined The Party?" id="fZ4-Gb-Ae8"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zgy-JT-vcn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -265,12 +263,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="GrS-96-YOj">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="GrS-96-YOj">
                                 <rect key="frame" x="0.0" y="64" width="320" height="349"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="GrS-96-YOj" secondAttribute="trailing" id="09a-eY-aOi"/>
+                            <constraint firstItem="GrS-96-YOj" firstAttribute="top" secondItem="Ffh-ad-ddA" secondAttribute="bottom" id="Bkm-hL-jIb"/>
+                            <constraint firstItem="GrS-96-YOj" firstAttribute="leading" secondItem="MqL-8b-gH6" secondAttribute="leading" id="FXa-LR-Fja"/>
+                            <constraint firstItem="pgN-TK-OFv" firstAttribute="top" secondItem="GrS-96-YOj" secondAttribute="bottom" id="m3v-Cf-2vS"/>
+                        </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <navigationItem key="navigationItem" title="Map" id="p95-aY-OQ5"/>
