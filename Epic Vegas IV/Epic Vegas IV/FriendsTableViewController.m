@@ -157,8 +157,6 @@
             [cell.userImageView loadInBackground];
         }
     }
-    
-    
 }
 
 

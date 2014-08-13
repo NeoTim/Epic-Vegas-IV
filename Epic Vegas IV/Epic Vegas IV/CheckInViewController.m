@@ -36,6 +36,8 @@
 
 -(void)viewDidAppear:(BOOL)animated
 {
+    _currentGeoPoint = nil;
+    
     [_locationNameTextField becomeFirstResponder];
     
     [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint *geoPoint, NSError *error) {
@@ -51,20 +53,9 @@
             
             [self.mapView setRegion:region animated:YES];
             
-            // Add the annotation to our map view
-            //CLLocation* location = [[CLLocation alloc] initWithLatitude:geoPoint.latitude longitude:geoPoint.longitude];
+            _currentGeoPoint = geoPoint;
 
             
-//            // Add an annotation
-//            MKPointAnnotation *myLocationPoint = [[MKPointAnnotation alloc] init];
-//            myLocationPoint.coordinate = location.coordinate;
-//            myLocationPoint.title = @"Where am I?";
-//            myLocationPoint.subtitle = @"I'm here!!!";
-//            
-//            [self.mapView addAnnotation:myLocationPoint];
-            
-            [[PFUser currentUser] setObject:geoPoint forKey:@"currentLocation"];
-            [[PFUser currentUser] saveInBackground];
         }
     }];
 }
@@ -90,12 +81,54 @@
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+-(BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    return [_locationNameTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]].length >= 1;
+}
+
+
+
 - (IBAction)textFieldFinished:(id)sender
 {
     NSLog(@"User checked in");
 
-    // initiate a checkin???
+    if(!_currentGeoPoint)
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Connection Issues"
+                                                        message:@"Unable to locate you, ensure that you have allowed the app to see your location."
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil];
+        [alert show];
+        [self dismissViewControllerAnimated:YES completion:nil];
+        return;
+    }
+    
+    // initiate a post checkin and dismiss the controller
     [self dismissViewControllerAnimated:YES completion:nil];
+    
+   
+    PFObject *post = [PFObject objectWithClassName:@"Post"];
+    NSString* locationName =[_locationNameTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+    PFUser *user = [PFUser currentUser];
+    post[@"user"] = user;
+    post[@"location"] = _currentGeoPoint;
+    post[@"locationName"] = locationName;
+    post[@"type"] = @"post";
+    
+    [post saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+        if(error)
+        {
+            NSLog(@"Error saving Check In Post: %@", error);
+        }
+        else
+        {
+            NSLog(@"Saved Checkin Post");
+        }
+    }];
+    
+    // update user location as well
+    [Utility updateCurrentUsersLocation:_currentGeoPoint withLocationName:locationName];
 }
 
 @end

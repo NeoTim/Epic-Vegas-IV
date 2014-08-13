@@ -38,4 +38,7 @@
 + (PFQuery *)queryForActivitiesOnPhoto:(PFObject *)photo cachePolicy:(PFCachePolicy)cachePolicy;
 
 + (NSString *)formattedDate:(NSDate *)date;
+
++(void)updateCurrentUsersLocation:(PFGeoPoint*)geoPoint withLocationName:(NSString*)locationName;
+
 @end

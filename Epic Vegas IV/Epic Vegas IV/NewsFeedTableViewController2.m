@@ -49,8 +49,12 @@
     [query orderByDescending:@"createdAt"];
     [query includeKey:@"photo"];
     [query includeKey:@"user"];
-    //[query includeKey:@"user.profilePictureSmall"];
+    [query whereKey:@"type" equalTo:@"post"];
+    
+    // only show messages
+    [query whereKeyExists:@"message"];
 
+    
     // enforce last refresh date to get data in pages (so pages don't get messed up when new things are added after refresh)
     [query whereKey:@"createdAt" lessThanOrEqualTo:self.lastRefreshDate];
     

@@ -480,7 +480,7 @@ NSInteger characterLimit = 300;
     [post setObject:user forKey:@"user"];
     
     // set the post type to be "Post"
-    post[@"type"] = @"standard"; // normal post
+    post[@"type"] = @"post"; // normal post
     
     if(photo)
     {

@@ -16,4 +16,6 @@
 
 - (IBAction)cancelButtonPressed:(id)sender;
 
+@property (strong, nonatomic) PFGeoPoint* currentGeoPoint;
+
 @end

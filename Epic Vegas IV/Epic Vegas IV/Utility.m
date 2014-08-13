@@ -505,4 +505,34 @@
     }
 }
 
++ (void)updateCurrentUsersLocation:(PFGeoPoint*)geoPoint withLocationName:(NSString*)locationName
+{
+    PFUser* currentUser = [PFUser currentUser];
+    if([PFUser currentUser])
+    {
+        currentUser[@"currentLocation"] = geoPoint;
+        currentUser[@"currentLocationUpdatedAt"] = [NSDate date];
+        
+        BOOL isUserStillAtPreviousLocation = YES;
+        
+        // leave the previous location there if the user is still at the location, otherwise remove it
+        if(!locationName && !isUserStillAtPreviousLocation)
+            [currentUser removeObjectForKey:@"currentLocationName"];
+        else
+            currentUser[@"currentLocationName"] = locationName;
+        
+        // save current user
+        [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+            if(error)
+            {
+                NSLog(@"Error saving current user location: %@", error);
+            }
+            else
+            {
+                NSLog(@"Saved Current User Location Post");
+            }
+        }];
+    }
+}
+
 @end
