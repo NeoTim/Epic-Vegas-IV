@@ -355,7 +355,7 @@
             return  40;
         
         
-        CGFloat height = 83; // this is the correct height
+        CGFloat height = 83 - 8; // this is the correct height
         
         
         int postIndex = indexPath.row;
@@ -381,7 +381,7 @@
                 
                 //NSLog(@"photo width = %f", scaledHeight);
                 
-                //height += 8; // for the padding
+                height += 20; // for the padding
             }
         }
         
