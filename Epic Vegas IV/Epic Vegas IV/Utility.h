@@ -41,4 +41,7 @@
 
 +(void)updateCurrentUsersLocation:(PFGeoPoint*)geoPoint withLocationName:(NSString*)locationName;
 
++ (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize;
+
++ (UIImage *)imageWithRoundedCornersSize:(float)cornerRadius usingImage:(UIImage *)original scaledToSize:(CGSize)newSize;
 @end

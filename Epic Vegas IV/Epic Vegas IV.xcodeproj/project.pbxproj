@@ -36,6 +36,8 @@
 		530BED44199052FF00C5FDAB /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 530BED43199052FF00C5FDAB /* LoginViewController.m */; };
 		53139854199ACEBA00E16D09 /* CheckInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53139853199ACEBA00E16D09 /* CheckInViewController.m */; };
 		5313985B199AF7EE00E16D09 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5313985A199AF7EE00E16D09 /* MapViewController.m */; };
+		5313985E199B034800E16D09 /* UserMapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5313985D199B034800E16D09 /* UserMapAnnotation.m */; };
+		53139861199B056A00E16D09 /* UserMapAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 53139860199B056A00E16D09 /* UserMapAnnotationView.m */; };
 		5315AC201999FAD20071E1DD /* FriendsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5315AC1F1999FAD20071E1DD /* FriendsTableViewController.m */; };
 		5315AC231999FC050071E1DD /* FriendTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5315AC221999FC050071E1DD /* FriendTableViewCell.m */; };
 		5315AC2B199A0C160071E1DD /* Separator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5315AC2A199A0C160071E1DD /* Separator@2x.png */; };
@@ -159,6 +161,10 @@
 		53139853199ACEBA00E16D09 /* CheckInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckInViewController.m; sourceTree = "<group>"; };
 		53139859199AF7ED00E16D09 /* MapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapViewController.h; sourceTree = "<group>"; };
 		5313985A199AF7EE00E16D09 /* MapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MapViewController.m; sourceTree = "<group>"; };
+		5313985C199B034800E16D09 /* UserMapAnnotation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserMapAnnotation.h; sourceTree = "<group>"; };
+		5313985D199B034800E16D09 /* UserMapAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserMapAnnotation.m; sourceTree = "<group>"; };
+		5313985F199B056A00E16D09 /* UserMapAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserMapAnnotationView.h; sourceTree = "<group>"; };
+		53139860199B056A00E16D09 /* UserMapAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserMapAnnotationView.m; sourceTree = "<group>"; };
 		5315AC1E1999FAD20071E1DD /* FriendsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsTableViewController.h; sourceTree = "<group>"; };
 		5315AC1F1999FAD20071E1DD /* FriendsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsTableViewController.m; sourceTree = "<group>"; };
 		5315AC211999FC050071E1DD /* FriendTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendTableViewCell.h; sourceTree = "<group>"; };
@@ -482,6 +488,10 @@
 			children = (
 				53139859199AF7ED00E16D09 /* MapViewController.h */,
 				5313985A199AF7EE00E16D09 /* MapViewController.m */,
+				5313985C199B034800E16D09 /* UserMapAnnotation.h */,
+				5313985D199B034800E16D09 /* UserMapAnnotation.m */,
+				5313985F199B056A00E16D09 /* UserMapAnnotationView.h */,
+				53139860199B056A00E16D09 /* UserMapAnnotationView.m */,
 			);
 			name = Map;
 			sourceTree = "<group>";
@@ -781,6 +791,7 @@
 				530BED0419904C7700C5FDAB /* AppDelegate.m in Sources */,
 				53B5948D19995D7C00505BDD /* QueryTableViewController.m in Sources */,
 				53139854199ACEBA00E16D09 /* CheckInViewController.m in Sources */,
+				5313985E199B034800E16D09 /* UserMapAnnotation.m in Sources */,
 				530BED0019904C7700C5FDAB /* main.m in Sources */,
 				53EFEAAE1995B1D8006798C3 /* UIImage+ResizeAdditions.m in Sources */,
 				53C5BCD3199714600060B49A /* LoadNextPageTableViewCell.m in Sources */,
@@ -790,6 +801,7 @@
 				5394C93E19986946002EB1A3 /* NewsFeedTableViewController2.m in Sources */,
 				53EFEAC11995B3C2006798C3 /* Cache.m in Sources */,
 				53165F621991D04E0014695B /* TabBarController.m in Sources */,
+				53139861199B056A00E16D09 /* UserMapAnnotationView.m in Sources */,
 				5394C934199845F8002EB1A3 /* RemovePhotoViewController.m in Sources */,
 				53EFEAC41995B493006798C3 /* Utility.m in Sources */,
 				53EFEADF1995C827006798C3 /* Reachability.m in Sources */,

@@ -8,6 +8,8 @@
 
 #import "MapViewController.h"
 #import "AppDelegate.h"
+#import "UserMapAnnotation.h"
+#import "UserMapAnnotationView.h"
 
 @interface MapViewController ()
 
@@ -28,6 +30,8 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    
+    _mapView.delegate = self;
 }
 
 -(void)viewDidAppear:(BOOL)animated
@@ -93,20 +97,77 @@
         if(!geoPoint)
             continue;
         
-        MKPointAnnotation* point = [[MKPointAnnotation alloc] init];
-        CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(geoPoint.latitude,geoPoint.longitude);
-
-        point.coordinate = coordinate;
+        //MKPointAnnotation* point = [[MKPointAnnotation alloc] init];
         
-        point.title = user[@"displayName"];
+        CLLocationCoordinate2D coordinate = CLLocationCoordinate2DMake(geoPoint.latitude,geoPoint.longitude);
+        
+        //point.coordinate = coordinate;
+        //point.title = user[@"displayName"];
         
         //point.title = @"Where am I?";
         //point.subtitle = @"I'm here!!!";
-        NSLog(@"adding map point for user: %@", point.title);
         
-        [self.mapView addAnnotation:point];
+        UserMapAnnotation* userAnnotation = [[UserMapAnnotation alloc] init];
+        userAnnotation.coordinate = coordinate;
+        userAnnotation.title = user[@"displayName"];
+        
+        PFFile *imageFile = [[PFUser currentUser] objectForKey:kUserProfilePicSmallKey];
+        if (imageFile) {
+            [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
+                if(!error)
+                {
+                    NSLog(@"adding map point for user: %@", userAnnotation.title);
+                    //userAnnotation.userImage = [Utility imageWithImage: [UIImage imageWithData:data] scaledToSize:CGSizeMake(60, 60)];
+             
+                    userAnnotation.userImage = [Utility imageWithRoundedCornersSize:30 usingImage:[UIImage imageWithData:data] scaledToSize:CGSizeMake(60, 60)];
+                    [self.mapView addAnnotation:userAnnotation];
+                }
+                else{
+                    
+                }
+                
+            }];
+        }
     }
     NSLog(@"Map refreshed");
+}
+
+- (MKAnnotationView *)mapView:(MKMapView *)theMapView viewForAnnotation:(id <MKAnnotation>)annotation
+{
+    static NSString *SFAnnotationIdentifier = @"SFAnnotationIdentifier";
+    MKAnnotationView *pinView =
+    (MKAnnotationView *)[_mapView dequeueReusableAnnotationViewWithIdentifier:SFAnnotationIdentifier];
+    if (!pinView)
+    {
+        MKAnnotationView *annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation
+                                                                        reuseIdentifier:SFAnnotationIdentifier];
+      
+        UserMapAnnotation* userAnnotation = (UserMapAnnotation*)annotation;
+        NSLog(@"setting map point for user: %@", userAnnotation.title);
+        annotationView.canShowCallout = YES;
+        annotationView.image = userAnnotation.userImage;
+//        annotationView.layer.masksToBounds = YES;
+//        annotationView.layer.cornerRadius = 30;
+//        annotationView.layer.borderColor = [UIColor grayColor].CGColor;
+//        annotationView.layer.borderWidth = .1;
+
+        
+//        UIImageView* mask = [[UIImageView alloc] initWithFrame:annotationView.frame];
+//        mask.layer.cornerRadius = 30;
+//        mask.layer.masksToBounds = YES;
+//        mask.backgroundColor = [UIColor clearColor];
+//        mask.layer.borderColor = [UIColor grayColor].CGColor;
+//        mask.layer.borderWidth = .1;
+        //[annotationView addSubview:mask];
+        
+        
+        return annotationView;
+    }
+    else
+    {
+        pinView.annotation = annotation;
+    }
+    return pinView;
 }
 
 - (PFQuery *)queryForMap {
