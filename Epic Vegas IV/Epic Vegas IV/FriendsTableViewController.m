@@ -10,6 +10,7 @@
 #import "LoadNextPageTableViewCell.h"
 #import "FriendTableViewCell.h"
 #import "ProfileTableViewController.h"
+#import "AppDelegate.h"
 
 @interface FriendsTableViewController ()
 
@@ -144,6 +145,49 @@
     PFObject* user = self.queryObjects[index];
     if(!user)
         return;
+    
+    if(user[@"currentLocation"])
+    {
+        NSString* distanceText = @"";
+        
+        // get distance if friend and current user have location geopoints
+        if([PFUser currentUser] && [PFUser currentUser][@"currentLocation"])
+        {
+            PFGeoPoint* friendLocation = user[@"currentLocation"];
+            PFGeoPoint* myLocation = [PFUser currentUser][@"currentLocation"];
+            
+            double miles = [friendLocation distanceInMilesTo:myLocation];
+            distanceText = [NSString stringWithFormat:@"%.1f mi · ", miles];
+
+            // get rid of leading zero
+            if([distanceText hasPrefix:@"0."])
+                distanceText = [distanceText substringFromIndex:1];
+        }
+        
+        // update location name label
+        NSString* currentLocationName = user[@"currentLocationName"];
+        if(currentLocationName)
+        {
+            cell.locationNameLabel.text = currentLocationName;
+        }
+        
+        // show when it was updated along with the mile distance
+        NSDate* currentLocationUpdatedAt = user[@"currentLocationUpdatedAt"];
+        if(currentLocationUpdatedAt)
+        {
+            NSString* updatedAtText =[Utility formattedDate:user[@"currentLocationUpdatedAt"]];
+
+            cell.lastUpdatedLabel.text = [NSString stringWithFormat:@"%@%@", distanceText, updatedAtText];
+        }
+        else
+        {
+            cell.lastUpdatedLabel.text = nil;
+        }
+    }
+    else{
+        cell.locationNameLabel.text = @"Location unknown";
+        cell.lastUpdatedLabel.text = nil;
+    }
     
     NSString *displayName = user[@"displayName"] ?: @"[No Name]";
     cell.nameLabel.text = displayName;
