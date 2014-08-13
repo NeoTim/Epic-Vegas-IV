@@ -89,7 +89,7 @@
         PFFile *fileLargeImage = [PFFile fileWithData:largeImageData];
         [fileLargeImage saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if (!error) {
-                [[PFUser currentUser] setObject:fileLargeImage forKey:kUserProfilePicLargeKey];
+                [[PFUser currentUser] setObject:fileLargeImage forKey:@"profilePictureLarge"];
                 [[PFUser currentUser] saveEventually];
             }
         }];
@@ -100,7 +100,7 @@
         PFFile *fileMediumImage = [PFFile fileWithData:mediumImageData];
         [fileMediumImage saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if (!error) {
-                [[PFUser currentUser] setObject:fileMediumImage forKey:kUserProfilePicMediumKey];
+                [[PFUser currentUser] setObject:fileMediumImage forKey:@"profilePictureMedium"];
                 [[PFUser currentUser] saveEventually];
             }
         }];
@@ -110,7 +110,7 @@
         PFFile *fileSmallRoundedImage = [PFFile fileWithData:smallRoundedImageData];
         [fileSmallRoundedImage saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if (!error) {
-                [[PFUser currentUser] setObject:fileSmallRoundedImage forKey:kUserProfilePicSmallKey];
+                [[PFUser currentUser] setObject:fileSmallRoundedImage forKey:@"profilePictureSmall"];
                 [[PFUser currentUser] saveEventually];
             }
         }];
@@ -118,33 +118,18 @@
 }
 
 + (BOOL)userHasValidFacebookData:(PFUser *)user {
-    NSString *facebookId = [user objectForKey:kUserFacebookIDKey];
+    NSString *facebookId = [user objectForKey:@"facebookId"];
     return (facebookId && facebookId.length > 0);
 }
 
 + (BOOL)userHasProfilePictures:(PFUser *)user {
-    PFFile *profilePictureMedium = [user objectForKey:kUserProfilePicMediumKey];
-    PFFile *profilePictureSmall = [user objectForKey:kUserProfilePicSmallKey];
+    PFFile *profilePictureLarge = [user objectForKey:@"profilePictureLarge"];
+    PFFile *profilePictureMedium = [user objectForKey:@"profilePictureMedium"];
+    PFFile *profilePictureSmall = [user objectForKey:@"profilePictureSmall"];
     
-    return (profilePictureMedium && profilePictureSmall);
+    return (profilePictureLarge && profilePictureMedium && profilePictureSmall);
 }
 
-
-#pragma mark Display Name
-
-+ (NSString *)firstNameForDisplayName:(NSString *)displayName {
-    if (!displayName || displayName.length == 0) {
-        return @"Someone";
-    }
-    
-    NSArray *displayNameComponents = [displayName componentsSeparatedByCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-    NSString *firstName = [displayNameComponents objectAtIndex:0];
-    if (firstName.length > 100) {
-        // truncate to 100 so that it fits in a Push payload
-        firstName = [firstName substringToIndex:100];
-    }
-    return firstName;
-}
 
 
 

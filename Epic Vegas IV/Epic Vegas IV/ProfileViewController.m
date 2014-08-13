@@ -36,14 +36,14 @@
     // Do any additional setup after loading the view.
     //_fbProfilePicView.profileID = [PFUser currentUser][@"fbId"];
     
-    _userNameLabel.text = [PFUser currentUser][kUserDisplayNameKey];
+    _userNameLabel.text = [PFUser currentUser][@"displayName"];
 }
 
 -(void)viewWillAppear:(BOOL)animated
 {
     if(!_fbProfilePicView.image)
     {
-        PFFile *imageFile = [[PFUser currentUser] objectForKey:kUserProfilePicLargeKey];
+        PFFile *imageFile = [[PFUser currentUser] objectForKey:@"profilePictureLarge"];
         if (imageFile) {
             [_fbProfilePicView setFile:imageFile];
             [_fbProfilePicView loadInBackground:^(UIImage *image, NSError *error) {

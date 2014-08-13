@@ -99,7 +99,6 @@
 		53EFEAAD1995B1D8006798C3 /* UIImage+AlphaAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 53EFEAA81995B1D8006798C3 /* UIImage+AlphaAdditions.m */; };
 		53EFEAAE1995B1D8006798C3 /* UIImage+ResizeAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 53EFEAAA1995B1D8006798C3 /* UIImage+ResizeAdditions.m */; };
 		53EFEAAF1995B1D8006798C3 /* UIImage+RoundedCornerAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 53EFEAAC1995B1D8006798C3 /* UIImage+RoundedCornerAdditions.m */; };
-		53EFEABB1995B2EA006798C3 /* Constants.m in Sources */ = {isa = PBXBuildFile; fileRef = 53EFEABA1995B2EA006798C3 /* Constants.m */; };
 		53EFEAC11995B3C2006798C3 /* Cache.m in Sources */ = {isa = PBXBuildFile; fileRef = 53EFEAC01995B3C2006798C3 /* Cache.m */; };
 		53EFEAC41995B493006798C3 /* Utility.m in Sources */ = {isa = PBXBuildFile; fileRef = 53EFEAC31995B493006798C3 /* Utility.m */; };
 		53EFEACA1995C6BF006798C3 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53EFEAC91995C6BF006798C3 /* Accelerate.framework */; };
@@ -243,8 +242,6 @@
 		53EFEAAA1995B1D8006798C3 /* UIImage+ResizeAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+ResizeAdditions.m"; sourceTree = "<group>"; };
 		53EFEAAB1995B1D8006798C3 /* UIImage+RoundedCornerAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+RoundedCornerAdditions.h"; sourceTree = "<group>"; };
 		53EFEAAC1995B1D8006798C3 /* UIImage+RoundedCornerAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+RoundedCornerAdditions.m"; sourceTree = "<group>"; };
-		53EFEAB91995B2EA006798C3 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constants.h; sourceTree = "<group>"; };
-		53EFEABA1995B2EA006798C3 /* Constants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Constants.m; sourceTree = "<group>"; };
 		53EFEABF1995B3C2006798C3 /* Cache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Cache.h; sourceTree = "<group>"; };
 		53EFEAC01995B3C2006798C3 /* Cache.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Cache.m; sourceTree = "<group>"; };
 		53EFEAC21995B493006798C3 /* Utility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utility.h; sourceTree = "<group>"; };
@@ -365,8 +362,6 @@
 				53EFEAA01995AF65006798C3 /* Controllers */,
 				530BED0219904C7700C5FDAB /* AppDelegate.h */,
 				530BED0319904C7700C5FDAB /* AppDelegate.m */,
-				53EFEAB91995B2EA006798C3 /* Constants.h */,
-				53EFEABA1995B2EA006798C3 /* Constants.m */,
 				53EFEABF1995B3C2006798C3 /* Cache.h */,
 				53EFEAC01995B3C2006798C3 /* Cache.m */,
 				53EFEAC21995B493006798C3 /* Utility.h */,
@@ -796,7 +791,6 @@
 				53EFEAAE1995B1D8006798C3 /* UIImage+ResizeAdditions.m in Sources */,
 				53C5BCD3199714600060B49A /* LoadNextPageTableViewCell.m in Sources */,
 				53EFEAE01995C827006798C3 /* TTTTimeIntervalFormatter.m in Sources */,
-				53EFEABB1995B2EA006798C3 /* Constants.m in Sources */,
 				53EFEAAF1995B1D8006798C3 /* UIImage+RoundedCornerAdditions.m in Sources */,
 				5394C93E19986946002EB1A3 /* NewsFeedTableViewController2.m in Sources */,
 				53EFEAC11995B3C2006798C3 /* Cache.m in Sources */,

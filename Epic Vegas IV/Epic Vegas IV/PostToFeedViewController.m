@@ -68,7 +68,7 @@ NSInteger characterLimit = 300;
     // Load user's photo into the post text box
     if(!_profileImageView.image)
     {
-        PFFile *imageFile = [[PFUser currentUser] objectForKey:kUserProfilePicSmallKey];
+        PFFile *imageFile = [[PFUser currentUser] objectForKey:@"profilePictureSmall"];
         if (imageFile) {
             [_profileImageView setFile:imageFile];
             [_profileImageView loadInBackground:^(UIImage *image, NSError *error) {
@@ -397,11 +397,11 @@ NSInteger characterLimit = 300;
             }];
             
             // create a photo object
-            photo = [PFObject objectWithClassName:kPhotoClassKey];
+            photo = [PFObject objectWithClassName:@"Photo"];
             
             NSLog(@"photo with object id created: %@", photo.objectId);
-            [photo setObject:[PFUser currentUser] forKey:kPhotoUserKey];
-            [photo setObject:self.resizedPhotoFile forKey:kPhotoThumbnailKey];
+            [photo setObject:[PFUser currentUser] forKey:@"user"];
+            [photo setObject:self.resizedPhotoFile forKey:@"thumbnail"];
             photo[@"thumbnailWidth"] = [NSString stringWithFormat:@"%f", thumbnailWidth];
             photo[@"thumbnailHeight"] = [NSString stringWithFormat:@"%f", thumbnailHeight];
             
@@ -425,7 +425,7 @@ NSInteger characterLimit = 300;
                     [self createPostWithPhoto:photo];
                     
                     // in background upload the larger photo
-                    [photo setObject:self.photoFile forKey:kPhotoPictureKey];
+                    [photo setObject:self.photoFile forKey:@"image"];
                     
                     photo[@"originalWidth"] = [NSString stringWithFormat:@"%f", largeImageWidth];
                     photo[@"originalHeight"] = [NSString stringWithFormat:@"%f", largeImageHeight];
@@ -435,29 +435,6 @@ NSInteger characterLimit = 300;
                         }
                     }];
 
-//                    // userInfo might contain any caption which might have been posted by the uploader
-//                    if (userInfo) {
-//                        NSString *commentText = [userInfo objectForKey:kEditPhotoViewControllerUserInfoCommentKey];
-//                        
-//                        if (commentText && commentText.length != 0) {
-//                            // create and save photo caption
-//                            PFObject *comment = [PFObject objectWithClassName:kActivityClassKey];
-//                            [comment setObject:kActivityTypeComment forKey:kActivityTypeKey];
-//                            [comment setObject:photo forKey:kActivityPhotoKey];
-//                            [comment setObject:[PFUser currentUser] forKey:kActivityFromUserKey];
-//                            [comment setObject:[PFUser currentUser] forKey:kActivityToUserKey];
-//                            [comment setObject:commentText forKey:kActivityContentKey];
-//                            
-//                            PFACL *ACL = [PFACL ACLWithUser:[PFUser currentUser]];
-//                            [ACL setPublicReadAccess:YES];
-//                            comment.ACL = ACL;
-//                            
-//                            [comment saveEventually];
-//                            [[Cache sharedCache] incrementCommentCountForPhoto:photo];
-//                        }
-//                    }
-                    
-                    //[[NSNotificationCenter defaultCenter] postNotificationName:PAPTabBarControllerDidFinishEditingPhotoNotification object:photo];
                 } else {
                     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Couldn't post your photo" message:nil delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Dismiss", nil];
                     [alert show];
