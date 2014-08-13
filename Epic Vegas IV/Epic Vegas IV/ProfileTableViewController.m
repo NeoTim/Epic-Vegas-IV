@@ -363,7 +363,7 @@
                 lastUpdatedAndDistanceLabelHeight = 20;
         }
         
-        return 367 + locationNameLabelHeight + lastUpdatedAndDistanceLabelHeight - 8;
+        return 367 + locationNameLabelHeight + lastUpdatedAndDistanceLabelHeight;
     }
     else
     {
