@@ -202,6 +202,62 @@
         UILabel* userNameLabel = (UILabel*)[headerCell viewWithTag:6];
         userNameLabel.text = _profileUser[@"displayName"];
         userNameLabel.textAlignment = NSTextAlignmentCenter;
+        
+        // setup location info
+        NSString* locationName = _profileUser[@"currentLocationName"];
+        UILabel* locationNameLabel = (UILabel*)[headerCell viewWithTag:555];
+        locationNameLabel.textAlignment = NSTextAlignmentCenter;
+        
+        UILabel* lastUpdatedAndDistanceLabel = (UILabel*)[headerCell viewWithTag:556];
+        lastUpdatedAndDistanceLabel.textAlignment = NSTextAlignmentCenter;
+        if(locationName)
+        {
+            locationNameLabel.text = locationName;
+        }
+        else if(_profileUser[@"currentLocation"])
+        {
+            locationNameLabel.text = @"Unnamed Location";
+        }
+        else
+        {
+            locationNameLabel.text = @"Unknown Location";
+        }
+        
+        if(_profileUser[@"currentLocation"])
+        {
+            NSString* distanceText = @"";
+            
+            // get distance if friend and current user have location geopoints
+            if([PFUser currentUser] && [PFUser currentUser][@"currentLocation"])
+            {
+                PFGeoPoint* friendLocation = _profileUser[@"currentLocation"];
+                PFGeoPoint* myLocation = [PFUser currentUser][@"currentLocation"];
+                
+                double miles = [friendLocation distanceInMilesTo:myLocation];
+                distanceText = [NSString stringWithFormat:@"%.1f mi · ", miles];
+                
+                // get rid of leading zero
+                if([distanceText hasPrefix:@"0."])
+                    distanceText = [distanceText substringFromIndex:1];
+            }
+
+            // show when it was updated along with the mile distance
+            NSDate* currentLocationUpdatedAt = _profileUser[@"currentLocationUpdatedAt"];
+            if(currentLocationUpdatedAt)
+            {
+                NSString* updatedAtText =[Utility formattedDate:_profileUser[@"currentLocationUpdatedAt"]];
+                
+                lastUpdatedAndDistanceLabel.text = [NSString stringWithFormat:@"%@%@", distanceText, updatedAtText];
+            }
+            else
+            {
+                lastUpdatedAndDistanceLabel.text = nil;
+            }
+        }
+        else
+        {
+            lastUpdatedAndDistanceLabel.text = nil;
+        }
     }
     
     return headerCell;
@@ -279,7 +335,18 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if(indexPath.section == 0)
     {
-        return 367;
+        CGFloat baseHeight = 367;
+        
+        CGFloat locationNameLabelHeight = 20;
+        CGFloat lastUpdatedAndDistanceLabelHeight = 0;
+        
+        if(self.profileUser)
+        {
+            if(self.profileUser[@"currentLocation"])
+                lastUpdatedAndDistanceLabelHeight = 20;
+        }
+        
+        return 367 + locationNameLabelHeight + lastUpdatedAndDistanceLabelHeight;
     }
     else
     {
@@ -336,8 +403,7 @@
 
 - (IBAction)facebookButtonPressed:(id)sender {
     if(_profileUser && _profileUser[@"facebookId"])
-    {
-        
+    {        
         // open users facebook profile
         NSString* urlString = [NSString stringWithFormat:@"http://facebook.com/%@", _profileUser[@"facebookId"]];
         
