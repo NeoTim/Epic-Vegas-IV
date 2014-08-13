@@ -32,6 +32,10 @@
     self = [super init];
     if (self) {
         self.cache = [[NSCache alloc] init];
+        _shouldRefreshFriendsOnDisplay = YES;
+        _shouldRefreshMapOnDisplay = YES;
+        _shouldRefreshNewsfeedOnDisplay = YES;
+        _shouldRefreshProfileOnDisplay = YES;
     }
     return self;
 }
@@ -41,7 +45,5 @@
 - (void)clear {
     [self.cache removeAllObjects];
 }
-
-
 
 @end

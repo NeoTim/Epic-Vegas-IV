@@ -60,8 +60,16 @@
         _rightBarbuttonItem.image = [UIImage imageNamed:@"Settings 44.png"];
         [_rightBarbuttonItem setEnabled:YES];
     }
-    
-    
+}
+
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    if(_profileUser == [PFUser currentUser] && [Cache sharedCache].shouldRefreshProfileOnDisplay)
+    {
+        [Cache sharedCache].shouldRefreshProfileOnDisplay = NO;
+        [self refreshDataSources];
+    }
 }
 
 - (void)didReceiveMemoryWarning

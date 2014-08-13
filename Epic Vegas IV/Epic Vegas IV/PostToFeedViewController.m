@@ -476,6 +476,9 @@ NSInteger characterLimit = 300;
             
             // dismiss view
             [self dismissViewControllerAnimated:YES completion:nil];
+            
+            [Cache sharedCache].shouldRefreshNewsfeedOnDisplay = YES;
+            [Cache sharedCache].shouldRefreshProfileOnDisplay = YES;
         });
     }];
 

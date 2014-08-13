@@ -32,12 +32,16 @@
     // Do any additional setup after loading the view.
     
     _mapView.delegate = self;
-    [self refreshDataSources];
 }
 
 -(void)viewDidAppear:(BOOL)animated
 {
-    
+    [super viewDidAppear:animated];
+    if([Cache sharedCache].shouldRefreshMapOnDisplay)
+    {
+        [Cache sharedCache].shouldRefreshMapOnDisplay = NO;
+        [self refreshDataSources];
+    }
 }
 
 -(void)refreshDataSources

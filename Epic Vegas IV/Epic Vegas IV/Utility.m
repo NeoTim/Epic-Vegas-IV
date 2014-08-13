@@ -292,6 +292,8 @@
             else
             {
                 NSLog(@"Saved Current User Location Post");
+                [Cache sharedCache].shouldRefreshMapOnDisplay = YES;
+                [Cache sharedCache].shouldRefreshFriendsOnDisplay = YES;
             }
         }];
     }

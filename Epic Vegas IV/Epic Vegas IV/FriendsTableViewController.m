@@ -40,6 +40,16 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    if([Cache sharedCache].shouldRefreshFriendsOnDisplay)
+    {
+        [Cache sharedCache].shouldRefreshFriendsOnDisplay = NO;
+        [self refreshDataSources];
+    }
+}
+
 - (PFQuery *)queryForTable {
     PFQuery *query = [PFQuery queryWithClassName:@"_User"];
     [query orderByDescending:@"createdAt"];

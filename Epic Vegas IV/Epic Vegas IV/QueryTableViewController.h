@@ -33,4 +33,6 @@
 
 -(CGSize)getLabelSize:(NSString*)text withFontName:(NSString*)fontName withFontSize:(CGFloat)fontSize forFixedWidth:(CGFloat)width;
 
+-(void)refreshDataSources;
+
 @end

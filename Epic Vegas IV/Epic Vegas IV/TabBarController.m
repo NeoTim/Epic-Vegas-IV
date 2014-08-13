@@ -55,8 +55,6 @@ UIButton* selectExistingPhotoButton;
     return self;
 }
 
-
-
 -(void)handleAddCompleted
 {
     [self hideAddActionButtons];

@@ -44,6 +44,16 @@
     self.tableView.allowsSelection = NO;
 }
 
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    if([Cache sharedCache].shouldRefreshNewsfeedOnDisplay)
+    {
+        [Cache sharedCache].shouldRefreshNewsfeedOnDisplay = NO;
+        [self refreshDataSources];
+    }
+}
+
 - (PFQuery *)queryForTable {
     PFQuery *query = [PFQuery queryWithClassName:@"Post"];
     [query orderByDescending:@"createdAt"];

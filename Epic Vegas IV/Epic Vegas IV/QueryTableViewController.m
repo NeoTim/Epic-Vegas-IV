@@ -124,6 +124,10 @@
                 [self.refreshControl endRefreshing];
         }
     }];
+    
+    
+    if(self.refreshControl)
+        [self.refreshControl endRefreshing];
 }
 
 -(void)showActivityIndicator
