@@ -153,14 +153,16 @@
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)theMapView viewForAnnotation:(id <MKAnnotation>)annotation
-{    
-    static NSString *SFAnnotationIdentifier = @"SFAnnotationIdentifier";
-    MKAnnotationView *pinView = (MKAnnotationView *)[_mapView dequeueReusableAnnotationViewWithIdentifier:SFAnnotationIdentifier];
+{
+    // base it on the user (title)
+    NSString *reuseIdentifier = annotation.title;
+    
+    MKAnnotationView *pinView = (MKAnnotationView *)[_mapView dequeueReusableAnnotationViewWithIdentifier:reuseIdentifier];
     
     if(!pinView)
     {
         MKAnnotationView *annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation
-                                                                        reuseIdentifier:SFAnnotationIdentifier];
+                                                                        reuseIdentifier:reuseIdentifier];
         UserMapAnnotation* userAnnotation = (UserMapAnnotation*)annotation;
         NSLog(@"setting map point for user: %@", userAnnotation.title);
         annotationView.canShowCallout = YES;

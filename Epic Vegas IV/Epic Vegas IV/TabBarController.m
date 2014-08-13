@@ -445,6 +445,9 @@ UIButton* selectExistingPhotoButton;
 
 -(IBAction)selectExistingPhotoButtonClicked:(id)sender
 {
+    // don't do anything if 
+    
+    
     [UIView transitionWithView:self.view.window
                       duration:0.5
                        options:UIViewAnimationOptionTransitionFlipFromLeft
