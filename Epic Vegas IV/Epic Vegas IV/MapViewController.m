@@ -32,10 +32,18 @@
     // Do any additional setup after loading the view.
     
     _mapView.delegate = self;
+    [self refreshDataSources];
 }
 
 -(void)viewDidAppear:(BOOL)animated
 {
+    
+}
+
+-(void)refreshDataSources
+{
+    [_refreshButton setEnabled:NO];
+    
     // get geopoint if it is stale
     [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint *geoPoint, NSError *error) {
         if (!error) {
@@ -52,8 +60,12 @@
             
             [self.mapView setRegion:region animated:YES];
         }
+        else
+        {
+            [_refreshButton setEnabled:YES];
+        }
     }];
-
+    
     // query for users
     PFQuery* query = [self queryForMap];
     _queryObjects = [[NSMutableArray alloc] init];
@@ -66,7 +78,7 @@
                 
                 // The find succeeded.
                 NSLog(@"Successfully retrieved %d new objects.", objects.count);
-   
+                
                 // add objects to posts array, make null objects for all other arrays
                 for(id object in objects)
                 {
@@ -78,7 +90,7 @@
                     
                     NSLog(@"Map data updated");
                     [self refreshMap];
-                    
+                    [_refreshButton setEnabled:YES];
                 });
             });
             
@@ -86,12 +98,15 @@
             // Log details of the failure
             NSLog(@"Error during map refresh: %@ %@", error, [error userInfo]);
             
+            [_refreshButton setEnabled:YES];
         }
     }];
 }
 
 -(void)refreshMap
 {
+    [_mapView removeAnnotations:_mapView.annotations];
+    
     for(id object in _queryObjects)
     {
         PFUser* user = (PFUser*)object;
@@ -119,9 +134,8 @@
                 if(!error)
                 {
                     NSLog(@"adding map point for user: %@", userAnnotation.title);
-                    //userAnnotation.userImage = [Utility imageWithImage: [UIImage imageWithData:data] scaledToSize:CGSizeMake(60, 60)];
              
-                    userAnnotation.userImage = [Utility imageWithRoundedCornersSize:30 usingImage:[UIImage imageWithData:data] scaledToSize:CGSizeMake(60, 60)];
+                    userAnnotation.userImage = [Utility imageWithRoundedCornersSize:15 usingImage:[UIImage imageWithData:data] scaledToSize:CGSizeMake(30, 30)];
                     [self.mapView addAnnotation:userAnnotation];
                 }
                 else{
@@ -135,41 +149,24 @@
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)theMapView viewForAnnotation:(id <MKAnnotation>)annotation
-{
+{    
     static NSString *SFAnnotationIdentifier = @"SFAnnotationIdentifier";
-    MKAnnotationView *pinView =
-    (MKAnnotationView *)[_mapView dequeueReusableAnnotationViewWithIdentifier:SFAnnotationIdentifier];
-    if (!pinView)
+    MKAnnotationView *pinView = (MKAnnotationView *)[_mapView dequeueReusableAnnotationViewWithIdentifier:SFAnnotationIdentifier];
+    
+    if(!pinView)
     {
         MKAnnotationView *annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation
                                                                         reuseIdentifier:SFAnnotationIdentifier];
-      
         UserMapAnnotation* userAnnotation = (UserMapAnnotation*)annotation;
         NSLog(@"setting map point for user: %@", userAnnotation.title);
         annotationView.canShowCallout = YES;
         annotationView.image = userAnnotation.userImage;
-//        annotationView.layer.masksToBounds = YES;
-//        annotationView.layer.cornerRadius = 30;
-//        annotationView.layer.borderColor = [UIColor grayColor].CGColor;
-//        annotationView.layer.borderWidth = .1;
-
-        
-//        UIImageView* mask = [[UIImageView alloc] initWithFrame:annotationView.frame];
-//        mask.layer.cornerRadius = 30;
-//        mask.layer.masksToBounds = YES;
-//        mask.backgroundColor = [UIColor clearColor];
-//        mask.layer.borderColor = [UIColor grayColor].CGColor;
-//        mask.layer.borderWidth = .1;
-        //[annotationView addSubview:mask];
-        
         
         return annotationView;
     }
-    else
-    {
-        pinView.annotation = annotation;
-    }
+    pinView.annotation = annotation;
     return pinView;
+    
 }
 
 - (PFQuery *)queryForMap {
@@ -177,7 +174,6 @@
     [query orderByDescending:@"createdAt"];
     [query includeKey:@"photo"];
     [query whereKeyExists:@"currentLocation"];
-    
     
     //[query includeKey:@"user.profilePictureSmall"];
     
@@ -211,5 +207,8 @@
 
 - (IBAction)cancelButtonPressed:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+- (IBAction)refreshButtonPressed:(id)sender {
+    [self refreshDataSources];
 }
 @end

@@ -418,8 +418,7 @@ NSInteger characterLimit = 300;
             // Save the Photo PFObject
             [photo saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
                 if (succeeded) {
-                    [[Cache sharedCache] setAttributesForPhoto:photo likers:[NSArray array] commenters:[NSArray array] likedByCurrentUser:NO];
-                    
+                     
                     NSLog(@"thumbnail photo saved");
                     
                     [self createPostWithPhoto:photo];

@@ -144,6 +144,8 @@ ProfileTableViewController* profileViewController;
     if(!user)
         return;
     
+    cell.locationNameLabel.text = @"Unnamed location";;
+    
     if(user[@"currentLocation"])
     {
         NSString* distanceText = @"";

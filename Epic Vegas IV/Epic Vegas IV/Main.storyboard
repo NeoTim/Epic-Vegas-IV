@@ -277,9 +277,16 @@
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
-                    <navigationItem key="navigationItem" title="Map" id="p95-aY-OQ5"/>
+                    <navigationItem key="navigationItem" title="Map" id="p95-aY-OQ5">
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="UxE-Qc-44a">
+                            <connections>
+                                <action selector="refreshButtonPressed:" destination="mZ9-Yh-Wjp" id="Vt6-5u-vXr"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="GrS-96-YOj" id="kqb-gA-SH6"/>
+                        <outlet property="refreshButton" destination="UxE-Qc-44a" id="IXH-tv-vU3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S8C-Os-Dol" userLabel="First Responder" sceneMemberID="firstResponder"/>

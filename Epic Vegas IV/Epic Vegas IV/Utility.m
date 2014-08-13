@@ -78,10 +78,10 @@
     UIImage *image = [UIImage imageWithData:newProfilePictureData];
     
     UIImage *largeImage = [image thumbnailImage:800 transparentBorder:0 cornerRadius:0 interpolationQuality:kCGInterpolationHigh];
-    UIImage *mediumImage = [image thumbnailImage:640 transparentBorder:0 cornerRadius:0 interpolationQuality:kCGInterpolationHigh];
+    //UIImage *mediumImage = [image thumbnailImage:640 transparentBorder:0 cornerRadius:0 interpolationQuality:kCGInterpolationHigh];
     UIImage *smallRoundedImage = [image thumbnailImage:120 transparentBorder:0 cornerRadius:0 interpolationQuality:kCGInterpolationHigh];
     NSData *largeImageData = UIImageJPEGRepresentation(largeImage, 1.0); // using JPEG for larger pictures
-    NSData *mediumImageData = UIImageJPEGRepresentation(mediumImage, 1.0); // using JPEG for larger pictures
+    //NSData *mediumImageData = UIImageJPEGRepresentation(mediumImage, 1.0); // using JPEG for larger pictures
     //NSData *smallRoundedImageData = UIImagePNGRepresentation(smallRoundedImage);
     NSData *smallRoundedImageData = UIImageJPEGRepresentation(smallRoundedImage, 1.0);
     
@@ -96,15 +96,15 @@
     }
 
     
-    if (mediumImageData.length > 0) {
-        PFFile *fileMediumImage = [PFFile fileWithData:mediumImageData];
-        [fileMediumImage saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-            if (!error) {
-                [[PFUser currentUser] setObject:fileMediumImage forKey:@"profilePictureMedium"];
-                [[PFUser currentUser] saveEventually];
-            }
-        }];
-    }
+//    if (mediumImageData.length > 0) {
+//        PFFile *fileMediumImage = [PFFile fileWithData:mediumImageData];
+//        [fileMediumImage saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+//            if (!error) {
+//                [[PFUser currentUser] setObject:fileMediumImage forKey:@"profilePictureMedium"];
+//                [[PFUser currentUser] saveEventually];
+//            }
+//        }];
+//    }
     
     if (smallRoundedImageData.length > 0) {
         PFFile *fileSmallRoundedImage = [PFFile fileWithData:smallRoundedImageData];
@@ -124,10 +124,10 @@
 
 + (BOOL)userHasProfilePictures:(PFUser *)user {
     PFFile *profilePictureLarge = [user objectForKey:@"profilePictureLarge"];
-    PFFile *profilePictureMedium = [user objectForKey:@"profilePictureMedium"];
+    //PFFile *profilePictureMedium = [user objectForKey:@"profilePictureMedium"];
     PFFile *profilePictureSmall = [user objectForKey:@"profilePictureSmall"];
     
-    return (profilePictureLarge && profilePictureMedium && profilePictureSmall);
+    return (profilePictureLarge && profilePictureSmall);
 }
 
 

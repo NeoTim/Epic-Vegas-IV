@@ -14,5 +14,7 @@
 @property (weak, nonatomic) IBOutlet MKMapView *mapView;
 
 @property (nonatomic, retain, readonly) NSMutableArray* queryObjects;
+- (IBAction)refreshButtonPressed:(id)sender;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *refreshButton;
 
 @end
