@@ -42,10 +42,12 @@
     if(!_profileUser)
     {
         _profileUser = [PFUser currentUser];
-        self.title = @"Me";
+        self.navigationItem.title = @"Me";
+       // self.title = @"Me";
     }
     else {
-        self.title =_profileUser[@"displayName"];
+         self.navigationItem.title = _profileUser[@"displayName"];
+        //self.title =_profileUser[@"displayName"];
     }
 
     
