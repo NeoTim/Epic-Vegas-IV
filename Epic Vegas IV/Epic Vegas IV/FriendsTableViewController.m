@@ -71,13 +71,11 @@
     [self showUserProfileForIndexPath:indexPath];
 }
 
+ProfileTableViewController* profileViewController;
 -(void)showUserProfileForIndexPath:(NSIndexPath *)indexPath
 {
-    
-    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main"
-                                                             bundle: nil];
-    
-    ProfileTableViewController* profileViewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"ProfileTableViewController"];
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
+    profileViewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"ProfileTableViewController"];
     
     PFUser* user = self.queryObjects[indexPath.row];
     profileViewController.profileUser = user;

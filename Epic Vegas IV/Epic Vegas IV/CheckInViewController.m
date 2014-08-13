@@ -39,7 +39,7 @@
     _currentGeoPoint = nil;
     
     [_locationNameTextField becomeFirstResponder];
-    
+
     [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint *geoPoint, NSError *error) {
         if (!error) {
             NSLog(@"User is currently at %f, %f", geoPoint.latitude, geoPoint.longitude);

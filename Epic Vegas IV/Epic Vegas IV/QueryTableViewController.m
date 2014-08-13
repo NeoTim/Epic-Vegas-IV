@@ -38,10 +38,6 @@
     [self refreshDataSources];
 }
 
--(void)viewDidAppear:(BOOL)animated
-{
-}
-
 -(void)setupRefreshIndicator
 {
     self.refreshControl = [[UIRefreshControl alloc] init];
