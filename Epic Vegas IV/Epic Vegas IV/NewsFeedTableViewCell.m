@@ -141,7 +141,7 @@
 
 
 - (IBAction)userImageViewClicked:(id)sender {
-    if(self.delegate)
+    if(self.delegate && _postUser)
         [self.delegate showUser:_postUser];
 }
 

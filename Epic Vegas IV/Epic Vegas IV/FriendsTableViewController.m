@@ -89,12 +89,20 @@
 ProfileTableViewController* profileViewController;
 -(void)showUserProfileForIndexPath:(NSIndexPath *)indexPath
 {
-    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
-    profileViewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"ProfileTableViewController"];
-    
-    PFUser* user = self.queryObjects[indexPath.row];
-    profileViewController.profileUser = user;
-    [self.navigationController pushViewController:profileViewController animated:YES];
+    @try {
+        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
+        profileViewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"ProfileTableViewController"];
+        
+        PFUser* user = self.queryObjects[indexPath.row];
+        if(!user)
+            return;
+        
+        profileViewController.profileUser = user;
+        [self.navigationController pushViewController:profileViewController animated:YES];
+    }
+    @catch (NSException *exception) {
+        NSLog(@"Exceotuib showing user profile from friends view: %@", exception);
+    }    
 }
 
 

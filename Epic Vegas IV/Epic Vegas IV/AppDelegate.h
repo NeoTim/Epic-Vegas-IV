@@ -10,7 +10,6 @@
 #import <QuartzCore/QuartzCore.h>
 #import "LoginViewController.h"
 #import "TabBarController.h"
-#import "ProfileViewController.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate,NSURLConnectionDataDelegate, LoginViewControllerDelegate>
 

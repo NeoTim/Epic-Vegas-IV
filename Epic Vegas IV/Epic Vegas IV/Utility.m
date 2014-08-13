@@ -223,6 +223,9 @@
 {
     NSTimeInterval secondsSinceDate = [[NSDate date] timeIntervalSinceDate:date];
     
+    if(secondsSinceDate < 4)
+        return @"Just now";
+    
     // print up to 24 hours as a relative offset
     if(secondsSinceDate < 24.0 * 60.0 * 60.0)
     {

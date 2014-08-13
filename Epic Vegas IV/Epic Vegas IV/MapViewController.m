@@ -166,6 +166,8 @@
     NSLog(@"Map refreshed");
 }
 
+
+
 - (MKAnnotationView *)mapView:(MKMapView *)theMapView viewForAnnotation:(id <MKAnnotation>)annotation
 {
     // base it on the user (title)

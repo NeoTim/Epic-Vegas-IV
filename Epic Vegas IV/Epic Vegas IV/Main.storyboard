@@ -1052,7 +1052,7 @@
                                             </state>
                                             <connections>
                                                 <action selector="mapButtonPressed:" destination="bvI-kn-yt0" eventType="touchUpInside" id="GZp-dH-JbM"/>
-                                                <segue destination="3Gl-0j-rkw" kind="push" id="CeJ-nV-jmJ"/>
+                                                <segue destination="3Gl-0j-rkw" kind="push" identifier="userLocationSegue" id="CeJ-nV-jmJ"/>
                                             </connections>
                                         </button>
                                     </subviews>
@@ -1102,10 +1102,10 @@
             </objects>
             <point key="canvasLocation" x="-118" y="1116"/>
         </scene>
-        <!--View Controller-->
+        <!--User Location View Controller-->
         <scene sceneID="csN-Vc-rJ4">
             <objects>
-                <viewController id="3Gl-0j-rkw" sceneMemberID="viewController">
+                <viewController id="3Gl-0j-rkw" customClass="UserLocationViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nGl-Y4-gA6"/>
                         <viewControllerLayoutGuide type="bottom" id="jAI-hn-5Js"/>
@@ -1128,6 +1128,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="qiC-Yc-cuA"/>
+                    <connections>
+                        <outlet property="mapView" destination="KUp-EH-9nV" id="oYA-Q3-ZmD"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cdd-Rn-DiZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
