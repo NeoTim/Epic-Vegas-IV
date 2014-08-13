@@ -950,9 +950,8 @@
                                         </view>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstAttribute="bottom" secondItem="3MZ-Rg-Rj2" secondAttribute="bottom" constant="8" id="DpC-Hd-ij3"/>
                                         <constraint firstItem="3MZ-Rg-Rj2" firstAttribute="leading" secondItem="H2x-fZ-va1" secondAttribute="leading" constant="8" id="NA1-HK-NK9"/>
-                                        <constraint firstAttribute="bottom" secondItem="3MZ-Rg-Rj2" secondAttribute="bottom" constant="8" id="Pbj-iq-wxe"/>
+                                        <constraint firstAttribute="bottom" secondItem="3MZ-Rg-Rj2" secondAttribute="bottom" id="Pbj-iq-wxe"/>
                                         <constraint firstItem="3MZ-Rg-Rj2" firstAttribute="top" secondItem="H2x-fZ-va1" secondAttribute="top" constant="8" id="Y3M-L0-JuE"/>
                                         <constraint firstItem="3MZ-Rg-Rj2" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="H2x-fZ-va1" secondAttribute="leading" constant="8" id="bu0-dM-pv8"/>
                                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="3MZ-Rg-Rj2" secondAttribute="trailing" constant="8" id="dup-3w-bIw"/>
@@ -1073,7 +1072,7 @@
                                         <constraint firstAttribute="trailing" secondItem="ynN-Rz-46B" secondAttribute="trailing" constant="24" id="dOc-HL-eNk"/>
                                         <constraint firstItem="QK8-SD-Fke" firstAttribute="leading" secondItem="gz7-id-exY" secondAttribute="leading" constant="24" id="kPE-Px-dTl"/>
                                         <constraint firstItem="m58-52-kys" firstAttribute="top" secondItem="ynN-Rz-46B" secondAttribute="bottom" constant="5" id="rWZ-v5-7BN"/>
-                                        <constraint firstAttribute="bottom" secondItem="iUD-Ay-URR" secondAttribute="bottom" constant="8" id="rwB-YQ-3F9"/>
+                                        <constraint firstAttribute="bottom" secondItem="iUD-Ay-URR" secondAttribute="bottom" id="rwB-YQ-3F9"/>
                                         <constraint firstItem="Kf1-fV-qFD" firstAttribute="top" secondItem="gz7-id-exY" secondAttribute="top" constant="24" id="t2a-WY-is7"/>
                                         <constraint firstAttribute="trailing" secondItem="iUD-Ay-URR" secondAttribute="trailing" constant="8" id="w1e-bP-JCX"/>
                                     </constraints>

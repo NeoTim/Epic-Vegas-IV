@@ -363,7 +363,7 @@
                 lastUpdatedAndDistanceLabelHeight = 20;
         }
         
-        return 367 + locationNameLabelHeight + lastUpdatedAndDistanceLabelHeight;
+        return 367 + locationNameLabelHeight + lastUpdatedAndDistanceLabelHeight - 8;
     }
     else
     {
@@ -372,7 +372,7 @@
             return  40;
         
         
-        CGFloat height = 83 - 8; // this is the correct height
+        CGFloat height = 83 - 8 - 8; // this is the correct height
         
         
         int postIndex = indexPath.row;
