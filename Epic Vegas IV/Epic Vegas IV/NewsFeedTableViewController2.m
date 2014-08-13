@@ -205,7 +205,7 @@
         return  40;
     
     
-    CGFloat height = 172 - 43 + 8; // this is the correct height
+    CGFloat height = 172 - 43; // this is the correct height
     
     
     int postIndex = indexPath.row;
