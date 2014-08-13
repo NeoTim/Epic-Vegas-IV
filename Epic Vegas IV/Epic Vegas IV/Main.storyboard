@@ -1012,12 +1012,28 @@
                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D1Q-Pi-sBq">
+                                            <rect key="frame" x="268" y="314" width="32" height="32"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="32" id="iHq-4G-8Ty"/>
+                                                <constraint firstAttribute="height" constant="32" id="rzz-d5-eQe"/>
+                                            </constraints>
+                                            <state key="normal" image="facebook.png">
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="facebookButtonPressed:" destination="bvI-kn-yt0" eventType="touchUpInside" id="wec-zZ-Haa"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="Kf1-fV-qFD" firstAttribute="leading" secondItem="gz7-id-exY" secondAttribute="leading" constant="24" id="0ZF-Z1-efe"/>
                                         <constraint firstAttribute="trailing" secondItem="aNA-2Y-gd7" secondAttribute="trailing" constant="20" id="5Mr-WT-d02"/>
+                                        <constraint firstItem="aNA-2Y-gd7" firstAttribute="centerY" secondItem="D1Q-Pi-sBq" secondAttribute="centerY" id="B6H-1q-PcL"/>
                                         <constraint firstItem="aNA-2Y-gd7" firstAttribute="top" secondItem="Kf1-fV-qFD" secondAttribute="bottom" constant="16" id="OJa-m7-aR4"/>
                                         <constraint firstItem="iUD-Ay-URR" firstAttribute="top" secondItem="gz7-id-exY" secondAttribute="top" constant="8" id="Rdr-Df-L0J"/>
+                                        <constraint firstAttribute="trailing" secondItem="D1Q-Pi-sBq" secondAttribute="trailing" constant="24" id="SgA-0s-saN"/>
                                         <constraint firstItem="aNA-2Y-gd7" firstAttribute="leading" secondItem="gz7-id-exY" secondAttribute="leading" constant="24" id="TZZ-P9-BhC"/>
                                         <constraint firstItem="iUD-Ay-URR" firstAttribute="leading" secondItem="gz7-id-exY" secondAttribute="leading" constant="8" id="VuG-fy-uyT"/>
                                         <constraint firstAttribute="trailing" secondItem="Kf1-fV-qFD" secondAttribute="trailing" constant="24" id="YWO-vP-KOk"/>
@@ -1055,6 +1071,7 @@
         <image name="FB-f-Logo__white_50.png" width="25" height="25"/>
         <image name="Map.png" width="60" height="60"/>
         <image name="Separator.png" width="320" height="100"/>
+        <image name="facebook.png" width="64" height="64"/>
         <image name="full__0000s_0032_home.png" width="25" height="25"/>
         <image name="marquee-las-vegas.jpg" width="319" height="568"/>
         <image name="person.png" width="27" height="24"/>

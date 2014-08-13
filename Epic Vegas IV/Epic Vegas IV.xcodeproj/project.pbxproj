@@ -38,6 +38,7 @@
 		5313985B199AF7EE00E16D09 /* MapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5313985A199AF7EE00E16D09 /* MapViewController.m */; };
 		5313985E199B034800E16D09 /* UserMapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5313985D199B034800E16D09 /* UserMapAnnotation.m */; };
 		53139861199B056A00E16D09 /* UserMapAnnotationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 53139860199B056A00E16D09 /* UserMapAnnotationView.m */; };
+		53139863199B5FBD00E16D09 /* facebook@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53139862199B5FBD00E16D09 /* facebook@2x.png */; };
 		5315AC201999FAD20071E1DD /* FriendsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 5315AC1F1999FAD20071E1DD /* FriendsTableViewController.m */; };
 		5315AC231999FC050071E1DD /* FriendTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 5315AC221999FC050071E1DD /* FriendTableViewCell.m */; };
 		5315AC2B199A0C160071E1DD /* Separator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5315AC2A199A0C160071E1DD /* Separator@2x.png */; };
@@ -164,6 +165,7 @@
 		5313985D199B034800E16D09 /* UserMapAnnotation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserMapAnnotation.m; sourceTree = "<group>"; };
 		5313985F199B056A00E16D09 /* UserMapAnnotationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserMapAnnotationView.h; sourceTree = "<group>"; };
 		53139860199B056A00E16D09 /* UserMapAnnotationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserMapAnnotationView.m; sourceTree = "<group>"; };
+		53139862199B5FBD00E16D09 /* facebook@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "facebook@2x.png"; sourceTree = "<group>"; };
 		5315AC1E1999FAD20071E1DD /* FriendsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendsTableViewController.h; sourceTree = "<group>"; };
 		5315AC1F1999FAD20071E1DD /* FriendsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FriendsTableViewController.m; sourceTree = "<group>"; };
 		5315AC211999FC050071E1DD /* FriendTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FriendTableViewCell.h; sourceTree = "<group>"; };
@@ -414,6 +416,7 @@
 		530BED2319904CDE00C5FDAB /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				53139862199B5FBD00E16D09 /* facebook@2x.png */,
 				5315AC2A199A0C160071E1DD /* Separator@2x.png */,
 				5346127E1995F9E000530770 /* Settings 44@2x.png */,
 				53EFEAE41995EC24006798C3 /* Write Text 60@2x.png */,
@@ -741,6 +744,7 @@
 				53165F781991E2870014695B /* full__0000s_0092_map@2x.png in Resources */,
 				53165F721991E1810014695B /* full__0000s_0000_news-paper@2x.png in Resources */,
 				53966CD91992F5F200E822DE /* 112-group.png in Resources */,
+				53139863199B5FBD00E16D09 /* facebook@2x.png in Resources */,
 				53A19F94199481E6008DF739 /* Favorites@2x.png in Resources */,
 				53966CD41992F5C800E822DE /* Subscriptions.png in Resources */,
 				53966CDC1992F60700E822DE /* action.png in Resources */,

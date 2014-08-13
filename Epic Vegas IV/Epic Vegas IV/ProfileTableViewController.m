@@ -334,4 +334,31 @@
 }
 */
 
+- (IBAction)facebookButtonPressed:(id)sender {
+    if(_profileUser && _profileUser[@"facebookId"])
+    {
+        
+        // open users facebook profile
+        NSString* urlString = [NSString stringWithFormat:@"http://facebook.com/%@", _profileUser[@"facebookId"]];
+        
+            NSLog(@"Attempting to open facebook profile at %@", urlString);
+            
+            [[UIApplication sharedApplication] openURL:[NSURL URLWithString: urlString]];
+            
+//        // open users facebook profile
+//        NSString* urlString = [NSString stringWithFormat:@"fb://profile/%@", _profileUser[@"facebookId"]];
+//        
+//
+//        if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString: urlString]]){
+//            NSLog(@"Attempting to open facebook profile at %@", urlString);
+//
+//            [[UIApplication sharedApplication] openURL:[NSURL URLWithString: urlString]];
+//        }else{
+//            NSLog(@"Attempting to open facebook profile at %@", urlString);
+//
+//            urlString = [NSString stringWithFormat:@"http://www.facebook.com/%@", _profileUser[@"facebookId"]];
+//            [[UIApplication sharedApplication] openURL:[NSURL URLWithString: urlString]];
+//        }
+    }
+}
 @end
