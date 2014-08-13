@@ -128,7 +128,7 @@
     }];
     
     // update user location as well
-    [Utility updateCurrentUsersLocation:_currentGeoPoint withLocationName:locationName];
+    [Utility updateCurrentUsersLocation:_currentGeoPoint withLocationName:locationName shouldRefreshMap:YES];
 }
 
 @end

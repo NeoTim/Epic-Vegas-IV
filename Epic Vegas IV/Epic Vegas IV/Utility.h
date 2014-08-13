@@ -30,7 +30,7 @@
 
 + (NSString *)formattedDate:(NSDate *)date;
 
-+(void)updateCurrentUsersLocation:(PFGeoPoint*)geoPoint withLocationName:(NSString*)locationName;
++ (void)updateCurrentUsersLocation:(PFGeoPoint*)geoPoint withLocationName:(NSString*)locationName shouldRefreshMap:(BOOL)refreshMapFlag;
 
 + (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize;
 

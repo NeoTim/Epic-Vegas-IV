@@ -286,7 +286,7 @@
         if (!error) {
             NSLog(@"User is currently at %f, %f", geoPoint.latitude, geoPoint.longitude);
             
-            [Utility updateCurrentUsersLocation:geoPoint withLocationName:nil];
+            [Utility updateCurrentUsersLocation:geoPoint withLocationName:nil shouldRefreshMap:YES];
         }
         else
         {
@@ -296,7 +296,7 @@
     }
 }
 
-+ (void)updateCurrentUsersLocation:(PFGeoPoint*)geoPoint withLocationName:(NSString*)locationName
++ (void)updateCurrentUsersLocation:(PFGeoPoint*)geoPoint withLocationName:(NSString*)locationName shouldRefreshMap:(BOOL)refreshMapFlag
 {
     PFUser* currentUser = [PFUser currentUser];
     if(currentUser)
@@ -340,7 +340,7 @@
             else
             {
                 NSLog(@"Saved Current User Location Post");
-                [Cache sharedCache].shouldRefreshMapOnDisplay = YES;
+                [Cache sharedCache].shouldRefreshMapOnDisplay = refreshMapFlag;
                 [Cache sharedCache].shouldRefreshFriendsOnDisplay = YES;
             }
         }];

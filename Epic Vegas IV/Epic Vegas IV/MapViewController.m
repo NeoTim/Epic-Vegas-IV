@@ -10,6 +10,7 @@
 #import "AppDelegate.h"
 #import "UserMapAnnotation.h"
 #import "UserMapAnnotationView.h"
+#import "ProfileTableViewController.h"
 
 @interface MapViewController ()
 
@@ -37,15 +38,17 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    if([Cache sharedCache].shouldRefreshMapOnDisplay)
+    BOOL shouldRefreshMap = [Cache sharedCache].shouldRefreshMapOnDisplay;
+    if(shouldRefreshMap)
     {
         [Cache sharedCache].shouldRefreshMapOnDisplay = NO;
         [self refreshDataSources];
     }
     else
     {
-        // at least map update times
-        [self refreshMap];
+        // refresh if map hasn't been updated or if last refresh was two mins or more ago
+        if(!_lastUpdateDate || [[NSDate date] timeIntervalSinceDate:_lastUpdateDate] > 60 * 2)
+            [self refreshMap];
     }
 }
 
@@ -58,7 +61,7 @@
         if (!error) {
             NSLog(@"User is currently at %f, %f", geoPoint.latitude, geoPoint.longitude);
             
-            [Utility updateCurrentUsersLocation:geoPoint withLocationName:nil];
+            [Utility updateCurrentUsersLocation:geoPoint withLocationName:nil shouldRefreshMap:NO];
             
             // create a region and pass it to the Map View
             MKCoordinateRegion region;
@@ -98,6 +101,7 @@
                 dispatch_async(dispatch_get_main_queue(), ^(void) {
                     
                     NSLog(@"Map data updated");
+                    _lastUpdateDate = [NSDate date];
                     [self refreshMap];
                     [_refreshButton setEnabled:YES];
                 });
@@ -149,6 +153,7 @@
                     NSLog(@"adding map point for user: %@", userAnnotation.title);
              
                     userAnnotation.userImage = [Utility imageWithRoundedCornersSize:15 usingImage:[UIImage imageWithData:data] scaledToSize:CGSizeMake(30, 30)];
+                    userAnnotation.user = user;
                     [self.mapView addAnnotation:userAnnotation];
                 }
                 else{
@@ -177,10 +182,34 @@
         annotationView.canShowCallout = YES;
         annotationView.image = userAnnotation.userImage;
         
+        UIButton* rightCalledOutButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+        rightCalledOutButton.userInteractionEnabled = NO;
+        
+        annotationView.rightCalloutAccessoryView = rightCalledOutButton;
+        
+        
+        annotationView.canShowCallout = YES;
+        
         return annotationView;
     }
     pinView.annotation = annotation;
     return pinView;
+}
+         
+- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
+{
+    if([view.annotation isKindOfClass:[UserMapAnnotation class]])
+    {
+        UserMapAnnotation* userMapAnnotation = (UserMapAnnotation*)view.annotation;
+        
+        // show profile of user
+        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
+        ProfileTableViewController* profileViewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"ProfileTableViewController"];
+        
+        profileViewController.profileUser = userMapAnnotation.user;
+        [self.navigationController pushViewController:profileViewController animated:YES];
+
+    }
 }
 
 - (PFQuery *)queryForMap {

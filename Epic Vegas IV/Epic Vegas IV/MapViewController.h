@@ -17,4 +17,6 @@
 - (IBAction)refreshButtonPressed:(id)sender;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *refreshButton;
 
+@property (nonatomic, strong) NSDate* lastUpdateDate;
+
 @end

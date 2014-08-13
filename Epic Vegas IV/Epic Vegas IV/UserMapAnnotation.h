@@ -15,6 +15,6 @@
 @property (nonatomic, copy) NSString *title;
 @property (nonatomic, copy) NSString *subtitle;
 @property (nonatomic, strong) UIImage* userImage;
-
+@property (nonatomic, assign) PFUser* user;
 
 @end
