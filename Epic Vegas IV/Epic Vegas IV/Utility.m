@@ -267,15 +267,61 @@
     }
 }
 
+
++ (void)updateCurrentUsersLocationIfStale
+{
+    PFUser* currentUser = [PFUser currentUser];
+    if(currentUser)
+    {
+        NSDate* lastUpdated = currentUser[@"currentLocationUpdatedAt"];
+        if(lastUpdated)
+        {
+            NSTimeInterval secs = [[NSDate date] timeIntervalSinceDate:lastUpdated];
+            
+            // don't update if refreshed in the last five minutes
+            if(secs / 60 >= 5)
+                return;
+        }
+        [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint *geoPoint, NSError *error) {
+        if (!error) {
+            NSLog(@"User is currently at %f, %f", geoPoint.latitude, geoPoint.longitude);
+            
+            [Utility updateCurrentUsersLocation:geoPoint withLocationName:nil];
+        }
+        else
+        {
+            NSLog(@"error getting user location");
+        }
+    }];
+    }
+}
+
 + (void)updateCurrentUsersLocation:(PFGeoPoint*)geoPoint withLocationName:(NSString*)locationName
 {
     PFUser* currentUser = [PFUser currentUser];
-    if([PFUser currentUser])
+    if(currentUser)
     {
+        BOOL isUserStillAtPreviousLocation = NO;
+        
+        PFGeoPoint* currentGeoPoint = currentUser[@"currentLocation"];
+        if(currentGeoPoint)
+        {
+            CLLocation *locA = [[CLLocation alloc] initWithLatitude:geoPoint.latitude longitude:geoPoint.longitude];
+            
+            CLLocation *locB = [[CLLocation alloc] initWithLatitude:currentGeoPoint.latitude longitude:currentGeoPoint.longitude];
+          
+            CLLocationDistance distanceInMeters = [locA distanceFromLocation:locB];
+
+            double mileInMeters = 1609.34;
+
+            // further than .5 miles away, then no longer at the same location
+            if(distanceInMeters > mileInMeters * .5)
+                isUserStillAtPreviousLocation = NO;
+        }
+        
+        
         currentUser[@"currentLocation"] = geoPoint;
         currentUser[@"currentLocationUpdatedAt"] = [NSDate date];
-        
-        BOOL isUserStillAtPreviousLocation = YES;
         
         // leave the previous location there if the user is still at the location, otherwise remove it
         if(!locationName && !isUserStillAtPreviousLocation)
