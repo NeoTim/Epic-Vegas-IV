@@ -48,6 +48,11 @@
         [Cache sharedCache].shouldRefreshFriendsOnDisplay = NO;
         [self refreshDataSources];
     }
+    else
+    {
+        // at least reload table to update times
+        [self.tableView reloadData];
+    }
 }
 
 - (PFQuery *)queryForTable {

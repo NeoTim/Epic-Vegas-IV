@@ -114,11 +114,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Epic Vegas IV/ProfileTableViewController.m"
-            timestampString = "429602119.623063"
+            timestampString = "429608371.739142"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "332"
-            endingLineNumber = "332"
+            startingLineNumber = "337"
+            endingLineNumber = "337"
             landmarkName = "@implementation ProfileTableViewController"
             landmarkType = "3">
          </BreakpointContent>

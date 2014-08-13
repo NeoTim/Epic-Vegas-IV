@@ -42,6 +42,11 @@
         [Cache sharedCache].shouldRefreshMapOnDisplay = NO;
         [self refreshDataSources];
     }
+    else
+    {
+        // at least map update times
+        [self refreshMap];
+    }
 }
 
 -(void)refreshDataSources
@@ -172,7 +177,6 @@
     }
     pinView.annotation = annotation;
     return pinView;
-    
 }
 
 - (PFQuery *)queryForMap {

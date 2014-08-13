@@ -301,7 +301,7 @@
     PFUser* currentUser = [PFUser currentUser];
     if(currentUser)
     {
-        BOOL isUserStillAtPreviousLocation = NO;
+        BOOL isUserStillAtPreviousLocation = YES;
         
         PFGeoPoint* currentGeoPoint = currentUser[@"currentLocation"];
         if(currentGeoPoint)
@@ -314,8 +314,10 @@
 
             double mileInMeters = 1609.34;
 
+            double miles = distanceInMeters / mileInMeters;
+            
             // further than .5 miles away, then no longer at the same location
-            if(distanceInMeters > mileInMeters * .5)
+            if(miles > .5)
                 isUserStillAtPreviousLocation = NO;
         }
         
@@ -324,7 +326,7 @@
         currentUser[@"currentLocationUpdatedAt"] = [NSDate date];
         
         // leave the previous location there if the user is still at the location, otherwise remove it
-        if(!locationName && !isUserStillAtPreviousLocation)
+        if(!isUserStillAtPreviousLocation && !locationName)
             [currentUser removeObjectForKey:@"currentLocationName"];
         else if(locationName)
             currentUser[@"currentLocationName"] = locationName;
@@ -348,14 +350,7 @@
 
 //http://stackoverflow.com/questions/2658738/the-simplest-way-to-resize-an-uiimage
 + (UIImage *)imageWithImage:(UIImage *)image scaledToSize:(CGSize)newSize {
-    //UIGraphicsBeginImageContext(newSize);
-    // In next line, pass 0.0 to use the current device's pixel scaling factor (and thus account for Retina resolution).
-    // Pass 1.0 to force exact pixel size.
-    UIGraphicsBeginImageContextWithOptions(newSize, NO, 0.0);
-    [image drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
-    UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    return newImage;
+    return [image resizedImageWithContentMode:UIViewContentModeScaleAspectFit bounds:newSize interpolationQuality:kCGInterpolationHigh];
 }
 
 // http://stackoverflow.com/questions/10563986/uiimage-with-rounded-corners
