@@ -118,12 +118,13 @@ NSInteger characterLimit = 300;
     _cameraButton.tintColor = [UIColor darkGrayColor];
     _cameraButton.width = 25;
     
-    _locationButton = [[UIBarButtonItem alloc]initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:@selector(locationButtonClicked:)];
-    _locationButton.image = [UIImage imageNamed:@"Location Black.png"];
-    _locationButton.tintColor = [UIColor darkGrayColor];
-    _locationButton.width = 30;
+//    _locationButton = [[UIBarButtonItem alloc]initWithTitle:@"" style:UIBarButtonItemStylePlain target:self action:@selector(locationButtonClicked:)];
+//    _locationButton.image = [UIImage imageNamed:@"Location Black.png"];
+//    _locationButton.tintColor = [UIColor darkGrayColor];
+//    _locationButton.width = 30;
     
-    keyboardToolbar.items = [NSArray arrayWithObjects:_cameraButton,_locationButton, nil];
+    //keyboardToolbar.items = [NSArray arrayWithObjects:_cameraButton,_locationButton, nil];
+    keyboardToolbar.items = [NSArray arrayWithObjects:_cameraButton, nil];
     [keyboardToolbar sizeToFit];
     
     [keyboardToolbar addSubview:_characterCountLabel];

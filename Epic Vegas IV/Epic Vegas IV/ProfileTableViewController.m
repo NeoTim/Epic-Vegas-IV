@@ -162,6 +162,16 @@
         
         PFImageView* profileImageView = (PFImageView*)[headerCell viewWithTag:756];
         profileImageView.image = nil;
+        
+        UILabel* locationNameLabel = (UILabel*)[headerCell viewWithTag:555];
+        locationNameLabel.text = nil;
+        
+        UILabel* lastUpdatedAndDistanceLabel = (UILabel*)[headerCell viewWithTag:556];
+        lastUpdatedAndDistanceLabel.text = nil;
+        
+        UIButton* mapButton = (UIButton*)[headerCell viewWithTag:557];
+        [mapButton setEnabled:NO];
+        mapButton.alpha = 0;
     }
     
     UIImageView* cardView = (UIImageView*)[headerCell viewWithTag:5];
@@ -240,7 +250,13 @@
                 if([distanceText hasPrefix:@"0."])
                     distanceText = [distanceText substringFromIndex:1];
             }
-
+           
+            // show map button
+            UIButton* mapButton = (UIButton*)[headerCell viewWithTag:557];
+            [mapButton setEnabled:YES];
+            mapButton.alpha = 1;
+            mapButton.imageView.tintColor = [UIColor grayColor];
+            
             // show when it was updated along with the mile distance
             NSDate* currentLocationUpdatedAt = _profileUser[@"currentLocationUpdatedAt"];
             if(currentLocationUpdatedAt)
@@ -426,5 +442,16 @@
 //            [[UIApplication sharedApplication] openURL:[NSURL URLWithString: urlString]];
 //        }
     }
+}
+
+- (IBAction)mapButtonPressed:(id)sender {
+    if(!_profileUser)
+        return;
+
+    PFGeoPoint* geoPoint = _profileUser[@"currentLocation"];
+    if(!geoPoint)
+        return;
+
+    
 }
 @end

@@ -12,5 +12,6 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *rightBarbuttonItem;
 @property (nonatomic, assign) PFUser* profileUser;
 - (IBAction)facebookButtonPressed:(id)sender;
+- (IBAction)mapButtonPressed:(id)sender;
 
 @end

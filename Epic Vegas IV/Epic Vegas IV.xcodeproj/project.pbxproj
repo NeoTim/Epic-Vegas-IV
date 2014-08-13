@@ -54,6 +54,7 @@
 		53165F761991E25C0014695B /* full__0000s_0101_drawer@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53165F751991E25C0014695B /* full__0000s_0101_drawer@2x.png */; };
 		53165F781991E2870014695B /* full__0000s_0092_map@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53165F771991E2870014695B /* full__0000s_0092_map@2x.png */; };
 		532B1646199059DE00C4851F /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 532B1645199059DE00C4851F /* ProfileViewController.m */; };
+		533D2CBB199BF625005C31DA /* Map 32@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 533D2CBA199BF625005C31DA /* Map 32@2x.png */; };
 		5346127F1995F9E000530770 /* Settings 44@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5346127E1995F9E000530770 /* Settings 44@2x.png */; };
 		53672A6B199873C300E71C50 /* NewsFeedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 53672A6A199873C300E71C50 /* NewsFeedTableViewCell.m */; };
 		5388ED4D1995741A002CA477 /* All Images@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5388ED4C1995741A002CA477 /* All Images@2x.png */; };
@@ -185,6 +186,7 @@
 		53165F771991E2870014695B /* full__0000s_0092_map@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "full__0000s_0092_map@2x.png"; sourceTree = "<group>"; };
 		532B1644199059DE00C4851F /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
 		532B1645199059DE00C4851F /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
+		533D2CBA199BF625005C31DA /* Map 32@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Map 32@2x.png"; sourceTree = "<group>"; };
 		5346127E1995F9E000530770 /* Settings 44@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Settings 44@2x.png"; sourceTree = "<group>"; };
 		53672A69199873C300E71C50 /* NewsFeedTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsFeedTableViewCell.h; sourceTree = "<group>"; };
 		53672A6A199873C300E71C50 /* NewsFeedTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsFeedTableViewCell.m; sourceTree = "<group>"; };
@@ -421,6 +423,7 @@
 				5346127E1995F9E000530770 /* Settings 44@2x.png */,
 				53EFEAE41995EC24006798C3 /* Write Text 60@2x.png */,
 				5388ED5619957C2F002CA477 /* Location Black@2x.png */,
+				533D2CBA199BF625005C31DA /* Map 32@2x.png */,
 				5388ED4C1995741A002CA477 /* All Images@2x.png */,
 				53A19F9D199484DD008DF739 /* Map@2x.png */,
 				53A19F9B1994846E008DF739 /* Location@2x.png */,
@@ -764,6 +767,7 @@
 				53A19F9E199484DD008DF739 /* Map@2x.png in Resources */,
 				53966CD61992F5E600E822DE /* 29-heart@2x.png in Resources */,
 				53165F5D1991CCE30014695B /* News Feed Icon@2x.png in Resources */,
+				533D2CBB199BF625005C31DA /* Map 32@2x.png in Resources */,
 				53966CD31992F5C800E822DE /* 111-user.png in Resources */,
 				53165F501991C1F20014695B /* Epic Vegas Nav Bar Title@2x.png in Resources */,
 				53966CDA1992F5F200E822DE /* 112-group@2x.png in Resources */,
