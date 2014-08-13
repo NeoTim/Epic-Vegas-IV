@@ -136,6 +136,10 @@
         UserMapAnnotation* userAnnotation = [[UserMapAnnotation alloc] init];
         userAnnotation.coordinate = coordinate;
         userAnnotation.title = user[@"displayName"];
+
+        NSDate* updatedAt = user[@"currentLocationUpdatedAt"];
+        if(updatedAt)
+            userAnnotation.subtitle = [Utility formattedDate:updatedAt];
         
         PFFile *imageFile = [user objectForKey:@"profilePictureSmall"];
         if (imageFile) {
