@@ -14,4 +14,7 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *centerButton;
 
+
+@property (strong, nonatomic) UIImagePickerController *photoPicker;
+
 @end

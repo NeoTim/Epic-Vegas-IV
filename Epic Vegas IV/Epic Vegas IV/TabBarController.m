@@ -28,7 +28,6 @@ UIImageView* centerButtonRedImageView;
 
 UIImageView* blurredImageView;
 UIImageView* tintView;
-UIImagePickerController *photoPicker;
 
 BOOL isAddButtonPressed = NO;
 
@@ -378,20 +377,22 @@ UIButton* selectExistingPhotoButton;
     [self.view addSubview:_shareContentLabel];
 }
 
-
-
 -(void)initializeImagePicker
 {
-    photoPicker = [[UIImagePickerController alloc] init];
-    photoPicker.delegate = self;
-    photoPicker.allowsEditing = NO;
-    
-    float screenWidth = self.view.frame.size.width;
-    
-    selectExistingPhotoButton = [[UIButton alloc] initWithFrame:CGRectMake(screenWidth - 75, 8, 25, 25)];
-    [selectExistingPhotoButton setImage:[UIImage imageNamed:@"All Images.png"] forState:UIControlStateNormal];
-    [photoPicker.view addSubview:selectExistingPhotoButton];
-    [selectExistingPhotoButton addTarget:self action:@selector(selectExistingPhotoButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    // required due to memory leak with uiimagepicker
+    if(!_photoPicker)
+    {
+        _photoPicker = [[UIImagePickerController alloc] init];
+        _photoPicker.delegate = self;
+        _photoPicker.allowsEditing = NO;
+        
+        float screenWidth = self.view.frame.size.width;
+        
+        selectExistingPhotoButton = [[UIButton alloc] initWithFrame:CGRectMake(screenWidth - 80, 8, 25, 25)];
+        [selectExistingPhotoButton setImage:[UIImage imageNamed:@"All Images.png"] forState:UIControlStateNormal];
+        [_photoPicker.view addSubview:selectExistingPhotoButton];
+        [selectExistingPhotoButton addTarget:self action:@selector(selectExistingPhotoButtonClicked:) forControlEvents:UIControlEventTouchUpInside];
+    }
 }
 
 -(void)initializePostViewController
@@ -404,8 +405,8 @@ UIButton* selectExistingPhotoButton;
 - (IBAction)cameraButtonClicked:(id)sender {
     [self handleAddCompleted];
     selectExistingPhotoButton.alpha = 1;
-    photoPicker.sourceType = UIImagePickerControllerSourceTypeCamera;
-    [self presentViewController:photoPicker animated:YES completion:NULL];
+    _photoPicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+    [self presentViewController:_photoPicker animated:YES completion:NULL];
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
@@ -414,11 +415,11 @@ UIButton* selectExistingPhotoButton;
     if(actionSheet.tag == 7432)
     {
         if (buttonIndex == 0) {
-            photoPicker.sourceType = UIImagePickerControllerSourceTypeCamera;
-            [self presentViewController:photoPicker animated:YES completion:NULL];
+            _photoPicker.sourceType = UIImagePickerControllerSourceTypeCamera;
+            [self presentViewController:_photoPicker animated:YES completion:NULL];
         } else if (buttonIndex == 1) {
-            photoPicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
-            [self presentViewController:photoPicker animated:YES completion:NULL];
+            _photoPicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+            [self presentViewController:_photoPicker animated:YES completion:NULL];
         }
         else
         {
@@ -453,7 +454,7 @@ UIButton* selectExistingPhotoButton;
                        options:UIViewAnimationOptionTransitionFlipFromLeft
                     animations:^{
                         selectExistingPhotoButton.alpha = 0;
-                        photoPicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+                        _photoPicker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
                     }
                     completion:nil];
 }
