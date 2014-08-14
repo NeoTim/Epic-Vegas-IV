@@ -90,7 +90,7 @@
     [query includeKey:@"photo"];
     [query includeKey:@"user"];
     [query whereKey:@"user" equalTo:_profileUser];
-    [query whereKeyExists:@"message"];
+    //[query whereKeyExists:@"message"];
     
     // enforce last refresh date to get data in pages (so pages don't get messed up when new things are added after refresh)
     [query whereKey:@"createdAt" lessThanOrEqualTo:self.lastRefreshDate];
@@ -297,7 +297,14 @@
         return;
     
     AutoSizeLabel* messageLabel = (AutoSizeLabel*)[cell viewWithTag:36];
-    messageLabel.text= post[@"message"] ?: @"";
+    
+    if(post[@"locationName"])
+    {
+        messageLabel.text = [NSString stringWithFormat:@"Checked in at '%@'", post[@"locationName"]];
+    }
+    else
+        messageLabel.text = post[@"message"] ?: @"";
+    
     NSDate* createdAt = post.createdAt;
     NSString* subtitle = [Utility formattedDate:createdAt];
     
@@ -380,8 +387,15 @@
         if(!post)
             return height;
         
-        NSString *messageText=post[@"message"] ?: @"";
+        NSString *messageText;
         
+        if(post[@"locationName"])
+        {
+            messageText = [NSString stringWithFormat:@"Checked in at '%@'", post[@"locationName"]];
+        }
+        else
+            messageText = post[@"message"] ?: @"";
+    
         CGSize labelSize = [self getLabelSize:messageText withFontName:@"HelveticaNeue-Medium" withFontSize:14.0f forFixedWidth:320-48];
         height += labelSize.height;
         if(post[@"photo"])
