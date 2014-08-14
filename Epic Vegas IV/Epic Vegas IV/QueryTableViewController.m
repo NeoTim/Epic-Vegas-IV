@@ -38,11 +38,17 @@
     [self refreshDataSources];
 }
 
+
+
 -(void)setupRefreshIndicator
 {
-    self.refreshControl = [[UIRefreshControl alloc] init];
-    self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"Pull to Refresh"];
-    [self.refreshControl addTarget:self action:@selector(refreshControlPulled:) forControlEvents:UIControlEventValueChanged];
+    if(!self.refreshControl)
+    {
+        self.refreshControl = [[UIRefreshControl alloc] init];
+        self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"Pull to Refresh"];
+        [self.refreshControl addTarget:self action:@selector(refreshControlPulled:) forControlEvents:UIControlEventValueChanged];
+        self.refreshControl = self.refreshControl;
+    }
 }
 
 -(IBAction)refreshControlPulled:(id)sender
@@ -55,6 +61,9 @@
     if(self.isCurrentlyRefreshing)
     {
         NSLog(@"Refresh Blocked");
+        if(self.refreshControl)
+            [self.refreshControl endRefreshing];
+     
         return;
     }
     

@@ -13,7 +13,7 @@
 
 @property (nonatomic, assign) BOOL shouldReloadOnAppear;
 @property (nonatomic, retain, readonly) NSMutableArray* queryObjects;
-@property (nonatomic, strong) UIRefreshControl* refreshControl;
+//@property (nonatomic, strong) UIRefreshControl* tableRefreshControl;
 @property (nonatomic, strong) UIActivityIndicatorView* activityIndicator;
 @property (nonatomic, retain, readonly) NSDate* lastRefreshDate;
 
