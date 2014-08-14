@@ -13,6 +13,7 @@
 #import "AppDelegate.h"
 #import "UserLocationViewController.h"
 #import "CheckedInLocationViewController.h"
+#import "MapViewController.h"
 
 @interface ProfileTableViewController ()
 
@@ -453,18 +454,6 @@
     
 }
 
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // happens when user clicks the map button
-    if([segue.identifier isEqualToString:@"userLocationSegue"])
-    {
-        UserLocationViewController* userLocationViewController = (UserLocationViewController*)segue.destinationViewController;
-        
-        userLocationViewController.user = _profileUser;
-    }
-}
-
 - (IBAction)facebookButtonPressed:(id)sender {
     if(_profileUser && _profileUser[@"facebookId"])
     {
@@ -478,6 +467,10 @@
 }
 
 - (IBAction)mapButtonPressed:(id)sender {
-    // don't use this, use the prepare for segue instead
+    UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
+    MapViewController* mapViewController = (MapViewController*)[mainStoryboard instantiateViewControllerWithIdentifier:@"MapViewController"];
+    mapViewController.userToFocusOn = _profileUser;
+    [self.navigationController pushViewController:mapViewController animated:YES];
+    
 }
 @end

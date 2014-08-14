@@ -38,7 +38,12 @@
 -(void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    BOOL shouldRefreshMap = [Cache sharedCache].shouldRefreshMapOnDisplay;
+    
+    BOOL isCurrentUserNotInFocus = (_userToFocusOn && [PFUser currentUser] && ![_userToFocusOn.objectId isEqualToString:[PFUser currentUser].objectId]);
+    
+    // refresh map if not the current users page, or if main user needs refresh
+    BOOL shouldRefreshMap = [Cache sharedCache].shouldRefreshMapOnDisplay || isCurrentUserNotInFocus || self.queryObjects == nil || self.queryObjects.count == 0;
+
     if(shouldRefreshMap)
     {
         [Cache sharedCache].shouldRefreshMapOnDisplay = NO;
@@ -46,10 +51,35 @@
     }
     else
     {
-        // refresh if map hasn't been updated or if last refresh was two mins or more ago
-        if(!_lastUpdateDate || [[NSDate date] timeIntervalSinceDate:_lastUpdateDate] > 60 * 2)
-            [self refreshMap];
+            // refresh if map hasn't been updated or if last refresh was two mins or more ago
+            //if(!_lastUpdateDate || [[NSDate date] timeIntervalSinceDate:_lastUpdateDate] > 60 * 2)
+            //    [self refreshMap];
+        [self refreshMap];
     }
+}
+
+-(void)focusOnUser
+{
+    if(!_userToFocusOn)
+    {
+        _userToFocusOn = [PFUser currentUser];
+    }
+    
+    if(!_userToFocusOn)
+        return;
+    
+    PFGeoPoint* geoPoint = _userToFocusOn[@"currentLocation"];
+    if(!geoPoint)
+        return;
+    
+    // create a region and pass it to the Map View
+    MKCoordinateRegion region;
+    region.center.latitude = geoPoint.latitude;
+    region.center.longitude = geoPoint.longitude;
+    region.span.latitudeDelta = 0.02;
+    region.span.longitudeDelta = 0.02;
+    
+    [self.mapView setRegion:region animated:YES];
 }
 
 -(void)refreshDataSources
@@ -62,15 +92,6 @@
             NSLog(@"User is currently at %f, %f", geoPoint.latitude, geoPoint.longitude);
             
             [Utility updateCurrentUsersLocation:geoPoint withLocationName:nil shouldRefreshMap:NO];
-            
-            // create a region and pass it to the Map View
-            MKCoordinateRegion region;
-            region.center.latitude = geoPoint.latitude;
-            region.center.longitude = geoPoint.longitude;
-            region.span.latitudeDelta = 0.012;
-            region.span.longitudeDelta = 0.012;
-            
-            [self.mapView setRegion:region animated:YES];
         }
         else
         {
@@ -139,23 +160,19 @@
         
         UserMapAnnotation* userAnnotation = [[UserMapAnnotation alloc] init];
         userAnnotation.coordinate = coordinate;
-        userAnnotation.title = user[@"displayName"];
-
-        NSDate* updatedAt = user[@"currentLocationUpdatedAt"];
-        
-        NSString* subtitle = nil;
+        NSString* title = user[@"displayName"];
         
         if(user[@"currentLocationName"])
-            subtitle = user[@"currentLocationName"];
+            title = [NSString stringWithFormat:@"%@ · %@", title, user[@"currentLocationName"]];
+        
+        
+        userAnnotation.title = title;
+        NSDate* updatedAt = user[@"currentLocationUpdatedAt"];
         
         if(updatedAt)
         {
-            if(!subtitle)
-                subtitle = [Utility formattedDate:updatedAt];
-            else
-                subtitle = [NSString stringWithFormat:@"%@ · %@", subtitle, [Utility formattedDate:updatedAt]];
+            userAnnotation.subtitle  = [Utility formattedDate:updatedAt];
         }
-        userAnnotation.subtitle = subtitle;
         
         
         PFFile *imageFile = [user objectForKey:@"profilePictureSmall"];
@@ -175,6 +192,9 @@
             }];
         }
     }
+    
+    [self focusOnUser];
+    
     NSLog(@"Map refreshed");
 }
 

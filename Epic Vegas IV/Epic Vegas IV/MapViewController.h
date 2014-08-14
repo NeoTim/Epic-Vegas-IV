@@ -19,4 +19,6 @@
 
 @property (nonatomic, strong) NSDate* lastUpdateDate;
 
+@property (nonatomic, strong) PFUser* userToFocusOn;
+
 @end

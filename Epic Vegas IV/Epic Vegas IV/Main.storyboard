@@ -254,7 +254,7 @@
         <!--Map View Controller - Map-->
         <scene sceneID="vp2-Er-zoJ">
             <objects>
-                <viewController id="mZ9-Yh-Wjp" customClass="MapViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MapViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="mZ9-Yh-Wjp" customClass="MapViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Ffh-ad-ddA"/>
                         <viewControllerLayoutGuide type="bottom" id="pgN-TK-OFv"/>
@@ -986,7 +986,6 @@ and switch off "Epic Vegas IV"</string>
                                     </state>
                                     <connections>
                                         <action selector="mapButtonPressed:" destination="bvI-kn-yt0" eventType="touchUpInside" id="Tfo-SO-0i2"/>
-                                        <segue destination="3Gl-0j-rkw" kind="push" identifier="userLocationSegue" id="fR8-j2-eHD"/>
                                     </connections>
                                 </button>
                             </subviews>
