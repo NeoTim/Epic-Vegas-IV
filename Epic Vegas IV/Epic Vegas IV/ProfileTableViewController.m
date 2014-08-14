@@ -65,7 +65,7 @@
 
 -(CGFloat)getHeaderHeight
 {
-    CGFloat baseHeight = 367;
+    CGFloat baseHeight = 367 + 8;
     
     CGFloat locationNameLabelHeight = 20;
     CGFloat lastUpdatedAndDistanceLabelHeight = 0;
@@ -76,7 +76,7 @@
             lastUpdatedAndDistanceLabelHeight = 20;
     }
     
-    return 367 + locationNameLabelHeight + lastUpdatedAndDistanceLabelHeight;
+    return baseHeight + locationNameLabelHeight + lastUpdatedAndDistanceLabelHeight;
 }
 
 -(void)setupHeader
@@ -395,16 +395,13 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    
+    // happens when user clicks the map button
     if([segue.identifier isEqualToString:@"userLocationSegue"])
     {
         UserLocationViewController* userLocationViewController = (UserLocationViewController*)segue.destinationViewController;
         
         userLocationViewController.user = _profileUser;
     }
-    
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
 }
 
 - (IBAction)facebookButtonPressed:(id)sender {
@@ -420,13 +417,6 @@
 }
 
 - (IBAction)mapButtonPressed:(id)sender {
-    if(!_profileUser)
-        return;
-    
-    PFGeoPoint* geoPoint = _profileUser[@"currentLocation"];
-    if(!geoPoint)
-        return;
-    
-    
+    // don't use this, use the prepare for segue instead
 }
 @end
