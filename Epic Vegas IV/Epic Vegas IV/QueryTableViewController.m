@@ -75,10 +75,11 @@
     
     NSLog(@"Refresh Started");
     
+    // refresh location if stale
+    [Utility updateCurrentUsersLocationIfStale];
+    
     _isCurrentlyRefreshing = YES;
-    
     _queryObjects = [[NSMutableArray alloc] init];
-    
     
     // show activity indicator if refresh control is not visibly refreshing
     //if(!self.refreshControl || !self.refreshControl.isRefreshing)

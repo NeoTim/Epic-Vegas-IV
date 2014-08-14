@@ -282,7 +282,7 @@
             NSTimeInterval secs = [[NSDate date] timeIntervalSinceDate:lastUpdated];
             
             // don't update if refreshed in the last five minutes
-            if(secs / 60 >= 5)
+            if(secs / 60 < 5)
                 return;
         }
         [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint *geoPoint, NSError *error) {

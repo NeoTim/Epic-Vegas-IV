@@ -150,16 +150,15 @@
             [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error) {
                 if(!error)
                 {
-                    NSLog(@"adding map point for user: %@", userAnnotation.title);
+                    //NSLog(@"adding map point for user: %@", userAnnotation.title);
              
                     userAnnotation.userImage = [Utility imageWithRoundedCornersSize:15 usingImage:[UIImage imageWithData:data] scaledToSize:CGSizeMake(30, 30)];
                     userAnnotation.user = user;
                     [self.mapView addAnnotation:userAnnotation];
                 }
                 else{
-                    
-                }
-                
+                    NSLog(@"Error map point for user: %@.  Error: %@", userAnnotation.title, error);
+                }                
             }];
         }
     }
@@ -180,7 +179,7 @@
         MKAnnotationView *annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation
                                                                         reuseIdentifier:reuseIdentifier];
         UserMapAnnotation* userAnnotation = (UserMapAnnotation*)annotation;
-        NSLog(@"setting map point for user: %@", userAnnotation.title);
+        //NSLog(@"setting map point for user: %@", userAnnotation.title);
         annotationView.canShowCallout = YES;
         annotationView.image = userAnnotation.userImage;
         
