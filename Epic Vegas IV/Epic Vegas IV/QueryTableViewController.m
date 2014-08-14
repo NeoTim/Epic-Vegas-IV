@@ -139,6 +139,35 @@
         [self.refreshControl endRefreshing];
 }
 
+-(BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    // only allow deletions if
+    PFUser* currentUser = [PFUser currentUser];
+    if(!currentUser)
+        return NO;
+    
+    // get object
+    if(indexPath.row < self.queryObjects.count )
+    {
+        // ensure that we are looking at the certin section
+        return YES;
+    }
+    
+    return NO;
+}
+
+- (void)tableView:(UITableView *)tableView
+commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
+forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        
+        NSLog(@"Deleted item");
+        //add code here to do what you want when you hit delete
+        //[itemArray removeObjectAtIndex:[indexPath row]];
+        //[tableView reloadData];
+    }
+}
+
 -(void)showActivityIndicator
 {
 //    _activityIndicator = [[UIActivityIndicatorView alloc]initWithFrame:CGRectMake(self.view.frame.size.width / 2 - 40,self.view.frame.size.height / 2 - 125,80,80)];
