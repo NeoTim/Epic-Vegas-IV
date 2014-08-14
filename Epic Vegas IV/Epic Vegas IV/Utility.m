@@ -271,23 +271,26 @@
 }
 
 
-+ (void)updateCurrentUsersLocationIfStale
++ (void)updateCurrentUsersLocationWithOnlyIfStale:(BOOL)onlyUpdateIfStale
 {
     PFUser* currentUser = [PFUser currentUser];
     if(currentUser)
     {
-        NSDate* lastUpdated = currentUser[@"currentLocationUpdatedAt"];
-        if(lastUpdated)
+        if(onlyUpdateIfStale)
         {
-            NSTimeInterval secs = [[NSDate date] timeIntervalSinceDate:lastUpdated];
-            
-            // don't update if refreshed in the last five minutes
-            if(secs / 60 < 5)
-                return;
+            NSDate* lastUpdated = currentUser[@"currentLocationUpdatedAt"];
+            if(lastUpdated)
+            {
+                NSTimeInterval secs = [[NSDate date] timeIntervalSinceDate:lastUpdated];
+                
+                // don't update if refreshed in the last five minutes
+                if(secs / 60 < 5)
+                    return;
+            }
         }
         [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint *geoPoint, NSError *error) {
         if (!error) {
-            NSLog(@"User is currently at %f, %f", geoPoint.latitude, geoPoint.longitude);
+            NSLog(@"Location was stale, user is currently at %f, %f", geoPoint.latitude, geoPoint.longitude);
             
             [Utility updateCurrentUsersLocation:geoPoint withLocationName:nil shouldRefreshMap:YES];
         }
@@ -319,9 +322,14 @@
 
             double miles = distanceInMeters / mileInMeters;
             
+            NSLog(@"%f miles away from last known location", miles);
+            
             // further than .5 miles away, then no longer at the same location
             if(miles > .5)
+            {
                 isUserStillAtPreviousLocation = NO;
+                NSLog(@"user is not still at previous location, > %f miles away", miles);
+            }
         }
         
         
@@ -330,7 +338,10 @@
         
         // leave the previous location there if the user is still at the location, otherwise remove it
         if(!isUserStillAtPreviousLocation && !locationName)
+        {
+            NSLog(@"Clearing current location name");
             [currentUser removeObjectForKey:@"currentLocationName"];
+        }
         else if(locationName)
             currentUser[@"currentLocationName"] = locationName;
         

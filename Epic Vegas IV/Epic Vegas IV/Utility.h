@@ -36,6 +36,6 @@
 
 + (UIImage *)imageWithRoundedCornersSize:(float)cornerRadius usingImage:(UIImage *)original scaledToSize:(CGSize)newSize;
 
-+ (void)updateCurrentUsersLocationIfStale;
++ (void)updateCurrentUsersLocationWithOnlyIfStale:(BOOL)onlyUpdateIfStale;
 
 @end

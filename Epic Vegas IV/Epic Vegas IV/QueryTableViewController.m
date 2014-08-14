@@ -76,7 +76,7 @@
     NSLog(@"Refresh Started");
     
     // refresh location if stale
-    [Utility updateCurrentUsersLocationIfStale];
+    [Utility updateCurrentUsersLocationWithOnlyIfStale:YES];
     
     _isCurrentlyRefreshing = YES;
     _queryObjects = [[NSMutableArray alloc] init];
