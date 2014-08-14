@@ -152,11 +152,22 @@
         return NO;
     
     // get object
-    if(indexPath.row < self.queryObjects.count )
-    {
-        // ensure that we are looking at the certin section
-        return YES;
-    }
+    if(indexPath.row >= self.queryObjects.count )
+        return NO;
+    
+    // check what kind of item it is
+    PFObject* object = self.queryObjects[indexPath.row];
+    if(!object)
+        return NO;
+    
+   if([object.parseClassName isEqualToString:@"Post"])
+   {
+       // can delete if user owns the post
+       
+       PFUser* postUser = object[@"user"];
+       if(postUser && [postUser.objectId isEqualToString:currentUser.objectId])
+           return YES;
+   }
     
     return NO;
 }
@@ -166,10 +177,64 @@ commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
 forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         
-        NSLog(@"Deleted item");
-        //add code here to do what you want when you hit delete
-        //[itemArray removeObjectAtIndex:[indexPath row]];
-        //[tableView reloadData];
+        // only allow deletions if
+        PFUser* currentUser = [PFUser currentUser];
+        if(!currentUser)
+            return;
+        
+        // get object
+        if(indexPath.row >= self.queryObjects.count )
+            return;
+        
+        // check what kind of item it is
+        PFObject* object = self.queryObjects[indexPath.row];
+        if(!object)
+            return;
+        
+        if([object.parseClassName isEqualToString:@"Post"])
+        {
+            // can delete if user owns the post
+            
+            PFUser* postUser = object[@"user"];
+            if(!postUser)
+                return;
+            
+            if(![postUser.objectId isEqualToString:currentUser.objectId])
+                return;
+            
+            NSLog(@"Initiating delete of post of user: %@", object);
+            
+            [object deleteInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                if(error)
+                {
+                    NSLog(@"Error deleting Post: %@", error);
+                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error Deleting Post"
+                                                                    message: [NSString stringWithFormat:@"Error: %@", error]
+                                                                   delegate:nil
+                                                          cancelButtonTitle:@"OK"
+                                                          otherButtonTitles:nil];
+                    [alert show];
+                }
+                else
+                {
+                    @try {                        
+                        [self.queryObjects removeObjectAtIndex:indexPath.row];
+                        [self.tableView deleteRowsAtIndexPaths:[NSArray arrayWithObjects:indexPath, nil] withRowAnimation:UITableViewRowAnimationAutomatic];
+                        
+                        NSLog(@"Finished delete of post: %@", object);
+                        
+                        // set reload flags, any table may get corrupted
+                        [Cache sharedCache].shouldRefreshNewsfeedOnDisplay = YES;
+                        [Cache sharedCache].shouldRefreshProfileOnDisplay = YES;
+                        [self refreshDataSources];
+                    }
+                    @catch (NSException *exception) {
+                        NSLog(@"Exception after deleting row: %@", exception);
+                    }
+                }
+            }];
+            
+        }
     }
 }
 
