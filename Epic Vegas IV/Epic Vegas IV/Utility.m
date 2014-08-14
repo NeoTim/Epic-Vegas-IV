@@ -255,7 +255,7 @@
         NSDateFormatter *timeFormat = [[NSDateFormatter alloc] init];
         [timeFormat setDateFormat:@"hh:mm a"];
         
-        return [NSString stringWithFormat:@"%@ at %@" , [dateFormat stringFromDate:date], [timeFormat stringFromDate:date]];
+        return [NSString stringWithFormat:@"%@ %@" , [dateFormat stringFromDate:date], [timeFormat stringFromDate:date]];
     }
     else // show the date "August 5th at 7:29 pm"
     {
@@ -266,7 +266,7 @@
         NSDateFormatter *timeFormat = [[NSDateFormatter alloc] init];
         [timeFormat setDateFormat:@"hh:mm a"];
         
-        return [NSString stringWithFormat:@"%@ at %@" , [dateFormat stringFromDate:date], [timeFormat stringFromDate:date]];
+        return [NSString stringWithFormat:@"%@ %@" , [dateFormat stringFromDate:date], [timeFormat stringFromDate:date]];
     }
 }
 
@@ -345,6 +345,7 @@
                 NSLog(@"Saved Current User Location Post");
                 [Cache sharedCache].shouldRefreshMapOnDisplay = refreshMapFlag;
                 [Cache sharedCache].shouldRefreshFriendsOnDisplay = YES;
+                [Cache sharedCache].shouldRefreshProfileOnDisplay = YES;
             }
         }];
     }

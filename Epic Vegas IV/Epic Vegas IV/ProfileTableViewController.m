@@ -267,6 +267,14 @@
     return [self getPostCellForRowAtIndexPath:indexPath];
 }
 
+-(void)refreshDataSources;
+{
+    [super refreshDataSources];
+    
+    // also refresh the header
+    [self setupHeader];
+}
+
 
 -(void)configurePostCell:(UITableViewCell*)cell ForRowAtIndexPath:(NSIndexPath *)indexPath
 {
