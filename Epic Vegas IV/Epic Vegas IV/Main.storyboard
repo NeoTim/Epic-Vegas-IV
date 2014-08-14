@@ -312,6 +312,39 @@
             </objects>
             <point key="canvasLocation" x="-699" y="811"/>
         </scene>
+        <!--Checked In Location View Controller-->
+        <scene sceneID="3g1-zq-6LE">
+            <objects>
+                <viewController storyboardIdentifier="CheckedInLocationViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="QNG-iS-yHD" customClass="CheckedInLocationViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="eNL-9o-jck"/>
+                        <viewControllerLayoutGuide type="bottom" id="iJH-NW-KZx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bWA-Ue-8fw">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="AKB-lb-ger">
+                                <rect key="frame" x="0.0" y="-12" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="iJH-NW-KZx" firstAttribute="top" secondItem="AKB-lb-ger" secondAttribute="bottom" id="UHv-K0-Ej5"/>
+                            <constraint firstItem="AKB-lb-ger" firstAttribute="top" secondItem="bWA-Ue-8fw" secondAttribute="top" id="UmZ-HA-I45"/>
+                            <constraint firstAttribute="trailing" secondItem="AKB-lb-ger" secondAttribute="trailing" id="hm6-So-cgW"/>
+                            <constraint firstItem="AKB-lb-ger" firstAttribute="leading" secondItem="bWA-Ue-8fw" secondAttribute="leading" id="oZz-0B-6kN"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="AKB-lb-ger" id="dHl-YL-sws"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gQD-JO-EKo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-29" y="2069"/>
+        </scene>
         <!--Settings Table View Controller - Settings-->
         <scene sceneID="h09-iM-vU0">
             <objects>
@@ -926,12 +959,13 @@ and switch off "Epic Vegas IV"</string>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="m0H-hi-MaU">
-                                    <rect key="frame" x="264" y="310" width="32" height="32"/>
+                                    <rect key="frame" x="256" y="302" width="48" height="48"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="32" id="FdG-EO-26H"/>
-                                        <constraint firstAttribute="width" constant="32" id="MDX-wF-6pb"/>
+                                        <constraint firstAttribute="height" constant="48" id="FdG-EO-26H"/>
+                                        <constraint firstAttribute="width" constant="48" id="MDX-wF-6pb"/>
                                     </constraints>
+                                    <inset key="contentEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
                                     <state key="normal" image="facebook.png">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
@@ -940,12 +974,13 @@ and switch off "Epic Vegas IV"</string>
                                     </connections>
                                 </button>
                                 <button opaque="NO" tag="557" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k4e-vQ-TXr">
-                                    <rect key="frame" x="24" y="310" width="32" height="32"/>
+                                    <rect key="frame" x="16" y="302" width="48" height="48"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <constraints>
-                                        <constraint firstAttribute="width" constant="32" id="kux-FO-ZNL"/>
-                                        <constraint firstAttribute="height" constant="32" id="p6N-hx-x8n"/>
+                                        <constraint firstAttribute="width" constant="48" id="kux-FO-ZNL"/>
+                                        <constraint firstAttribute="height" constant="48" id="p6N-hx-x8n"/>
                                     </constraints>
+                                    <inset key="contentEdgeInsets" minX="8" minY="8" maxX="8" maxY="8"/>
                                     <state key="normal" image="Map 32.png">
                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                     </state>
@@ -965,8 +1000,8 @@ and switch off "Epic Vegas IV"</string>
                                 <constraint firstItem="3XX-ps-Itf" firstAttribute="top" secondItem="YGa-nM-Yz4" secondAttribute="bottom" constant="20" id="8xd-jP-ywv"/>
                                 <constraint firstAttribute="bottom" secondItem="iUD-Ay-URR" secondAttribute="bottom" constant="8" id="IjH-hO-cTq"/>
                                 <constraint firstItem="YGa-nM-Yz4" firstAttribute="top" secondItem="GfZ-Dv-pD2" secondAttribute="top" constant="24" id="Kbc-qJ-6ov"/>
-                                <constraint firstAttribute="trailing" secondItem="m0H-hi-MaU" secondAttribute="trailing" constant="24" id="Mcf-aw-9ZO"/>
-                                <constraint firstItem="k4e-vQ-TXr" firstAttribute="leading" secondItem="GfZ-Dv-pD2" secondAttribute="leading" constant="24" id="VUh-i7-1oJ"/>
+                                <constraint firstAttribute="trailing" secondItem="m0H-hi-MaU" secondAttribute="trailing" constant="16" id="Mcf-aw-9ZO"/>
+                                <constraint firstItem="k4e-vQ-TXr" firstAttribute="leading" secondItem="GfZ-Dv-pD2" secondAttribute="leading" constant="16" id="VUh-i7-1oJ"/>
                                 <constraint firstItem="YGa-nM-Yz4" firstAttribute="leading" secondItem="GfZ-Dv-pD2" secondAttribute="leading" constant="24" id="WBZ-hZ-tzJ"/>
                                 <constraint firstAttribute="trailing" secondItem="YGa-nM-Yz4" secondAttribute="trailing" constant="24" id="WEX-Oo-ap2"/>
                                 <constraint firstItem="LW3-H7-Kkv" firstAttribute="top" secondItem="s8K-r2-2AQ" secondAttribute="bottom" constant="8" id="WpJ-HO-4aa"/>
@@ -987,19 +1022,19 @@ and switch off "Epic Vegas IV"</string>
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="240"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3MZ-Rg-Rj2" customClass="UIImageView">
-                                            <rect key="frame" x="0.0" y="0.0" width="320" height="400"/>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3MZ-Rg-Rj2" customClass="UIImageView">
+                                            <rect key="frame" x="8" y="0.0" width="304" height="232"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="35" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" misplaced="YES" placeholderIntrinsicWidth="280" placeholderIntrinsicHeight="21" text="Subtitle" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="159" translatesAutoresizingMaskIntoConstraints="NO" id="ADa-Gk-VPV" customClass="AutoSizeLabel">
-                                                    <rect key="frame" x="101" y="50" width="159" height="21"/>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="35" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" placeholderIntrinsicWidth="280" placeholderIntrinsicHeight="21" text="Subtitle" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="232" translatesAutoresizingMaskIntoConstraints="NO" id="ADa-Gk-VPV" customClass="AutoSizeLabel">
+                                                    <rect key="frame" x="16" y="16" width="232" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Medium" family="Helvetica Neue" pointSize="12"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="36" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" misplaced="YES" placeholderIntrinsicWidth="280" placeholderIntrinsicHeight="21" text="Message" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="320" translatesAutoresizingMaskIntoConstraints="NO" id="Sae-K9-paB" customClass="AutoSizeLabel">
-                                                    <rect key="frame" x="20" y="98" width="320" height="21"/>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="36" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" placeholderIntrinsicWidth="280" placeholderIntrinsicHeight="21" text="Message" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="272" translatesAutoresizingMaskIntoConstraints="NO" id="Sae-K9-paB" customClass="AutoSizeLabel">
+                                                    <rect key="frame" x="16" y="45" width="272" height="21"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="272" id="ylu-fL-MBI"/>
@@ -1009,26 +1044,43 @@ and switch off "Epic Vegas IV"</string>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view tag="37" contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="997" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XAk-Fi-tVa" customClass="PFImageView">
-                                                    <rect key="frame" x="20" y="141" width="280" height="54"/>
+                                                    <rect key="frame" x="16" y="66" width="272" height="0.0"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="272" id="vVe-th-rNV"/>
                                                     </constraints>
                                                 </view>
                                                 <view contentMode="scaleToFill" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sBU-5c-ZQn">
-                                                    <rect key="frame" x="16" y="196" width="288" height="40"/>
+                                                    <rect key="frame" x="16" y="74" width="272" height="150"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </view>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0lG-9X-DxA">
+                                                    <rect key="frame" x="256" y="0.0" width="48" height="48"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="48" id="KNg-BV-TCM"/>
+                                                        <constraint firstAttribute="width" constant="48" id="PVA-we-Wod"/>
+                                                    </constraints>
+                                                    <inset key="contentEdgeInsets" minX="16" minY="16" maxX="16" maxY="16"/>
+                                                    <state key="normal" title="Button" image="Map 32.png">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="viewOnMapButton:" destination="rPp-nB-Lda" eventType="touchUpInside" id="YPL-mw-eLT"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="sBU-5c-ZQn" firstAttribute="top" secondItem="XAk-Fi-tVa" secondAttribute="bottom" constant="8" id="3WR-xq-I28"/>
+                                                <constraint firstAttribute="trailing" secondItem="0lG-9X-DxA" secondAttribute="trailing" id="4Ne-0B-iSu"/>
                                                 <constraint firstItem="ADa-Gk-VPV" firstAttribute="top" secondItem="3MZ-Rg-Rj2" secondAttribute="top" constant="16" id="6ID-6I-3a8"/>
+                                                <constraint firstItem="0lG-9X-DxA" firstAttribute="top" secondItem="3MZ-Rg-Rj2" secondAttribute="top" id="DXT-Tc-S4o"/>
                                                 <constraint firstItem="ADa-Gk-VPV" firstAttribute="leading" secondItem="3MZ-Rg-Rj2" secondAttribute="leading" constant="16" id="Ebd-SN-lcW"/>
+                                                <constraint firstItem="0lG-9X-DxA" firstAttribute="leading" secondItem="ADa-Gk-VPV" secondAttribute="trailing" constant="8" id="F0K-8q-yRv"/>
                                                 <constraint firstItem="XAk-Fi-tVa" firstAttribute="top" secondItem="Sae-K9-paB" secondAttribute="bottom" id="Fo1-Ni-DJQ"/>
                                                 <constraint firstItem="Sae-K9-paB" firstAttribute="leading" secondItem="3MZ-Rg-Rj2" secondAttribute="leading" constant="16" id="GeO-1c-JAz"/>
                                                 <constraint firstAttribute="bottom" secondItem="sBU-5c-ZQn" secondAttribute="bottom" constant="8" id="KOV-Kc-rnC"/>
                                                 <constraint firstAttribute="trailing" secondItem="Sae-K9-paB" secondAttribute="trailing" constant="16" id="Krf-dR-njC"/>
-                                                <constraint firstAttribute="trailing" secondItem="ADa-Gk-VPV" secondAttribute="trailing" constant="16" id="brY-8q-xf8"/>
                                                 <constraint firstItem="sBU-5c-ZQn" firstAttribute="leading" secondItem="3MZ-Rg-Rj2" secondAttribute="leading" constant="16" id="h9A-VC-cvw"/>
                                                 <constraint firstItem="XAk-Fi-tVa" firstAttribute="leading" secondItem="3MZ-Rg-Rj2" secondAttribute="leading" constant="16" id="kqO-dr-wfn"/>
                                                 <constraint firstAttribute="trailing" secondItem="XAk-Fi-tVa" secondAttribute="trailing" constant="16" id="pmx-uh-NbP"/>
@@ -1049,6 +1101,7 @@ and switch off "Epic Vegas IV"</string>
                                 <connections>
                                     <outlet property="cardView" destination="3MZ-Rg-Rj2" id="l5D-C0-J4N"/>
                                     <outlet property="commentHolderView" destination="sBU-5c-ZQn" id="LON-Ho-zCZ"/>
+                                    <outlet property="mapButton" destination="0lG-9X-DxA" id="sBH-0O-O6p"/>
                                     <outlet property="messageLabel" destination="Sae-K9-paB" id="m3z-nk-wK2"/>
                                     <outlet property="photoImageView" destination="XAk-Fi-tVa" id="O1n-U0-vsa"/>
                                     <outlet property="subtitleLabel" destination="ADa-Gk-VPV" id="t6y-sA-q6q"/>
@@ -1101,7 +1154,7 @@ and switch off "Epic Vegas IV"</string>
         <!--User Location View Controller-->
         <scene sceneID="csN-Vc-rJ4">
             <objects>
-                <viewController id="3Gl-0j-rkw" customClass="UserLocationViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UserLocationViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="3Gl-0j-rkw" customClass="UserLocationViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="nGl-Y4-gA6"/>
                         <viewControllerLayoutGuide type="bottom" id="jAI-hn-5Js"/>

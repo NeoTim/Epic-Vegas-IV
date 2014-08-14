@@ -12,6 +12,7 @@
 #import "AutoSizeLabel.h"
 #import "AppDelegate.h"
 #import "UserLocationViewController.h"
+#import "CheckedInLocationViewController.h"
 
 @interface ProfileTableViewController ()
 
@@ -276,7 +277,7 @@
 }
 
 
--(void)configurePostCell:(UITableViewCell*)cell ForRowAtIndexPath:(NSIndexPath *)indexPath
+-(void)configurePostCell:(NewsFeedTableViewCell*)cell ForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if(self.queryObjects.count < indexPath.row)
         return;
@@ -297,10 +298,13 @@
     if(post[@"locationName"])
     {
         messageLabel.text = [NSString stringWithFormat:@"Checked in at '%@'", post[@"locationName"]];
+        cell.mapButton.hidden = NO;
     }
     else
+    {
+        cell.mapButton.hidden = YES;
         messageLabel.text = post[@"message"] ?: @"";
-    
+    }
     NSDate* createdAt = post.createdAt;
     NSString* subtitle = [Utility formattedDate:createdAt];
     
@@ -328,9 +332,9 @@
 {
     @try {
         // otherwise is a post cell
-        UITableViewCell* cell = (UITableViewCell*)[self.tableView dequeueReusableCellWithIdentifier:@"PostCell" forIndexPath:indexPath];
+        NewsFeedTableViewCell* cell = (NewsFeedTableViewCell*)[self.tableView dequeueReusableCellWithIdentifier:@"PostCell" forIndexPath:indexPath];
         if (cell == nil) {
-            cell = (UITableViewCell*)[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault  reuseIdentifier:@"PostCell"];
+            cell = (NewsFeedTableViewCell*)[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault  reuseIdentifier:@"PostCell"];
         }
         else{
             // clear for reuse
@@ -343,6 +347,7 @@
             photoImageView.image = nil;
         }
         
+        cell.delegate = self;
         [self configurePostCell:cell ForRowAtIndexPath:indexPath];
         return cell;
     }
@@ -351,6 +356,54 @@
         return [self.tableView dequeueReusableCellWithIdentifier:@"PostCell" forIndexPath:indexPath];
     }
 }
+
+
+- (IBAction)checkinMapButtonPressed:(NewsFeedTableViewCell *)cell
+{
+    NSLog(@"show map for cell");
+    
+    NSIndexPath* indexPath = [self.tableView indexPathForCell:cell];
+    if(!indexPath)
+        return;
+    
+    if(indexPath.row >= self.queryObjects.count)
+        return;
+    
+    @try {
+        UIStoryboard *mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle: nil];
+        CheckedInLocationViewController* checkedInLocationViewController = (CheckedInLocationViewController*)[mainStoryboard instantiateViewControllerWithIdentifier:@"CheckedInLocationViewController"];
+
+        PFObject* post = self.queryObjects[indexPath.row];
+        if(!post || !post[@"location"])
+            return;
+        
+        PFGeoPoint* geoPoint = post[@"location"];
+        if(!geoPoint)
+            return;
+        
+        NSString* locationName = post[@"locationName"];
+        NSDate* checkinTime = post.createdAt;
+        NSString* subtitle = nil;
+        if(checkinTime)
+        {
+            subtitle = [Utility formattedDate:checkinTime];
+        }
+        
+        checkedInLocationViewController.pinTitle = locationName;
+        checkedInLocationViewController.pinSubtitle = subtitle;
+        checkedInLocationViewController.lattitude = geoPoint.latitude;
+        checkedInLocationViewController.longitude = geoPoint.longitude;
+        
+        [self.navigationController pushViewController:checkedInLocationViewController animated:YES];
+    }
+    @catch (NSException *exception) {
+        NSLog(@"Exception showing checkin location: %@", exception);
+    }
+    @finally {
+    
+    }
+    
+    }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     // fixed height for the load more cell

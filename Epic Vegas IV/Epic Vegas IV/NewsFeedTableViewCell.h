@@ -14,7 +14,7 @@
 @protocol NewsFeedTableViewCellDelegate
 
 -(void)showUser:(PFUser*)user;
-
+- (IBAction)checkinMapButtonPressed:(NewsFeedTableViewCell *)cell;
 @end
 
 @interface NewsFeedTableViewCell : UITableViewCell
@@ -38,6 +38,8 @@
 @property (strong, nonatomic) NSLayoutConstraint* messageHeightConstraint;
 
 @property (nonatomic, assign) PFUser* postUser;
+@property (weak, nonatomic) IBOutlet UIButton *mapButton;
+- (IBAction)viewOnMapButton:(id)sender;
 
 -(void)clearCellForReuese;
 

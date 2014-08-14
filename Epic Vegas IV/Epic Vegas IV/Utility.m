@@ -332,7 +332,6 @@
             }
         }
         
-        
         currentUser[@"currentLocation"] = geoPoint;
         currentUser[@"currentLocationUpdatedAt"] = [NSDate date];
         

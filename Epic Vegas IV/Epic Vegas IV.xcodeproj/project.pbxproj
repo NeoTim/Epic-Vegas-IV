@@ -55,6 +55,7 @@
 		53165F781991E2870014695B /* full__0000s_0092_map@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 53165F771991E2870014695B /* full__0000s_0092_map@2x.png */; };
 		533D2CBB199BF625005C31DA /* Map 32@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 533D2CBA199BF625005C31DA /* Map 32@2x.png */; };
 		533D2CBE199BF777005C31DA /* UserLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 533D2CBD199BF777005C31DA /* UserLocationViewController.m */; };
+		533D2CC5199D70A8005C31DA /* CheckedInLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 533D2CC4199D70A8005C31DA /* CheckedInLocationViewController.m */; };
 		5346127F1995F9E000530770 /* Settings 44@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5346127E1995F9E000530770 /* Settings 44@2x.png */; };
 		53672A6B199873C300E71C50 /* NewsFeedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 53672A6A199873C300E71C50 /* NewsFeedTableViewCell.m */; };
 		5388ED4D1995741A002CA477 /* All Images@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 5388ED4C1995741A002CA477 /* All Images@2x.png */; };
@@ -187,6 +188,8 @@
 		533D2CBA199BF625005C31DA /* Map 32@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Map 32@2x.png"; sourceTree = "<group>"; };
 		533D2CBC199BF777005C31DA /* UserLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserLocationViewController.h; sourceTree = "<group>"; };
 		533D2CBD199BF777005C31DA /* UserLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserLocationViewController.m; sourceTree = "<group>"; };
+		533D2CC3199D70A8005C31DA /* CheckedInLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CheckedInLocationViewController.h; sourceTree = "<group>"; };
+		533D2CC4199D70A8005C31DA /* CheckedInLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CheckedInLocationViewController.m; sourceTree = "<group>"; };
 		5346127E1995F9E000530770 /* Settings 44@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Settings 44@2x.png"; sourceTree = "<group>"; };
 		53672A69199873C300E71C50 /* NewsFeedTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsFeedTableViewCell.h; sourceTree = "<group>"; };
 		53672A6A199873C300E71C50 /* NewsFeedTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsFeedTableViewCell.m; sourceTree = "<group>"; };
@@ -480,6 +483,8 @@
 			children = (
 				53139852199ACEBA00E16D09 /* CheckInViewController.h */,
 				53139853199ACEBA00E16D09 /* CheckInViewController.m */,
+				533D2CC3199D70A8005C31DA /* CheckedInLocationViewController.h */,
+				533D2CC4199D70A8005C31DA /* CheckedInLocationViewController.m */,
 			);
 			name = "Check In";
 			sourceTree = "<group>";
@@ -789,6 +794,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				533D2CC5199D70A8005C31DA /* CheckedInLocationViewController.m in Sources */,
 				53DF0C0219969E36007E7AA8 /* PostTableViewCell.m in Sources */,
 				53B5948A1998C38A00505BDD /* SettingsTableViewController.m in Sources */,
 				530BED0419904C7700C5FDAB /* AppDelegate.m in Sources */,

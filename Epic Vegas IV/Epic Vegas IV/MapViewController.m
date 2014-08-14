@@ -142,8 +142,21 @@
         userAnnotation.title = user[@"displayName"];
 
         NSDate* updatedAt = user[@"currentLocationUpdatedAt"];
+        
+        NSString* subtitle = nil;
+        
+        if(user[@"currentLocationName"])
+            subtitle = user[@"currentLocationName"];
+        
         if(updatedAt)
-            userAnnotation.subtitle = [Utility formattedDate:updatedAt];
+        {
+            if(!subtitle)
+                subtitle = [Utility formattedDate:updatedAt];
+            else
+                subtitle = [NSString stringWithFormat:@"%@ · %@", subtitle, [Utility formattedDate:updatedAt]];
+        }
+        userAnnotation.subtitle = subtitle;
+        
         
         PFFile *imageFile = [user objectForKey:@"profilePictureSmall"];
         if (imageFile) {

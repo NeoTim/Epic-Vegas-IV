@@ -61,6 +61,15 @@
     //self.photoImageView.layer.borderColor = [UIColor lightGrayColor].CGColor;
 }
 
+- (IBAction)viewOnMapButton:(id)sender {
+    NSLog(@"show map");
+    
+    if(self.delegate)
+    {
+        [self.delegate checkinMapButtonPressed:self];
+    }
+}
+
 -(void)clearCellForReuese
 {
     self.userImageView.image = nil;

@@ -7,8 +7,10 @@
 //
 
 #import "QueryTableViewController.h"
+#import "NewsFeedTableViewCell.h"
 
-@interface ProfileTableViewController : QueryTableViewController
+@interface ProfileTableViewController : QueryTableViewController <NewsFeedTableViewCellDelegate>
+
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *rightBarbuttonItem;
 @property (nonatomic, assign) PFUser* profileUser;
 - (IBAction)facebookButtonPressed:(id)sender;
