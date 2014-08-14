@@ -44,13 +44,11 @@
     {
         _profileUser = [PFUser currentUser];
         self.navigationItem.title = @"Me";
-       // self.title = @"Me";
     }
     else {
-         self.navigationItem.title = _profileUser[@"displayName"];
-        //self.title =_profileUser[@"displayName"];
+        self.navigationItem.title = _profileUser[@"displayName"];
     }
-
+    
     
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -60,6 +58,134 @@
         // current user so show the right bar item
         _rightBarbuttonItem.image = [UIImage imageNamed:@"Settings 44.png"];
         [_rightBarbuttonItem setEnabled:YES];
+    }
+    
+    [self setupHeader];
+}
+
+-(CGFloat)getHeaderHeight
+{
+    CGFloat baseHeight = 367;
+    
+    CGFloat locationNameLabelHeight = 20;
+    CGFloat lastUpdatedAndDistanceLabelHeight = 0;
+    
+    if(self.profileUser)
+    {
+        if(self.profileUser[@"currentLocation"])
+            lastUpdatedAndDistanceLabelHeight = 20;
+    }
+    
+    return 367 + locationNameLabelHeight + lastUpdatedAndDistanceLabelHeight;
+}
+
+-(void)setupHeader
+{
+    _profileHeaderView.frame = CGRectMake(0, 0, 320, [self getHeaderHeight]);
+    
+    _profileHeaderUserImageView.image = nil;
+    
+    _profileHeaderLocationNameLabel.text = nil;
+    
+    _profileHeaderLastUpdatedLabel.text = nil;
+    
+    [_profileHeaderMapButton setEnabled:NO];
+    _profileHeaderMapButton.alpha = 0;
+    
+    _profileHeaderCardView.layer.cornerRadius = 4;
+    
+    // card border color
+    float borderColorGray = 150.0/255.0;
+    CGColorRef color = [UIColor colorWithRed:borderColorGray green:borderColorGray blue:borderColorGray alpha:1].CGColor;
+    _profileHeaderCardView.layer.borderColor = color;
+    
+    // background color
+    _profileHeaderCardView.backgroundColor = [UIColor whiteColor];
+    float gray = 220.0/255.0;
+    _profileHeaderView.backgroundColor = [UIColor colorWithRed:gray green:gray blue:gray alpha:1];
+    
+    
+    _profileHeaderUserImageView.image = nil;
+    _profileHeaderUserImageView.layer.cornerRadius = 272 / 2;
+    _profileHeaderUserImageView.layer.masksToBounds = YES;
+    _profileHeaderUserImageView.layer.borderWidth = .1f;
+    _profileHeaderUserImageView.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    
+    if(_profileUser[@"profilePictureLarge"])
+    {
+        // set pic
+        PFFile *userImageFile = _profileUser[@"profilePictureLarge"];
+        if (userImageFile)
+        {
+            [_profileHeaderUserImageView setFile:userImageFile];
+            [_profileHeaderUserImageView loadInBackground];
+        }
+    }
+    
+    // user name
+    if(_profileUser && _profileUser[@"displayName"])
+    {
+        _profileHeaderUserNameLabel.text = _profileUser[@"displayName"];
+        
+        // setup location info
+        NSString* locationName = _profileUser[@"currentLocationName"];
+        
+        _profileHeaderLocationNameLabel.textAlignment = NSTextAlignmentCenter;
+        
+        
+        _profileHeaderLastUpdatedLabel.textAlignment = NSTextAlignmentCenter;
+        if(locationName)
+        {
+            _profileHeaderLocationNameLabel.text = locationName;
+        }
+        else if(_profileUser[@"currentLocation"])
+        {
+            _profileHeaderLocationNameLabel.text = @"Unnamed Location";
+        }
+        else
+        {
+            _profileHeaderLocationNameLabel.text = @"Unknown Location";
+        }
+        
+        if(_profileUser[@"currentLocation"])
+        {
+            NSString* distanceText = @"";
+            
+            // get distance if friend and current user have location geopoints
+            if([PFUser currentUser] && [PFUser currentUser][@"currentLocation"])
+            {
+                PFGeoPoint* friendLocation = _profileUser[@"currentLocation"];
+                PFGeoPoint* myLocation = [PFUser currentUser][@"currentLocation"];
+                
+                double miles = [friendLocation distanceInMilesTo:myLocation];
+                distanceText = [NSString stringWithFormat:@"%.1f mi · ", miles];
+                
+                // get rid of leading zero
+                if([distanceText hasPrefix:@"0."])
+                    distanceText = [distanceText substringFromIndex:1];
+            }
+            
+            // show map button
+            [_profileHeaderMapButton setEnabled:YES];
+            _profileHeaderMapButton.alpha = 1;
+            
+            // show when it was updated along with the mile distance
+            NSDate* currentLocationUpdatedAt = _profileUser[@"currentLocationUpdatedAt"];
+            if(currentLocationUpdatedAt)
+            {
+                NSString* updatedAtText =[Utility formattedDate:_profileUser[@"currentLocationUpdatedAt"]];
+                
+                _profileHeaderLastUpdatedLabel.text = [NSString stringWithFormat:@"%@%@", distanceText, updatedAtText];
+            }
+            else
+            {
+                _profileHeaderLastUpdatedLabel.text = nil;
+            }
+        }
+        else
+        {
+            _profileHeaderLastUpdatedLabel.text = nil;
+        }
     }
 }
 
@@ -114,15 +240,11 @@
 {
     // Return the number of sections.
     
-    return 2;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // if first section, then that is the profile section picture
-    if(section == 0)
-        return 1;
-    
     // add an extra row for the get next page indicator
     if(self.hasNextPage && self.queryObjects.count >= 1)
         return self.queryObjects.count + 1;
@@ -132,11 +254,6 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    if(indexPath.section == 0)
-    {
-        return [self getHeaderCellForRowAtIndexPath:indexPath];
-    }
-    
     // the last cell is the load more cell
     if(self.hasNextPage && indexPath.row == self.queryObjects.count && self.queryObjects.count >= self.itemsPerPage)
     {
@@ -150,135 +267,6 @@
     return [self getPostCellForRowAtIndexPath:indexPath];
 }
 
-
--(UITableViewCell*)getHeaderCellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // header row
-    UITableViewCell *headerCell = (LoadNextPageTableViewCell*)[self.tableView dequeueReusableCellWithIdentifier:@"ProfileHeader" forIndexPath:indexPath];
-    
-    if (headerCell == nil) {
-        headerCell = (UITableViewCell*)[[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault  reuseIdentifier:@"ProfileHeader"];
-    }
-    else{
-        
-        PFImageView* profileImageView = (PFImageView*)[headerCell viewWithTag:756];
-        profileImageView.image = nil;
-        
-        UILabel* locationNameLabel = (UILabel*)[headerCell viewWithTag:555];
-        locationNameLabel.text = nil;
-        
-        UILabel* lastUpdatedAndDistanceLabel = (UILabel*)[headerCell viewWithTag:556];
-        lastUpdatedAndDistanceLabel.text = nil;
-        
-        UIButton* mapButton = (UIButton*)[headerCell viewWithTag:557];
-        [mapButton setEnabled:NO];
-        mapButton.alpha = 0;
-    }
-    
-    UIImageView* cardView = (UIImageView*)[headerCell viewWithTag:5];
-    cardView.layer.cornerRadius = 4;
-    
-    // card border color
-    float borderColorGray = 150.0/255.0;
-    CGColorRef color = [UIColor colorWithRed:borderColorGray green:borderColorGray blue:borderColorGray alpha:1].CGColor;
-    cardView.layer.borderColor = color;
-    
-    // background color
-    cardView.backgroundColor = [UIColor whiteColor];
-    float gray = 220.0/255.0;
-    headerCell.backgroundColor = [UIColor colorWithRed:gray green:gray blue:gray alpha:1];
-    
-    
-    PFImageView* profileImageView = (PFImageView*)[headerCell viewWithTag:756];
-    profileImageView.image = nil;
-    profileImageView.layer.cornerRadius = 272 / 2;
-    profileImageView.layer.masksToBounds = YES;
-    profileImageView.layer.borderWidth = .1f;
-    profileImageView.layer.borderColor = [UIColor lightGrayColor].CGColor;
-    
-    if(_profileUser[@"profilePictureLarge"])
-    {
-        // set pic
-        PFFile *userImageFile = _profileUser[@"profilePictureLarge"];
-        if (userImageFile)
-        {
-            [profileImageView setFile:userImageFile];
-            [profileImageView loadInBackground];
-        }
-    }
-    
-    // user name
-    if(_profileUser && _profileUser[@"displayName"])
-    {
-        UILabel* userNameLabel = (UILabel*)[headerCell viewWithTag:6];
-        userNameLabel.text = _profileUser[@"displayName"];
-        userNameLabel.textAlignment = NSTextAlignmentCenter;
-        
-        // setup location info
-        NSString* locationName = _profileUser[@"currentLocationName"];
-        UILabel* locationNameLabel = (UILabel*)[headerCell viewWithTag:555];
-        locationNameLabel.textAlignment = NSTextAlignmentCenter;
-        
-        UILabel* lastUpdatedAndDistanceLabel = (UILabel*)[headerCell viewWithTag:556];
-        lastUpdatedAndDistanceLabel.textAlignment = NSTextAlignmentCenter;
-        if(locationName)
-        {
-            locationNameLabel.text = locationName;
-        }
-        else if(_profileUser[@"currentLocation"])
-        {
-            locationNameLabel.text = @"Unnamed Location";
-        }
-        else
-        {
-            locationNameLabel.text = @"Unknown Location";
-        }
-        
-        if(_profileUser[@"currentLocation"])
-        {
-            NSString* distanceText = @"";
-            
-            // get distance if friend and current user have location geopoints
-            if([PFUser currentUser] && [PFUser currentUser][@"currentLocation"])
-            {
-                PFGeoPoint* friendLocation = _profileUser[@"currentLocation"];
-                PFGeoPoint* myLocation = [PFUser currentUser][@"currentLocation"];
-                
-                double miles = [friendLocation distanceInMilesTo:myLocation];
-                distanceText = [NSString stringWithFormat:@"%.1f mi · ", miles];
-                
-                // get rid of leading zero
-                if([distanceText hasPrefix:@"0."])
-                    distanceText = [distanceText substringFromIndex:1];
-            }
-           
-            // show map button
-            UIButton* mapButton = (UIButton*)[headerCell viewWithTag:557];
-            [mapButton setEnabled:YES];
-            mapButton.alpha = 1;
-            mapButton.imageView.tintColor = [UIColor grayColor];
-            
-            // show when it was updated along with the mile distance
-            NSDate* currentLocationUpdatedAt = _profileUser[@"currentLocationUpdatedAt"];
-            if(currentLocationUpdatedAt)
-            {
-                NSString* updatedAtText =[Utility formattedDate:_profileUser[@"currentLocationUpdatedAt"]];
-                
-                lastUpdatedAndDistanceLabel.text = [NSString stringWithFormat:@"%@%@", distanceText, updatedAtText];
-            }
-            else
-            {
-                lastUpdatedAndDistanceLabel.text = nil;
-            }
-        }
-        else
-        {
-            lastUpdatedAndDistanceLabel.text = nil;
-        }
-    }
-    
-    return headerCell;
-}
 
 -(void)configurePostCell:(UITableViewCell*)cell ForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -357,68 +345,51 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if(indexPath.section == 0)
+    // fixed height for the load more cell
+    if(indexPath.row == self.queryObjects.count && self.hasNextPage)
+        return  40;
+    
+    
+    CGFloat height = 83 - 8 - 8; // this is the correct height
+    
+    
+    int postIndex = indexPath.row;
+    PFObject* post = self.queryObjects[postIndex];
+    if(!post)
+        return height;
+    
+    NSString *messageText;
+    
+    if(post[@"locationName"])
     {
-        CGFloat baseHeight = 367;
-        
-        CGFloat locationNameLabelHeight = 20;
-        CGFloat lastUpdatedAndDistanceLabelHeight = 0;
-        
-        if(self.profileUser)
-        {
-            if(self.profileUser[@"currentLocation"])
-                lastUpdatedAndDistanceLabelHeight = 20;
-        }
-        
-        return 367 + locationNameLabelHeight + lastUpdatedAndDistanceLabelHeight;
+        messageText = [NSString stringWithFormat:@"Checked in at '%@'", post[@"locationName"]];
     }
     else
-    {
-        // fixed height for the load more cell
-        if(indexPath.row == self.queryObjects.count && self.hasNextPage)
-            return  40;
-        
-        
-        CGFloat height = 83 - 8 - 8; // this is the correct height
-        
-        
-        int postIndex = indexPath.row;
-        PFObject* post = self.queryObjects[postIndex];
-        if(!post)
-            return height;
-        
-        NSString *messageText;
-        
-        if(post[@"locationName"])
-        {
-            messageText = [NSString stringWithFormat:@"Checked in at '%@'", post[@"locationName"]];
-        }
-        else
-            messageText = post[@"message"] ?: @"";
+        messageText = post[@"message"] ?: @"";
     
-        CGSize labelSize = [self getLabelSize:messageText withFontName:@"HelveticaNeue-Medium" withFontSize:14.0f forFixedWidth:320-48];
-        height += labelSize.height;
-        if(post[@"photo"])
+    CGSize labelSize = [self getLabelSize:messageText withFontName:@"HelveticaNeue-Medium" withFontSize:14.0f forFixedWidth:320-48];
+    height += labelSize.height;
+    if(post[@"photo"])
+    {
+        if(post[@"photo"][@"thumbnailHeight"])
         {
-            if(post[@"photo"][@"thumbnailHeight"])
-            {
-                CGFloat photoWidth = [post[@"photo"][@"thumbnailWidth"] floatValue];
-                CGFloat photoHeight = [post[@"photo"][@"thumbnailHeight"] floatValue];
-                
-                CGFloat fixedWidth = 320 - 48;
-                CGFloat heightMultiplier = fixedWidth / photoWidth;
-                CGFloat scaledHeight = photoHeight * heightMultiplier;
-                height += scaledHeight;
-                
-                //NSLog(@"photo width = %f", scaledHeight);
-                
-                height += 20; // for the padding
-            }
+            CGFloat photoWidth = [post[@"photo"][@"thumbnailWidth"] floatValue];
+            CGFloat photoHeight = [post[@"photo"][@"thumbnailHeight"] floatValue];
+            
+            CGFloat fixedWidth = 320 - 48;
+            CGFloat heightMultiplier = fixedWidth / photoWidth;
+            CGFloat scaledHeight = photoHeight * heightMultiplier;
+            height += scaledHeight;
+            
+            //NSLog(@"photo width = %f", scaledHeight);
+            
+            height += 20; // for the padding
         }
-        
-        //NSLog(@"Height: %f", height);
-        return height;
     }
+    
+    //NSLog(@"Height: %f", height);
+    return height;
+    
 }
 
 
@@ -438,39 +409,24 @@
 
 - (IBAction)facebookButtonPressed:(id)sender {
     if(_profileUser && _profileUser[@"facebookId"])
-    {        
+    {
         // open users facebook profile
         NSString* urlString = [NSString stringWithFormat:@"http://facebook.com/%@", _profileUser[@"facebookId"]];
         
-            NSLog(@"Attempting to open facebook profile at %@", urlString);
-            
-            [[UIApplication sharedApplication] openURL:[NSURL URLWithString: urlString]];
-            
-//        // open users facebook profile
-//        NSString* urlString = [NSString stringWithFormat:@"fb://profile/%@", _profileUser[@"facebookId"]];
-//        
-//
-//        if ([[UIApplication sharedApplication] canOpenURL:[NSURL URLWithString: urlString]]){
-//            NSLog(@"Attempting to open facebook profile at %@", urlString);
-//
-//            [[UIApplication sharedApplication] openURL:[NSURL URLWithString: urlString]];
-//        }else{
-//            NSLog(@"Attempting to open facebook profile at %@", urlString);
-//
-//            urlString = [NSString stringWithFormat:@"http://www.facebook.com/%@", _profileUser[@"facebookId"]];
-//            [[UIApplication sharedApplication] openURL:[NSURL URLWithString: urlString]];
-//        }
+        NSLog(@"Attempting to open facebook profile at %@", urlString);
+        
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString: urlString]];
     }
 }
 
 - (IBAction)mapButtonPressed:(id)sender {
     if(!_profileUser)
         return;
-
+    
     PFGeoPoint* geoPoint = _profileUser[@"currentLocation"];
     if(!geoPoint)
         return;
-
+    
     
 }
 @end
