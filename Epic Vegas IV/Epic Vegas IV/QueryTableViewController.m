@@ -38,8 +38,14 @@
     [self refreshDataSources];
 }
 
+-(void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    
+    [self setupRefreshIndicator];
+}
 
-
+// http://stackoverflow.com/questions/19240915/fix-uitableviewcontroller-offset-due-to-uirefreshcontrol-in-ios-7
 -(void)setupRefreshIndicator
 {
     if(!self.refreshControl)
@@ -47,7 +53,7 @@
         self.refreshControl = [[UIRefreshControl alloc] init];
         self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"Pull to Refresh"];
         [self.refreshControl addTarget:self action:@selector(refreshControlPulled:) forControlEvents:UIControlEventValueChanged];
-        self.refreshControl = self.refreshControl;
+        //self.refreshControl.hidden = YES;
     }
 }
 
@@ -118,8 +124,7 @@
                     _isCurrentlyRefreshing = NO;
                     NSLog(@"Refresh Ended");
                     
-                    if(!self.refreshControl)
-                        [self setupRefreshIndicator];
+                    self.refreshControl.hidden = NO;
                     
                     [self.refreshControl endRefreshing];
                 });
