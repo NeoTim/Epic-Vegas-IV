@@ -209,12 +209,12 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
                 if(error)
                 {
                     NSLog(@"Error deleting Post: %@", error);
-                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error Deleting Post"
-                                                                    message: [NSString stringWithFormat:@"Error: %@", error]
-                                                                   delegate:nil
-                                                          cancelButtonTitle:@"OK"
-                                                          otherButtonTitles:nil];
-                    [alert show];
+//                    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error Deleting Post"
+//                                                                    message: [NSString stringWithFormat:@"Error: %@", error]
+//                                                                   delegate:nil
+//                                                          cancelButtonTitle:@"OK"
+//                                                          otherButtonTitles:nil];
+//                    [alert show];
                 }
                 else
                 {
