@@ -253,7 +253,7 @@
         [dateFormat setDateFormat:@"EEEE"];
         
         NSDateFormatter *timeFormat = [[NSDateFormatter alloc] init];
-        [timeFormat setDateFormat:@"hh:mm a"];
+        [timeFormat setDateFormat:@"h:mm a"];
         
         return [NSString stringWithFormat:@"%@ %@" , [dateFormat stringFromDate:date], [timeFormat stringFromDate:date]];
     }
@@ -261,10 +261,10 @@
     {
     
         NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-        [dateFormat setDateFormat:@"MMMM DD"];
+        [dateFormat setDateFormat:@"MMMM D"];
         
         NSDateFormatter *timeFormat = [[NSDateFormatter alloc] init];
-        [timeFormat setDateFormat:@"hh:mm a"];
+        [timeFormat setDateFormat:@"h:mm a"];
         
         return [NSString stringWithFormat:@"%@ %@" , [dateFormat stringFromDate:date], [timeFormat stringFromDate:date]];
     }
