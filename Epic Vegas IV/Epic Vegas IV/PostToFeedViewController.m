@@ -274,7 +274,7 @@ NSInteger characterLimit = 300;
 -(NSString*)getTruncatedText
 {
     NSString* text = _messageTextView.text;
-    while([text characterAtIndex:text.length - 1] == ' ')
+    while([text characterAtIndex:text.length - 1] == ' ' || [text characterAtIndex:text.length - 1] == '\n')
     {
         text = [text substringToIndex:text.length - 1];
     }

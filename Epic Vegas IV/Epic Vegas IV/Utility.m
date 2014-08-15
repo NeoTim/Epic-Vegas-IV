@@ -90,28 +90,73 @@
         [fileLargeImage saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if (!error) {
                 [[PFUser currentUser] setObject:fileLargeImage forKey:@"profilePictureLarge"];
-                [[PFUser currentUser] saveEventually];
+                [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                    if(succeeded)
+                    {
+                        NSLog(@"Large profile pic saved");
+                        [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                            if(error)
+                            {
+                                NSLog(@"Error saving user");
+//                                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error saving user data"
+//                                                                                message:[NSString stringWithFormat:@"%@", error]                                                                       delegate:nil
+//                                                                      cancelButtonTitle:@"OK"
+//                                                                      otherButtonTitles:nil];
+//                                [alert show];
+                            }
+                        }];
+                    }
+                    else
+                    {
+                        NSLog(@"Error saving large profile picture.  Try logging out and logging back in");
+//                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error saving large profile pic"
+//                                                                        message:[NSString stringWithFormat:@"%@", error]                                                                       delegate:nil
+//                                                              cancelButtonTitle:@"OK"
+//                                                              otherButtonTitles:nil];
+//                        [alert show];
+                    }
+                }];
             }
         }];
     }
-
     
-//    if (mediumImageData.length > 0) {
-//        PFFile *fileMediumImage = [PFFile fileWithData:mediumImageData];
-//        [fileMediumImage saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
-//            if (!error) {
-//                [[PFUser currentUser] setObject:fileMediumImage forKey:@"profilePictureMedium"];
-//                [[PFUser currentUser] saveEventually];
-//            }
-//        }];
-//    }
+    
+    //    if (mediumImageData.length > 0) {
+    //        PFFile *fileMediumImage = [PFFile fileWithData:mediumImageData];
+    //        [fileMediumImage saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+    //            if (!error) {
+    //                [[PFUser currentUser] setObject:fileMediumImage forKey:@"profilePictureMedium"];
+    //                [[PFUser currentUser] saveEventually];
+    //            }
+    //        }];
+    //    }
     
     if (smallRoundedImageData.length > 0) {
         PFFile *fileSmallRoundedImage = [PFFile fileWithData:smallRoundedImageData];
         [fileSmallRoundedImage saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
             if (!error) {
                 [[PFUser currentUser] setObject:fileSmallRoundedImage forKey:@"profilePictureSmall"];
-                [[PFUser currentUser] saveEventually];
+                [[PFUser currentUser] saveInBackgroundWithBlock:^(BOOL succeeded, NSError *error) {
+                    if(error)
+                    {
+                        NSLog(@"Error saving user");
+//                        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error saving user data"
+//                                                                        message:[NSString stringWithFormat:@"%@", error]                                                                       delegate:nil
+//                                                              cancelButtonTitle:@"OK"
+//                                                              otherButtonTitles:nil];
+//                        [alert show];
+                    }
+                }];
+            }
+            else
+            {
+                NSLog(@"Error saving small profile picture.");
+//                UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error saving small profile pic"
+//                                                                message:[NSString stringWithFormat:@"%@", error]                                                                       delegate:nil
+//                                                      cancelButtonTitle:@"OK"
+//                                                      otherButtonTitles:nil];
+//                [alert show];
+                
             }
         }];
     }
@@ -259,7 +304,7 @@
     }
     else // show the date "August 5th at 7:29 pm"
     {
-    
+        
         NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
         [dateFormat setDateFormat:@"MMMM D"];
         
@@ -289,16 +334,16 @@
             }
         }
         [PFGeoPoint geoPointForCurrentLocationInBackground:^(PFGeoPoint *geoPoint, NSError *error) {
-        if (!error) {
-            NSLog(@"Location was stale, user is currently at %f, %f", geoPoint.latitude, geoPoint.longitude);
-            
-            [Utility updateCurrentUsersLocation:geoPoint withLocationName:nil shouldRefreshMap:YES];
-        }
-        else
-        {
-            NSLog(@"error getting user location");
-        }
-    }];
+            if (!error) {
+                NSLog(@"Location was stale, user is currently at %f, %f", geoPoint.latitude, geoPoint.longitude);
+                
+                [Utility updateCurrentUsersLocation:geoPoint withLocationName:nil shouldRefreshMap:YES];
+            }
+            else
+            {
+                NSLog(@"error getting user location");
+            }
+        }];
     }
 }
 
@@ -315,11 +360,11 @@
             CLLocation *locA = [[CLLocation alloc] initWithLatitude:geoPoint.latitude longitude:geoPoint.longitude];
             
             CLLocation *locB = [[CLLocation alloc] initWithLatitude:currentGeoPoint.latitude longitude:currentGeoPoint.longitude];
-          
+            
             CLLocationDistance distanceInMeters = [locA distanceFromLocation:locB];
-
+            
             double mileInMeters = 1609.34;
-
+            
             double miles = distanceInMeters / mileInMeters;
             
             NSLog(@"%f miles away from last known location", miles);
