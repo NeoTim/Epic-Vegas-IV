@@ -73,7 +73,7 @@
 - (IBAction)fbLoginButtonClicked:(id)sender {
     NSLog(@"Facebook Login Button Pressed");
     // The permissions requested from the user
-    NSArray *permissionsArray = @[ @"public_profile", @"email", @"user_friends"];
+    NSArray *permissionsArray = @[ @"public_profile", @"email"];
     
     // Login PFUser using Facebook
     NSLog(@"Logging In PFUser");

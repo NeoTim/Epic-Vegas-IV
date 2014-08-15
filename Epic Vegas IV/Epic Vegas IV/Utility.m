@@ -324,8 +324,8 @@
             
             NSLog(@"%f miles away from last known location", miles);
             
-            // further than .5 miles away, then no longer at the same location
-            if(miles > .5)
+            // further than .3 miles away, then no longer at the same location
+            if(miles > .3)
             {
                 isUserStillAtPreviousLocation = NO;
                 NSLog(@"user is not still at previous location, > %f miles away", miles);
