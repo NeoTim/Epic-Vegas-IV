@@ -294,6 +294,9 @@ NSInteger characterLimit = 300;
 }
 
 - (IBAction)postButtonPressed:(id)sender {
+    
+    [_postButton setEnabled:NO];
+    
     // show spinner
     _spinner = [[UIActivityIndicatorView alloc]initWithFrame:CGRectMake(self.view.frame.size.width / 2 - 40,self.view.frame.size.height / 2 - 125,80,80)];
 
@@ -379,6 +382,8 @@ NSInteger characterLimit = 300;
             if (!self.photoFile || !self.resizedPhotoFile) {
                 UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Couldn't post your photo" message:nil delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Dismiss", nil];
                 [alert show];
+                
+                [_postButton setEnabled:YES];
                 return;
             }
             
@@ -438,8 +443,10 @@ NSInteger characterLimit = 300;
                 } else {
                     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Couldn't post your photo" message:nil delegate:nil cancelButtonTitle:nil otherButtonTitles:@"Dismiss", nil];
                     [alert show];
+
                 }
                 [[UIApplication sharedApplication] endBackgroundTask:self.photoPostBackgroundTaskId];
+                [_postButton setEnabled:YES];
             }];
         }
         else{
