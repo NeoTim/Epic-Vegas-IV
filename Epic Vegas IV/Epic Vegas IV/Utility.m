@@ -306,7 +306,7 @@
     {
         
         NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
-        [dateFormat setDateFormat:@"MMMM D"];
+        [dateFormat setDateFormat:@"MMMM dd"];
         
         NSDateFormatter *timeFormat = [[NSDateFormatter alloc] init];
         [timeFormat setDateFormat:@"h:mm a"];

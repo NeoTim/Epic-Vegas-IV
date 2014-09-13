@@ -5,34 +5,34 @@
 	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
 	<false/>
 	<key>IDESourceControlProjectIdentifier</key>
-	<string>CCB064C4-F085-459C-9F8A-BF5ACEF9CE7A</string>
+	<string>50C5497F-F8B2-4AED-9DA2-B15AF46A7378</string>
 	<key>IDESourceControlProjectName</key>
 	<string>Epic Vegas IV</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
-		<key>68CE64BE-8569-468A-A305-19F5C05CFBEF</key>
+		<key>23D47F2B7FFF41BE1D166A416D2DE646A026DF50</key>
 		<string>https://github.com/zkohl/EpicVegas.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>Epic Vegas IV/Epic Vegas IV.xcodeproj/project.xcworkspace</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
-		<key>68CE64BE-8569-468A-A305-19F5C05CFBEF</key>
+		<key>23D47F2B7FFF41BE1D166A416D2DE646A026DF50</key>
 		<string>../../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
 	<string>https://github.com/zkohl/EpicVegas.git</string>
 	<key>IDESourceControlProjectVersion</key>
-	<integer>110</integer>
+	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>68CE64BE-8569-468A-A305-19F5C05CFBEF</string>
+	<string>23D47F2B7FFF41BE1D166A416D2DE646A026DF50</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
 			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
 			<string>public.vcs.git</string>
 			<key>IDESourceControlWCCIdentifierKey</key>
-			<string>68CE64BE-8569-468A-A305-19F5C05CFBEF</string>
+			<string>23D47F2B7FFF41BE1D166A416D2DE646A026DF50</string>
 			<key>IDESourceControlWCCName</key>
 			<string>EpicVegas</string>
 		</dict>

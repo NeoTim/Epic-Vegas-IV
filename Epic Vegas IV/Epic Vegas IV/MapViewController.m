@@ -203,31 +203,27 @@
 - (MKAnnotationView *)mapView:(MKMapView *)theMapView viewForAnnotation:(id <MKAnnotation>)annotation
 {
     // base it on the user (title)
-    NSString *reuseIdentifier = annotation.title;
+    NSString *reuseIdentifier = @"mapAnnotationReuseIdentifier";
     
-    MKAnnotationView *pinView = (MKAnnotationView *)[_mapView dequeueReusableAnnotationViewWithIdentifier:reuseIdentifier];
+    MKAnnotationView *annotationView = (MKAnnotationView *)[_mapView dequeueReusableAnnotationViewWithIdentifier:reuseIdentifier];
     
-    if(!pinView)
+    if(!annotationView)
     {
-        MKAnnotationView *annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation
-                                                                        reuseIdentifier:reuseIdentifier];
-        UserMapAnnotation* userAnnotation = (UserMapAnnotation*)annotation;
-        //NSLog(@"setting map point for user: %@", userAnnotation.title);
-        annotationView.canShowCallout = YES;
-        annotationView.image = userAnnotation.userImage;
-        
-        UIButton* rightCalledOutButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
-        rightCalledOutButton.userInteractionEnabled = NO;
-        
-        annotationView.rightCalloutAccessoryView = rightCalledOutButton;
-        
-        
-        annotationView.canShowCallout = YES;
-        
-        return annotationView;
+        // initialize annotation view
+        annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:reuseIdentifier];
     }
-    pinView.annotation = annotation;
-    return pinView;
+    
+    UserMapAnnotation* userAnnotation = (UserMapAnnotation*)annotation;
+    annotationView.canShowCallout = YES;
+    annotationView.image = userAnnotation.userImage;
+    
+    UIButton* rightCallOutButton = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+    rightCallOutButton.userInteractionEnabled = NO;
+    
+    annotationView.rightCalloutAccessoryView = rightCallOutButton;
+    annotationView.canShowCallout = YES;
+    annotationView.annotation = annotation;
+    return annotationView;
 }
          
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control
