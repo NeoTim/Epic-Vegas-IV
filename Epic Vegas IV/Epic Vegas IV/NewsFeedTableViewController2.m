@@ -210,6 +210,8 @@
     
     
     int postIndex = indexPath.row;
+    if(postIndex >= self.queryObjects.count)
+        return height;
     PFObject* post = self.queryObjects[postIndex];
     if(!post)
         return height;
