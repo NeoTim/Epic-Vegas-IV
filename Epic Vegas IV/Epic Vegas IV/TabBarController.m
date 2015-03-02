@@ -245,6 +245,7 @@ UIButton* selectExistingPhotoButton;
         
     } completion:^(BOOL finished) {
         //isAddButtonPressed = YES;
+        NSLog(@"Animation over");
     }];
     
     // Animate Rotation
