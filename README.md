@@ -1,5 +1,5 @@
 # Epic Vegas IV
-Epic Vegas IV is my first iOS App.  It was created for attendees of a fourth annual birthday celebration in Las Vegas.  I did it for fun and also to learn iOS development.
+Epic Vegas IV is social networking app for iOS.  It was created for attendees of a fourth annual birthday celebration in Las Vegas.  I did it for fun and also to learn iOS development.
 
 ## Features
 * Ability to post messages and photos to a public feed
@@ -26,7 +26,7 @@ I chose to use Parse as the backend server and database for the app.  Using Pars
 I chose to only support the iOS7 SDK so I wouldn't need to worry about backwards compatibility issues.  Most of my friends were in the tech scene and already had updated iPhone models with iOS7 installed.
 
 ### TestFlight
-I chose to release the app through TestFlight using ad-hoc distribution.  With the short project timeline and approaching deadline, I likely would not have been able to get the app approved by Apple and released in the App store in time.  Also, using TestFlight I was able to use that as my 'authentication' method since I required the UDID of each member's iPhone as a part of the App Build.
+I chose to release the app through TestFlight using ad-hoc distribution.  With the short project timeline and approaching deadline, I likely would not have been able to get the app approved by Apple and released in the App store in time.  Also, by using TestFlight I was able to 'pre-authenticate' users.  Only users who gave me their device UDID and were approved could install the app.
 
 ### iPhone 4, 4s, 5, 5s Resolution
 I chose to target iPhone 4, 4s, 5, and 5s screen resolutions.  The 6 and 6 Plus were not yet released, and none of my friends had older models.
