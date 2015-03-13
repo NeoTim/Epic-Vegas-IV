@@ -66,9 +66,9 @@ The Profile View shows the user's profile page.  It has their user photo, a link
 
 ### Share View
 
-<img src="https://github.com/zkohl/Epic-Vegas-IV/blob/master/Documentation/Images/Post.png" alt="alt text" width="250">
+<img src="https://github.com/zkohl/Epic-Vegas-IV/blob/master/Documentation/Images/Share.png" alt="alt text" width="250">
 
-Pressing the "+" button in the center will trigger an animation that displays three popup buttons where the user can either perform a checkin, post a photo, or post a message
+Pressing the "+" button in the center will trigger an animation that displays three popup buttons where the user can either perform a checkin, post a photo, or post a message.  The "+" turns into an "x" and pressing the "x" or anywhere in the background will dismiss the popup buttons.
 
 ### Check In View
 
