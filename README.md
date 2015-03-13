@@ -30,3 +30,64 @@ I chose to release the app through TestFlight using ad-hoc distribution.  With t
 
 ### iPhone 4, 4s, 5, 5s Resolution
 I chose to target iPhone 4, 4s, 5, and 5s screen resolutions.  The 6 and 6 Plus were not yet released, and none of my friends had older models.
+
+## UI Overview
+The main view of the application is a Tab Bar View.  The four main tabs are for the Public Feed, Attendees List, Map, and Profile.  The center tab is used for a "+" button to initiate sharing of a photo, message, or location checkin to the public feed.
+
+### Login View
+
+<img src="https://github.com/zkohl/Epic-Vegas-IV/blob/master/Documentation/Images/Login.png" alt="alt text" width="250">
+
+The Login View appears when a user launches the app for the first time.  They use Facebook to login to the app.
+
+### Public Feed View
+
+<img style="float:left" src="https://github.com/zkohl/Epic-Vegas-IV/blob/master/Documentation/Images/Feed.png" alt="alt text" width="250">
+
+The public feed contains a scrollable list of photos and text posts by users.  Most recent posts are positioned at the top and earlier posts can be viewed by scrolling down.  You can pull up to refresh at the top of the list view.
+
+### Attendees View
+
+<img src="https://github.com/zkohl/Epic-Vegas-IV/blob/master/Documentation/Images/Attendees.png" alt="alt text" width="250">
+
+The Attendees View shows a scrollable list of all users of the app.  Includes a picture for each user, as well as their current distance and location from you.  Pressing on a row brings you to the attendee's profile view.
+
+### Map View
+
+<img src="https://github.com/zkohl/Epic-Vegas-IV/blob/master/Documentation/Images/Map.png" alt="alt text" width="250">
+
+The Map View shows the most recent location of each attendee.  Each location pin shows the attendee's photo, and pressing it will display the name of the location and when they were last seen there.
+
+### Profile View
+
+<img src="https://github.com/zkohl/Epic-Vegas-IV/blob/master/Documentation/Images/Profile.png" alt="alt text" width="250">
+
+The Profile View shows the user's profile page.  It has their user photo, a link to their location on a map view, a link to their facebook profile page, and a scrollable list of their checkins, photos, and message posts
+
+### Share View
+
+<img src="https://github.com/zkohl/Epic-Vegas-IV/blob/master/Documentation/Images/Post.png" alt="alt text" width="250">
+
+Pressing the "+" button in the center will trigger an animation that displays three popup buttons where the user can either perform a checkin, post a photo, or post a message
+
+### Check In View
+
+<img src="https://github.com/zkohl/Epic-Vegas-IV/blob/master/Documentation/Images/CheckIn.png" alt="alt text" width="250">
+
+Selecting the Check In icon in the Share View will display the Check In View.  This is where a user can choose a location to check in to and name it.
+
+### Photo View
+
+Selecting the Camera icon in the Share View will display the Photo View.  This is where a user can either select an existing photo or take a new photo.  The stock camera app is used for this.  After selecting/taking a photo the user is brought to the Post View where they can add text to their photo post.
+
+### Post View
+
+<img src="https://github.com/zkohl/Epic-Vegas-IV/blob/master/Documentation/Images/Post.png" alt="alt text" width="250">
+
+Selecting the Post icon in the Share View will display the Post View.  This is where a user can write text to post to the public feed.  Pressing the Photo icon brings up the Photo View.
+
+### Home Screen Icon
+
+<img src="https://github.com/zkohl/Epic-Vegas-IV/blob/master/Documentation/Images/Icon.png" alt="alt text" width="250">
+
+This is what the home screen icon looks like for the app.
