@@ -1,11 +1,14 @@
 # Epic Vegas IV
-Epic Vegas IV is social networking app for iOS.  It was created for attendees of a fourth annual birthday celebration in Las Vegas.  I did it for fun and also to learn iOS development.
+Epic Vegas IV is social networking app for iOS.  It was created for attendees of a fourth annual birthday celebration in Las Vegas.  I did it for fun and also to learn iOS development.  Developed and released in August 2014.
 
 ## Features
 * Ability to post messages and photos to a public feed
 * View list of event attendees
 * View the location attendees on a map to aid in meetups
 * Check into locations
+
+## Notes
+* The location feature uses a Parse API that appears to have broken, possibly due to iOS8 changes.
 
 ## Design Decisions
 Many of the design decisions were influenced by the deadline to get the app out the door in a matter of weeks.  It was a last minute decision to build it and the date for the event was already set in stone.
