@@ -84,7 +84,7 @@ Selecting the Camera icon in the Share View will display the Photo View.  This i
 
 <img src="https://github.com/zkohl/Epic-Vegas-IV/blob/master/Documentation/Images/Post.png" alt="alt text" width="250">
 
-Selecting the Post icon in the Share View will display the Post View.  This is where a user can write text to post to the public feed.  Pressing the Photo icon brings up the Photo View.
+Selecting the Post icon in the Share View will display the Post View.  This is where a user can write text to post to the public feed.  Pressing the Photo icon brings up the Photo View to attach a photo to the post.
 
 ### Home Screen Icon
 
